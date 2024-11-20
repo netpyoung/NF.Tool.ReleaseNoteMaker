@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<WarningLevel>4</WarningLevel>
+		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
+		<StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Tomlyn" Version="0.17.0" />
+		<PackageReference Include="Spectre.Console" Version="0.49.1" />
+		<PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\NF.Tool.PatchNoteMaker.Common\NF.Tool.PatchNoteMaker.Common.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Template.tt">
+			<LogicalName>Template.tt</LogicalName>
+		</EmbeddedResource>
+		<EmbeddedResource Include="PatchNote.config.toml">
+			<LogicalName>PatchNote.config.toml</LogicalName>
+		</EmbeddedResource>
+		<!--<None Update="Template.tt" CopyToOutputDirectory="PreserveNewest" />-->
+		<None Remove="CHANGELOG.md" />
+		<None Remove="ChangeLog.d/" />
+	</ItemGroup>
+</Project>

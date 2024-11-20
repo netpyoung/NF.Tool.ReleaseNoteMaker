@@ -1,0 +1,156 @@
+﻿using NF.Tool.PatchNoteMaker.CLI.Impl;
+using NF.Tool.PatchNoteMaker.Common;
+using Spectre.Console;
+using Spectre.Console.Cli;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace NF.Tool.PatchNoteMaker.CLI.Commands
+{
+    [Description("Create a new fragment.")]
+    internal sealed class Command_Create : AsyncCommand<Command_Create.Settings>
+    {
+        public sealed class Settings : CommandSettings
+        {
+            [Description("Create fragment in directory. Default to current directory.")]
+            [CommandOption("--dir")]
+            public string Directory { get; set; } = default!;
+
+            [Description("")]
+            [CommandOption("--config")]
+            public string Config { get; set; } = default!;
+
+            [Description("Sets the content of the new fragment.")]
+            [CommandOption("--content")]
+            public string? ContentOrNull { get; set; }
+
+            [Description("The section to create the fragment for.")]
+            [CommandOption("--section")]
+            public string Section { get; set; } = default!;
+
+            [Description("Open an editor for writing the newsfragment content.")]
+            [CommandOption("--edit")]
+            public bool IsEdit { get; set; }
+
+            [Description("")]
+            [CommandArgument(0, "[FileName]")]
+            public string FileName { get; set; } = string.Empty;
+        }
+
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        {
+            (string baseDirectory, PatchNoteConfig config) = Utils.GetConfig(setting.Directory, setting.Config);
+
+            string section = setting.Section;
+            if (string.IsNullOrEmpty(setting.Section))
+            {
+                foreach (PatchNoteConfig.PatchNoteSection configSection in config.Sections)
+                {
+                    if (string.IsNullOrEmpty(configSection.Path))
+                    {
+                        section = configSection.Name;
+                        break;
+                    }
+                }
+            }
+
+            if (config.Sections.Find(x => x.Name == section) == null)
+            {
+                Console.Error.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
+                return 1;
+            }
+
+
+            bool isEdit = setting.IsEdit;
+            string fileName = setting.FileName;
+            if (string.IsNullOrEmpty(fileName))
+            {
+                if (string.IsNullOrEmpty(setting.Section))
+                {
+                    List<PatchNoteConfig.PatchNoteSection> sections = config.Sections;
+                    if (sections.Count > 1)
+                    {
+                        section = AnsiConsole.Prompt(
+                            new SelectionPrompt<string>()
+                                .Title("Pick a [green]section[/]: ")
+                                .AddChoices(sections.Select(x => x.Name))
+                                .UseConverter((x) => string.IsNullOrEmpty(x) ? "(primary)" : x)
+                        );
+                    }
+                }
+                string issueNumber = AnsiConsole.Prompt(
+                    new TextPrompt<string>("Issue number:")
+                    .DefaultValue("+")
+                );
+                string fragmentType = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("Pick a Fragment [green]Type[/]: ")
+                        .AddChoices(config.Types.Select(x => x.Name))
+                ).ToLower();
+                fileName = $"{issueNumber}.{fragmentType}.md";
+                if (!isEdit && setting.ContentOrNull is null)
+                {
+                    isEdit = true;
+                }
+            }
+
+            if (setting.ContentOrNull is not string content)
+            {
+                content = Const.DEFAULT_NEWS_CONTENT;
+            }
+
+            {
+                string[] split = fileName.Split(".");
+                if (split.Length < 2)
+                {
+                    throw new NotImplementedException();
+                }
+                string fileExtension = split[split.Length - 1];
+                string fragmentType = split[split.Length - 2];
+                if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
+                {
+                    throw new NotImplementedException();
+                }
+            }
+
+            FragmentsPath fragmentPath = new FragmentsPath(baseDirectory, config);
+            string fragmentDirectory = fragmentPath.GetDirectory(section);
+            string segmentFilePath = GetSegmentFilePath(fragmentDirectory, fileName);
+
+            if (isEdit)
+            {
+                string? editorContentOrNull = await TextEditorHelper.OpenAndReadTemporaryFile($"TEMP_{Path.GetFileName(segmentFilePath)}", content);
+                if (editorContentOrNull is null)
+                {
+                    return 1;
+                }
+                content = editorContentOrNull;
+            }
+
+            Directory.CreateDirectory(fragmentDirectory);
+            File.WriteAllText(segmentFilePath, content);
+            AnsiConsole.Markup($"Created news fragment at {segmentFilePath}");
+            return 0;
+        }
+
+        static string GetSegmentFilePath(string fragmentsDirectory, string fileName)
+        {
+            int retry = 0;
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+            string fileExtension = Path.GetExtension(fileName);
+
+            string segmentFile = Path.Combine(fragmentsDirectory, $"{fileNameWithoutExtension}{fileExtension}");
+            while (File.Exists(segmentFile))
+            {
+                retry++;
+                segmentFile = Path.Combine(fragmentsDirectory, $"{fileNameWithoutExtension}.{retry}{fileExtension}");
+            }
+
+            return segmentFile;
+        }
+    }
+}

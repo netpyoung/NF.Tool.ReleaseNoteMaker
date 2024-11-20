@@ -1,0 +1,107 @@
+<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#
+    System.Diagnostics.Debugger.Launch();
+    System.Diagnostics.Debugger.Break();
+
+    TemplateModel model = Host.GetTemplateModel();
+    PatchNoteConfig config = Host.GetConfig();
+#>
+<#
+    string title = string.Empty;
+    if (model.RenderTitle)
+    {
+        if (!string.IsNullOrEmpty(model.VersionData?.Name))
+        {
+            title = $"{model.VersionData.Name} {model.VersionData.Version} ({model.VersionData.Date})";
+        }
+        else
+        {
+            title = $"{model.VersionData.Name} {model.VersionData.Version})";
+        }
+    }
+#>
+# <#= title #>
+
+<#
+    foreach (string section in model.SectionDic.Keys)
+    {
+#>
+## <#= section #>
+
+<#
+        if (model.SectionDic[section] == null)
+        {
+#>
+No significant changes.
+<#
+        }
+        else
+        {
+            foreach (var category in model.SectionDic[section].Sections.Keys)
+            {
+                if (!model.DefinitionDic.ContainsKey(category))
+                {
+                    continue;
+                }
+                var categoryDefinition = model.DefinitionDic[category];
+#>
+### <#= categoryDefinition.Name #>
+
+<#
+                foreach (var text in model.SectionDic[section].Sections[category].Keys)
+                {
+#>
+- <#= text #>
+<#
+                    var values = model.SectionDic[section].Sections[category][text];
+                    if (values.Count > 0)
+                    {
+                        if (text.Contains("\n  - ") || text.Contains("\n  * "))
+                        {
+#>
+
+
+  (<#
+                        }
+                        else
+                        {
+#> (<#
+                        }
+                        
+                        for (int i = 0; i < values.Count; i++)
+                        {
+#>
+<#= values[i].Split(": ", 2)[0] #><# if (i < values.Count - 1) { #>, <# } #>
+<#
+                        }
+                        if (!text.Contains("\n  - ") && !text.Contains("\n  * "))
+                        {
+#>
+)
+<#
+                        }
+                    }
+
+                    if (model.IssuesByCategory.ContainsKey(section) && model.IssuesByCategory[section].ContainsKey(category) && model.IssuesByCategory[section][category].Any())
+                    {
+                        foreach (var issue in model.IssuesByCategory[section][category])
+                        {
+#>
+<#= issue #>
+<#
+                        }
+                    }
+
+                    if (model.SectionDic[section].Sections[category].Count == 0)
+                    {
+#>
+No significant changes.
+<#
+                    }
+                }
+            }
+        }
+    }
+#>

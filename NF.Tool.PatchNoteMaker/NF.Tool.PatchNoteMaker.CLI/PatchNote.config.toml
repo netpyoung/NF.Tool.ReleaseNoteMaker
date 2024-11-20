@@ -1,0 +1,34 @@
+[PatchNote.Maker]
+Directory = "ChangeLog.d"
+OutputFileName = "CHANGELOG.md"
+TemplateFilePath = "Template.tt"
+
+[[PatchNote.Type]]
+Directory = "security"
+Name = "Security"
+IsShowcontent = true
+
+[[PatchNote.Type]]
+Directory = "removed"
+Name = "Removed"
+IsShowcontent = true
+
+[[PatchNote.Type]]
+Directory = "deprecated"
+Name = "Deprecated"
+IsShowcontent = true
+
+[[PatchNote.Type]]
+Directory = "added"
+Name = "Added"
+IsShowcontent = true
+
+[[PatchNote.Type]]
+Directory = "changed"
+Name = "Changed"
+IsShowcontent = true
+
+[[PatchNote.Type]]
+Directory = "fixed"
+Name = "Fixed"
+IsShowcontent = true
