@@ -25,16 +25,15 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return tempFilePath;
         }
 
-        public static (string baseDirectory, PatchNoteConfig config) GetConfig(string directory, string configPath)
+        public static Exception? GetConfig(string directory, string configPath, out string baseDirectory, out PatchNoteConfig config)
         {
             // TODO(pyoung): refactoring without throw
             if (string.IsNullOrEmpty(configPath))
             {
-                return TraverseToParentForConfig(directory);
+                return TraverseToParentForConfig(directory, out baseDirectory, out config);
             }
 
             string configFullPath = Path.GetFullPath(configPath);
-            string baseDirectory;
             if (!string.IsNullOrEmpty(directory))
             {
                 baseDirectory = Path.GetFullPath(directory);
@@ -49,11 +48,11 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 throw new PatchNoteMakerException($"Configuration file '{configFullPath}' not found.");
             }
 
-            PatchNoteConfig config = LoadConfigFromFile(configFullPath);
-            return (baseDirectory, config);
+            config = LoadConfigFromFile(configFullPath);
+            return null;
         }
 
-        private static (string directory, PatchNoteConfig config) TraverseToParentForConfig(string path)
+        private static Exception? TraverseToParentForConfig(string path, out string directory, out PatchNoteConfig config)
         {
             string startDirectory;
             if (!string.IsNullOrEmpty(path))
@@ -65,20 +64,21 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 startDirectory = Directory.GetCurrentDirectory();
             }
 
-            string directory = startDirectory;
+            directory = startDirectory;
             while (true)
             {
                 string configPath = Path.Combine(directory, Const.DEFAULT_CONFIG_FILENAME);
                 if (File.Exists(configPath))
                 {
-                    PatchNoteConfig config = LoadConfigFromFile(configPath);
-                    return (directory, config);
+                    config = LoadConfigFromFile(configPath);
+                    return null;
                 }
 
                 DirectoryInfo? parentOrNull = Directory.GetParent(directory);
                 if (parentOrNull == null)
                 {
-                    throw new PatchNoteMakerException($"No configuration file found. Looked back from: {startDirectory}");
+                    config = new PatchNoteConfig();
+                    return new PatchNoteMakerException($"No configuration file found. Looked back from: {startDirectory}");
                 }
                 directory = parentOrNull.FullName;
             }

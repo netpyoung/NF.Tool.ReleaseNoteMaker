@@ -12,8 +12,8 @@ namespace NF.Tool.PatchNoteMaker.CLI
         static async Task<int> Main(string[] args)
         {
             //args = "create --help".Split(" ");
-            //args = "create".Split(" ");
-            args = "build --help".Split(" ");
+            args = "create --config hello.toml".Split(" ");
+            //args = "--help".Split(" ");
 
             CommandApp app = new CommandApp();
 

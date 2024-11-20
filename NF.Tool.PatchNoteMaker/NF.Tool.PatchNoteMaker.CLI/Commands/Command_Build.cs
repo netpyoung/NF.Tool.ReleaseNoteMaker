@@ -51,7 +51,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings settting)
         {
-            (string baseDirectory, PatchNoteConfig config) = Utils.GetConfig(settting.Directory, settting.Config);
+            Exception? ex = Utils.GetConfig(settting.Directory, settting.Config, out string baseDirectory, out PatchNoteConfig config);
+            if (ex is not null)
+            {
+                AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
+                return 1;
+            }
 
             string projectVersion;
             if (!string.IsNullOrEmpty(settting.ProjectVersion))
