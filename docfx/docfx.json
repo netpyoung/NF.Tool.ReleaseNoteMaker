@@ -1,0 +1,47 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "src": "../NF.Tool.PatchNoteMaker/",
+          "files": [
+            "**/*.sln"
+          ]
+        }
+      ],
+      "allowCompilationErrors": true,
+      "filter": "filterConfig.yml",
+      "dest": "api"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.{md,yml}"
+        ],
+        "exclude": [
+          "_site/**"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "template": [
+      "default",
+      "modern"
+    ],
+    "globalMetadata": {
+      "_appName": "NF.Tool.PatchNoteMaker",
+      "_appTitle": "NF.Tool.PatchNoteMaker",
+      "_enableSearch": true,
+      "pdf": false
+    }
+  }
+}
