@@ -1,7 +1,6 @@
 using NF.Tool.PatchNoteMaker.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -10,20 +9,19 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
     public sealed class FragmentBasename
     {
+        // example: "release-2.0.1.doc.10"
+        // issue: release-2.0.1
+        // category: doc
+        // retryCount: 10
         public string Issue { get; set; }
         public string Category { get; init; }
-        public int RetryCounter { get; set; }
+        public int RetryCount { get; set; }
 
-        public FragmentBasename(string issue, string category, int retryCounter)
+        public FragmentBasename(string issue, string category, int retryCount)
         {
             Issue = issue;
             Category = category;
-            RetryCounter = retryCounter;
-        }
-
-        public static FragmentBasename Invalid()
-        {
-            return new FragmentBasename(string.Empty, string.Empty, 0);
+            RetryCount = retryCount;
         }
     }
     public sealed class FragmentContent
@@ -58,12 +56,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
     public sealed class FragmentFinder
     {
 
-        [Description("Key: SectionName")]
-        //  section_name, section_fragments(issue, category, counter), content // fragment_files(filename, category)
-        public static
-            (Exception? exOrNull, FragmentResult result)
-            FindFragments
-            (string baseDirectory, PatchNoteConfig config, bool strict)
+        public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool isStrictMode)
         {
             HashSet<string> ignoredFileNameSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
@@ -89,7 +82,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             Dictionary<string, int> orphanFragmentCounter = new Dictionary<string, int>(config.Sections.Count);
 
             List<FragmentContent> fragmentContents = new List<FragmentContent>(config.Sections.Count);
-            List<FragmentFile> fragmentFiles = new List<FragmentFile>(config.Sections.Count);
+            List<FragmentFile> fragmentFiles = new List<FragmentFile>(30);
             foreach (PatchNoteConfig.PatchNoteSection section in config.Sections)
             {
                 string sectionName = section.Name;
@@ -105,22 +98,20 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     files = [];
                 }
 
-                List<FragmentContent.SectionFragment> fileContent = new List<FragmentContent.SectionFragment>();
-
-                foreach (string file in files)
+                List<FragmentContent.SectionFragment> fileContents = new List<FragmentContent.SectionFragment>();
+                foreach (string fileName in files.Select(x => Path.GetFileName(x)))
                 {
-                    string basename = Path.GetFileName(file);
-                    if (ignoredFileNameSet.Any(pattern => IsMatch(basename.ToLower(), pattern)))
+                    if (ignoredFileNameSet.Any(pattern => IsMatch(fileName.ToLower(), pattern)))
                     {
                         continue;
                     }
 
-                    FragmentBasename? fragmentBaseNameOrNull = ParseNewFragmentBasenameOrNull(basename, config.Types);
+                    FragmentBasename? fragmentBaseNameOrNull = ParseNewFragmentBasenameOrNull(fileName, config.Types);
                     if (fragmentBaseNameOrNull == null)
                     {
-                        if (strict)
+                        if (isStrictMode)
                         {
-                            InvalidOperationException ex = new InvalidOperationException($"Invalid news fragment name: {basename}\nIf this filename is deliberate, add it to 'ignore' in your configuration.");
+                            PatchNoteMakerException ex = new PatchNoteMakerException($"Invalid news fragment name: {fileName}\nIf this filename is deliberate, add it to 'ignore' in your configuration.");
                             return (ex, FragmentResult.Default());
                         }
                         continue;
@@ -136,7 +127,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                             {
                                 orphanFragmentCounter[fragmentBaseName.Category] = 0;
                             }
-                            fragmentBaseName.RetryCounter = orphanFragmentCounter[fragmentBaseName.Category]++;
+                            fragmentBaseName.RetryCount = orphanFragmentCounter[fragmentBaseName.Category]++;
                         }
                     }
 
@@ -144,25 +135,25 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     {
                         if (!Regex.IsMatch(fragmentBaseName.Issue, config.Maker.IssuePattern))
                         {
-                            InvalidOperationException ex = new InvalidOperationException($"Issue name '{fragmentBaseName.Issue}' does not match the configured pattern, '{config.Maker.IssuePattern}'");
+                            PatchNoteMakerException ex = new PatchNoteMakerException($"Issue name '{fragmentBaseName.Issue}' does not match the configured pattern, '{config.Maker.IssuePattern}'");
                             return (ex, FragmentResult.Default());
                         }
                     }
 
-                    string fullFilename = Path.Combine(sectionDir, basename);
+                    string fullFilename = Path.Combine(sectionDir, fileName);
                     fragmentFiles.Add(new FragmentFile { FileName = fullFilename, Category = fragmentBaseName.Category });
 
                     string data = File.ReadAllText(fullFilename);
-                    if (fileContent.Find(x => x.FragmentBasename == fragmentBaseName) != null)
+                    if (fileContents.Find(x => x.FragmentBasename == fragmentBaseName) != null)
                     {
-                        InvalidOperationException ex = new InvalidOperationException($"Multiple files for {fragmentBaseName.Issue}.{fragmentBaseName.Category} in {sectionDir}");
+                        PatchNoteMakerException ex = new PatchNoteMakerException($"Multiple files for {fragmentBaseName.Issue}.{fragmentBaseName.Category} in {sectionDir}");
                         return (ex, FragmentResult.Default());
                     }
 
-                    fileContent.Add(new FragmentContent.SectionFragment(fragmentBaseName, data));
+                    fileContents.Add(new FragmentContent.SectionFragment(fragmentBaseName, data));
                 }
 
-                fragmentContents.Add(new FragmentContent { SectionName = sectionName, SectionFragments = fileContent });
+                fragmentContents.Add(new FragmentContent { SectionName = sectionName, SectionFragments = fileContents });
             }
 
             return (null, new FragmentResult { FragmentContents = fragmentContents, FragmentFiles = fragmentFiles });
@@ -208,16 +199,16 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     issue = issueAsInt.ToString();
                 }
 
-                int retryCounter = 0;
+                int retryCount = 0;
                 if (i + 1 < parts.Length)
                 {
-                    if (int.TryParse(parts[i + 1], out int parsedCounter))
+                    if (int.TryParse(parts[i + 1], out int parsedCount))
                     {
-                        retryCounter = parsedCounter;
+                        retryCount = parsedCount;
                     }
                 }
 
-                return new FragmentBasename(issue, category, retryCounter);
+                return new FragmentBasename(issue, category, retryCount);
             }
         }
     }

@@ -88,7 +88,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             Console.WriteLine("Finding news fragments...");
             TemplateModel model = DummyTemplateModel();
 
-            (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, strict: false);
+            (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
             if (fragmentResultExOrNull != null)
             {
                 AnsiConsole.WriteException(fragmentResultExOrNull, ExceptionFormats.ShortenEverything);

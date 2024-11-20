@@ -33,60 +33,61 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 return TraverseToParentForConfig(directory, out baseDirectory, out config);
             }
 
-            string configFullPath = Path.GetFullPath(configPath);
+            string configFpath = Path.GetFullPath(configPath);
             if (!string.IsNullOrEmpty(directory))
             {
                 baseDirectory = Path.GetFullPath(directory);
             }
             else
             {
-                baseDirectory = Path.GetDirectoryName(configFullPath)!;
+                baseDirectory = Path.GetDirectoryName(configFpath)!;
             }
 
-            if (!File.Exists(configFullPath))
+            if (!File.Exists(configFpath))
             {
-                throw new PatchNoteMakerException($"Configuration file '{configFullPath}' not found.");
+                config = new PatchNoteConfig();
+                return new PatchNoteMakerException($"Configuration file '{configFpath}' not found.");
             }
 
-            config = LoadConfigFromFile(configFullPath);
-            return null;
+            (Exception? exOrNull, config) = LoadConfigFromFile(configFpath);
+            return exOrNull;
         }
 
-        private static Exception? TraverseToParentForConfig(string path, out string directory, out PatchNoteConfig config)
+        private static Exception? TraverseToParentForConfig(string path, out string directoryFpath, out PatchNoteConfig config)
         {
-            string startDirectory;
+            string startDirectoryFpath;
             if (!string.IsNullOrEmpty(path))
             {
-                startDirectory = path;
+                startDirectoryFpath = Path.GetFullPath(path);
             }
             else
             {
-                startDirectory = Directory.GetCurrentDirectory();
+                startDirectoryFpath = Directory.GetCurrentDirectory();
             }
 
-            directory = startDirectory;
+            directoryFpath = startDirectoryFpath;
             while (true)
             {
-                string configPath = Path.Combine(directory, Const.DEFAULT_CONFIG_FILENAME);
-                if (File.Exists(configPath))
+                string configFpath = Path.Combine(directoryFpath, Const.DEFAULT_CONFIG_FILENAME);
+                if (File.Exists(configFpath))
                 {
-                    config = LoadConfigFromFile(configPath);
-                    return null;
+                    (Exception? exOrNull, config) = LoadConfigFromFile(configFpath);
+                    return exOrNull;
                 }
 
-                DirectoryInfo? parentOrNull = Directory.GetParent(directory);
+                DirectoryInfo? parentOrNull = Directory.GetParent(directoryFpath);
                 if (parentOrNull == null)
                 {
                     config = new PatchNoteConfig();
-                    return new PatchNoteMakerException($"No configuration file found. Looked back from: {startDirectory}");
+                    return new PatchNoteMakerException($"No configuration file found. Looked back from: {startDirectoryFpath}");
                 }
-                directory = parentOrNull.FullName;
+                directoryFpath = parentOrNull.FullName;
             }
         }
 
-        private static PatchNoteConfig LoadConfigFromFile(string configFile)
+        private static (Exception? exOrNull, PatchNoteConfig config) LoadConfigFromFile(string configFpath)
         {
-            string configText = File.ReadAllText(configFile);
+            string configText = File.ReadAllText(configFpath);
             TomlModelOptions option = new TomlModelOptions();
             option.ConvertFieldName = StringIdentity;
             option.ConvertPropertyName = StringIdentity;
@@ -94,7 +95,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             bool isSuccess = Toml.TryToModel(configText, out TomlModel? modelOrNull, out DiagnosticsBag? diagostics, options: option);
             if (!isSuccess)
             {
-                Console.Error.WriteLine($"configFile: {configFile}");
+                Console.Error.WriteLine($"configFpath: {configFpath}");
                 foreach (DiagnosticMessage x in diagostics!)
                 {
                     Console.Error.WriteLine(x);
@@ -104,7 +105,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
             TomlModel model = modelOrNull!;
             PatchNoteConfig patchNoteConfig = model.PatchNote;
-            return patchNoteConfig;
+            return (null, patchNoteConfig);
         }
 
         private static string StringIdentity(string x)
