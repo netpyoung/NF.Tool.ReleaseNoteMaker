@@ -49,9 +49,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
         }
 
-        public override async Task<int> ExecuteAsync(CommandContext context, Settings settting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
-            Exception? ex = Utils.GetConfig(settting.Directory, settting.Config, out string baseDirectory, out PatchNoteConfig config);
+            Exception? ex = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
             if (ex is not null)
             {
                 AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
@@ -59,9 +59,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
 
             string projectVersion;
-            if (!string.IsNullOrEmpty(settting.ProjectVersion))
+            if (!string.IsNullOrEmpty(setting.ProjectVersion))
             {
-                projectVersion = settting.ProjectVersion;
+                projectVersion = setting.ProjectVersion;
             }
             else if (!string.IsNullOrEmpty(config.Maker.Version))
             {
@@ -95,7 +95,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
 
             string outputPath;
-            if (settting.IsDraft)
+            if (setting.IsDraft)
             {
                 outputPath = Path.GetTempFileName();
             }
@@ -105,7 +105,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
 
             await TemplateRenderer.Render(templatePath, config, model, outputPath);
-            if (settting.IsDraft)
+            if (setting.IsDraft)
             {
                 string output = File.ReadAllText(outputPath);
                 Console.WriteLine(output);
