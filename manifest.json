@@ -1,0 +1,238 @@
+{
+  "source_base_path": "/home/runner/work/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker/docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Definition.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Definition.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.ExEngineHost.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.ExEngineHost.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Section.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Section.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.TemplateModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.VersionData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.VersionData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "docs/toc.json"
+        },
+        ".html": {
+          "relative_path": "docs/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Redirection",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

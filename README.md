@@ -1,3 +1,0 @@
-# NF.Tool.PatchNoteMaker
-
-wip

@@ -1,0 +1,92 @@
+{
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html",
+    "title": "Class FragmentFinder | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentFinder Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentFinder Inheritance object FragmentFinder Methods FindFragments(string, PatchNoteConfig, bool) public static (Dictionary<string, Dictionary<(string?, string?, int), string>>, List<(string, string?)>) FindFragments(string baseDirectory, PatchNoteConfig config, bool strict) Parameters baseDirectory string config PatchNoteConfig strict bool Returns (Dictionary<string, Dictionary<(string, string, int), string>>, List<(string, string)>)"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html",
+    "title": "Class FragmentsPath | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentsPath Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentsPath Inheritance object FragmentsPath Constructors FragmentsPath(string, PatchNoteConfig) public FragmentsPath(string baseDirectory, PatchNoteConfig config) Parameters baseDirectory string config PatchNoteConfig Methods GetDirectory(string) public string GetDirectory(string section) Parameters section string Returns string Resolve(string) public string Resolve(string section) Parameters section string Returns string"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html",
+    "title": "Class TextEditorHelper | NF.Tool.PatchNoteMaker",
+    "keywords": "Class TextEditorHelper Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class TextEditorHelper Inheritance object TextEditorHelper Methods GetEditorName() public static string GetEditorName() Returns string OpenAndReadTemporaryFile(string, string) public static Task<string?> OpenAndReadTemporaryFile(string tempFilename, string initialContent) Parameters tempFilename string initialContent string Returns Task<string> ProcessContent(string) public static string ProcessContent(string content) Parameters content string Returns string"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.html",
+    "title": "Class TomlModel | NF.Tool.PatchNoteMaker",
+    "keywords": "Class TomlModel Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class TomlModel Inheritance object TomlModel Properties PatchNote public PatchNoteConfig PatchNote { get; set; } Property Value PatchNoteConfig"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.html",
+    "title": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl | NF.Tool.PatchNoteMaker",
+    "keywords": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl Classes FragmentFinder FragmentsPath TextEditorHelper TomlModel"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.Definition.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.Definition.html",
+    "title": "Class Definition | NF.Tool.PatchNoteMaker",
+    "keywords": "Class Definition Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class Definition Inheritance object Definition Properties Name public string Name { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.ExEngineHost.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.ExEngineHost.html",
+    "title": "Class ExEngineHost | NF.Tool.PatchNoteMaker",
+    "keywords": "Class ExEngineHost Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public static class ExEngineHost Inheritance object ExEngineHost Methods GetConfig(ITextTemplatingEngineHost) public static PatchNoteConfig GetConfig(this ITextTemplatingEngineHost host) Parameters host ITextTemplatingEngineHost Returns PatchNoteConfig GetTemplateModel(ITextTemplatingEngineHost) public static TemplateModel GetTemplateModel(this ITextTemplatingEngineHost host) Parameters host ITextTemplatingEngineHost Returns TemplateModel"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html",
+    "title": "Class PatchNoteConfig.PatchNoteMaker | NF.Tool.PatchNoteMaker",
+    "keywords": "Class PatchNoteConfig.PatchNoteMaker Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class PatchNoteConfig.PatchNoteMaker Inheritance object PatchNoteConfig.PatchNoteMaker Properties Directory public string Directory { get; set; } Property Value string Ignores public List<string> Ignores { get; set; } Property Value List<string> IssuePattern public string IssuePattern { get; set; } Property Value string OrphanPrefix public string OrphanPrefix { get; set; } Property Value string OutputFileName public string OutputFileName { get; set; } Property Value string Package public string Package { get; set; } Property Value string TemplateFilePath public string TemplateFilePath { get; set; } Property Value string Version public string Version { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html",
+    "title": "Class PatchNoteConfig.PatchNoteSection | NF.Tool.PatchNoteMaker",
+    "keywords": "Class PatchNoteConfig.PatchNoteSection Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class PatchNoteConfig.PatchNoteSection Inheritance object PatchNoteConfig.PatchNoteSection Properties Name public string Name { get; set; } Property Value string Path public string Path { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html",
+    "title": "Class PatchNoteConfig.PatchNoteType | NF.Tool.PatchNoteMaker",
+    "keywords": "Class PatchNoteConfig.PatchNoteType Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class PatchNoteConfig.PatchNoteType Inheritance object PatchNoteConfig.PatchNoteType Properties Directory public string Directory { get; set; } Property Value string IsShowcontent public bool IsShowcontent { get; set; } Property Value bool Name public string Name { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html",
+    "title": "Class PatchNoteConfig | NF.Tool.PatchNoteMaker",
+    "keywords": "Class PatchNoteConfig Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class PatchNoteConfig Inheritance object PatchNoteConfig Properties Maker public PatchNoteConfig.PatchNoteMaker Maker { get; } Property Value PatchNoteConfig.PatchNoteMaker Sections [DataMember(Name = \"Section\")] public List<PatchNoteConfig.PatchNoteSection> Sections { get; } Property Value List<PatchNoteConfig.PatchNoteSection> Types [DataMember(Name = \"Type\")] public List<PatchNoteConfig.PatchNoteType> Types { get; } Property Value List<PatchNoteConfig.PatchNoteType>"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.Section.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.Section.html",
+    "title": "Class Section | NF.Tool.PatchNoteMaker",
+    "keywords": "Class Section Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class Section Inheritance object Section Properties IssuesByCategory public Dictionary<string, List<string>> IssuesByCategory { get; set; } Property Value Dictionary<string, List<string>> Sections public Dictionary<string, Dictionary<string, List<string>>> Sections { get; set; } Property Value Dictionary<string, Dictionary<string, List<string>>>"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html",
+    "title": "Class TemplateModel | NF.Tool.PatchNoteMaker",
+    "keywords": "Class TemplateModel Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class TemplateModel Inheritance object TemplateModel Properties DefinitionDic public Dictionary<string, Definition> DefinitionDic { get; set; } Property Value Dictionary<string, Definition> IssuesByCategory public Dictionary<string, Dictionary<string, List<string>>> IssuesByCategory { get; set; } Property Value Dictionary<string, Dictionary<string, List<string>>> RenderTitle public bool RenderTitle { get; set; } Property Value bool SectionDic public Dictionary<string, Section> SectionDic { get; set; } Property Value Dictionary<string, Section> VersionData public VersionData VersionData { get; set; } Property Value VersionData"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html",
+    "title": "Class TemplateRenderer | NF.Tool.PatchNoteMaker",
+    "keywords": "Class TemplateRenderer Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class TemplateRenderer Inheritance object TemplateRenderer Methods Render(string, PatchNoteConfig, TemplateModel, string) public static Task Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel, string outputPath) Parameters templatePath string config PatchNoteConfig templateModel TemplateModel outputPath string Returns Task"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.VersionData.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.VersionData.html",
+    "title": "Class VersionData | NF.Tool.PatchNoteMaker",
+    "keywords": "Class VersionData Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class VersionData Inheritance object VersionData Properties Date public string Date { get; set; } Property Value string Name public string Name { get; set; } Property Value string Version public string Version { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.Common.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.html",
+    "title": "Namespace NF.Tool.PatchNoteMaker.Common | NF.Tool.PatchNoteMaker",
+    "keywords": "Namespace NF.Tool.PatchNoteMaker.Common Classes Definition ExEngineHost PatchNoteConfig PatchNoteConfig.PatchNoteMaker PatchNoteConfig.PatchNoteSection PatchNoteConfig.PatchNoteType Section TemplateModel TemplateRenderer VersionData"
+  },
+  "docs/index.html": {
+    "href": "docs/index.html",
+    "title": "Introduction | NF.Tool.PatchNoteMaker",
+    "keywords": "Introduction repo Example"
+  },
+  "index.html": {
+    "href": "index.html",
+    "title": "",
+    "keywords": ""
+  }
+}
