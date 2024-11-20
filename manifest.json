@@ -12,6 +12,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentBasename.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentBasename.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragment.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.yml",
       "output": {
         ".html": {
@@ -22,20 +62,20 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.yml",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html"
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.yml",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html"
+          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html"
         }
       },
       "version": ""

@@ -1,18 +1,38 @@
 {
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentBasename.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentBasename.html",
+    "title": "Class FragmentBasename | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentBasename Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentBasename Inheritance object FragmentBasename Constructors FragmentBasename(string, string, int) public FragmentBasename(string issue, string category, int retryCounter) Parameters issue string category string retryCounter int Properties Category public string Category { get; init; } Property Value string Issue public string Issue { get; set; } Property Value string RetryCounter public int RetryCounter { get; set; } Property Value int Methods Invalid() public static FragmentBasename Invalid() Returns FragmentBasename"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragment.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragment.html",
+    "title": "Class FragmentContent.SectionFragment | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentContent.SectionFragment Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed record FragmentContent.SectionFragment Inheritance object FragmentContent.SectionFragment Constructors SectionFragment(FragmentBasename, string) public SectionFragment(FragmentBasename FragmentBasename, string Data) Parameters FragmentBasename FragmentBasename Data string Properties Data public string Data { get; init; } Property Value string FragmentBasename public FragmentBasename FragmentBasename { get; init; } Property Value FragmentBasename"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.html",
+    "title": "Class FragmentContent | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentContent Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentContent Inheritance object FragmentContent Properties SectionFragments public List<FragmentContent.SectionFragment> SectionFragments { get; set; } Property Value List<FragmentContent.SectionFragment> SectionName public string SectionName { get; set; } Property Value string"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFile.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFile.html",
+    "title": "Class FragmentFile | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentFile Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentFile Inheritance object FragmentFile Properties Category public required string Category { get; init; } Property Value string FileName public required string FileName { get; init; } Property Value string"
+  },
   "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html": {
     "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html",
     "title": "Class FragmentFinder | NF.Tool.PatchNoteMaker",
-    "keywords": "Class FragmentFinder Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentFinder Inheritance object FragmentFinder Methods FindFragments(string, PatchNoteConfig, bool) public static (Dictionary<string, Dictionary<(string?, string?, int), string>>, List<(string, string?)>) FindFragments(string baseDirectory, PatchNoteConfig config, bool strict) Parameters baseDirectory string config PatchNoteConfig strict bool Returns (Dictionary<string, Dictionary<(string, string, int), string>>, List<(string, string)>)"
+    "keywords": "Class FragmentFinder Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentFinder Inheritance object FragmentFinder Methods FindFragments(string, PatchNoteConfig, bool) public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool strict) Parameters baseDirectory string config PatchNoteConfig strict bool Returns (Exception exOrNull, FragmentResult result)"
+  },
+  "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentResult.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentResult.html",
+    "title": "Class FragmentResult | NF.Tool.PatchNoteMaker",
+    "keywords": "Class FragmentResult Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentResult Inheritance object FragmentResult Properties FragmentContents public required List<FragmentContent> FragmentContents { get; init; } Property Value List<FragmentContent> FragmentFiles public required List<FragmentFile> FragmentFiles { get; init; } Property Value List<FragmentFile> Methods Default() public static FragmentResult Default() Returns FragmentResult"
   },
   "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html": {
     "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentsPath.html",
     "title": "Class FragmentsPath | NF.Tool.PatchNoteMaker",
     "keywords": "Class FragmentsPath Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class FragmentsPath Inheritance object FragmentsPath Constructors FragmentsPath(string, PatchNoteConfig) public FragmentsPath(string baseDirectory, PatchNoteConfig config) Parameters baseDirectory string config PatchNoteConfig Methods GetDirectory(string) public string GetDirectory(string section) Parameters section string Returns string Resolve(string) public string Resolve(string section) Parameters section string Returns string"
-  },
-  "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html": {
-    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TextEditorHelper.html",
-    "title": "Class TextEditorHelper | NF.Tool.PatchNoteMaker",
-    "keywords": "Class TextEditorHelper Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public sealed class TextEditorHelper Inheritance object TextEditorHelper Methods GetEditorName() public static string GetEditorName() Returns string OpenAndReadTemporaryFile(string, string) public static Task<string?> OpenAndReadTemporaryFile(string tempFilename, string initialContent) Parameters tempFilename string initialContent string Returns Task<string> ProcessContent(string) public static string ProcessContent(string content) Parameters content string Returns string"
   },
   "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.html": {
     "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.TomlModel.html",
@@ -22,7 +42,7 @@
   "api/NF.Tool.PatchNoteMaker.CLI.Impl.html": {
     "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.html",
     "title": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl | NF.Tool.PatchNoteMaker",
-    "keywords": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl Classes FragmentFinder FragmentsPath TextEditorHelper TomlModel"
+    "keywords": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl Classes FragmentBasename FragmentContent FragmentContent.SectionFragment FragmentFile FragmentFinder FragmentResult FragmentsPath TomlModel"
   },
   "api/NF.Tool.PatchNoteMaker.Common.Definition.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.Definition.html",
