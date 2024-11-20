@@ -36,7 +36,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             [CommandOption("--edit")]
             public bool IsEdit { get; set; }
 
-            [Description("")]
+            [Description("Fragment FileName")]
             [CommandArgument(0, "[FileName]")]
             public string FileName { get; set; } = string.Empty;
         }
@@ -114,15 +114,20 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 {
                     // validate fileName
                     string[] split = fileName.Split(".");
+                    string s = $@"Expected filename [green]'{fileName}'[/] to be of format '{{name}}.{{type}}', 
+where '{{name}}' is an arbitrary slug
+and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.Name))}[/].";
                     if (split.Length < 2)
                     {
-                        throw new NotImplementedException();
+                        AnsiConsole.MarkupLine(s);
+                        return 1;
                     }
                     string fileExtension = split[split.Length - 1];
                     string fragmentType = split[split.Length - 2];
                     if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
                     {
-                        throw new NotImplementedException();
+                        AnsiConsole.MarkupLine(s);
+                        return 1;
                     }
                 }
             }
