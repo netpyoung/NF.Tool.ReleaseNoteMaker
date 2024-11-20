@@ -29,6 +29,6 @@
 		</EmbeddedResource>
 		<!--<None Update="Template.tt" CopyToOutputDirectory="PreserveNewest" />-->
 		<None Remove="CHANGELOG.md" />
-		<None Remove="ChangeLog.d/" />
+		<None Remove="ChangeLog.d/**/*" />
 	</ItemGroup>
 </Project>

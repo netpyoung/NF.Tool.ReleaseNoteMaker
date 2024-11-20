@@ -25,18 +25,23 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return tempFilePath;
         }
 
-        public static (string, PatchNoteConfig) GetConfig(string directory, string configPath)
+        public static (string baseDirectory, PatchNoteConfig config) GetConfig(string directory, string configPath)
         {
+            // TODO(pyoung): refactoring without throw
             if (string.IsNullOrEmpty(configPath))
             {
-                return TraverseForConfig(directory);
+                return TraverseToParentForConfig(directory);
             }
 
             string configFullPath = Path.GetFullPath(configPath);
-            string baseDirectory = Path.GetDirectoryName(configFullPath)!;
-            if (string.IsNullOrEmpty(directory))
+            string baseDirectory;
+            if (!string.IsNullOrEmpty(directory))
             {
                 baseDirectory = Path.GetFullPath(directory);
+            }
+            else
+            {
+                baseDirectory = Path.GetDirectoryName(configFullPath)!;
             }
 
             if (!File.Exists(configFullPath))
@@ -48,25 +53,25 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return (baseDirectory, config);
         }
 
-        private static (string, PatchNoteConfig) TraverseForConfig(string path)
+        private static (string directory, PatchNoteConfig config) TraverseToParentForConfig(string path)
         {
             string startDirectory;
-            if (string.IsNullOrEmpty(path))
-            {
-                startDirectory = Directory.GetCurrentDirectory();
-            }
-            else
+            if (!string.IsNullOrEmpty(path))
             {
                 startDirectory = path;
             }
-            string directory = startDirectory;
+            else
+            {
+                startDirectory = Directory.GetCurrentDirectory();
+            }
 
+            string directory = startDirectory;
             while (true)
             {
                 string configPath = Path.Combine(directory, Const.DEFAULT_CONFIG_FILENAME);
-                PatchNoteConfig config = LoadConfigFromFile(configPath);
-                if (config != null)
+                if (File.Exists(configPath))
                 {
+                    PatchNoteConfig config = LoadConfigFromFile(configPath);
                     return (directory, config);
                 }
 

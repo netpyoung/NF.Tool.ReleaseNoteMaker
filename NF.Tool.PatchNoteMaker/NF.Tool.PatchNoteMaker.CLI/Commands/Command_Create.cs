@@ -20,7 +20,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             [CommandOption("--dir")]
             public string Directory { get; set; } = default!;
 
-            [Description("")]
+            [Description(Const.DESCRIPTION_CONFIG)]
             [CommandOption("--config")]
             public string Config { get; set; } = default!;
 
@@ -45,87 +45,110 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
         {
             (string baseDirectory, PatchNoteConfig config) = Utils.GetConfig(setting.Directory, setting.Config);
 
-            string section = setting.Section;
-            if (string.IsNullOrEmpty(setting.Section))
+            string section = string.Empty;
             {
-                foreach (PatchNoteConfig.PatchNoteSection configSection in config.Sections)
+                // handle setting.Section
+                if (!string.IsNullOrEmpty(setting.Section))
                 {
-                    if (string.IsNullOrEmpty(configSection.Path))
+                    section = setting.Section;
+                }
+                else
+                {
+                    foreach (PatchNoteConfig.PatchNoteSection configSection in config.Sections)
                     {
-                        section = configSection.Name;
-                        break;
+                        if (string.IsNullOrEmpty(configSection.Path))
+                        {
+                            section = configSection.Name;
+                            break;
+                        }
                     }
                 }
-            }
 
-            if (config.Sections.Find(x => x.Name == section) == null)
-            {
-                Console.Error.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
-                return 1;
+                if (config.Sections.Find(x => x.Name == section) == null)
+                {
+                    Console.Error.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
+                    return 1;
+                }
             }
 
 
             bool isEdit = setting.IsEdit;
-            string fileName = setting.FileName;
-            if (string.IsNullOrEmpty(fileName))
+            string fileName;
             {
-                if (string.IsNullOrEmpty(setting.Section))
+                // handle setting.FileName
+                if (!string.IsNullOrEmpty(setting.FileName))
                 {
-                    List<PatchNoteConfig.PatchNoteSection> sections = config.Sections;
-                    if (sections.Count > 1)
+                    fileName = setting.FileName;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(setting.Section))
                     {
-                        section = AnsiConsole.Prompt(
-                            new SelectionPrompt<string>()
-                                .Title("Pick a [green]section[/]: ")
-                                .AddChoices(sections.Select(x => x.Name))
-                                .UseConverter((x) => string.IsNullOrEmpty(x) ? "(primary)" : x)
-                        );
+                        List<PatchNoteConfig.PatchNoteSection> sections = config.Sections;
+                        if (sections.Count > 1)
+                        {
+                            section = AnsiConsole.Prompt(
+                                new SelectionPrompt<string>()
+                                    .Title("Pick a [green]section[/]: ")
+                                    .AddChoices(sections.Select(x => x.Name))
+                                    .UseConverter((x) => string.IsNullOrEmpty(x) ? "(primary)" : x)
+                            );
+                        }
+                    }
+                    string issueNumber = AnsiConsole.Prompt(
+                        new TextPrompt<string>("Issue number:")
+                        .DefaultValue("+")
+                    );
+                    string fragmentType = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                            .Title("Pick a Fragment [green]Type[/]: ")
+                            .AddChoices(config.Types.Select(x => x.Name))
+                    ).ToLower();
+                    fileName = $"{issueNumber}.{fragmentType}.md";
+                    if (setting.ContentOrNull is null)
+                    {
+                        isEdit = true;
                     }
                 }
-                string issueNumber = AnsiConsole.Prompt(
-                    new TextPrompt<string>("Issue number:")
-                    .DefaultValue("+")
-                );
-                string fragmentType = AnsiConsole.Prompt(
-                    new SelectionPrompt<string>()
-                        .Title("Pick a Fragment [green]Type[/]: ")
-                        .AddChoices(config.Types.Select(x => x.Name))
-                ).ToLower();
-                fileName = $"{issueNumber}.{fragmentType}.md";
-                if (!isEdit && setting.ContentOrNull is null)
+
                 {
-                    isEdit = true;
+                    // validate fileName
+                    string[] split = fileName.Split(".");
+                    if (split.Length < 2)
+                    {
+                        throw new NotImplementedException();
+                    }
+                    string fileExtension = split[split.Length - 1];
+                    string fragmentType = split[split.Length - 2];
+                    if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
+                    {
+                        throw new NotImplementedException();
+                    }
                 }
             }
 
-            if (setting.ContentOrNull is not string content)
+            string content;
             {
-                content = Const.DEFAULT_NEWS_CONTENT;
-            }
-
-            {
-                string[] split = fileName.Split(".");
-                if (split.Length < 2)
+                // handle: setting.ContentOrNull 
+                if (setting.ContentOrNull != null)
                 {
-                    throw new NotImplementedException();
+                    content = setting.ContentOrNull;
                 }
-                string fileExtension = split[split.Length - 1];
-                string fragmentType = split[split.Length - 2];
-                if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
+                else
                 {
-                    throw new NotImplementedException();
+                    content = Const.DEFAULT_NEWS_CONTENT;
                 }
             }
 
             FragmentsPath fragmentPath = new FragmentsPath(baseDirectory, config);
             string fragmentDirectory = fragmentPath.GetDirectory(section);
             string segmentFilePath = GetSegmentFilePath(fragmentDirectory, fileName);
-
             if (isEdit)
             {
                 string? editorContentOrNull = await TextEditorHelper.OpenAndReadTemporaryFile($"TEMP_{Path.GetFileName(segmentFilePath)}", content);
                 if (editorContentOrNull is null)
                 {
+                    AnsiConsole.MarkupLine($"Abort writing conrent to [red]{segmentFilePath}[/]");
                     return 1;
                 }
                 content = editorContentOrNull;
@@ -133,11 +156,11 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             Directory.CreateDirectory(fragmentDirectory);
             File.WriteAllText(segmentFilePath, content);
-            AnsiConsole.Markup($"Created news fragment at {segmentFilePath}");
+            AnsiConsole.MarkupLine($"Created news fragment at {segmentFilePath}");
             return 0;
         }
 
-        static string GetSegmentFilePath(string fragmentsDirectory, string fileName)
+        private static string GetSegmentFilePath(string fragmentsDirectory, string fileName)
         {
             int retry = 0;
             string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);

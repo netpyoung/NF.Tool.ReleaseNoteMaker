@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
-    public sealed class TextEditorHelper
+    internal sealed class TextEditorHelper
     {
         public static async Task<string?> OpenAndReadTemporaryFile(string tempFilename, string initialContent)
         {

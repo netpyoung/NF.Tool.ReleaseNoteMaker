@@ -12,7 +12,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
     {
         public sealed class Settings : CommandSettings
         {
-            [Description("Create config file.")]
+            [Description("Config file name.")]
             [CommandOption("--file")]
             public string FileName { get; set; } = string.Empty;
         }
@@ -31,7 +31,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             if (File.Exists(newConfigFilePath))
             {
-                AnsiConsole.MarkupLine($"[yellow]{newConfigFilePath}[/] already exists.");
+                AnsiConsole.MarkupLine($"FileName [yellow]{newConfigFilePath}[/] already exists.");
                 return Task.FromResult(1);
             }
 

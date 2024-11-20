@@ -38,8 +38,8 @@ namespace NF.Tool.PatchNoteMaker.Common
         public sealed class PatchNoteType
         {
             public string Name { get; set; } = string.Empty;
-            public bool IsShowcontent { get; set; }
             public string Directory { get; set; } = string.Empty;
+            public bool IsShowcontent { get; set; }
         }
     }
 }

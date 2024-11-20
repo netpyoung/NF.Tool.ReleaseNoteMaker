@@ -11,8 +11,9 @@ namespace NF.Tool.PatchNoteMaker.CLI
     {
         static async Task<int> Main(string[] args)
         {
-            args = "create --help".Split(" ");
+            //args = "create --help".Split(" ");
             //args = "create".Split(" ");
+            args = "build --help".Split(" ");
 
             CommandApp app = new CommandApp();
 
@@ -27,7 +28,8 @@ namespace NF.Tool.PatchNoteMaker.CLI
                     .WithExample("create", "--edit")
                     .WithExample("create", "--content", @"""Hello World""", "1.added.md");
                 config.AddCommand<Command_Build>("build")
-                   .WithExample("build");
+                   .WithExample("build --version 1.0.0")
+                   .WithExample("build --version 1.0.0 --draft");
             });
 
             try
@@ -36,7 +38,6 @@ namespace NF.Tool.PatchNoteMaker.CLI
             }
             catch (Exception ex)
             {
-                app.Run(["--help"]);
                 AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
                 return 1;
             }
