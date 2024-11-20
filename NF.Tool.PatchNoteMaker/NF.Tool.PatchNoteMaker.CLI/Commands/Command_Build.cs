@@ -39,6 +39,14 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             [CommandOption("--date")]
             public string ProjectDate { get; set; } = string.Empty;
 
+            [Description("Do not ask for confirmation to remove news fragments")]
+            [CommandOption("--yes")]
+            public bool IsAnswerYes { get; set; }
+
+            [Description("Do not ask for confirmations. But keep news fragments.")]
+            [CommandOption("--keep")]
+            public bool IsAnswerKeep { get; set; }
+
             public override ValidationResult Validate()
             {
                 if (string.IsNullOrEmpty(ProjectVersion))
@@ -51,10 +59,10 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
-            Exception? ex = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
-            if (ex is not null)
+            Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
+            if (exOrNull is not null)
             {
-                AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
+                AnsiConsole.WriteException(exOrNull, ExceptionFormats.ShortenEverything);
                 return 1;
             }
 
@@ -73,13 +81,19 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
             else
             {
-                throw new PatchNoteMakerException("WTF");
+                AnsiConsole.MarkupLine("'--version' is required since the config file does not contain 'version' or 'package'.");
+                return 1;
             }
 
             Console.WriteLine("Finding news fragments...");
             TemplateModel model = DummyTemplateModel();
 
-            (Dictionary<string, Dictionary<(string?, string?, int), string>>, List<(string, string?)>) x = FragmentFinder.FindFragments(baseDirectory, config, strict: false);
+            (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, strict: false);
+            if (fragmentResultExOrNull != null)
+            {
+                AnsiConsole.WriteException(fragmentResultExOrNull, ExceptionFormats.ShortenEverything);
+                return 1;
+            }
 
             Console.WriteLine("Rendering news fragments...");
             List<string> willDeleteFilePaths = new List<string>(20);
