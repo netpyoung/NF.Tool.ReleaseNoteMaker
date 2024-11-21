@@ -116,24 +116,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     }
                 }
 
+                if (!_IsValidFileName(config, fileName))
                 {
-                    // validate fileName
-                    string[] split = fileName.Split(".");
-                    string s = $@"Expected filename [green]'{fileName}'[/] to be of format '{{name}}.{{type}}', 
+                    AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{name}}.{{type}}', 
 where '{{name}}' is an arbitrary slug
-and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.Name))}[/].";
-                    if (split.Length < 2)
-                    {
-                        AnsiConsole.MarkupLine(s);
-                        return 1;
-                    }
-                    string fileExtension = split[split.Length - 1];
-                    string fragmentType = split[split.Length - 2];
-                    if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
-                    {
-                        AnsiConsole.MarkupLine(s);
-                        return 1;
-                    }
+and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.Name))}[/].");
+                    return 1;
                 }
             }
 
@@ -168,6 +156,22 @@ and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.N
             File.WriteAllText(segmentFilePath, content);
             AnsiConsole.MarkupLine($"Created news fragment at {segmentFilePath}");
             return 0;
+        }
+
+        private static bool _IsValidFileName(PatchNoteConfig config, string fileName)
+        {
+            string[] split = fileName.Split(".");
+            if (split.Length < 2)
+            {
+                return false;
+            }
+            string fileExtension = split[split.Length - 1];
+            string fragmentType = split[split.Length - 2];
+            if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
+            {
+                return false;
+            }
+            return true;
         }
 
         private static string GetSegmentFilePath(string fragmentsDirectory, string fileName)

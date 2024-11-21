@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using Tomlyn;
 using Tomlyn.Syntax;
 
@@ -10,7 +11,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
     internal static class Utils
     {
-        public static string ExtractResourceText(string resourceName)
+        public static string ExtractResourceToTempFilePath(string resourceName)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
             string tempFilePath = Path.GetTempFileName();
@@ -27,7 +28,6 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public static Exception? GetConfig(string directory, string configPath, out string baseDirectory, out PatchNoteConfig config)
         {
-            // TODO(pyoung): refactoring without throw
             if (string.IsNullOrEmpty(configPath))
             {
                 return TraverseToParentForConfig(directory, out baseDirectory, out config);
@@ -95,12 +95,13 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             bool isSuccess = Toml.TryToModel(configText, out TomlModel? modelOrNull, out DiagnosticsBag? diagostics, options: option);
             if (!isSuccess)
             {
-                Console.Error.WriteLine($"configFpath: {configFpath}");
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"TOML Parsing Error: configFpath={configFpath}");
                 foreach (DiagnosticMessage x in diagostics!)
                 {
-                    Console.Error.WriteLine(x);
+                    sb.AppendLine(x.ToString());
                 }
-                Environment.Exit(1);
+                return (new PatchNoteMakerException(sb.ToString()), new PatchNoteConfig());
             }
 
             TomlModel model = modelOrNull!;

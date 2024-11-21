@@ -211,5 +211,51 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 return new FragmentBasename(issue, category, retryCount);
             }
         }
+
+        public static void SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteConfig.PatchNoteType> definitions, bool isAllBullets)
+        {
+            foreach (FragmentContent fragmentContent in fragmentContents)
+            {
+                // (category, (text, issuelist))
+                Dictionary<string, Dictionary<string, List<string>>> section = new Dictionary<string, Dictionary<string, List<string>>>();
+                foreach (FragmentContent.SectionFragment sectionFragment in fragmentContent.SectionFragments)
+                {
+                    string content = sectionFragment.Data;
+                    string category = sectionFragment.FragmentBasename.Category;
+                    string issue = sectionFragment.FragmentBasename.Issue;
+
+                    if (isAllBullets)
+                    {
+                    }
+                    else
+                    {
+                        content = content.TrimStart();
+                    }
+
+
+                    if (!string.IsNullOrEmpty(issue)
+                        && !definitions.Find(x => x.Name == sectionFragment.FragmentBasename.Category)!.IsShowcontent)
+                    {
+                        content = string.Empty;
+                    }
+
+                    if (!section.TryGetValue(category, out Dictionary<string, List<string>>? texts))
+                    {
+                        texts = new Dictionary<string, List<string>>();
+                        section[category] = texts;
+                    }
+                    if (!texts.TryGetValue(content, out List<string>? issues))
+                    {
+                        issues = new List<string>();
+                        texts[content] = issues;
+                    }
+                    if (!string.IsNullOrEmpty(issue))
+                    {
+                        issues.Add(issue);
+                        issues.Sort();
+                    }
+                }
+            }
+        }
     }
 }

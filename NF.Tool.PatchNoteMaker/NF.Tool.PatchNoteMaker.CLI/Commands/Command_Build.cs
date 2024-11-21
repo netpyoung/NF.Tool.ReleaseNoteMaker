@@ -3,7 +3,6 @@ using NF.Tool.PatchNoteMaker.Common;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
@@ -46,15 +45,6 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             [Description("Do not ask for confirmations. But keep news fragments.")]
             [CommandOption("--keep")]
             public bool IsAnswerKeep { get; set; }
-
-            public override ValidationResult Validate()
-            {
-                if (string.IsNullOrEmpty(ProjectVersion))
-                {
-                    return ValidationResult.Error("Required: --version");
-                }
-                return ValidationResult.Success();
-            }
         }
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
@@ -75,19 +65,35 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             {
                 projectVersion = config.Maker.Version;
             }
-            else if (!string.IsNullOrEmpty(config.Maker.Package))
-            {
-                throw new NotImplementedException();
-            }
             else
             {
                 AnsiConsole.MarkupLine("'--version' is required since the config file does not contain 'version' or 'package'.");
                 return 1;
             }
 
-            Console.WriteLine("Finding news fragments...");
-            TemplateModel model = DummyTemplateModel();
+            string projectName;
+            if (!string.IsNullOrEmpty(config.Maker.Name))
+            {
+                projectName = config.Maker.Name;
+            }
+            else
+            {
+                projectName = string.Empty;
+            }
 
+            string projectDate;
+            if (!string.IsNullOrEmpty(setting.ProjectDate))
+            {
+                projectDate = setting.ProjectDate;
+            }
+            else
+            {
+                projectDate = DateTime.Today.ToString("yyyy-MM-dd");
+            }
+
+            VersionData versionData = new VersionData(projectName, projectVersion, projectDate);
+
+            AnsiConsole.WriteLine("Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
             if (fragmentResultExOrNull != null)
             {
@@ -95,85 +101,37 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return 1;
             }
 
-            Console.WriteLine("Rendering news fragments...");
-            List<string> willDeleteFilePaths = new List<string>(20);
-            string templatePath;
-            if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
-            {
-                templatePath = config.Maker.TemplateFilePath;
-            }
-            else
-            {
-                templatePath = Utils.ExtractResourceText(Const.DEFAULT_TEMPLATE_FILENAME);
-                willDeleteFilePaths.Add(templatePath);
-            }
+            AnsiConsole.WriteLine("Rendering news fragments...");
+            FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
 
-            string outputPath;
-            if (setting.IsDraft)
+            TemplateModel model = TemplateModel.Create(versionData);
+            using (ScopedFileDeleter deleter = new ScopedFileDeleter())
             {
-                outputPath = Path.GetTempFileName();
-            }
-            else
-            {
-                outputPath = config.Maker.OutputFileName;
-            }
+                string templatePath;
+                if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
+                {
+                    templatePath = config.Maker.TemplateFilePath;
+                }
+                else
+                {
+                    string tempFilePath = deleter.Register(Utils.ExtractResourceToTempFilePath(Const.DEFAULT_TEMPLATE_FILENAME));
+                    templatePath = tempFilePath;
+                }
 
-            await TemplateRenderer.Render(templatePath, config, model, outputPath);
-            if (setting.IsDraft)
-            {
-                string output = File.ReadAllText(outputPath);
-                Console.WriteLine(output);
-                willDeleteFilePaths.Add(outputPath);
-            }
+                string renderOutputPath = deleter.Register(Path.GetTempFileName());
+                await TemplateRenderer.Render(templatePath, config, model, renderOutputPath);
+                string output = File.ReadAllText(renderOutputPath);
 
-            foreach (string willDeleteFilePath in willDeleteFilePaths)
-            {
-                File.Delete(willDeleteFilePath);
+                if (setting.IsDraft)
+                {
+                    AnsiConsole.WriteLine(output);
+                }
+                else
+                {
+                    File.Move(renderOutputPath, config.Maker.OutputFileName, overwrite: true);
+                }
             }
             return 0;
-        }
-
-        public static TemplateModel DummyTemplateModel()
-        {
-            TemplateModel model = new TemplateModel
-            {
-                RenderTitle = true,
-                VersionData = new VersionData
-                {
-                    Name = "MyApp",
-                    Version = "1.0.0",
-                    Date = "2024-11-18"
-                },
-                SectionDic = new Dictionary<string, Section> {
-                    {
-                        "Section1", new Section
-                        {
-                            Sections = new Dictionary<string, Dictionary<string, List<string>>>
-                            {
-                                {
-                                    "Category1", new Dictionary<string, List<string>>
-                                    {
-                                        { "Text1", new List<string> { "Issue1", "Issue2" } }
-                                    }
-                                }
-                            },
-                            IssuesByCategory = new Dictionary<string, List<string>>
-                            {
-                                { "Category1", new List<string> { "Issue1", "Issue2" } }
-                            }
-                        }
-                    }
-                },
-                DefinitionDic = new Dictionary<string, Definition>
-                {
-                    { "Category1", new Definition { Name = "Category 1 Name" } }
-                },
-                IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>
-                {
-                    { "Section1", new Dictionary<string, List<string>> { { "Category1", new List<string> { "Issue1" } } } }
-                }
-            };
-            return model;
         }
     }
 }

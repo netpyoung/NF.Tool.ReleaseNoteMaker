@@ -35,7 +35,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return Task.FromResult(1);
             }
 
-            string path = Utils.ExtractResourceText(Const.DEFAULT_CONFIG_FILENAME);
+            string path = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_CONFIG_FILENAME);
             File.Move(path, newConfigFilePath);
 
             return Task.FromResult(0);
