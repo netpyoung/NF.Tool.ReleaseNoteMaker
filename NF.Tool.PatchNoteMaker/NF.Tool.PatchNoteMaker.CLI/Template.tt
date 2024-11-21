@@ -8,35 +8,16 @@
     TemplateModel model = Host.GetTemplateModel();
     PatchNoteConfig config = Host.GetConfig();
 #>
-<#
-    string title = string.Empty;
-    if (model.RenderTitle)
-    {
-        if (!string.IsNullOrEmpty(model.VersionData?.Name))
-        {
-            title = $"{model.VersionData.Name} {model.VersionData.Version} ({model.VersionData.Date})";
-        }
-        else
-        {
-            title = $"{model.VersionData.Name} {model.VersionData.Version})";
-        }
-    }
-#>
-# <#= title #>
+<#  if (model.IsRenderTitle) { #>
+# <#= model.VersionData #>
+<#  } #>
 
-<#
-    foreach (string section in model.SectionDic.Keys)
-    {
-#>
+<#  foreach (string section in model.SectionDic.Keys) { #>
 ## <#= section #>
 
-<#
-        if (model.SectionDic[section] == null)
-        {
-#>
+<#      if (model.SectionDic[section] == null) { #>
 No significant changes.
-<#
-        }
+<#      }
         else
         {
             foreach (var category in model.SectionDic[section].Sections.Keys)
@@ -45,21 +26,16 @@ No significant changes.
                 {
                     continue;
                 }
-                var categoryDefinition = model.DefinitionDic[category];
-#>
+                var categoryDefinition = model.DefinitionDic[category]; #>
 ### <#= categoryDefinition.Name #>
 
-<#
-                foreach (var text in model.SectionDic[section].Sections[category].Keys)
-                {
-#>
+<#              foreach (var text in model.SectionDic[section].Sections[category].Keys) { #>
 - <#= text #>
-<#
-                    var values = model.SectionDic[section].Sections[category][text];
+<#                  var values = model.SectionDic[section].Sections[category][text];
                     if (values.Count > 0)
                     {
                         if (text.Contains("\n  - ") || text.Contains("\n  * "))
-                        {
+{
 #>
 
 
