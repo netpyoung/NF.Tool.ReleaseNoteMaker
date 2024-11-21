@@ -49,6 +49,11 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
+            // TODO(pyoung): handle stderr
+            //AnsiConsole.Console = AnsiConsole.Create(new AnsiConsoleSettings
+            //{
+            //    Out = new AnsiConsoleOutput(Console.Error)
+            //});
             Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
             if (exOrNull is not null)
             {
@@ -67,7 +72,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
             else
             {
-                AnsiConsole.MarkupLine("'--version' is required since the config file does not contain 'version' or 'package'.");
+                AnsiConsole.MarkupLine("[green]'--version'[/] is required since the config file does not contain 'version.");
                 return 1;
             }
 
@@ -93,20 +98,24 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             VersionData versionData = new VersionData(projectName, projectVersion, projectDate);
 
-            AnsiConsole.WriteLine("Finding news fragments...");
+            AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
             if (fragmentResultExOrNull != null)
             {
                 AnsiConsole.WriteException(fragmentResultExOrNull, ExceptionFormats.ShortenEverything);
                 return 1;
             }
+            Fragment fragment = FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
+            bool isRenderTitle = !string.IsNullOrEmpty(config.Maker.TitleFormat);
+            TemplateModel model = TemplateModel.Create(
+                versionData,
+                isRenderTitle,
+                fragment
+            );
 
-            AnsiConsole.WriteLine("Rendering news fragments...");
-            FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
-
-            TemplateModel model = TemplateModel.Create(versionData);
             using (ScopedFileDeleter deleter = new ScopedFileDeleter())
             {
+                AnsiConsole.MarkupLine("[green]*[/] Loading template...");
                 string templatePath;
                 if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
                 {
@@ -118,19 +127,28 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     templatePath = tempFilePath;
                 }
 
+                AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
                 string renderOutputPath = deleter.Register(Path.GetTempFileName());
                 await TemplateRenderer.Render(templatePath, config, model, renderOutputPath);
-                string output = File.ReadAllText(renderOutputPath);
+                string output = await File.ReadAllTextAsync(renderOutputPath);
 
                 if (setting.IsDraft)
                 {
+                    AnsiConsole.MarkupLine("[green]*[/] show draft...");
                     AnsiConsole.WriteLine(output);
                 }
-                else
-                {
-                    File.Move(renderOutputPath, config.Maker.OutputFileName, overwrite: true);
-                }
+
+                AnsiConsole.MarkupLine("[green]*[/] Writing to newsfile...");
+                File.Move(renderOutputPath, config.Maker.OutputFileName, overwrite: true);
             }
+
+            AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
+            // TODO(pyoung): impl
+
+            AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
+            // TODO(pyoung): impl
+
+            AnsiConsole.MarkupLine("[green]*[/] Done!");
             return 0;
         }
     }

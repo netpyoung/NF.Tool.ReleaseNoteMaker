@@ -10,5 +10,15 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
         {
             StackTrace = Environment.StackTrace;
         }
+
+        public PatchNoteMakerException() : base()
+        {
+            StackTrace = Environment.StackTrace;
+        }
+
+        public PatchNoteMakerException(string message, Exception innerException) : base(message, innerException)
+        {
+            StackTrace = Environment.StackTrace;
+        }
     }
 }

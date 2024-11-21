@@ -71,7 +71,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
                 if (config.Sections.Find(x => x.Name == section) == null)
                 {
-                    Console.Error.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
+                    AnsiConsole.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
                     return 1;
                 }
             }

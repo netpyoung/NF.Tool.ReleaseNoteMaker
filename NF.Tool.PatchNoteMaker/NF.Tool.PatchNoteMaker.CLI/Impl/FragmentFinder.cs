@@ -55,7 +55,6 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
     public sealed class FragmentFinder
     {
-
         public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool isStrictMode)
         {
             HashSet<string> ignoredFileNameSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
@@ -166,6 +165,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         private static FragmentBasename? ParseNewFragmentBasenameOrNull(string basename, List<PatchNoteConfig.PatchNoteType> types)
         {
+            // basename: "release-2.0.1.doc.10"
+            // FragmentBasename
+            //   - issue: release-2.0.1
+            //   - category: doc
+            //   - retryCount: 10
+
             if (string.IsNullOrWhiteSpace(basename))
             {
                 return null;
@@ -180,12 +185,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             int i = parts.Length - 1;
             while (true)
             {
-                if (i == 1)
+                if (i == 0)
                 {
                     return null;
                 }
 
-                if (types.Find(x => x.Name == parts[i]) == null)
+                if (types.Find(x => string.Compare(x.Name, parts[i], ignoreCase: true) == 0) == null)
                 {
                     i--;
                     continue;
@@ -212,16 +217,17 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             }
         }
 
-        public static void SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteConfig.PatchNoteType> definitions, bool isAllBullets)
+        public static Fragment SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteConfig.PatchNoteType> definitions, bool isAllBullets)
         {
+            Fragment fragment = new Fragment();
             foreach (FragmentContent fragmentContent in fragmentContents)
             {
-                // (category, (text, issuelist))
-                Dictionary<string, Dictionary<string, List<string>>> section = new Dictionary<string, Dictionary<string, List<string>>>();
+                string sectionName = fragmentContent.SectionName;
+                Section section = new Section(sectionName);
                 foreach (FragmentContent.SectionFragment sectionFragment in fragmentContent.SectionFragments)
                 {
-                    string content = sectionFragment.Data;
                     string category = sectionFragment.FragmentBasename.Category;
+                    string content = sectionFragment.Data;
                     string issue = sectionFragment.FragmentBasename.Issue;
 
                     if (isAllBullets)
@@ -239,23 +245,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                         content = string.Empty;
                     }
 
-                    if (!section.TryGetValue(category, out Dictionary<string, List<string>>? texts))
-                    {
-                        texts = new Dictionary<string, List<string>>();
-                        section[category] = texts;
-                    }
-                    if (!texts.TryGetValue(content, out List<string>? issues))
-                    {
-                        issues = new List<string>();
-                        texts[content] = issues;
-                    }
-                    if (!string.IsNullOrEmpty(issue))
-                    {
-                        issues.Add(issue);
-                        issues.Sort();
-                    }
+                    section.AddIssue(category, content, issue);
                 }
+
+                fragment.AddSection(section);
             }
+            return fragment;
         }
     }
 }
