@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace NF.Tool.PatchNoteMaker.Common
@@ -68,7 +69,7 @@ namespace NF.Tool.PatchNoteMaker.Common
         }
     }
 
-    public class Fragment
+    public sealed class Fragment : IEnumerable<KeyValuePair<string, Section>>
     {
         Dictionary<string, Section> _dic = new Dictionary<string, Section>();
 
@@ -81,11 +82,22 @@ namespace NF.Tool.PatchNoteMaker.Common
         {
             return _dic.ContainsKey(sectionName);
         }
+
+        public IEnumerator<KeyValuePair<string, Section>> GetEnumerator()
+        {
+            return _dic.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _dic.GetEnumerator();
+        }
     }
 
-    public class Section
+    public sealed class Section
     {
         public string Name { get; }
+        public int Count => _dic.Count;
 
         // (category, (text, issuelist))
         private readonly Dictionary<string, Dictionary<string, List<string>>> _dic = new Dictionary<string, Dictionary<string, List<string>>>();
@@ -93,6 +105,13 @@ namespace NF.Tool.PatchNoteMaker.Common
         public Section(string name)
         {
             Name = name;
+        }
+
+        public Dictionary<string, Dictionary<string, List<string>>>.KeyCollection Keys => _dic.Keys;
+
+        public Dictionary<string, List<string>> this[string category]
+        {
+            get => _dic[category];
         }
 
         public void AddIssue(string category, string content, string issue)

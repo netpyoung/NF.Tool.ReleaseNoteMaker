@@ -1,6 +1,7 @@
 <#@ template debug="true" hostspecific="true" language="C#" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
 <#
     System.Diagnostics.Debugger.Launch();
     System.Diagnostics.Debugger.Break();
@@ -8,73 +9,73 @@
     TemplateModel model = Host.GetTemplateModel();
     PatchNoteConfig config = Host.GetConfig();
 #>
-<#  if (model.IsRenderTitle) { #>
-# <#= model.VersionData #>
-<#  } #>
+<#
+    if (model.IsRenderTitle)
+    {
+        WriteLine($"# {model.VersionData}");
+    }
+#>
+<#
+    foreach ((string sectionName, Section section) in model.SectionDic)
+    {
+        WriteLine($"## {sectionName}\n");
 
-<#  foreach (string section in model.SectionDic.Keys) { #>
-## <#= section #>
-
-<#      if (model.SectionDic[section] == null) { #>
-No significant changes.
-<#      }
-        else
+        if (section.Count == 0)
         {
-            foreach (var category in model.SectionDic[section].Sections.Keys)
+            WriteLine("No significant changes.\n");
+            continue;
+        }
+
+        foreach (string category in section.Keys)
+        {
+            if (!model.DefinitionDic.ContainsKey(category))
             {
-                if (!model.DefinitionDic.ContainsKey(category))
+                continue;
+            }
+            
+            var categoryDefinition = model.DefinitionDic[category];
+            WriteLine($"### {categoryDefinition.Name}\n");
+
+            if (section[category].Count == 0)
+            {
+                WriteLine("No significant changes.\n");
+                continue;
+            }
+
+            foreach (string text in section[category].Keys)
+            {
+                WriteLine($"- {text}");
+                List<string> values = section[category][text];
+                if (values.Count > 0)
                 {
-                    continue;
-                }
-                var categoryDefinition = model.DefinitionDic[category]; #>
-### <#= categoryDefinition.Name #>
-
-<#              foreach (var text in model.SectionDic[section].Sections[category].Keys) { #>
-- <#= text #>
-<#                  var values = model.SectionDic[section].Sections[category][text];
-                    if (values.Count > 0)
+                    if (text.Contains("\n  - ") || text.Contains("\n  * "))
                     {
-                        if (text.Contains("\n  - ") || text.Contains("\n  * "))
-{
-#>
-
-
-  (<#
-                        }
-                        else
-                        {
-#> (<#
-                        }
+                        WriteLine("\n\n  (");
+                    }
+                    else
+                    {
+                        WriteLine(" (");
+                    }
                         
-                        for (int i = 0; i < values.Count; i++)
+                    for (int i = 0; i < values.Count; i++)
+                    {
+                        Write(values[i].Split(": ", 2)[0]);
+                        if (i < values.Count - 1)
                         {
-#>
-<#= values[i].Split(": ", 2)[0] #><# if (i < values.Count - 1) { #>, <# } #>
-<#
-                        }
-                        if (!text.Contains("\n  - ") && !text.Contains("\n  * "))
-                        {
-#>
-)
-<#
+                            Write(", ");
                         }
                     }
-
-                    if (model.IssuesByCategory.ContainsKey(section) && model.IssuesByCategory[section].ContainsKey(category) && model.IssuesByCategory[section][category].Any())
+                    if (!text.Contains("\n  - ") && !text.Contains("\n  * "))
                     {
-                        foreach (var issue in model.IssuesByCategory[section][category])
-                        {
-#>
-<#= issue #>
-<#
-                        }
+                        WriteLine(")");
                     }
+                }
 
-                    if (model.SectionDic[section].Sections[category].Count == 0)
+                if (model.IssuesByCategory.ContainsKey(sectionName) && model.IssuesByCategory[sectionName].ContainsKey(category) && model.IssuesByCategory[sectionName][category].Any())
+                {
+                    foreach (var issue in model.IssuesByCategory[sectionName][category])
                     {
-#>
-No significant changes.
-<#
+                        WriteLine(issue);
                     }
                 }
             }
