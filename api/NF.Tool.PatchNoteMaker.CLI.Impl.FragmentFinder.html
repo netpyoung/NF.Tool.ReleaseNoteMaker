@@ -89,7 +89,7 @@
 
 
   <h1 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder" class="text-break">
-Class FragmentFinder  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L58"><i class="bi bi-code-slash"></i></a>
+Class FragmentFinder  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L56"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -131,14 +131,14 @@ Class FragmentFinder  <a class="header-action link-secondary" title="View source
 
   <h3 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_FindFragments_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_System_Boolean_" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.FindFragments(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,System.Boolean)">
   FindFragments(string, PatchNoteConfig, bool)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L58"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool strict)</code></pre>
+    <pre><code class="lang-csharp hljs">public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool isStrictMode)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -147,7 +147,7 @@ Class FragmentFinder  <a class="header-action link-secondary" title="View source
     <dd></dd>
     <dt><code>config</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html">PatchNoteConfig</a></dt>
     <dd></dd>
-    <dt><code>strict</code> <span class="xref">bool</span></dt>
+    <dt><code>isStrictMode</code> <span class="xref">bool</span></dt>
     <dd></dd>
   </dl>
 
@@ -167,11 +167,51 @@ Class FragmentFinder  <a class="header-action link-secondary" title="View source
 
 
 
+  <a id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_SplitFragments_" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.SplitFragments*"></a>
+
+  <h3 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_SplitFragments_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent__System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType__System_Boolean_" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.SplitFragments(System.Collections.Generic.List{NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent},System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType},System.Boolean)">
+  SplitFragments(List&lt;FragmentContent&gt;, List&lt;PatchNoteType&gt;, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L220"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Fragment SplitFragments(List&lt;FragmentContent&gt; fragmentContents, List&lt;PatchNoteConfig.PatchNoteType&gt; definitions, bool isAllBullets)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>fragmentContents</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.html">FragmentContent</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>definitions</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html">PatchNoteConfig</a>.<a class="xref" href="NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html">PatchNoteType</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>isAllBullets</code> <span class="xref">bool</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NF.Tool.PatchNoteMaker.Common.Fragment.html">Fragment</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L58" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L56" class="edit-link">Edit this page</a>
         </div>
 
 
