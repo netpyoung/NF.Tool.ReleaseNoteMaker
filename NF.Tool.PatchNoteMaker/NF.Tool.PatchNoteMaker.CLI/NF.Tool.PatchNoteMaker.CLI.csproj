@@ -8,6 +8,8 @@
 		<WarningLevel>4</WarningLevel>
 		<!--<TreatWarningsAsErrors>true</TreatWarningsAsErrors>-->
 		<StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+		<!--<AnalysisMode>All</AnalysisMode>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>-->
 	</PropertyGroup>
 
 	<ItemGroup>

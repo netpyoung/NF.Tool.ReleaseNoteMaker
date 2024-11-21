@@ -6,6 +6,8 @@
 		<Nullable>enable</Nullable>
 		<WarningLevel>4</WarningLevel>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<!--<AnalysisMode>All</AnalysisMode>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>-->
 	</PropertyGroup>
 
 	<ItemGroup>
