@@ -5,6 +5,7 @@ using Spectre.Console.Cli;
 using System;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Commands
@@ -106,12 +107,15 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return 1;
             }
             Fragment fragment = FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
-            bool isRenderTitle = !string.IsNullOrEmpty(config.Maker.TitleFormat);
+            bool isRenderTitle = string.IsNullOrEmpty(config.Maker.TitleFormat);
+
+            // TODO(pyoung): impl fill model
             TemplateModel model = TemplateModel.Create(
                 versionData,
                 isRenderTitle,
                 fragment
             );
+
 
             using (ScopedFileDeleter deleter = new ScopedFileDeleter())
             {
@@ -130,23 +134,79 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
                 string renderOutputPath = deleter.Register(Path.GetTempFileName());
                 await TemplateRenderer.Render(templatePath, config, model, renderOutputPath);
-                string output = await File.ReadAllTextAsync(renderOutputPath);
+                string rendered = await File.ReadAllTextAsync(renderOutputPath);
+
+                string topLine;
+                if (!string.IsNullOrEmpty(config.Maker.TitleFormat))
+                {
+                    topLine = string.Format($"{config.Maker.TitleFormat}\n", projectName, projectVersion, projectDate);
+                }
+                else
+                {
+                    topLine = string.Empty;
+                }
+                string content = $"{topLine}{rendered}";
 
                 if (setting.IsDraft)
                 {
                     AnsiConsole.MarkupLine("[green]*[/] show draft...");
-                    AnsiConsole.WriteLine(output);
+                    AnsiConsole.WriteLine(content);
+                    return 0;
                 }
 
                 AnsiConsole.MarkupLine("[green]*[/] Writing to newsfile...");
+                // TODO(pyoung): impl append_to_newsfile
+                //  append_to_newsfile(
+                //base_directory,
+                //news_file,
+                //config.start_string,
+                //top_line,
+                //content,
                 File.Move(renderOutputPath, config.Maker.OutputFileName, overwrite: true);
             }
 
+            string newsFile = string.Empty;
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
-            // TODO(pyoung): impl
+            GitHelper.StageNewsfile(baseDirectory, newsFile);
 
-            AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
-            // TODO(pyoung): impl
+            string[] fragmentFpaths = fragmentResult.FragmentFiles.Select(x => x.FileName).ToArray();
+            if (fragmentFpaths.Length == 0)
+            {
+                AnsiConsole.MarkupLine("No news fragments to remove. Skipping!");
+            }
+            else if (setting.IsAnswerKeep)
+            {
+                AnsiConsole.MarkupLine("Keeping the following files:");
+                foreach (string x in fragmentFpaths)
+                {
+                    AnsiConsole.WriteLine(x);
+                }
+            }
+            else if (setting.IsAnswerYes)
+            {
+                AnsiConsole.MarkupLine("Removing the following files:");
+                foreach (string x in fragmentFpaths)
+                {
+                    AnsiConsole.WriteLine(x);
+                }
+
+                AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
+                GitHelper.RemoveFiles(fragmentFpaths);
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("I want to remove the following files:");
+                foreach (string x in fragmentFpaths)
+                {
+                    AnsiConsole.WriteLine(x);
+                }
+
+                if (AnsiConsole.Confirm("Is it okay if I remove those files?"))
+                {
+                    AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
+                    GitHelper.RemoveFiles(fragmentFpaths);
+                }
+            }
 
             AnsiConsole.MarkupLine("[green]*[/] Done!");
             return 0;
