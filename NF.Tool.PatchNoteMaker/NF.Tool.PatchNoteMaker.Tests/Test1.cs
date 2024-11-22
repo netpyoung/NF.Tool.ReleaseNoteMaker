@@ -28,16 +28,13 @@ public sealed class Test1
         Assert.AreEqual(expected, actual);
     }
 
-    //def test_invalid_category(self):
-    //    """Files without a valid category are rejected."""
-    //    self.assertEqual(
-    //        parse_newfragment_basename("README.ext", ["feature"]),
-    //        (None, None, None),
-    //    )
-    //    self.assertEqual(
-    //        parse_newfragment_basename("README", ["feature"]),
-    //        (None, None, None),
-    //    )
-    //"baz.1.2.notfeature", ["feature"]),
-    //        (None, None, None),
+    [TestMethod]
+    [DataRow("README.ext", new string[] { "feature" })]
+    [DataRow("README", new string[] { "feature" })]
+    [DataRow("baz.1.2.notfeature", new string[] { "feature" })]
+    public void TestMethod1(string baseName, string[] categorySeq)
+    {
+        FragmentBasename? actual = FragmentFinder.ParseNewFragmentBasenameOrNull(baseName, categorySeq);
+        Assert.IsNull(actual);
+    }
 }
