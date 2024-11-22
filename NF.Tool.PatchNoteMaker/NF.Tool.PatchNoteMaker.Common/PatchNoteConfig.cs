@@ -28,6 +28,7 @@ namespace NF.Tool.PatchNoteMaker.Common
             public string OrphanPrefix { get; set; } = "+";
             public string IssuePattern { get; set; } = string.Empty;
             public string TitleFormat { get; set; } = string.Empty;
+            public string StartString { get; set; } = "<!-- release notes start -->\n";
 
             // config.package_dir
             // public string PackageDirectory{ get; set; } = string.Empty;
