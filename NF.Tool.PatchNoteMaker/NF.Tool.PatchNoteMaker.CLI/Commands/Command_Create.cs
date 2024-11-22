@@ -34,7 +34,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             [Description("Open an editor for writing the newsfragment content.")]
             [CommandOption("--edit")]
-            public bool IsEdit { get; set; }
+            public bool IsEditMode { get; set; }
 
             [Description("Fragment FileName")]
             [CommandArgument(0, "[FileName]")]
@@ -80,7 +80,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             }
 
 
-            bool isEdit = setting.IsEdit;
+            bool isEdit = setting.IsEditMode;
             string fileName;
             {
                 // handle setting.FileName
@@ -144,9 +144,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
                 if (!_IsValidFileName(config, fileName))
                 {
-                    AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{name}}.{{type}}', 
-where '{{name}}' is an arbitrary slug
-and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.DisplayName))}[/].");
+                    AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{issueName}}.{{typeCategory}}', 
+where '{{issueName}}' is an arbitrary slug
+and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.DisplayName))}[/].");
                     return 1;
                 }
             }
@@ -191,13 +191,9 @@ and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.D
             {
                 return false;
             }
-            string fileExtension = split[split.Length - 1];
-            string fragmentType = split[split.Length - 2];
-            if (config.Types.Find(x => Utils.IsSameIgnoreCase(x.Category, fragmentType)) == null)
-            {
-                return false;
-            }
-            return true;
+
+            string category = split[split.Length - 2];
+            return config.Types.Exists(x => x.Category == category);
         }
 
         private static string GetSegmentFilePath(string fragmentsDirectory, string fileName)
