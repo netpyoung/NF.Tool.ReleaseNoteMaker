@@ -588,6 +588,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.OutputFileName
   nameWithType: PatchNoteConfig.PatchNoteMaker.OutputFileName
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString
+  name: StartString
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_StartString
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString
+  nameWithType: PatchNoteConfig.PatchNoteMaker.StartString
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString*
+  name: StartString
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_StartString_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.StartString
+  nameWithType: PatchNoteConfig.PatchNoteMaker.StartString
 - uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.TemplateFilePath
   name: TemplateFilePath
   href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_TemplateFilePath
