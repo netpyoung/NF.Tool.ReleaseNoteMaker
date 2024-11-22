@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
@@ -224,7 +225,15 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
                     if (isAllBullets)
                     {
-                        // TODO(pyoung): content = indent(content.strip(), "  ")[2:]
+                        string indented = Indent(content.Trim(), "  ");
+                        if (indented.Length > 2)
+                        {
+                            content = indented.Substring(2);
+                        }
+                        else
+                        {
+                            content = string.Empty;
+                        }
                     }
                     else
                     {
@@ -244,6 +253,23 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 fragment.AddSection(section);
             }
             return fragment;
+        }
+
+        public static string Indent(string text, string prefix)
+        {
+            StringBuilder result = new StringBuilder();
+            string[] lines = text.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
+
+            foreach (string line in lines)
+            {
+                if (!string.IsNullOrWhiteSpace(line))
+                {
+                    result.Append(prefix);
+                }
+                result.AppendLine(line);
+            }
+
+            return result.ToString();
         }
     }
 }
