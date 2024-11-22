@@ -3,7 +3,7 @@
 namespace NF.Tool.PatchNoteMaker.Tests;
 
 [TestClass]
-public sealed class Test1
+public sealed class TestParseNewsfragmentBasename
 {
     [TestMethod]
     [DataRow("123.feature", new string[] { "feature" }, "123", "feature", 0)]
