@@ -113,5 +113,10 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
         {
             return x;
         }
+
+        public static bool IsSameIgnoreCase(string x, string y)
+        {
+            return string.Compare(x, y, StringComparison.OrdinalIgnoreCase) == 0;
+        }
     }
 }

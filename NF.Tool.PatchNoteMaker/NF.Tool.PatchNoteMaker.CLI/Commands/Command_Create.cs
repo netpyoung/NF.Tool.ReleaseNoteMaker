@@ -69,7 +69,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     }
                 }
 
-                if (config.Sections.Find(x => x.Name == section) == null)
+                if (config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Name, section)) == null)
                 {
                     AnsiConsole.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
                     return 1;
@@ -167,7 +167,7 @@ and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.N
             }
             string fileExtension = split[split.Length - 1];
             string fragmentType = split[split.Length - 2];
-            if (config.Types.Find(x => string.Compare(x.Name, fragmentType, StringComparison.OrdinalIgnoreCase) == 0) == null)
+            if (config.Types.Find(x => Utils.IsSameIgnoreCase(x.Name, fragmentType)) == null)
             {
                 return false;
             }

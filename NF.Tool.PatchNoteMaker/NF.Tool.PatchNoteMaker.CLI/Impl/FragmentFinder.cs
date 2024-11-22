@@ -190,7 +190,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     return null;
                 }
 
-                if (types.Find(x => string.Compare(x.Name, parts[i], ignoreCase: true) == 0) == null)
+                if (types.Find(x => Utils.IsSameIgnoreCase(x.Name, parts[i])) == null)
                 {
                     i--;
                     continue;
@@ -232,6 +232,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
                     if (isAllBullets)
                     {
+                        // TODO(pyoung): content = indent(content.strip(), "  ")[2:]
                     }
                     else
                     {
@@ -240,7 +241,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
 
                     if (!string.IsNullOrEmpty(issue)
-                        && !definitions.Find(x => x.Name == sectionFragment.FragmentBasename.Category)!.IsShowcontent)
+                        && !definitions.Find(x => Utils.IsSameIgnoreCase(x.Name, sectionFragment.FragmentBasename.Category))!.IsShowcontent)
                     {
                         content = string.Empty;
                     }

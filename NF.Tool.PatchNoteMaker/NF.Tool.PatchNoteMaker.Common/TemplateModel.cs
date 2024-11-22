@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -29,13 +30,13 @@ namespace NF.Tool.PatchNoteMaker.Common
             IsRenderTitle = isRenderTitle;
             VersionData = versionData;
             SectionDic = fragment;
-            DefinitionDic = new Dictionary<string, PatchNoteConfig.PatchNoteType>
+            DefinitionDic = new Dictionary<string, PatchNoteConfig.PatchNoteType>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Category1", new PatchNoteConfig.PatchNoteType { Name = "Category 1 Name" } }
              };
-            IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>
+            IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>(StringComparer.OrdinalIgnoreCase)
             {
-                { "Section1", new Dictionary<string, List<string>> { { "Category1", new List<string> { "Issue1" } } } }
+                { "Section1", new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase) { { "Category1", new List<string> { "Issue1" } } } }
             };
         }
 
