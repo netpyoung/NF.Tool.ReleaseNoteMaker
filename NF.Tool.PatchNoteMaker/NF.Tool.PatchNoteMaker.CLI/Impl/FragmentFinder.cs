@@ -57,15 +57,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
     {
         public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool isStrictMode)
         {
-            HashSet<string> ignoredFileNameSet = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
-            {
-                ".gitignore",
-                ".gitkeep",
-                ".keep",
-                "readme",
-                "readme.md",
-                "readme.rst"
-            };
+            HashSet<string> ignoredFileNameSet = new HashSet<string>(Const.FRAGMENT_IGNORE_FILELIST, StringComparer.OrdinalIgnoreCase);
 
             if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
             {

@@ -12,5 +12,14 @@
         public const string DESCRIPTION_CONFIG = @"Pass a custom config file at FILE_PATH.
 Default: towncrier.toml or pyproject.toml file, 
 if both files exist, the first will take precedence.";
+
+        public static readonly string[] FRAGMENT_IGNORE_FILELIST = [
+            ".gitignore",
+            ".gitkeep",
+            ".keep",
+            "readme",
+            "readme.md",
+            "readme.rst"
+        ];
     }
 }
