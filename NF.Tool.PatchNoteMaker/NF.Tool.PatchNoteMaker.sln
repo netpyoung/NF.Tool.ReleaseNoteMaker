@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NF.Tool.PatchNoteMaker.Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NF.Tool.PatchNoteMaker.CLI", "NF.Tool.PatchNoteMaker.CLI\NF.Tool.PatchNoteMaker.CLI.csproj", "{DA7A5E2A-2D69-46A9-9952-78F3B470AC4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NF.Tool.PatchNoteMaker.Tests", "NF.Tool.PatchNoteMaker.Tests\NF.Tool.PatchNoteMaker.Tests.csproj", "{EFD8870D-7EFD-4DDA-9D5B-FB3A24DE68DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NF.Tool.PatchNoteMaker.Tests", "NF.Tool.PatchNoteMaker.Tests\NF.Tool.PatchNoteMaker.Tests.csproj", "{53CD262F-DCA7-41AA-85FE-E92EAB184650}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{DA7A5E2A-2D69-46A9-9952-78F3B470AC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA7A5E2A-2D69-46A9-9952-78F3B470AC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA7A5E2A-2D69-46A9-9952-78F3B470AC4E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EFD8870D-7EFD-4DDA-9D5B-FB3A24DE68DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFD8870D-7EFD-4DDA-9D5B-FB3A24DE68DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFD8870D-7EFD-4DDA-9D5B-FB3A24DE68DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFD8870D-7EFD-4DDA-9D5B-FB3A24DE68DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53CD262F-DCA7-41AA-85FE-E92EAB184650}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53CD262F-DCA7-41AA-85FE-E92EAB184650}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53CD262F-DCA7-41AA-85FE-E92EAB184650}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53CD262F-DCA7-41AA-85FE-E92EAB184650}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
