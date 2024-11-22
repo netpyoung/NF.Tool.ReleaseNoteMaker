@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
+using static NF.Tool.PatchNoteMaker.Common.PatchNoteConfig;
 
 namespace NF.Tool.PatchNoteMaker.Common
 {
@@ -25,24 +27,21 @@ namespace NF.Tool.PatchNoteMaker.Common
         //        for i in sorted(category_issues, key= issue_key)]
         public Dictionary<string, Dictionary<string, List<string>>> IssuesByCategory { get; set; } = new Dictionary<string, Dictionary<string, List<string>>>();
 
-        private TemplateModel(VersionData versionData, bool isRenderTitle, Fragment fragment)
+        private TemplateModel(VersionData versionData, bool isRenderTitle, Fragment fragment, List<PatchNoteType> types)
         {
             IsRenderTitle = isRenderTitle;
             VersionData = versionData;
             SectionDic = fragment;
-            DefinitionDic = new Dictionary<string, PatchNoteConfig.PatchNoteType>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "Category1", new PatchNoteConfig.PatchNoteType { Name = "Category 1 Name" } }
-             };
+            DefinitionDic = types.ToDictionary(x => x.Name, x => x, StringComparer.OrdinalIgnoreCase);
             IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Section1", new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase) { { "Category1", new List<string> { "Issue1" } } } }
             };
         }
 
-        public static TemplateModel Create(VersionData versionData, bool isRenderTitle, Fragment fragment)
+        public static TemplateModel Create(VersionData versionData, bool isRenderTitle, Fragment fragment, List<PatchNoteType> types)
         {
-            TemplateModel ret = new TemplateModel(versionData, isRenderTitle, fragment);
+            TemplateModel ret = new TemplateModel(versionData, isRenderTitle, fragment, types);
             return ret;
         }
     }

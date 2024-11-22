@@ -27,8 +27,11 @@ namespace NF.Tool.PatchNoteMaker.Common
             public List<string> Ignores { get; set; } = new List<string>();
             public string OrphanPrefix { get; set; } = "+";
             public string IssuePattern { get; set; } = string.Empty;
+            public string IssueFormat { get; set; } = string.Empty;
             public string TitleFormat { get; set; } = string.Empty;
             public string StartString { get; set; } = "<!-- release notes start -->\n";
+            public bool IsWrap { get; internal set; }
+            public bool IsAllBullets { get; internal set; }
 
             // config.package_dir
             // public string PackageDirectory{ get; set; } = string.Empty;

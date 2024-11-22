@@ -113,12 +113,6 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             Fragment fragment = FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
             bool isRenderTitle = string.IsNullOrEmpty(config.Maker.TitleFormat);
 
-            // TODO(pyoung): impl fill model
-            TemplateModel model = TemplateModel.Create(
-                versionData,
-                isRenderTitle,
-                fragment
-            );
 
             string rendered;
             using (ScopedFileDeleter deleter = new ScopedFileDeleter())
@@ -136,10 +130,13 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 }
 
                 AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
-                string renderOutputPath = deleter.Register(Path.GetTempFileName());
-                await TemplateRenderer.Render(templatePath, config, model, renderOutputPath);
-                rendered = await File.ReadAllTextAsync(renderOutputPath);
-
+                (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, fragment, isRenderTitle);
+                if (renderExOrNull != null)
+                {
+                    AnsiConsole.WriteException(renderExOrNull);
+                    return 1;
+                }
+                rendered = text;
             }
 
             string topLine;
