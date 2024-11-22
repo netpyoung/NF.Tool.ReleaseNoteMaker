@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
-    public sealed class FragmentBasename
+    public sealed record class FragmentBasename
     {
         // example: "release-2.0.1.doc.10"
         // issue: release-2.0.1
@@ -98,7 +98,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                         continue;
                     }
 
-                    FragmentBasename? fragmentBaseNameOrNull = ParseNewFragmentBasenameOrNull(fileName, config.Types);
+                    FragmentBasename? fragmentBaseNameOrNull = ParseNewFragmentBasenameOrNull(fileName, config.Types.Select(x => x.Category));
                     if (fragmentBaseNameOrNull == null)
                     {
                         if (isStrictMode)
@@ -156,8 +156,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return Regex.IsMatch(input, "^" + Regex.Escape(pattern).Replace("\\*", ".*") + "$");
         }
 
-        private static FragmentBasename? ParseNewFragmentBasenameOrNull(string basename, List<PatchNoteConfig.PatchNoteType> types)
+        internal static FragmentBasename? ParseNewFragmentBasenameOrNull(string basename, IEnumerable<string> categorySeq)
         {
+            HashSet<string> categorySet = categorySeq.ToHashSet();
             // basename: "release-2.0.1.doc.10"
             // FragmentBasename
             //   - issue: release-2.0.1
@@ -183,7 +184,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     return null;
                 }
 
-                if (types.Find(x => Utils.IsSameIgnoreCase(x.Category, parts[i])) == null)
+                if (!categorySet.Contains(parts[i]))
                 {
                     i--;
                     continue;
@@ -192,9 +193,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 string category = parts[i];
                 string issue = string.Join(".", parts.Take(i)).Trim();
 
-                if (int.TryParse(issue, out int issueAsInt))
+                if (issue.All(char.IsDigit))
                 {
-                    issue = issueAsInt.ToString();
+                    if (int.TryParse(issue, out int issueAsInt))
+                    {
+                        issue = issueAsInt.ToString();
+                    }
                 }
 
                 int retryCount = 0;
