@@ -7,10 +7,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
     internal static class GitHelper
     {
 
-        public static void StageNewsfile(string baseDirectory, string path)
+        public static void StageNewsfile(string fpath)
         {
-            string filePath = Path.Combine(baseDirectory, path);
-            Call("git", $@"add ""{filePath}""");
+            Call("git", $@"add ""{fpath}""");
         }
 
         public static void RemoveFiles(string[] fragmentFpaths)
@@ -40,6 +39,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     FileName = fileName,
                     Arguments = arguments,
                     RedirectStandardOutput = true,
+                    RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
                 };
@@ -50,6 +50,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
                     process.Start();
                     string output = process.StandardOutput.ReadToEnd();
+                    string outputErr = process.StandardError.ReadToEnd();
                     process.WaitForExit();
                     return output;
                 }

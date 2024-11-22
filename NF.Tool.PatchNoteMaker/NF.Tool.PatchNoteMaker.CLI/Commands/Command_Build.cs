@@ -160,9 +160,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return 0;
             }
 
+            string newsfileFpath = Path.Combine(baseDirectory, config.Maker.OutputFileName);
             AnsiConsole.MarkupLine($"[green]*[/] Writing to newsfile...");
             {
-                string newsfileFpath = Path.Combine(baseDirectory, config.Maker.OutputFileName);
                 TextPath txtPath = new TextPath(newsfileFpath)
                      .RootColor(Color.Red)
                      .SeparatorColor(Color.Green)
@@ -193,9 +193,8 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 File.WriteAllText(newsfileFpath, newContent);
             }
 
-            string newsFile = string.Empty;
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
-            GitHelper.StageNewsfile(baseDirectory, newsFile);
+            GitHelper.StageNewsfile(newsfileFpath);
 
             string[] fragmentFpaths = fragmentResult.FragmentFiles.Select(x => x.FileName).ToArray();
             if (fragmentFpaths.Length == 0)
