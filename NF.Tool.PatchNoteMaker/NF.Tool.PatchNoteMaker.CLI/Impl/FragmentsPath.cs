@@ -1,4 +1,5 @@
 ﻿using NF.Tool.PatchNoteMaker.Common;
+using System.Diagnostics;
 using System.IO;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
@@ -29,12 +30,13 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return Path.Combine(_baseDirectory, section);
         }
 
-        public string GetDirectory(string section)
+        public string GetDirectory(string sectionPath)
         {
-            PatchNoteConfig.PatchNoteSection s = _config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Path, section))!;
-            string dir = Path.Combine(_baseDirectory, s.Path, _appendDirectory);
-            return dir;
+            PatchNoteConfig.PatchNoteSection? sectionOrNull = _config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Path, sectionPath))!;
+            Debug.Assert(sectionOrNull != null, $"sectionOrNull != null | sectionPath: {sectionPath}");
 
+            string dir = Path.Combine(_baseDirectory, sectionOrNull.Path, _appendDirectory);
+            return dir;
         }
     }
 }
