@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Commands
@@ -62,42 +63,45 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return 1;
             }
 
-            string projectVersion;
-            if (!string.IsNullOrEmpty(setting.ProjectVersion))
+            VersionData versionData;
             {
-                projectVersion = setting.ProjectVersion;
-            }
-            else if (!string.IsNullOrEmpty(config.Maker.Version))
-            {
-                projectVersion = config.Maker.Version;
-            }
-            else
-            {
-                AnsiConsole.MarkupLine("[green]'--version'[/] is required since the config file does not contain 'version.");
-                return 1;
-            }
+                string projectVersion;
+                if (!string.IsNullOrEmpty(setting.ProjectVersion))
+                {
+                    projectVersion = setting.ProjectVersion;
+                }
+                else if (!string.IsNullOrEmpty(config.Maker.Version))
+                {
+                    projectVersion = config.Maker.Version;
+                }
+                else
+                {
+                    AnsiConsole.MarkupLine("[green]'--version'[/] is required since the config file does not contain 'version.");
+                    return 1;
+                }
 
-            string projectName;
-            if (!string.IsNullOrEmpty(config.Maker.Name))
-            {
-                projectName = config.Maker.Name;
-            }
-            else
-            {
-                projectName = string.Empty;
-            }
+                string projectName;
+                if (!string.IsNullOrEmpty(config.Maker.Name))
+                {
+                    projectName = config.Maker.Name;
+                }
+                else
+                {
+                    projectName = string.Empty;
+                }
 
-            string projectDate;
-            if (!string.IsNullOrEmpty(setting.ProjectDate))
-            {
-                projectDate = setting.ProjectDate;
-            }
-            else
-            {
-                projectDate = DateTime.Today.ToString("yyyy-MM-dd");
-            }
+                string projectDate;
+                if (!string.IsNullOrEmpty(setting.ProjectDate))
+                {
+                    projectDate = setting.ProjectDate;
+                }
+                else
+                {
+                    projectDate = DateTime.Today.ToString("yyyy-MM-dd");
+                }
 
-            VersionData versionData = new VersionData(projectName, projectVersion, projectDate);
+                versionData = new VersionData(projectName, projectVersion, projectDate);
+            }
 
             AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
@@ -116,7 +120,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 fragment
             );
 
-
+            string rendered;
             using (ScopedFileDeleter deleter = new ScopedFileDeleter())
             {
                 AnsiConsole.MarkupLine("[green]*[/] Loading template...");
@@ -134,35 +138,59 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
                 string renderOutputPath = deleter.Register(Path.GetTempFileName());
                 await TemplateRenderer.Render(templatePath, config, model, renderOutputPath);
-                string rendered = await File.ReadAllTextAsync(renderOutputPath);
+                rendered = await File.ReadAllTextAsync(renderOutputPath);
 
-                string topLine;
-                if (!string.IsNullOrEmpty(config.Maker.TitleFormat))
+            }
+
+            string topLine;
+            if (!string.IsNullOrEmpty(config.Maker.TitleFormat))
+            {
+                topLine = string.Format($"{config.Maker.TitleFormat}\n", versionData.Name, versionData.Version, versionData.Date);
+            }
+            else
+            {
+                topLine = string.Empty;
+            }
+
+            string content = $"{topLine}{rendered}";
+            if (setting.IsDraft)
+            {
+                AnsiConsole.MarkupLine("[green]*[/] show draft...");
+                AnsiConsole.WriteLine(content);
+                return 0;
+            }
+
+            AnsiConsole.MarkupLine($"[green]*[/] Writing to newsfile...");
+            {
+                string newsfileFpath = Path.Combine(baseDirectory, config.Maker.OutputFileName);
+                TextPath txtPath = new TextPath(newsfileFpath)
+                     .RootColor(Color.Red)
+                     .SeparatorColor(Color.Green)
+                     .StemColor(Color.Blue)
+                     .LeafColor(Color.Yellow);
+                AnsiConsole.Write($"{nameof(newsfileFpath)}: ");
+                AnsiConsole.Write(txtPath);
+                AnsiConsole.WriteLine();
+                _ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
+                if (!string.IsNullOrEmpty(topLine)
+                    && baseContent.Contains(topLine))
                 {
-                    topLine = string.Format($"{config.Maker.TitleFormat}\n", projectName, projectVersion, projectDate);
+                    AnsiConsole.MarkupLine("It seems you've already produced newsfiles for this version?");
+                    return 1;
+                }
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append(baseHeader);
+                if (!string.IsNullOrEmpty(baseContent))
+                {
+                    sb.AppendLine(baseContent);
                 }
                 else
                 {
-                    topLine = string.Empty;
+                    sb.AppendLine(content.TrimEnd());
                 }
-                string content = $"{topLine}{rendered}";
-
-                if (setting.IsDraft)
-                {
-                    AnsiConsole.MarkupLine("[green]*[/] show draft...");
-                    AnsiConsole.WriteLine(content);
-                    return 0;
-                }
-
-                AnsiConsole.MarkupLine("[green]*[/] Writing to newsfile...");
-                // TODO(pyoung): impl append_to_newsfile
-                //  append_to_newsfile(
-                //base_directory,
-                //news_file,
-                //config.start_string,
-                //top_line,
-                //content,
-                File.Move(renderOutputPath, config.Maker.OutputFileName, overwrite: true);
+                string newContent = sb.ToString();
+                File.WriteAllText(newsfileFpath, newContent);
             }
 
             string newsFile = string.Empty;
@@ -210,6 +238,28 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             AnsiConsole.MarkupLine("[green]*[/] Done!");
             return 0;
+        }
+
+        private void _ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
+        {
+            if (!File.Exists(path))
+            {
+                baseHeader = string.Empty;
+                baseContent = string.Empty;
+                return;
+            }
+
+            string txt = File.ReadAllText(path);
+            int index = txt.IndexOf(startString);
+            if (index == -1)
+            {
+                baseHeader = string.Empty;
+                baseContent = txt;
+                return;
+            }
+
+            baseHeader = $"{txt.Substring(0, index).TrimEnd()}\n\n{startString}\n";
+            baseContent = txt.Substring(index + startString.Length).TrimStart();
         }
     }
 }
