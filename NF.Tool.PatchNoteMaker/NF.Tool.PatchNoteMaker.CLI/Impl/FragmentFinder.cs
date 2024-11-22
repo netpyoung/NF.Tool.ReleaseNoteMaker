@@ -77,7 +77,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             List<FragmentFile> fragmentFiles = new List<FragmentFile>(30);
             foreach (PatchNoteConfig.PatchNoteSection section in config.Sections)
             {
-                string sectionName = section.Name;
+                string sectionName = section.DisplayName;
                 string sectionDir = getSectionPath.Resolve(section.Path);
 
                 string[] files;
@@ -183,7 +183,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     return null;
                 }
 
-                if (types.Find(x => Utils.IsSameIgnoreCase(x.Name, parts[i])) == null)
+                if (types.Find(x => Utils.IsSameIgnoreCase(x.Category, parts[i])) == null)
                 {
                     i--;
                     continue;
@@ -242,7 +242,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
 
                     if (!string.IsNullOrEmpty(issue)
-                        && !definitions.Find(x => Utils.IsSameIgnoreCase(x.Name, sectionFragment.FragmentBasename.Category))!.IsShowcontent)
+                        && !definitions.Find(x => Utils.IsSameIgnoreCase(x.Category, sectionFragment.FragmentBasename.Category))!.IsShowContent)
                     {
                         content = string.Empty;
                     }

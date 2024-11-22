@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using Tomlyn;
 using Tomlyn.Syntax;
+using static NF.Tool.PatchNoteMaker.Common.PatchNoteConfig;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
@@ -106,6 +107,10 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
             TomlModel model = modelOrNull!;
             PatchNoteConfig patchNoteConfig = model.PatchNote;
+            if (patchNoteConfig.Sections.Count == 0)
+            {
+                patchNoteConfig.Sections.Add(new PatchNoteSection { DisplayName = "", Path = "" });
+            }
             return (null, patchNoteConfig);
         }
 

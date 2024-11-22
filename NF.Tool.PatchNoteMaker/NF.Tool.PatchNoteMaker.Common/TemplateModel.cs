@@ -32,7 +32,7 @@ namespace NF.Tool.PatchNoteMaker.Common
             IsRenderTitle = isRenderTitle;
             VersionData = versionData;
             SectionDic = fragment;
-            DefinitionDic = types.ToDictionary(x => x.Name, x => x, StringComparer.OrdinalIgnoreCase);
+            DefinitionDic = types.ToDictionary(x => x.Category, x => x, StringComparer.OrdinalIgnoreCase);
             IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>(StringComparer.OrdinalIgnoreCase)
             {
                 { "Section1", new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase) { { "Category1", new List<string> { "Issue1" } } } }

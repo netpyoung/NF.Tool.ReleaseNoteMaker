@@ -28,7 +28,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             [CommandOption("--content")]
             public string? ContentOrNull { get; set; }
 
-            [Description("The section to create the fragment for.")]
+            [Description("The section display name to create the fragment for.")]
             [CommandOption("--section")]
             public string Section { get; set; } = default!;
 
@@ -50,12 +50,13 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 return 1;
             }
 
-            string section = string.Empty;
+            string sectionDisplayName = string.Empty;
+            string sectionPath;
             {
                 // handle setting.Section
                 if (!string.IsNullOrEmpty(setting.Section))
                 {
-                    section = setting.Section;
+                    sectionDisplayName = setting.Section;
                 }
                 else
                 {
@@ -63,17 +64,19 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     {
                         if (string.IsNullOrEmpty(configSection.Path))
                         {
-                            section = configSection.Name;
+                            sectionDisplayName = configSection.DisplayName;
                             break;
                         }
                     }
                 }
 
-                if (config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Name, section)) == null)
+                PatchNoteConfig.PatchNoteSection? sectionOrNull = config.Sections.Find(x => Utils.IsSameIgnoreCase(x.DisplayName, sectionDisplayName));
+                if (sectionOrNull is null)
                 {
-                    AnsiConsole.WriteLine($"Error: Section '{section}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.Name))}");
+                    AnsiConsole.WriteLine($"Error: Section '{sectionDisplayName}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.DisplayName))}");
                     return 1;
                 }
+                sectionPath = sectionOrNull.Path;
             }
 
 
@@ -92,24 +95,47 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                         List<PatchNoteConfig.PatchNoteSection> sections = config.Sections;
                         if (sections.Count > 1)
                         {
-                            section = AnsiConsole.Prompt(
-                                new SelectionPrompt<string>()
-                                    .Title("Pick a [green]section[/]: ")
-                                    .AddChoices(sections.Select(x => x.Name))
-                                    .UseConverter((x) => string.IsNullOrEmpty(x) ? "(primary)" : x)
+                            int displayNameMax = sections.Max(x => x.DisplayName.Length);
+                            PatchNoteConfig.PatchNoteSection patchNoteSection = AnsiConsole.Prompt(
+                                new SelectionPrompt<PatchNoteConfig.PatchNoteSection>()
+                                    .Title("Pick a [green]Section[/]: ")
+                                    .AddChoices(sections)
+                                    .UseConverter((x) =>
+                                    {
+                                        return string.Format($"{{0,-{displayNameMax}}} | Path: {{1}}/{{2}}", x.DisplayName, config.Maker.Directory, x.Path);
+                                    })
                             );
+                            sectionPath = patchNoteSection.Path;
                         }
                     }
-                    string issueNumber = AnsiConsole.Prompt(
-                        new TextPrompt<string>("Issue number:")
-                        .DefaultValue("+")
+                    string issueName = AnsiConsole.Prompt(
+                        new TextPrompt<string>("Issue Name : \nex) + / +hello / 123 / baz.1.2 \nDefault:")
+                            .DefaultValue("+")
                     );
-                    string fragmentType = AnsiConsole.Prompt(
-                        new SelectionPrompt<string>()
-                            .Title("Pick a Fragment [green]Type[/]: ")
-                            .AddChoices(config.Types.Select(x => x.Name))
-                    ).ToLower();
-                    fileName = $"{issueNumber}.{fragmentType}.md";
+                    string typeCategory;
+                    {
+                        int displayNameMax = config.Types.Max(x => x.DisplayName.Length);
+
+                        PatchNoteConfig.PatchNoteType patchNoteType = AnsiConsole.Prompt(
+                            new SelectionPrompt<PatchNoteConfig.PatchNoteType>()
+                                .Title("Pick a Fragment [green]Type[/]: ")
+                                .AddChoices(config.Types)
+                                .UseConverter((x) =>
+                                {
+                                    if (string.IsNullOrEmpty(sectionPath))
+                                    {
+                                        return string.Format($"{{0,-{displayNameMax}}} | {{1}}/{{2}}.{{3}}.md", x.DisplayName, config.Maker.Directory, issueName, x.Category);
+                                    }
+                                    else
+                                    {
+                                        return string.Format($"{{0,-{displayNameMax}}} |  {{1}}/{{2}}/{{3}}.{{4}}.md", x.DisplayName, config.Maker.Directory, sectionPath, issueName, x.Category);
+                                    }
+                                })
+                        );
+                        typeCategory = patchNoteType.Category;
+                    }
+
+                    fileName = $"{issueName}.{typeCategory}.md";
                     if (setting.ContentOrNull is null)
                     {
                         isEdit = true;
@@ -120,7 +146,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 {
                     AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{name}}.{{type}}', 
 where '{{name}}' is an arbitrary slug
-and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.Name))}[/].");
+and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.DisplayName))}[/].");
                     return 1;
                 }
             }
@@ -139,7 +165,7 @@ and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.N
             }
 
             FragmentsPath fragmentPath = new FragmentsPath(baseDirectory, config);
-            string fragmentDirectory = fragmentPath.GetDirectory(section);
+            string fragmentDirectory = fragmentPath.GetDirectory(sectionPath);
             string segmentFilePath = GetSegmentFilePath(fragmentDirectory, fileName);
             if (isEdit)
             {
@@ -167,7 +193,7 @@ and '{{type}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.N
             }
             string fileExtension = split[split.Length - 1];
             string fragmentType = split[split.Length - 2];
-            if (config.Types.Find(x => Utils.IsSameIgnoreCase(x.Name, fragmentType)) == null)
+            if (config.Types.Find(x => Utils.IsSameIgnoreCase(x.Category, fragmentType)) == null)
             {
                 return false;
             }
