@@ -208,6 +208,22 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.FindFragments
   nameWithType: FragmentFinder.FindFragments
+- uid: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent(System.String,System.String)
+  name: Indent(string, string)
+  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html#NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_Indent_System_String_System_String_
+  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent(System.String,System.String)
+  name.vb: Indent(String, String)
+  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent(string, string)
+  fullName.vb: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent(String, String)
+  nameWithType: FragmentFinder.Indent(string, string)
+  nameWithType.vb: FragmentFinder.Indent(String, String)
+- uid: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent*
+  name: Indent
+  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html#NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_Indent_
+  commentId: Overload:NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.Indent
+  nameWithType: FragmentFinder.Indent
 - uid: NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.SplitFragments(System.Collections.Generic.List{NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent},System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType},System.Boolean)
   name: SplitFragments(List<FragmentContent>, List<PatchNoteType>, bool)
   href: api/NF.Tool.PatchNoteMaker.CLI.Impl.FragmentFinder.html#NF_Tool_PatchNoteMaker_CLI_Impl_FragmentFinder_SplitFragments_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent__System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType__System_Boolean_
@@ -536,6 +552,45 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.Ignores
   nameWithType: PatchNoteConfig.PatchNoteMaker.Ignores
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets
+  name: IsAllBullets
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IsAllBullets
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IsAllBullets
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets*
+  name: IsAllBullets
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IsAllBullets_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsAllBullets
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IsAllBullets
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap
+  name: IsWrap
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IsWrap
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IsWrap
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap*
+  name: IsWrap
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IsWrap_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IsWrap
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IsWrap
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat
+  name: IssueFormat
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IssueFormat
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IssueFormat
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat*
+  name: IssueFormat
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IssueFormat_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssueFormat
+  nameWithType: PatchNoteConfig.PatchNoteMaker.IssueFormat
 - uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.IssuePattern
   name: IssuePattern
   href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteMaker.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteMaker_IssuePattern
@@ -646,19 +701,19 @@ references:
   commentId: T:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection
   fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection
   nameWithType: PatchNoteConfig.PatchNoteSection
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name
-  name: Name
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteSection_Name
-  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name
-  nameWithType: PatchNoteConfig.PatchNoteSection.Name
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name*
-  name: Name
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteSection_Name_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName
+  name: DisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteSection_DisplayName
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName
+  nameWithType: PatchNoteConfig.PatchNoteSection.DisplayName
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName*
+  name: DisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteSection_DisplayName_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Name
-  nameWithType: PatchNoteConfig.PatchNoteSection.Name
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.DisplayName
+  nameWithType: PatchNoteConfig.PatchNoteSection.DisplayName
 - uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.Path
   name: Path
   href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteSection.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteSection_Path
@@ -678,45 +733,58 @@ references:
   commentId: T:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType
   fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType
   nameWithType: PatchNoteConfig.PatchNoteType
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory
-  name: Directory
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Directory
-  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory
-  nameWithType: PatchNoteConfig.PatchNoteType.Directory
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory*
-  name: Directory
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Directory_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category
+  name: Category
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Category
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category
+  nameWithType: PatchNoteConfig.PatchNoteType.Category
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category*
+  name: Category
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Category_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Directory
-  nameWithType: PatchNoteConfig.PatchNoteType.Directory
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent
-  name: IsShowcontent
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsShowcontent
-  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent
-  nameWithType: PatchNoteConfig.PatchNoteType.IsShowcontent
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent*
-  name: IsShowcontent
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsShowcontent_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Category
+  nameWithType: PatchNoteConfig.PatchNoteType.Category
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName
+  name: DisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_DisplayName
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName
+  nameWithType: PatchNoteConfig.PatchNoteType.DisplayName
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName*
+  name: DisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_DisplayName_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowcontent
-  nameWithType: PatchNoteConfig.PatchNoteType.IsShowcontent
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name
-  name: Name
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Name
-  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name
-  nameWithType: PatchNoteConfig.PatchNoteType.Name
-- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name*
-  name: Name
-  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_Name_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.DisplayName
+  nameWithType: PatchNoteConfig.PatchNoteType.DisplayName
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck
+  name: IsCheck
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsCheck
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck
+  nameWithType: PatchNoteConfig.PatchNoteType.IsCheck
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck*
+  name: IsCheck
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsCheck_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.Name
-  nameWithType: PatchNoteConfig.PatchNoteType.Name
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsCheck
+  nameWithType: PatchNoteConfig.PatchNoteType.IsCheck
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent
+  name: IsShowContent
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsShowContent
+  commentId: P:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent
+  nameWithType: PatchNoteConfig.PatchNoteType.IsShowContent
+- uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent*
+  name: IsShowContent
+  href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType_IsShowContent_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType.IsShowContent
+  nameWithType: PatchNoteConfig.PatchNoteType.IsShowContent
 - uid: NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.Sections
   name: Sections
   href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html#NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_Sections
@@ -848,15 +916,15 @@ references:
   commentId: T:NF.Tool.PatchNoteMaker.Common.TemplateModel
   fullName: NF.Tool.PatchNoteMaker.Common.TemplateModel
   nameWithType: TemplateModel
-- uid: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData,System.Boolean,NF.Tool.PatchNoteMaker.Common.Fragment)
-  name: Create(VersionData, bool, Fragment)
-  href: api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html#NF_Tool_PatchNoteMaker_Common_TemplateModel_Create_NF_Tool_PatchNoteMaker_Common_VersionData_System_Boolean_NF_Tool_PatchNoteMaker_Common_Fragment_
-  commentId: M:NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData,System.Boolean,NF.Tool.PatchNoteMaker.Common.Fragment)
-  name.vb: Create(VersionData, Boolean, Fragment)
-  fullName: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData, bool, NF.Tool.PatchNoteMaker.Common.Fragment)
-  fullName.vb: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData, Boolean, NF.Tool.PatchNoteMaker.Common.Fragment)
-  nameWithType: TemplateModel.Create(VersionData, bool, Fragment)
-  nameWithType.vb: TemplateModel.Create(VersionData, Boolean, Fragment)
+- uid: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData,System.Boolean,NF.Tool.PatchNoteMaker.Common.Fragment,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType})
+  name: Create(VersionData, bool, Fragment, List<PatchNoteType>)
+  href: api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html#NF_Tool_PatchNoteMaker_Common_TemplateModel_Create_NF_Tool_PatchNoteMaker_Common_VersionData_System_Boolean_NF_Tool_PatchNoteMaker_Common_Fragment_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_PatchNoteType__
+  commentId: M:NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData,System.Boolean,NF.Tool.PatchNoteMaker.Common.Fragment,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType})
+  name.vb: Create(VersionData, Boolean, Fragment, List(Of PatchNoteType))
+  fullName: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData, bool, NF.Tool.PatchNoteMaker.Common.Fragment, System.Collections.Generic.List<NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType>)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.VersionData, Boolean, NF.Tool.PatchNoteMaker.Common.Fragment, System.Collections.Generic.List(Of NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.PatchNoteType))
+  nameWithType: TemplateModel.Create(VersionData, bool, Fragment, List<PatchNoteConfig.PatchNoteType>)
+  nameWithType.vb: TemplateModel.Create(VersionData, Boolean, Fragment, List(Of PatchNoteConfig.PatchNoteType))
 - uid: NF.Tool.PatchNoteMaker.Common.TemplateModel.Create*
   name: Create
   href: api/NF.Tool.PatchNoteMaker.Common.TemplateModel.html#NF_Tool_PatchNoteMaker_Common_TemplateModel_Create_
@@ -935,6 +1003,15 @@ references:
   commentId: T:NF.Tool.PatchNoteMaker.Common.TemplateRenderer
   fullName: NF.Tool.PatchNoteMaker.Common.TemplateRenderer
   nameWithType: TemplateRenderer
+- uid: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel)
+  name: Render(string, PatchNoteConfig, TemplateModel)
+  href: api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html#NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_TemplateModel_
+  commentId: M:NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel)
+  name.vb: Render(String, PatchNoteConfig, TemplateModel)
+  fullName: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(string, NF.Tool.PatchNoteMaker.Common.PatchNoteConfig, NF.Tool.PatchNoteMaker.Common.TemplateModel)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(String, NF.Tool.PatchNoteMaker.Common.PatchNoteConfig, NF.Tool.PatchNoteMaker.Common.TemplateModel)
+  nameWithType: TemplateRenderer.Render(string, PatchNoteConfig, TemplateModel)
+  nameWithType.vb: TemplateRenderer.Render(String, PatchNoteConfig, TemplateModel)
 - uid: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel,System.String)
   name: Render(string, PatchNoteConfig, TemplateModel, string)
   href: api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html#NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_TemplateModel_System_String_
@@ -951,6 +1028,22 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render
   nameWithType: TemplateRenderer.Render
+- uid: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.VersionData,NF.Tool.PatchNoteMaker.Common.Fragment,System.Boolean)
+  name: RenderFragments(string, PatchNoteConfig, VersionData, Fragment, bool)
+  href: api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html#NF_Tool_PatchNoteMaker_Common_TemplateRenderer_RenderFragments_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_VersionData_NF_Tool_PatchNoteMaker_Common_Fragment_System_Boolean_
+  commentId: M:NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.VersionData,NF.Tool.PatchNoteMaker.Common.Fragment,System.Boolean)
+  name.vb: RenderFragments(String, PatchNoteConfig, VersionData, Fragment, Boolean)
+  fullName: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments(string, NF.Tool.PatchNoteMaker.Common.PatchNoteConfig, NF.Tool.PatchNoteMaker.Common.VersionData, NF.Tool.PatchNoteMaker.Common.Fragment, bool)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments(String, NF.Tool.PatchNoteMaker.Common.PatchNoteConfig, NF.Tool.PatchNoteMaker.Common.VersionData, NF.Tool.PatchNoteMaker.Common.Fragment, Boolean)
+  nameWithType: TemplateRenderer.RenderFragments(string, PatchNoteConfig, VersionData, Fragment, bool)
+  nameWithType.vb: TemplateRenderer.RenderFragments(String, PatchNoteConfig, VersionData, Fragment, Boolean)
+- uid: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments*
+  name: RenderFragments
+  href: api/NF.Tool.PatchNoteMaker.Common.TemplateRenderer.html#NF_Tool_PatchNoteMaker_Common_TemplateRenderer_RenderFragments_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments
+  nameWithType: TemplateRenderer.RenderFragments
 - uid: NF.Tool.PatchNoteMaker.Common.VersionData
   name: VersionData
   href: api/NF.Tool.PatchNoteMaker.Common.VersionData.html

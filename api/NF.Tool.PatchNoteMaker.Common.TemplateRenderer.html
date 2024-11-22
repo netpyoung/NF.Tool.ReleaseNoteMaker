@@ -89,7 +89,7 @@
 
 
   <h1 id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer" class="text-break">
-Class TemplateRenderer  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L7"><i class="bi bi-code-slash"></i></a>
+Class TemplateRenderer  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L11"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -129,16 +129,56 @@ Class TemplateRenderer  <a class="header-action link-secondary" title="View sour
 
   <a id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_TemplateModel_System_String_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel,System.String)">
-  Render(string, PatchNoteConfig, TemplateModel, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_TemplateModel_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel)">
+  Render(string, PatchNoteConfig, TemplateModel)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L13"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel, string outputPath)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;(Exception? exOrNull, string text)&gt; Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>templatePath</code> <span class="xref">string</span></dt>
+    <dd></dd>
+    <dt><code>config</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html">PatchNoteConfig</a></dt>
+    <dd></dd>
+    <dt><code>templateModel</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.TemplateModel.html">TemplateModel</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Task</span>&lt;(<span class="xref">Exception</span> <span class="xref">exOrNull</span>, <span class="xref">string</span> <span class="xref">text</span>)&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render*"></a>
+
+  <h3 id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_Render_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_TemplateModel_System_String_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.Render(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.TemplateModel,System.String)">
+  Render(string, PatchNoteConfig, TemplateModel, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;Exception?&gt; Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel, string outputPath)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
@@ -155,7 +195,51 @@ Class TemplateRenderer  <a class="header-action link-secondary" title="View sour
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
-    <dt><span class="xref">Task</span></dt>
+    <dt><span class="xref">Task</span>&lt;<span class="xref">Exception</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_RenderFragments_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments*"></a>
+
+  <h3 id="NF_Tool_PatchNoteMaker_Common_TemplateRenderer_RenderFragments_System_String_NF_Tool_PatchNoteMaker_Common_PatchNoteConfig_NF_Tool_PatchNoteMaker_Common_VersionData_NF_Tool_PatchNoteMaker_Common_Fragment_System_Boolean_" data-uid="NF.Tool.PatchNoteMaker.Common.TemplateRenderer.RenderFragments(System.String,NF.Tool.PatchNoteMaker.Common.PatchNoteConfig,NF.Tool.PatchNoteMaker.Common.VersionData,NF.Tool.PatchNoteMaker.Common.Fragment,System.Boolean)">
+  RenderFragments(string, PatchNoteConfig, VersionData, Fragment, bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;(Exception?, string)&gt; RenderFragments(string templateFpath, PatchNoteConfig config, VersionData versionData, Fragment fragment, bool isRenderTitle)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>templateFpath</code> <span class="xref">string</span></dt>
+    <dd></dd>
+    <dt><code>config</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.PatchNoteConfig.html">PatchNoteConfig</a></dt>
+    <dd></dd>
+    <dt><code>versionData</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.VersionData.html">VersionData</a></dt>
+    <dd></dd>
+    <dt><code>fragment</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.Fragment.html">Fragment</a></dt>
+    <dd></dd>
+    <dt><code>isRenderTitle</code> <span class="xref">bool</span></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Task</span>&lt;(<span class="xref">Exception</span> <span class="xref">exOrNull</span>, <span class="xref">string</span> <span class="xref">text</span>)&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -173,7 +257,7 @@ Class TemplateRenderer  <a class="header-action link-secondary" title="View sour
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L7" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/TemplateRenderer.cs/#L11" class="edit-link">Edit this page</a>
         </div>
 
 
