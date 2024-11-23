@@ -44,7 +44,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public string GetDirectory(string sectionPath)
         {
-            PatchNoteConfig.PatchNoteSection? sectionOrNull = _config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Path, sectionPath))!;
+            PatchNoteSection? sectionOrNull = _config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Path, sectionPath))!;
             Debug.Assert(sectionOrNull != null, $"sectionOrNull != null | sectionPath: {sectionPath}");
 
             string dir = Path.Combine(_baseDirectory, sectionOrNull.Path, _appendDirectory);

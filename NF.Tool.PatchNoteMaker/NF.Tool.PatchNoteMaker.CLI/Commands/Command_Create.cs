@@ -60,7 +60,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 }
                 else
                 {
-                    foreach (PatchNoteConfig.PatchNoteSection configSection in config.Sections)
+                    foreach (PatchNoteSection configSection in config.Sections)
                     {
                         if (string.IsNullOrEmpty(configSection.Path))
                         {
@@ -70,7 +70,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     }
                 }
 
-                PatchNoteConfig.PatchNoteSection? sectionOrNull = config.Sections.Find(x => Utils.IsSameIgnoreCase(x.DisplayName, sectionDisplayName));
+                PatchNoteSection? sectionOrNull = config.Sections.Find(x => Utils.IsSameIgnoreCase(x.DisplayName, sectionDisplayName));
                 if (sectionOrNull is null)
                 {
                     AnsiConsole.WriteLine($"Error: Section '{sectionDisplayName}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.DisplayName))}");
@@ -92,12 +92,12 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 {
                     if (string.IsNullOrEmpty(setting.Section))
                     {
-                        List<PatchNoteConfig.PatchNoteSection> sections = config.Sections;
+                        List<PatchNoteSection> sections = config.Sections;
                         if (sections.Count > 1)
                         {
                             int displayNameMax = sections.Max(x => x.DisplayName.Length);
-                            PatchNoteConfig.PatchNoteSection patchNoteSection = AnsiConsole.Prompt(
-                                new SelectionPrompt<PatchNoteConfig.PatchNoteSection>()
+                            PatchNoteSection patchNoteSection = AnsiConsole.Prompt(
+                                new SelectionPrompt<PatchNoteSection>()
                                     .Title("Pick a [green]Section[/]: ")
                                     .AddChoices(sections)
                                     .UseConverter((x) =>
@@ -116,8 +116,8 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     {
                         int displayNameMax = config.Types.Max(x => x.DisplayName.Length);
 
-                        PatchNoteConfig.PatchNoteType patchNoteType = AnsiConsole.Prompt(
-                            new SelectionPrompt<PatchNoteConfig.PatchNoteType>()
+                        PatchNoteType patchNoteType = AnsiConsole.Prompt(
+                            new SelectionPrompt<PatchNoteType>()
                                 .Title("Pick a Fragment [green]Type[/]: ")
                                 .AddChoices(config.Types)
                                 .UseConverter((x) =>

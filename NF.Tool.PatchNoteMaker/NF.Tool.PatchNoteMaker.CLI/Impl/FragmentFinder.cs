@@ -75,7 +75,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
             List<FragmentContent> fragmentContents = new List<FragmentContent>(config.Sections.Count);
             List<FragmentFile> fragmentFiles = new List<FragmentFile>(30);
-            foreach (PatchNoteConfig.PatchNoteSection section in config.Sections)
+            foreach (PatchNoteSection section in config.Sections)
             {
                 string sectionName = section.DisplayName;
                 string sectionDir = getSectionPath.Resolve(section.Path);
@@ -214,7 +214,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             }
         }
 
-        public static Fragment SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteConfig.PatchNoteType> definitions, bool isAllBullets)
+        public static Fragment SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteType> definitions, bool isAllBullets)
         {
             Fragment fragment = new Fragment();
             foreach (FragmentContent fragmentContent in fragmentContents)

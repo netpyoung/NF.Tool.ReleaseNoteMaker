@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using static NF.Tool.PatchNoteMaker.Common.PatchNoteConfig;
 
 namespace NF.Tool.PatchNoteMaker.Common
 {
@@ -13,19 +13,13 @@ namespace NF.Tool.PatchNoteMaker.Common
 
         public VersionData VersionData { get; set; }
 
-        // PatchNoteType or Category or Definition
         [Description("key is Definition.Name")]
-        public Dictionary<string, PatchNoteConfig.PatchNoteType> DefinitionDic { get; set; } = new Dictionary<string, PatchNoteConfig.PatchNoteType>();
+        public Dictionary<string, PatchNoteType> DefinitionDic { get; } = new Dictionary<string, PatchNoteType>();
 
-
-        //    data[section_name][category_name] = categories
         [Description("key is Section.Name")]
         public Fragment SectionDic { get; set; } = new Fragment();
 
-        // issues_by_category[section_name][category_name] = [
-        // render_issue(issue_format, i)
-        //        for i in sorted(category_issues, key= issue_key)]
-        public Dictionary<string, Dictionary<string, List<string>>> IssuesByCategory { get; set; } = new Dictionary<string, Dictionary<string, List<string>>>();
+        public Dictionary<string, Dictionary<string, List<string>>> IssuesByCategory { get; } = new Dictionary<string, Dictionary<string, List<string>>>();
 
         private TemplateModel(VersionData versionData, bool isRenderTitle, Fragment fragment, List<PatchNoteType> types)
         {
@@ -73,7 +67,7 @@ namespace NF.Tool.PatchNoteMaker.Common
     {
         Dictionary<string, Section> _dic = new Dictionary<string, Section>();
 
-        public void AddSection(Section section)
+        public void AddSection([NotNull] Section section)
         {
             _dic[section.Name] = section;
         }

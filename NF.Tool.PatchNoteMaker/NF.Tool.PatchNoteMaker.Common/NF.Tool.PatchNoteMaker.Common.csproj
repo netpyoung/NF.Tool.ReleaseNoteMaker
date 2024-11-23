@@ -6,8 +6,9 @@
 		<Nullable>enable</Nullable>
 		<WarningLevel>4</WarningLevel>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<!--<AnalysisMode>All</AnalysisMode>
-		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>-->
+		<AnalysisMode>All</AnalysisMode>
+		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+		<NoWarn>CA2007,CA1305,CA1310,CA1002</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace NF.Tool.PatchNoteMaker.Common
             {
                 return (exOrNull, string.Empty);
             }
-            string text = File.ReadAllText(tempFilePath);
+            string text = await File.ReadAllTextAsync(tempFilePath);
             File.Delete(tempFilePath);
             return (null, text);
         }
@@ -40,7 +41,7 @@ namespace NF.Tool.PatchNoteMaker.Common
                 {
                     sb.AppendLine(err.ToString());
                 }
-                return new Exception(sb.ToString());
+                return new PatchNoteMakerException(sb.ToString());
             }
             return null;
         }
@@ -48,9 +49,9 @@ namespace NF.Tool.PatchNoteMaker.Common
 
         public static async Task<(Exception?, string)> RenderFragments(
             string templateFpath,
-            PatchNoteConfig config,
+            [NotNull] PatchNoteConfig config,
             VersionData versionData,
-            Fragment fragment,
+            [NotNull] Fragment fragment,
             bool isRenderTitle)
         {
             //    top_underline = config.underlines[0],
