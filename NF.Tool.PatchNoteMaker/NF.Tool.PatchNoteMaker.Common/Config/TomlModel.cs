@@ -1,6 +1,4 @@
-﻿using NF.Tool.PatchNoteMaker.Common;
-
-namespace NF.Tool.PatchNoteMaker.CLI.Impl
+﻿namespace NF.Tool.PatchNoteMaker.Common.Config
 {
     public sealed class TomlModel
     {

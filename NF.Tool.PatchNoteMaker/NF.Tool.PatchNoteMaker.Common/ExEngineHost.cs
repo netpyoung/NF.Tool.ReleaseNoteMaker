@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TextTemplating;
+using NF.Tool.PatchNoteMaker.Common.Config;
 using System.Diagnostics.CodeAnalysis;
 
 namespace NF.Tool.PatchNoteMaker.Common

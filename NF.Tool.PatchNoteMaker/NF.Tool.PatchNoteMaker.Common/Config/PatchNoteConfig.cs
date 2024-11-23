@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace NF.Tool.PatchNoteMaker.Common
+namespace NF.Tool.PatchNoteMaker.Common.Config
 {
     public sealed class PatchNoteConfig
     {

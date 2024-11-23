@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NF.Tool.PatchNoteMaker.Common.Config;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;

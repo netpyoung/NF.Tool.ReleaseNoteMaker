@@ -1,4 +1,5 @@
 ﻿using Mono.TextTemplating;
+using NF.Tool.PatchNoteMaker.Common.Config;
 
 namespace NF.Tool.PatchNoteMaker.Common
 {

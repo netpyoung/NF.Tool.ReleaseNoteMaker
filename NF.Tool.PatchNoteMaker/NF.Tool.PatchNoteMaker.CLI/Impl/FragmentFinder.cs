@@ -1,4 +1,5 @@
 using NF.Tool.PatchNoteMaker.Common;
+using NF.Tool.PatchNoteMaker.Common.Config;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
