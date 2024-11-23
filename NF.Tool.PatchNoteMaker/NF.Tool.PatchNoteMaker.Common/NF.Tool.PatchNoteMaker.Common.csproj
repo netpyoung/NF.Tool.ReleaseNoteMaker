@@ -8,7 +8,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<AnalysisMode>All</AnalysisMode>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<NoWarn>CA2007,CA1305,CA1310,CA1002</NoWarn>
+		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

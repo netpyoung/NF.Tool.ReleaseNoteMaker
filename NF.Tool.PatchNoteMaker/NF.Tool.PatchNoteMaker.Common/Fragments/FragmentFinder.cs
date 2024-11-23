@@ -1,4 +1,3 @@
-using NF.Tool.PatchNoteMaker.Common;
 using NF.Tool.PatchNoteMaker.Common.Config;
 using NF.Tool.PatchNoteMaker.Common.Template;
 using System;
@@ -9,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace NF.Tool.PatchNoteMaker.CLI.Impl
+namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
     public sealed record class FragmentBasename
     {
@@ -55,9 +54,18 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
     public sealed class FragmentFinder
     {
+        public static readonly string[] FRAGMENT_IGNORE_FILELIST = [
+            ".gitignore",
+            ".gitkeep",
+            ".keep",
+            "readme",
+            "readme.md",
+            "readme.rst"
+        ];
+
         public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, [NotNull] PatchNoteConfig config, bool isStrictMode)
         {
-            HashSet<string> ignoredFileNameSet = new HashSet<string>(Const.FRAGMENT_IGNORE_FILELIST, StringComparer.OrdinalIgnoreCase);
+            HashSet<string> ignoredFileNameSet = new HashSet<string>(FRAGMENT_IGNORE_FILELIST, StringComparer.OrdinalIgnoreCase);
 
             if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
             {
@@ -245,7 +253,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
 
                     if (!string.IsNullOrEmpty(issue)
-                        && !definitions.Find(x => Utils.IsSameIgnoreCase(x.Category, sectionFragment.FragmentBasename.Category))!.IsShowContent)
+                        && !definitions.Find(x => x.Category == sectionFragment.FragmentBasename.Category)!.IsShowContent)
                     {
                         content = string.Empty;
                     }

@@ -1,4 +1,4 @@
-﻿using NF.Tool.PatchNoteMaker.CLI.Impl;
+﻿using NF.Tool.PatchNoteMaker.Common.Fragments;
 
 namespace NF.Tool.PatchNoteMaker.Tests;
 

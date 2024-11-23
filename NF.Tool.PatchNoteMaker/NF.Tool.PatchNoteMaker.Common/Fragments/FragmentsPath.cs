@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 
-namespace NF.Tool.PatchNoteMaker.CLI.Impl
+namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
     public record struct FragmentsPath
     {
@@ -45,7 +45,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public string GetDirectory(string sectionPath)
         {
-            PatchNoteSection? sectionOrNull = _config.Sections.Find(x => Utils.IsSameIgnoreCase(x.Path, sectionPath))!;
+            PatchNoteSection? sectionOrNull = _config.Sections.Find(x => x.Path == sectionPath)!;
             Debug.Assert(sectionOrNull != null, $"sectionOrNull != null | sectionPath: {sectionPath}");
 
             string dir = Path.Combine(_baseDirectory, sectionOrNull.Path, _appendDirectory);

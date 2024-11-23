@@ -1,5 +1,6 @@
 ﻿using NF.Tool.PatchNoteMaker.CLI.Impl;
 using NF.Tool.PatchNoteMaker.Common.Config;
+using NF.Tool.PatchNoteMaker.Common.Fragments;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
