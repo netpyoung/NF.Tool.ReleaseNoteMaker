@@ -8,7 +8,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
     {
         private readonly List<string> _willDeleteFilePaths;
 
-        [Obsolete("", error: true)]
+        [Obsolete("Do not use constructor", error: true)]
         public ScopedFileDeleter()
         {
             throw new InvalidOperationException();

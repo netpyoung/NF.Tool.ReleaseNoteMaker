@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text;
 using Tomlyn;
 using Tomlyn.Syntax;
-using static NF.Tool.PatchNoteMaker.Common.PatchNoteConfig;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
@@ -121,7 +120,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public static bool IsSameIgnoreCase(string x, string y)
         {
-            return string.Compare(x, y, StringComparison.OrdinalIgnoreCase) == 0;
+            return string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
         }
     }
 }

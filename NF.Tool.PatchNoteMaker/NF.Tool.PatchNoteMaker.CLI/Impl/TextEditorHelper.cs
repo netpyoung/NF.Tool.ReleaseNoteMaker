@@ -13,7 +13,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
         {
             string tempFilePath = Path.Combine(Path.GetTempPath(), tempFilename);
 
-            File.WriteAllText(tempFilePath, initialContent);
+            await File.WriteAllTextAsync(tempFilePath, initialContent);
 
             DateTime lastWriteTime = File.GetLastWriteTime(tempFilePath);
 
@@ -29,12 +29,15 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 }
             };
 
-            process.Start();
-            await process.WaitForExitAsync();
-
-            if (process.ExitCode != 0)
+            using (process)
             {
-                return null;
+                process.Start();
+                await process.WaitForExitAsync();
+
+                if (process.ExitCode != 0)
+                {
+                    return null;
+                }
             }
 
             if (File.GetLastWriteTime(tempFilePath) == lastWriteTime)
@@ -42,7 +45,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 return null;
             }
 
-            string txt = File.ReadAllText(tempFilePath);
+            string txt = await File.ReadAllTextAsync(tempFilePath);
             File.Delete(tempFilePath);
             string filteredTxt = ProcessContent(txt);
             return filteredTxt;
@@ -52,7 +55,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             string[] allLines = content.Split('\n');
 
             IEnumerable<string> filteredLines = allLines
-                .Where(line => !line.TrimStart().StartsWith("#"))
+                .Where(line => !line.TrimStart().StartsWith('#'))
                 .Select(line => line.TrimEnd());
 
             return string.Join("\n", filteredLines).Trim();

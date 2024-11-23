@@ -1,6 +1,7 @@
 using NF.Tool.PatchNoteMaker.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,13 +26,9 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             RetryCount = retryCount;
         }
     }
-    public sealed class FragmentContent
-    {
-        public string SectionName { get; set; } = string.Empty;
-        public List<SectionFragment> SectionFragments { get; set; } = new List<SectionFragment>();
 
-        public sealed record class SectionFragment(FragmentBasename FragmentBasename, string Data);
-    }
+    public sealed record class FragmentContent(string SectionName, List<SectionFragment> SectionFragments);
+    public sealed record class SectionFragment(FragmentBasename FragmentBasename, string Data);
 
     public sealed class FragmentFile
     {
@@ -90,7 +87,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                     files = [];
                 }
 
-                List<FragmentContent.SectionFragment> fileContents = new List<FragmentContent.SectionFragment>();
+                List<SectionFragment> fileContents = new List<SectionFragment>();
                 foreach (string fileName in files.Select(x => Path.GetFileName(x)))
                 {
                     if (ignoredFileNameSet.Any(pattern => IsMatch(fileName.ToLower(), pattern)))
@@ -142,10 +139,10 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                         return (ex, FragmentResult.Default());
                     }
 
-                    fileContents.Add(new FragmentContent.SectionFragment(fragmentBaseName, data));
+                    fileContents.Add(new SectionFragment(fragmentBaseName, data));
                 }
 
-                fragmentContents.Add(new FragmentContent { SectionName = sectionName, SectionFragments = fileContents });
+                fragmentContents.Add(new FragmentContent(sectionName, fileContents));
             }
 
             return (null, new FragmentResult { FragmentContents = fragmentContents, FragmentFiles = fragmentFiles });
@@ -214,14 +211,14 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             }
         }
 
-        public static Fragment SplitFragments(List<FragmentContent> fragmentContents, List<PatchNoteType> definitions, bool isAllBullets)
+        public static Fragment SplitFragments([NotNull] List<FragmentContent> fragmentContents, List<PatchNoteType> definitions, bool isAllBullets)
         {
             Fragment fragment = new Fragment();
             foreach (FragmentContent fragmentContent in fragmentContents)
             {
                 string sectionName = fragmentContent.SectionName;
                 Section section = new Section(sectionName);
-                foreach (FragmentContent.SectionFragment sectionFragment in fragmentContent.SectionFragments)
+                foreach (SectionFragment sectionFragment in fragmentContent.SectionFragments)
                 {
                     string category = sectionFragment.FragmentBasename.Category;
                     string content = sectionFragment.Data;
