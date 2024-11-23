@@ -1,7 +1,7 @@
 ﻿using Mono.TextTemplating;
 using NF.Tool.PatchNoteMaker.Common.Config;
 
-namespace NF.Tool.PatchNoteMaker.Common
+namespace NF.Tool.PatchNoteMaker.Common.Template
 {
     public sealed class PatchNoteTemplateGenerator : TemplateGenerator
     {

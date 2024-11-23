@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NF.Tool.PatchNoteMaker.Common
+namespace NF.Tool.PatchNoteMaker.Common.Template
 {
     public sealed class TemplateRenderer
     {

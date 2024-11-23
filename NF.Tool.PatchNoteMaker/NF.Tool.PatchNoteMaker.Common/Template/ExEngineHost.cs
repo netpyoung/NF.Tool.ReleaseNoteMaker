@@ -2,7 +2,7 @@
 using NF.Tool.PatchNoteMaker.Common.Config;
 using System.Diagnostics.CodeAnalysis;
 
-namespace NF.Tool.PatchNoteMaker.Common
+namespace NF.Tool.PatchNoteMaker.Common.Template
 {
     public static class ExEngineHost
     {

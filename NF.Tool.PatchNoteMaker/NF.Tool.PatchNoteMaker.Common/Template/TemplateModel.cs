@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace NF.Tool.PatchNoteMaker.Common
+namespace NF.Tool.PatchNoteMaker.Common.Template
 {
     public sealed class TemplateModel
     {
