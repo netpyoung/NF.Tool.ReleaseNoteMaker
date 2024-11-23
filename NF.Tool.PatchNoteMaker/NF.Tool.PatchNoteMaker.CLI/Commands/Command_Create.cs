@@ -164,7 +164,7 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
                 }
             }
 
-            FragmentsPath fragmentPath = new FragmentsPath(baseDirectory, config);
+            FragmentsPath fragmentPath = FragmentsPath.Get(baseDirectory, config);
             string fragmentDirectory = fragmentPath.GetDirectory(sectionPath);
             string segmentFilePath = GetSegmentFilePath(fragmentDirectory, fileName);
             if (isEdit)

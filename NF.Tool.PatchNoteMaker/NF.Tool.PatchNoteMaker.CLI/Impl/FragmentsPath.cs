@@ -1,16 +1,28 @@
 ﻿using NF.Tool.PatchNoteMaker.Common;
+using System;
 using System.Diagnostics;
 using System.IO;
 
 namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
-    public sealed class FragmentsPath
+    public struct FragmentsPath
     {
         private readonly string _baseDirectory;
         private readonly string _appendDirectory;
         private readonly PatchNoteConfig _config;
 
-        public FragmentsPath(string baseDirectory, PatchNoteConfig config)
+        public static FragmentsPath Get(string baseDirectory, PatchNoteConfig config)
+        {
+            return new FragmentsPath(baseDirectory, config);
+        }
+
+        [Obsolete("", error: true)]
+        public FragmentsPath()
+        {
+            throw new InvalidOperationException();
+        }
+
+        private FragmentsPath(string baseDirectory, PatchNoteConfig config)
         {
             _config = config;
             if (!string.IsNullOrEmpty(config.Maker.Directory))
