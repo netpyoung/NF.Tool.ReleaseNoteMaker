@@ -89,7 +89,7 @@
 
 
   <h1 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent" class="text-break">
-Class FragmentContent  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L28"><i class="bi bi-code-slash"></i></a>
+Class FragmentContent  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -101,7 +101,7 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class FragmentContent</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record FragmentContent</code></pre>
   </div>
 
 
@@ -123,6 +123,43 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
 
 
 
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent__ctor_" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.#ctor*"></a>
+
+  <h3 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent__ctor_System_String_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_CLI_Impl_SectionFragment__" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.CLI.Impl.SectionFragment})">
+  FragmentContent(string, List&lt;SectionFragment&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public FragmentContent(string SectionName, List&lt;SectionFragment&gt; SectionFragments)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>SectionName</code> <span class="xref">string</span></dt>
+    <dd></dd>
+    <dt><code>SectionFragments</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.CLI.Impl.SectionFragment.html">SectionFragment</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <h2 class="section" id="properties">Properties
 </h2>
 
@@ -131,14 +168,14 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent_SectionFragments" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragments">
   SectionFragments
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;FragmentContent.SectionFragment&gt; SectionFragments { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;SectionFragment&gt; SectionFragments { get; init; }</code></pre>
   </div>
 
 
@@ -147,7 +184,7 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.html">FragmentContent</a>.<a class="xref" href="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionFragment.html">SectionFragment</a>&gt;</dt>
+    <dt><span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.CLI.Impl.SectionFragment.html">SectionFragment</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -162,14 +199,14 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
 
   <h3 id="NF_Tool_PatchNoteMaker_CLI_Impl_FragmentContent_SectionName" data-uid="NF.Tool.PatchNoteMaker.CLI.Impl.FragmentContent.SectionName">
   SectionName
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L32"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SectionName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string SectionName { get; init; }</code></pre>
   </div>
 
 
@@ -193,7 +230,7 @@ Class FragmentContent  <a class="header-action link-secondary" title="View sourc
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L28" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.CLI/Impl/FragmentFinder.cs/#L32" class="edit-link">Edit this page</a>
         </div>
 
 
