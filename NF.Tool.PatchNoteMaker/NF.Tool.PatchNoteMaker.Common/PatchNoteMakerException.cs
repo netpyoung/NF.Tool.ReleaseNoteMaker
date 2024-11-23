@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace NF.Tool.PatchNoteMaker.CLI.Impl
+namespace NF.Tool.PatchNoteMaker.Common
 {
-    internal sealed class PatchNoteMakerException : Exception
+    public sealed class PatchNoteMakerException : Exception
     {
         public override string StackTrace { get; }
 
