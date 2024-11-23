@@ -53,7 +53,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
     public sealed class FragmentFinder
     {
-        public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, PatchNoteConfig config, bool isStrictMode)
+        public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, [NotNull] PatchNoteConfig config, bool isStrictMode)
         {
             HashSet<string> ignoredFileNameSet = new HashSet<string>(Const.FRAGMENT_IGNORE_FILELIST, StringComparer.OrdinalIgnoreCase);
 
@@ -211,7 +211,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             }
         }
 
-        public static Fragment SplitFragments([NotNull] List<FragmentContent> fragmentContents, List<PatchNoteType> definitions, bool isAllBullets)
+        public static Fragment SplitFragments([NotNull] List<FragmentContent> fragmentContents, [NotNull] List<PatchNoteType> definitions, bool isAllBullets)
         {
             Fragment fragment = new Fragment();
             foreach (FragmentContent fragmentContent in fragmentContents)
@@ -256,7 +256,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             return fragment;
         }
 
-        public static string Indent(string text, string prefix)
+        public static string Indent([NotNull] string text, string prefix)
         {
             StringBuilder result = new StringBuilder();
             string[] lines = text.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);

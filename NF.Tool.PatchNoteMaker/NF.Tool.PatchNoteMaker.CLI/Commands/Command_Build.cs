@@ -187,7 +187,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     sb.AppendLine(content.TrimEnd());
                 }
                 string newContent = sb.ToString();
-                File.WriteAllText(newsfileFpath, newContent);
+                await File.WriteAllTextAsync(newsfileFpath, newContent);
             }
 
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
@@ -236,7 +236,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             return 0;
         }
 
-        private void _ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
+        private static void _ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
         {
             if (!File.Exists(path))
             {

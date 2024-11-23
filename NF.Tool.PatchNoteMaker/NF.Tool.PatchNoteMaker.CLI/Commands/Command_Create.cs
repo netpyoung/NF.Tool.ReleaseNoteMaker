@@ -179,7 +179,7 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
             }
 
             Directory.CreateDirectory(fragmentDirectory);
-            File.WriteAllText(segmentFilePath, content);
+            await File.WriteAllTextAsync(segmentFilePath, content);
             AnsiConsole.MarkupLine($"Created news fragment at {segmentFilePath}");
             return 0;
         }
