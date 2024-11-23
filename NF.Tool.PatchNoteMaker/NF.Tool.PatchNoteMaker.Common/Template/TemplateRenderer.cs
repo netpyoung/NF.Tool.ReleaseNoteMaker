@@ -1,4 +1,5 @@
 ﻿using NF.Tool.PatchNoteMaker.Common.Config;
+using NF.Tool.PatchNoteMaker.Common.Fragments;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;

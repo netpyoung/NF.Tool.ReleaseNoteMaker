@@ -1,5 +1,4 @@
 using NF.Tool.PatchNoteMaker.Common.Config;
-using NF.Tool.PatchNoteMaker.Common.Template;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,48 +9,6 @@ using System.Text.RegularExpressions;
 
 namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
-    public sealed record class FragmentBasename
-    {
-        // example: "release-2.0.1.doc.10"
-        // issue: release-2.0.1
-        // category: doc
-        // retryCount: 10
-        public string Issue { get; set; }
-        public string Category { get; init; }
-        public int RetryCount { get; set; }
-
-        public FragmentBasename(string issue, string category, int retryCount)
-        {
-            Issue = issue;
-            Category = category;
-            RetryCount = retryCount;
-        }
-    }
-
-    public sealed record class FragmentContent(string SectionName, List<SectionFragment> SectionFragments);
-    public sealed record class SectionFragment(FragmentBasename FragmentBasename, string Data);
-
-    public sealed class FragmentFile
-    {
-        public required string FileName { get; init; }
-        public required string Category { get; init; }
-    }
-
-    public sealed class FragmentResult
-    {
-        public required List<FragmentContent> FragmentContents { get; init; }
-        public required List<FragmentFile> FragmentFiles { get; init; }
-
-        public static FragmentResult Default()
-        {
-            return new FragmentResult
-            {
-                FragmentContents = new List<FragmentContent>(),
-                FragmentFiles = new List<FragmentFile>()
-            };
-        }
-    }
-
     public sealed class FragmentFinder
     {
         public static readonly string[] FRAGMENT_IGNORE_FILELIST = [
@@ -140,7 +97,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
                     }
 
                     string fullFilename = Path.Combine(sectionDir, fileName);
-                    fragmentFiles.Add(new FragmentFile { FileName = fullFilename, Category = fragmentBaseName.Category });
+                    fragmentFiles.Add(new FragmentFile(fullFilename, fragmentBaseName.Category));
 
                     string data = File.ReadAllText(fullFilename);
                     if (fileContents.Find(x => x.FragmentBasename == fragmentBaseName) != null)
