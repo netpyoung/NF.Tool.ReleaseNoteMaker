@@ -77,7 +77,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
                 ignoredFileNameSet.Add(filename.ToLower());
             }
 
-            FragmentsPath getSectionPath = FragmentsPath.Get(baseDirectory, config);
+            FragmentPath getSectionPath = FragmentPath.Get(baseDirectory, config);
             Dictionary<string, int> orphanFragmentCounter = new Dictionary<string, int>(config.Sections.Count);
 
             List<FragmentContent> fragmentContents = new List<FragmentContent>(config.Sections.Count);
