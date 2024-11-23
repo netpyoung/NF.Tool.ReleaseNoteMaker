@@ -6,9 +6,22 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 {
     public record struct ScopedFileDeleter : IDisposable
     {
-        private readonly List<string> _willDeleteFilePaths = new List<string>(20);
+        private readonly List<string> _willDeleteFilePaths;
+
+        [Obsolete("", error: true)]
         public ScopedFileDeleter()
         {
+            throw new InvalidOperationException();
+        }
+
+        public ScopedFileDeleter(List<string> list)
+        {
+            _willDeleteFilePaths = list;
+        }
+
+        public static ScopedFileDeleter Using()
+        {
+            return new ScopedFileDeleter(new List<string>(20));
         }
 
         public string Register(string path)

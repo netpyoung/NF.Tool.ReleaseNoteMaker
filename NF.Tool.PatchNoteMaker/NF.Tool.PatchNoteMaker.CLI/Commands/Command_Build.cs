@@ -115,7 +115,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
 
             string rendered;
-            using (ScopedFileDeleter deleter = new ScopedFileDeleter())
+            using (ScopedFileDeleter deleter = ScopedFileDeleter.Using())
             {
                 AnsiConsole.MarkupLine("[green]*[/] Loading template...");
                 string templatePath;
