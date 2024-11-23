@@ -37,4 +37,7 @@ public sealed class TestParseNewsfragmentBasename
         FragmentBasename? actual = FragmentFinder.ParseNewFragmentBasenameOrNull(baseName, categorySeq);
         Assert.IsNull(actual);
     }
+
+    // TODO(pyoung): class TestNewsFragmentsOrdering(TestCase):
+    // https://github.com/twisted/towncrier/blob/trunk/src/towncrier/test/test_builder.py
 }
