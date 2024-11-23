@@ -18,26 +18,30 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             DateTime lastWriteTime = File.GetLastWriteTime(tempFilePath);
 
             string editor = GetEditorName();
-
-            Process process = new Process
+            try
             {
-                StartInfo = new ProcessStartInfo
+                ProcessStartInfo processStartInfo = new ProcessStartInfo
                 {
                     FileName = editor,
                     Arguments = tempFilePath,
                     UseShellExecute = false
-                }
-            };
+                };
 
-            using (process)
-            {
-                process.Start();
-                await process.WaitForExitAsync();
-
-                if (process.ExitCode != 0)
+                using (Process process = new Process())
                 {
-                    return null;
+                    process.StartInfo = processStartInfo;
+                    process.Start();
+                    await process.WaitForExitAsync();
+
+                    if (process.ExitCode != 0)
+                    {
+                        return null;
+                    }
                 }
+            }
+            catch
+            {
+                return null;
             }
 
             if (File.GetLastWriteTime(tempFilePath) == lastWriteTime)
@@ -50,6 +54,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             string filteredTxt = ProcessContent(txt);
             return filteredTxt;
         }
+
         public static string ProcessContent(string content)
         {
             string[] allLines = content.Split('\n');
