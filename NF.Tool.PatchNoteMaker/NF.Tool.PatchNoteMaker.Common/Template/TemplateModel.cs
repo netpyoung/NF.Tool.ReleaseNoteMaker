@@ -1,42 +1,25 @@
-﻿using NF.Tool.PatchNoteMaker.Common.Config;
-using NF.Tool.PatchNoteMaker.Common.Fragments;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace NF.Tool.PatchNoteMaker.Common.Template
 {
-    public sealed class TemplateModel
+    public sealed record class Section(string DisplayName, List<Category> Categories);
+    public sealed record class Category(string DisplayName, List<Content> Contents)
     {
-        public bool IsRenderTitle { get; private set; }
-
-        public VersionData VersionData { get; private set; }
-
-        [Description("key is Definition.Name")]
-        public Dictionary<string, PatchNoteType> DefinitionDic { get; } = new Dictionary<string, PatchNoteType>();
-
-        [Description("key is Section.Name")]
-        public Fragment SectionDic { get; set; } = new Fragment();
-
-        public Dictionary<string, Dictionary<string, List<string>>> IssuesByCategory { get; } = new Dictionary<string, Dictionary<string, List<string>>>();
-
-        private TemplateModel(VersionData versionData, bool isRenderTitle, Fragment fragment, List<PatchNoteType> types)
+        public List<string> GetAllIssues()
         {
-            IsRenderTitle = isRenderTitle;
-            VersionData = versionData;
-            SectionDic = fragment;
-            DefinitionDic = types.ToDictionary(x => x.Category, x => x, StringComparer.OrdinalIgnoreCase);
-            IssuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "Section1", new Dictionary<string, List<string>>(StringComparer.OrdinalIgnoreCase) { { "Category1", new List<string> { "Issue1" } } } }
-            };
-        }
-
-        public static TemplateModel Create(VersionData versionData, bool isRenderTitle, Fragment fragment, List<PatchNoteType> types)
-        {
-            TemplateModel ret = new TemplateModel(versionData, isRenderTitle, fragment, types);
+            List<string> ret = Contents.SelectMany(x => x.Issues).ToList();
             return ret;
         }
     }
+    public sealed record class Content(string Text, List<string> Issues)
+    {
+        public void Deconstruct(out string text, out List<string> issues)
+        {
+            text = Text;
+            issues = Issues;
+        }
+    }
+
+    public sealed record class TemplateModel(bool IsRenderTitle, VersionData VersionData, List<Section> Sections);
 }

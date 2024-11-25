@@ -25,8 +25,8 @@ namespace NF.Tool.PatchNoteMaker.Common.Config
         public string IssueFormat { get; set; } = string.Empty;
         public string TitleFormat { get; set; } = string.Empty;
         public string StartString { get; set; } = "<!-- release notes start -->\n";
-        public bool IsWrap { get; internal set; }
-        public bool IsAllBullets { get; internal set; }
+        public bool IsWrap { get; set; }
+        public bool IsAllBullets { get; set; }
 
         // config.package_dir
         // public string PackageDirectory{ get; set; } = string.Empty;

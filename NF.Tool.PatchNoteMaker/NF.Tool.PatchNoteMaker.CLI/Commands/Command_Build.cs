@@ -5,6 +5,7 @@ using NF.Tool.PatchNoteMaker.Common.Template;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -107,15 +108,14 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
 
             AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
+
             if (fragmentResultExOrNull != null)
             {
                 AnsiConsole.WriteException(fragmentResultExOrNull, ExceptionFormats.ShortenEverything);
                 return 1;
             }
-            Fragment fragment = FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config.Types, isAllBullets: true);
-            bool isRenderTitle = string.IsNullOrEmpty(config.Maker.TitleFormat);
 
-
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragmentResult.FragmentContents, config);
             string rendered;
             using (ScopedFileDeleter deleter = ScopedFileDeleter.Using())
             {
@@ -132,7 +132,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 }
 
                 AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
-                (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, fragment, isRenderTitle);
+                (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
                 if (renderExOrNull != null)
                 {
                     AnsiConsole.WriteException(renderExOrNull);

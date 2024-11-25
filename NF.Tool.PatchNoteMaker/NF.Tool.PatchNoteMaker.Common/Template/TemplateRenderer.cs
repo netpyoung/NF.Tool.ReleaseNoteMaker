@@ -21,6 +21,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             {
                 return (exOrNull, string.Empty);
             }
+
             string text = await File.ReadAllTextAsync(tempFilePath);
             File.Delete(tempFilePath);
             return (null, text);
@@ -33,6 +34,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             PatchNoteTemplateGenerator generator = new PatchNoteTemplateGenerator(config, templateModel);
             generator.Refs.Add(assemblyLocation);
             generator.Imports.Add(typeof(PatchNoteTemplateGenerator).Namespace);
+            generator.Imports.Add(typeof(PatchNoteConfig).Namespace);
 
             bool isSuccess = await generator.ProcessTemplateAsync(templatePath, outputPath);
             if (!isSuccess)
@@ -45,16 +47,12 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
                 }
                 return new PatchNoteMakerException(sb.ToString());
             }
+
             return null;
         }
 
 
-        public static async Task<(Exception?, string)> RenderFragments(
-            string templateFpath,
-            [NotNull] PatchNoteConfig config,
-            VersionData versionData,
-            [NotNull] Fragment fragment,
-            bool isRenderTitle)
+        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] PatchNoteConfig config, VersionData versionData, List<FragmentContent> fragmentContents)
         {
             //    top_underline = config.underlines[0],
             //    config.underlines[1:],
@@ -64,57 +62,39 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             string issueFormat = config.Maker.IssueFormat;
             bool isWrap = config.Maker.IsWrap;
             bool isAllBullets = config.Maker.IsAllBullets;
+            bool isRenderTitle = string.IsNullOrEmpty(config.Maker.TitleFormat);
 
-            // dic/str sectionName, str categoryName, [categories str appendnewlinecodeblock [str formattedIssues]]
-            Dictionary<string, Dictionary<string, Dictionary<string, List<string>>>> data = new Dictionary<string, Dictionary<string, Dictionary<string, List<string>>>>();
-
-            // dic/str sectionName categoryName issues.orderd.renderd.
-            Dictionary<string, Dictionary<string, List<string>>> issuesByCategory = new Dictionary<string, Dictionary<string, List<string>>>();
-
-            foreach ((string sectionName, Section section) in fragment)
+            List<Section> sections = new List<Section>(config.Sections.Count);
+            foreach (IGrouping<string, FragmentContent> grpSection in fragmentContents.GroupBy(x => x.SectionDisplayName).OrderBy(grp => config.Sections.FindIndex(x => x.DisplayName == grp.Key)))
             {
-                data[sectionName] = new Dictionary<string, Dictionary<string, List<string>>>();
-                issuesByCategory[sectionName] = new Dictionary<string, List<string>>();
-
-                foreach (string categoryName in section.Keys)
+                List<Category> categories = new List<Category>(config.Types.Count);
+                foreach (IGrouping<string, FragmentContent> grpCategory in grpSection.GroupBy(x => x.FragmentBasename.Category).OrderBy(grp => config.Types.FindIndex(x => x.Category == grp.Key)))
                 {
-                    HashSet<string> categoryIssues = new HashSet<string>();
-                    List<(string text, List<string> issues)> entries = new List<(string text, List<string> issues)>();
-
-                    foreach ((string text, List<string> issues) in section[categoryName])
+                    List<Content> contents = new List<Content>();
+                    foreach (IGrouping<string, FragmentContent> grpData in grpCategory.OrderBy(x => IssueParts.IssueKey(x.FragmentBasename.Issue)).GroupBy(x => x.Data))
                     {
-                        entries.Add((text, issues.OrderBy(issueKey).ToList()));
-                        foreach (string issue in issues)
-                        {
-                            categoryIssues.Add(issue);
-                        }
+                        List<string> issues = grpData.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
+                        List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
+                        string text = Issue.AppendNewlinesIfTrailingCodeBlock(grpData.Key);
+                        contents.Add(new Content(text, formattedIssues));
                     }
-
-                    entries = entries
-                        .OrderBy(entryKey)
-                        .ThenBy(e => isAllBullets ? 0 : bulletKey(e.text))
-                        .ToList();
-
-                    Dictionary<string, List<string>> categories = new Dictionary<string, List<string>>();
-                    foreach ((string text, List<string> issues) in entries)
-                    {
-                        List<string> formattedIssues = issues.Select(issue => RenderIssue(issueFormat, issue)).ToList();
-                        categories[AppendNewlinesIfTrailingCodeBlock(text)] = formattedIssues;
-                    }
-
-                    data[sectionName][categoryName] = categories;
-                    issuesByCategory[sectionName][categoryName] = categoryIssues
-                        .OrderBy(issueKey)
-                        .Select(issue => RenderIssue(issueFormat, issue))
-                        .ToList();
+                    string category = grpCategory.Key;
+                    string categoryDisplayName = config.Types.Find(x => x.Category == category)!.DisplayName;
+                    categories.Add(new Category(categoryDisplayName, contents));
                 }
+
+                sections.Add(new Section(grpSection.Key, categories));
             }
+
+
+            //entries = entries
+            //    .OrderBy(entryKey)
+            //    .ThenBy(e => isAllBullets ? 0 : bulletKey(e.text))
+            //    .ToList();
 
             // underlines,
             // topUnderline,
-            // sections = data,
-            // issuesByCategory
-            TemplateModel model = TemplateModel.Create(versionData, isRenderTitle, fragment, config.Types);
+            TemplateModel model = new TemplateModel(isRenderTitle, versionData, sections);
             (Exception? exOrNull, string renderedText) = await Render(templateFpath, config, model);
             if (exOrNull != null)
             {
@@ -138,32 +118,29 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             return (null, result);
         }
 
-        private static string RenderIssue(string format, string issue)
-        {
-            if (!string.IsNullOrEmpty(format))
-            {
-                return string.Format(format, issue);
-            }
-            return issue;
-        }
-
-        private static string AppendNewlinesIfTrailingCodeBlock(string text)
-        {
-            return text;
-        }
-
-        private static int issueKey(string issue)
-        {
-            return int.Parse(issue.TrimStart('#'));
-        }
-        private static int entryKey((string text, List<string> issues) entry)
-        {
-            return entry.text.Length;
-        }
-
         private static int bulletKey(string text)
         {
-            return text.StartsWith("- ") || text.StartsWith("* ") ? 1 : 0;
+            if (string.IsNullOrEmpty(text))
+            {
+                return -1;
+            }
+
+            if (text.StartsWith("- "))
+            {
+                return 0;
+            }
+
+            if (text.StartsWith("* "))
+            {
+                return 1;
+            }
+
+            if (text.StartsWith("#. "))
+            {
+                return 2;
+            }
+
+            return 3;
         }
 
         private static string GetIndent(string text, bool allBullets)
@@ -178,7 +155,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
                 return "   ";
             }
 
-            return "";
+            return string.Empty;
         }
 
         private static string TextWrap(string text, int width, string subsequentIndent)

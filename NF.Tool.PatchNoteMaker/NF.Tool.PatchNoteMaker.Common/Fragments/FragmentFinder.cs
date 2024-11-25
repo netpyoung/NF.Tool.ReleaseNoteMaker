@@ -41,7 +41,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
             List<FragmentFile> fragmentFiles = new List<FragmentFile>(30);
             foreach (PatchNoteSection section in config.Sections)
             {
-                string sectionName = section.DisplayName;
+                string sectionDisplayName = section.DisplayName;
                 string sectionDir = getSectionPath.Resolve(section.Path);
 
                 string[] files;
@@ -54,7 +54,6 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
                     files = [];
                 }
 
-                List<SectionFragment> fileContents = new List<SectionFragment>();
                 foreach (string fileName in files.Select(x => Path.GetFileName(x)))
                 {
                     if (ignoredFileNameSet.Any(pattern => IsMatch(fileName.ToLower(), pattern)))
@@ -78,12 +77,13 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
                     {
                         if (fragmentBaseName.Issue.StartsWith(config.Maker.OrphanPrefix))
                         {
-                            fragmentBaseName.Issue = "";
                             if (!orphanFragmentCounter.ContainsKey(fragmentBaseName.Category))
                             {
                                 orphanFragmentCounter[fragmentBaseName.Category] = 0;
                             }
-                            fragmentBaseName.RetryCount = orphanFragmentCounter[fragmentBaseName.Category]++;
+                            int retryCount = orphanFragmentCounter[fragmentBaseName.Category]++;
+
+                            fragmentBaseName = new FragmentBasename(Issue: string.Empty, fragmentBaseName.Category, retryCount);
                         }
                     }
 
@@ -96,20 +96,18 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
                         }
                     }
 
-                    string fullFilename = Path.Combine(sectionDir, fileName);
-                    fragmentFiles.Add(new FragmentFile(fullFilename, fragmentBaseName.Category));
+                    string fullFileName = Path.Combine(sectionDir, fileName);
+                    fragmentFiles.Add(new FragmentFile(fullFileName, fragmentBaseName.Category));
 
-                    string data = File.ReadAllText(fullFilename);
-                    if (fileContents.Find(x => x.FragmentBasename == fragmentBaseName) != null)
+                    string data = File.ReadAllText(fullFileName);
+                    if (fragmentContents.Exists(x => x.FragmentBasename == fragmentBaseName))
                     {
                         PatchNoteMakerException ex = new PatchNoteMakerException($"Multiple files for {fragmentBaseName.Issue}.{fragmentBaseName.Category} in {sectionDir}");
                         return (ex, FragmentResult.Default());
                     }
 
-                    fileContents.Add(new SectionFragment(fragmentBaseName, data));
+                    fragmentContents.Add(new FragmentContent(sectionDisplayName, fragmentBaseName, data));
                 }
-
-                fragmentContents.Add(new FragmentContent(sectionName, fileContents));
             }
 
             return (null, new FragmentResult { FragmentContents = fragmentContents, FragmentFiles = fragmentFiles });
@@ -178,49 +176,45 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
             }
         }
 
-        public static Fragment SplitFragments([NotNull] List<FragmentContent> fragmentContents, [NotNull] List<PatchNoteType> definitions, bool isAllBullets)
+        public static List<FragmentContent> SplitFragments([NotNull] List<FragmentContent> fragmentContents, [NotNull] PatchNoteConfig config)
         {
-            Fragment fragment = new Fragment();
+            List<PatchNoteType> definitions = config.Types;
+            bool isAllBullets = config.Maker.IsAllBullets;
+
+            List<FragmentContent> ret = new List<FragmentContent>(fragmentContents.Count);
             foreach (FragmentContent fragmentContent in fragmentContents)
             {
-                string sectionName = fragmentContent.SectionName;
-                Section section = new Section(sectionName);
-                foreach (SectionFragment sectionFragment in fragmentContent.SectionFragments)
+                string content;
+                if (isAllBullets)
                 {
-                    string category = sectionFragment.FragmentBasename.Category;
-                    string content = sectionFragment.Data;
-                    string issue = sectionFragment.FragmentBasename.Issue;
-
-                    if (isAllBullets)
+                    string indented = Indent(fragmentContent.Data.Trim(), "  ");
+                    if (indented.Length > 2)
                     {
-                        string indented = Indent(content.Trim(), "  ");
-                        if (indented.Length > 2)
-                        {
-                            content = indented.Substring(2);
-                        }
-                        else
-                        {
-                            content = string.Empty;
-                        }
+                        content = indented.Substring(2);
                     }
                     else
                     {
-                        content = content.TrimStart();
+                        content = string.Empty;
                     }
+                }
+                else
+                {
+                    content = fragmentContent.Data.TrimStart();
+                }
 
 
-                    if (!string.IsNullOrEmpty(issue)
-                        && !definitions.Find(x => x.Category == sectionFragment.FragmentBasename.Category)!.IsShowContent)
+                if (!string.IsNullOrEmpty(fragmentContent.FragmentBasename.Issue))
+                {
+                    if (!definitions.Find(x => x.Category == fragmentContent.FragmentBasename.Category)!.IsShowContent)
                     {
                         content = string.Empty;
                     }
-
-                    section.AddIssue(category, content, issue);
                 }
 
-                fragment.AddSection(section);
+                FragmentContent newFragmentContent = fragmentContent with { Data = content };
+                ret.Add(newFragmentContent);
             }
-            return fragment;
+            return ret;
         }
 
         public static string Indent([NotNull] string text, string prefix)
