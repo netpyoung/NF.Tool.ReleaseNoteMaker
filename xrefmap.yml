@@ -972,76 +972,6 @@ references:
   fullName.vb: NF.Tool.PatchNoteMaker.Common.Fragments.IssueParts.<=
   nameWithType: IssueParts.operator <=
   nameWithType.vb: IssueParts.<=
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategory
-  name: IssuesByCategory
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategory.html
-  commentId: T:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategory
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategory
-  nameWithType: IssuesByCategory
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem
-  name: IssuesByCategoryItem
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html
-  commentId: T:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem
-  nameWithType: IssuesByCategoryItem
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.#ctor(System.String,System.String,System.Collections.Generic.List{System.String})
-  name: IssuesByCategoryItem(string, string, List<string>)
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem__ctor_System_String_System_String_System_Collections_Generic_List_System_String__
-  commentId: M:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.#ctor(System.String,System.String,System.Collections.Generic.List{System.String})
-  name.vb: New(String, String, List(Of String))
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.IssuesByCategoryItem(string, string, System.Collections.Generic.List<string>)
-  fullName.vb: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.New(String, String, System.Collections.Generic.List(Of String))
-  nameWithType: IssuesByCategoryItem.IssuesByCategoryItem(string, string, List<string>)
-  nameWithType.vb: IssuesByCategoryItem.New(String, String, List(Of String))
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.#ctor*
-  name: IssuesByCategoryItem
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem__ctor_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.IssuesByCategoryItem
-  fullName.vb: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.New
-  nameWithType: IssuesByCategoryItem.IssuesByCategoryItem
-  nameWithType.vb: IssuesByCategoryItem.New
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category
-  name: Category
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_Category
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category
-  nameWithType: IssuesByCategoryItem.Category
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category*
-  name: Category
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_Category_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.Category
-  nameWithType: IssuesByCategoryItem.Category
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues
-  name: renderedIssues
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_renderedIssues
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues
-  nameWithType: IssuesByCategoryItem.renderedIssues
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues*
-  name: renderedIssues
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_renderedIssues_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.renderedIssues
-  nameWithType: IssuesByCategoryItem.renderedIssues
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName
-  name: sectionDisplayName
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_sectionDisplayName
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName
-  nameWithType: IssuesByCategoryItem.sectionDisplayName
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName*
-  name: sectionDisplayName
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.html#NF_Tool_PatchNoteMaker_Common_Fragments_IssuesByCategoryItem_sectionDisplayName_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.IssuesByCategoryItem.sectionDisplayName
-  nameWithType: IssuesByCategoryItem.sectionDisplayName
 - uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment
   name: SplitFragment
   href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html
@@ -1080,45 +1010,45 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.Category
   nameWithType: SplitFragment.Category
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues
-  name: renderedIssues
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_renderedIssues
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues
-  nameWithType: SplitFragment.renderedIssues
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues*
-  name: renderedIssues
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_renderedIssues_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues
+  name: RenderedIssues
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_RenderedIssues
+  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues
+  nameWithType: SplitFragment.RenderedIssues
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues*
+  name: RenderedIssues
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_RenderedIssues_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.renderedIssues
-  nameWithType: SplitFragment.renderedIssues
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName
-  name: sectionDisplayName
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_sectionDisplayName
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName
-  nameWithType: SplitFragment.sectionDisplayName
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName*
-  name: sectionDisplayName
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_sectionDisplayName_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.RenderedIssues
+  nameWithType: SplitFragment.RenderedIssues
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName
+  name: SectionDisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_SectionDisplayName
+  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName
+  nameWithType: SplitFragment.SectionDisplayName
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName*
+  name: SectionDisplayName
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_SectionDisplayName_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.sectionDisplayName
-  nameWithType: SplitFragment.sectionDisplayName
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData
-  name: trimedData
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_trimedData
-  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData
-  nameWithType: SplitFragment.trimedData
-- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData*
-  name: trimedData
-  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_trimedData_
-  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.SectionDisplayName
+  nameWithType: SplitFragment.SectionDisplayName
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData
+  name: TrimedData
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_TrimedData
+  commentId: P:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData
+  nameWithType: SplitFragment.TrimedData
+- uid: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData*
+  name: TrimedData
+  href: api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html#NF_Tool_PatchNoteMaker_Common_Fragments_SplitFragment_TrimedData_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData
   isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.trimedData
-  nameWithType: SplitFragment.trimedData
+  fullName: NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.TrimedData
+  nameWithType: SplitFragment.TrimedData
 - uid: NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException
   name: PatchNoteMakerException
   href: api/NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException.html
