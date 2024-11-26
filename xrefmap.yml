@@ -1263,15 +1263,15 @@ references:
   commentId: T:NF.Tool.PatchNoteMaker.Common.Template.Category
   fullName: NF.Tool.PatchNoteMaker.Common.Template.Category
   nameWithType: Category
-- uid: NF.Tool.PatchNoteMaker.Common.Template.Category.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Content})
-  name: Category(string, List<Content>)
-  href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category__ctor_System_String_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_Template_Content__
-  commentId: M:NF.Tool.PatchNoteMaker.Common.Template.Category.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Content})
-  name.vb: New(String, List(Of Content))
-  fullName: NF.Tool.PatchNoteMaker.Common.Template.Category.Category(string, System.Collections.Generic.List<NF.Tool.PatchNoteMaker.Common.Template.Content>)
-  fullName.vb: NF.Tool.PatchNoteMaker.Common.Template.Category.New(String, System.Collections.Generic.List(Of NF.Tool.PatchNoteMaker.Common.Template.Content))
-  nameWithType: Category.Category(string, List<Content>)
-  nameWithType.vb: Category.New(String, List(Of Content))
+- uid: NF.Tool.PatchNoteMaker.Common.Template.Category.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Content},System.Collections.Generic.List{System.String})
+  name: Category(string, List<Content>, List<string>)
+  href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category__ctor_System_String_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_Template_Content__System_Collections_Generic_List_System_String__
+  commentId: M:NF.Tool.PatchNoteMaker.Common.Template.Category.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Content},System.Collections.Generic.List{System.String})
+  name.vb: New(String, List(Of Content), List(Of String))
+  fullName: NF.Tool.PatchNoteMaker.Common.Template.Category.Category(string, System.Collections.Generic.List<NF.Tool.PatchNoteMaker.Common.Template.Content>, System.Collections.Generic.List<string>)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.Template.Category.New(String, System.Collections.Generic.List(Of NF.Tool.PatchNoteMaker.Common.Template.Content), System.Collections.Generic.List(Of String))
+  nameWithType: Category.Category(string, List<Content>, List<string>)
+  nameWithType.vb: Category.New(String, List(Of Content), List(Of String))
 - uid: NF.Tool.PatchNoteMaker.Common.Template.Category.#ctor*
   name: Category
   href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category__ctor_
@@ -1282,6 +1282,19 @@ references:
   fullName.vb: NF.Tool.PatchNoteMaker.Common.Template.Category.New
   nameWithType: Category.Category
   nameWithType.vb: Category.New
+- uid: NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues
+  name: CategoryIssues
+  href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category_CategoryIssues
+  commentId: P:NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues
+  fullName: NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues
+  nameWithType: Category.CategoryIssues
+- uid: NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues*
+  name: CategoryIssues
+  href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category_CategoryIssues_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.Template.Category.CategoryIssues
+  nameWithType: Category.CategoryIssues
 - uid: NF.Tool.PatchNoteMaker.Common.Template.Category.Contents
   name: Contents
   href: api/NF.Tool.PatchNoteMaker.Common.Template.Category.html#NF_Tool_PatchNoteMaker_Common_Template_Category_Contents

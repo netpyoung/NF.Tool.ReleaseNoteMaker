@@ -107,7 +107,7 @@
   "api/NF.Tool.PatchNoteMaker.Common.Template.Category.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.Template.Category.html",
     "title": "Class Category | NF.Tool.PatchNoteMaker",
-    "keywords": "Class Category Namespace NF.Tool.PatchNoteMaker.Common.Template Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed record Category Inheritance object Category Constructors Category(string, List<Content>) public Category(string DisplayName, List<Content> Contents) Parameters DisplayName string Contents List<Content> Properties Contents public List<Content> Contents { get; init; } Property Value List<Content> DisplayName public string DisplayName { get; init; } Property Value string Methods GetAllIssues() public List<string> GetAllIssues() Returns List<string>"
+    "keywords": "Class Category Namespace NF.Tool.PatchNoteMaker.Common.Template Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed record Category Inheritance object Category Constructors Category(string, List<Content>, List<string>) public Category(string DisplayName, List<Content> Contents, List<string> CategoryIssues) Parameters DisplayName string Contents List<Content> CategoryIssues List<string> Properties CategoryIssues public List<string> CategoryIssues { get; init; } Property Value List<string> Contents public List<Content> Contents { get; init; } Property Value List<Content> DisplayName public string DisplayName { get; init; } Property Value string Methods GetAllIssues() public List<string> GetAllIssues() Returns List<string>"
   },
   "api/NF.Tool.PatchNoteMaker.Common.Template.Content.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.Template.Content.html",
