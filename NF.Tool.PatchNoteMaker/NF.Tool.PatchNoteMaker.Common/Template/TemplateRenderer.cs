@@ -78,9 +78,14 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
                         string text = Issue.AppendNewlinesIfTrailingCodeBlock(grpData.Key);
                         contents.Add(new Content(text, formattedIssues));
                     }
+
                     string category = grpCategory.Key;
                     string categoryDisplayName = config.Types.Find(x => x.Category == category)!.DisplayName;
-                    categories.Add(new Category(categoryDisplayName, contents));
+                    {
+                        List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
+                        List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
+                        categories.Add(new Category(categoryDisplayName, contents, formattedIssues));
+                    }
                 }
 
                 sections.Add(new Section(grpSection.Key, categories));

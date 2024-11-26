@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace NF.Tool.PatchNoteMaker.Common.Template
 {
     public sealed record class Section(string DisplayName, List<Category> Categories);
-    public sealed record class Category(string DisplayName, List<Content> Contents)
+    public sealed record class Category(string DisplayName, List<Content> Contents, List<string> CategoryIssues)
     {
-        public List<string> GetAllIssues()
-        {
-            List<string> ret = Contents.SelectMany(x => x.Issues).ToList();
-            return ret;
-        }
+#pragma warning disable CA1024
+        public List<string> GetAllIssues() => CategoryIssues;
+#pragma warning restore CA1024
     }
     public sealed record class Content(string Text, List<string> Issues)
     {
