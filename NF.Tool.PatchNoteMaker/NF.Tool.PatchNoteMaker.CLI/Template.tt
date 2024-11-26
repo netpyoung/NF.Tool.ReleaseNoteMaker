@@ -3,8 +3,8 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#
-    System.Diagnostics.Debugger.Launch();
-    System.Diagnostics.Debugger.Break();
+    //System.Diagnostics.Debugger.Launch();
+    //System.Diagnostics.Debugger.Break();
 
     TemplateModel model = Host.GetTemplateModel();
     PatchNoteConfig config = Host.GetConfig();
@@ -12,13 +12,17 @@
 <#
     if (model.IsRenderTitle)
     {
-        WriteLine($"# {model.VersionData}\n");
+        WriteLine($"# {model.VersionData}");
     }
 #>
+
 <#
     foreach (Section section in model.Sections)
     {
-        WriteLine($"## {section.DisplayName}\n");
+        if (!string.IsNullOrEmpty(section.DisplayName))
+        {
+            WriteLine($"\n## {section.DisplayName}\n");
+        }
 
         if (section.Categories.Count == 0)
         {
@@ -51,7 +55,10 @@
                 }
                 else
                 {
-                    Write(" (");
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        Write(" (");
+                    }
                 }
                         
                 for (int i = 0; i < issues.Count; i++)
@@ -63,10 +70,12 @@
                         Write(", ");
                     }
                 }
-                if (!text.Contains("\n  - ") && !text.Contains("\n  * "))
+
+                if (!string.IsNullOrEmpty(text))
                 {
-                    WriteLine(")");
+                    Write(")");
                 }
+                WriteLine("");
             }
         
             List<string> categoryIssues = category.GetAllIssues();
@@ -77,6 +86,7 @@
                     WriteLine(issue);
                 }
             }
+            WriteLine("");
         }
     }
 #>
