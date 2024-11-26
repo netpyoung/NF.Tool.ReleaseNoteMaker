@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace NF.Tool.PatchNoteMaker.Common.Fragments
@@ -45,6 +46,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
 
     public sealed record class FragmentFile(string FileName, string Category);
 
+    [DebuggerDisplay("{Issue}/{Category}/{RetryCount}")]
     public sealed record class FragmentBasename(string Issue, string Category, int RetryCount)
     {
         // example: "release-2.0.1.doc.10"
