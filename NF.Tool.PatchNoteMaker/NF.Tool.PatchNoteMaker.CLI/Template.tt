@@ -78,15 +78,18 @@
                 WriteLine("");
             }
         
+
             List<string> categoryIssues = category.GetAllIssues();
             if (categoryIssues.Count > 0 && categoryIssues.First().Contains("]: "))
             {
+                WriteLine("");
                 foreach (string issue in categoryIssues)
                 {
                     WriteLine(issue);
                 }
             }
             WriteLine("");
+
         }
     }
 #>
