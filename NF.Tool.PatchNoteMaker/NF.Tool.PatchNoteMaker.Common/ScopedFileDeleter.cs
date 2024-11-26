@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace NF.Tool.PatchNoteMaker.CLI.Impl
+namespace NF.Tool.PatchNoteMaker.Common
 {
     public record struct ScopedFileDeleter : IDisposable
     {
