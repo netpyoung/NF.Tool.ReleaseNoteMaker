@@ -219,16 +219,20 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
 
         public static string Indent([NotNull] string text, string prefix)
         {
-            StringBuilder result = new StringBuilder();
-            string[] lines = text.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
+            if (string.IsNullOrEmpty(text))
+            {
+                return text;
+            }
 
+            StringBuilder result = new StringBuilder();
+            IEnumerable<string> lines = Regex.Matches(text, ".*?(\r\n|\n|\r|$)").Select(m => m.Value);
             foreach (string line in lines)
             {
                 if (!string.IsNullOrWhiteSpace(line))
                 {
                     result.Append(prefix);
                 }
-                result.AppendLine(line);
+                result.Append(line);
             }
 
             return result.ToString();
