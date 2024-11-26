@@ -5,12 +5,12 @@ on:
     branches:
       - main
     paths:
-      - 'NF.Tool.PatchNoteMaker/**'
+      - 'NF.Tool.ReleaseNoteMaker/**'
   pull_request:
     branches:
       - main
     paths:
-      - 'NF.Tool.PatchNoteMaker/**'
+      - 'NF.Tool.ReleaseNoteMaker/**'
 
 jobs:
   build:
@@ -24,5 +24,5 @@ jobs:
           dotnet-version: 9.x
 
       - name: Run tests
-        working-directory: NF.Tool.PatchNoteMaker
+        working-directory: NF.Tool.ReleaseNoteMaker
         run: dotnet test --configuration Release --verbosity normal

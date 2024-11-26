@@ -8,7 +8,7 @@ on:
    - main
   paths:
     - 'docfx/**'
-    - 'NF.Tool.PatchNoteMaker/**'
+    - 'NF.Tool.ReleaseNoteMaker/**'
 
 jobs:
   publish-docs:

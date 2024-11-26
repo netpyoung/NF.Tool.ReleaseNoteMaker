@@ -1,10 +1,10 @@
-# NF.Tool.PatchNoteMaker
+# NF.Tool.ReleaseNoteMaker
 
 wip
 
 based on python [TownCrier](https://github.com/twisted/towncrier)
 
-- [doc](https://netpyoung.github.io/NF.Tool.PatchNoteMaker/)
+- [doc](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/)
 
 ## used
 

@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "src": "../NF.Tool.PatchNoteMaker/",
+          "src": "../NF.Tool.ReleaseNoteMaker/",
           "files": [
             "**/*.sln"
           ]
@@ -38,8 +38,8 @@
       "modern"
     ],
     "globalMetadata": {
-      "_appName": "NF.Tool.PatchNoteMaker",
-      "_appTitle": "NF.Tool.PatchNoteMaker",
+      "_appName": "NF.Tool.ReleaseNoteMaker",
+      "_appTitle": "NF.Tool.ReleaseNoteMaker",
       "_enableSearch": true,
       "pdf": false
     }
