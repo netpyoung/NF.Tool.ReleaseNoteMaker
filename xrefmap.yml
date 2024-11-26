@@ -1,88 +1,6 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl
-  name: NF.Tool.PatchNoteMaker.CLI.Impl
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.html
-  commentId: N:NF.Tool.PatchNoteMaker.CLI.Impl
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl
-  nameWithType: NF.Tool.PatchNoteMaker.CLI.Impl
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter
-  name: ScopedFileDeleter
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html
-  commentId: T:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter
-  nameWithType: ScopedFileDeleter
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor
-  name: ScopedFileDeleter()
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter__ctor
-  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor
-  name.vb: New()
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.ScopedFileDeleter()
-  fullName.vb: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.New()
-  nameWithType: ScopedFileDeleter.ScopedFileDeleter()
-  nameWithType.vb: ScopedFileDeleter.New()
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor(System.Collections.Generic.List{System.String})
-  name: ScopedFileDeleter(List<string>)
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter__ctor_System_Collections_Generic_List_System_String__
-  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor(System.Collections.Generic.List{System.String})
-  name.vb: New(List(Of String))
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.ScopedFileDeleter(System.Collections.Generic.List<string>)
-  fullName.vb: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.New(System.Collections.Generic.List(Of String))
-  nameWithType: ScopedFileDeleter.ScopedFileDeleter(List<string>)
-  nameWithType.vb: ScopedFileDeleter.New(List(Of String))
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor*
-  name: ScopedFileDeleter
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter__ctor_
-  commentId: Overload:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.ScopedFileDeleter
-  fullName.vb: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.New
-  nameWithType: ScopedFileDeleter.ScopedFileDeleter
-  nameWithType.vb: ScopedFileDeleter.New
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose
-  name: Dispose()
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Dispose
-  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose()
-  nameWithType: ScopedFileDeleter.Dispose()
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose*
-  name: Dispose
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Dispose_
-  commentId: Overload:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Dispose
-  nameWithType: ScopedFileDeleter.Dispose
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register(System.String)
-  name: Register(string)
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Register_System_String_
-  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register(System.String)
-  name.vb: Register(String)
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register(string)
-  fullName.vb: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register(String)
-  nameWithType: ScopedFileDeleter.Register(string)
-  nameWithType.vb: ScopedFileDeleter.Register(String)
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register*
-  name: Register
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Register_
-  commentId: Overload:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Register
-  nameWithType: ScopedFileDeleter.Register
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using
-  name: Using()
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Using
-  commentId: M:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using()
-  nameWithType: ScopedFileDeleter.Using()
-- uid: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using*
-  name: Using
-  href: api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_CLI_Impl_ScopedFileDeleter_Using_
-  commentId: Overload:NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using
-  isSpec: "True"
-  fullName: NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.Using
-  nameWithType: ScopedFileDeleter.Using
 - uid: NF.Tool.PatchNoteMaker.Common
   name: NF.Tool.PatchNoteMaker.Common
   href: api/NF.Tool.PatchNoteMaker.Common.html
@@ -1257,6 +1175,82 @@ references:
   isSpec: "True"
   fullName: NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException.StackTrace
   nameWithType: PatchNoteMakerException.StackTrace
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter
+  name: ScopedFileDeleter
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html
+  commentId: T:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter
+  nameWithType: ScopedFileDeleter
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor
+  name: ScopedFileDeleter()
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter__ctor
+  commentId: M:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor
+  name.vb: New()
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.ScopedFileDeleter()
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.New()
+  nameWithType: ScopedFileDeleter.ScopedFileDeleter()
+  nameWithType.vb: ScopedFileDeleter.New()
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor(System.Collections.Generic.List{System.String})
+  name: ScopedFileDeleter(List<string>)
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter__ctor_System_Collections_Generic_List_System_String__
+  commentId: M:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor(System.Collections.Generic.List{System.String})
+  name.vb: New(List(Of String))
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.ScopedFileDeleter(System.Collections.Generic.List<string>)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.New(System.Collections.Generic.List(Of String))
+  nameWithType: ScopedFileDeleter.ScopedFileDeleter(List<string>)
+  nameWithType.vb: ScopedFileDeleter.New(List(Of String))
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor*
+  name: ScopedFileDeleter
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter__ctor_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.ScopedFileDeleter
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.New
+  nameWithType: ScopedFileDeleter.ScopedFileDeleter
+  nameWithType.vb: ScopedFileDeleter.New
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose
+  name: Dispose()
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Dispose
+  commentId: M:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose()
+  nameWithType: ScopedFileDeleter.Dispose()
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose*
+  name: Dispose
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Dispose_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Dispose
+  nameWithType: ScopedFileDeleter.Dispose
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register(System.String)
+  name: Register(string)
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Register_System_String_
+  commentId: M:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register(System.String)
+  name.vb: Register(String)
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register(string)
+  fullName.vb: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register(String)
+  nameWithType: ScopedFileDeleter.Register(string)
+  nameWithType.vb: ScopedFileDeleter.Register(String)
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register*
+  name: Register
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Register_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Register
+  nameWithType: ScopedFileDeleter.Register
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using
+  name: Using()
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Using
+  commentId: M:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using()
+  nameWithType: ScopedFileDeleter.Using()
+- uid: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using*
+  name: Using
+  href: api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html#NF_Tool_PatchNoteMaker_Common_ScopedFileDeleter_Using_
+  commentId: Overload:NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using
+  isSpec: "True"
+  fullName: NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.Using
+  nameWithType: ScopedFileDeleter.Using
 - uid: NF.Tool.PatchNoteMaker.Common.Template
   name: NF.Tool.PatchNoteMaker.Common.Template
   href: api/NF.Tool.PatchNoteMaker.Common.Template.html

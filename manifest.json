@@ -12,26 +12,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.CLI.Impl.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfig.yml",
       "output": {
         ".html": {
@@ -226,6 +206,16 @@
       "output": {
         ".html": {
           "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html"
         }
       },
       "version": ""

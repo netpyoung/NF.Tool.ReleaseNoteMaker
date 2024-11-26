@@ -1,14 +1,4 @@
 {
-  "api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html": {
-    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.ScopedFileDeleter.html",
-    "title": "Struct ScopedFileDeleter | NF.Tool.PatchNoteMaker",
-    "keywords": "Struct ScopedFileDeleter Namespace NF.Tool.PatchNoteMaker.CLI.Impl Assembly NF.Tool.PatchNoteMaker.CLI.dll public record struct ScopedFileDeleter Constructors ScopedFileDeleter() [Obsolete(\"Do not use constructor\", true)] public ScopedFileDeleter() ScopedFileDeleter(List<string>) public ScopedFileDeleter(List<string> list) Parameters list List<string> Methods Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. public void Dispose() Register(string) public string Register(string path) Parameters path string Returns string Using() public static ScopedFileDeleter Using() Returns ScopedFileDeleter"
-  },
-  "api/NF.Tool.PatchNoteMaker.CLI.Impl.html": {
-    "href": "api/NF.Tool.PatchNoteMaker.CLI.Impl.html",
-    "title": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl | NF.Tool.PatchNoteMaker",
-    "keywords": "Namespace NF.Tool.PatchNoteMaker.CLI.Impl Structs ScopedFileDeleter"
-  },
   "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfig.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfig.html",
     "title": "Class PatchNoteConfig | NF.Tool.PatchNoteMaker",
@@ -109,6 +99,11 @@
     "title": "Class PatchNoteMakerException | NF.Tool.PatchNoteMaker",
     "keywords": "Class PatchNoteMakerException Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public sealed class PatchNoteMakerException : Exception Inheritance object Exception PatchNoteMakerException Constructors PatchNoteMakerException() public PatchNoteMakerException() PatchNoteMakerException(string) public PatchNoteMakerException(string message) Parameters message string PatchNoteMakerException(string, Exception) public PatchNoteMakerException(string message, Exception innerException) Parameters message string innerException Exception Properties StackTrace Gets a string representation of the immediate frames on the call stack. public override string StackTrace { get; } Property Value string A string that describes the immediate frames of the call stack."
   },
+  "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html": {
+    "href": "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html",
+    "title": "Struct ScopedFileDeleter | NF.Tool.PatchNoteMaker",
+    "keywords": "Struct ScopedFileDeleter Namespace NF.Tool.PatchNoteMaker.Common Assembly NF.Tool.PatchNoteMaker.Common.dll public record struct ScopedFileDeleter Constructors ScopedFileDeleter() [Obsolete(\"Do not use constructor\", true)] public ScopedFileDeleter() ScopedFileDeleter(List<string>) public ScopedFileDeleter(List<string> list) Parameters list List<string> Methods Dispose() Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. public void Dispose() Register(string) public string Register(string path) Parameters path string Returns string Using() public static ScopedFileDeleter Using() Returns ScopedFileDeleter"
+  },
   "api/NF.Tool.PatchNoteMaker.Common.Template.Category.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.Template.Category.html",
     "title": "Class Category | NF.Tool.PatchNoteMaker",
@@ -152,7 +147,7 @@
   "api/NF.Tool.PatchNoteMaker.Common.html": {
     "href": "api/NF.Tool.PatchNoteMaker.Common.html",
     "title": "Namespace NF.Tool.PatchNoteMaker.Common | NF.Tool.PatchNoteMaker",
-    "keywords": "Namespace NF.Tool.PatchNoteMaker.Common Classes PatchNoteMakerException"
+    "keywords": "Namespace NF.Tool.PatchNoteMaker.Common Classes PatchNoteMakerException Structs ScopedFileDeleter"
   },
   "docs/index.html": {
     "href": "docs/index.html",
