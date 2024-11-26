@@ -4,7 +4,7 @@ using System.IO;
 
 namespace NF.Tool.PatchNoteMaker.Common
 {
-    public record struct ScopedFileDeleter : IDisposable
+    public readonly record struct ScopedFileDeleter : IDisposable
     {
         private readonly List<string> _willDeleteFilePaths;
 
@@ -24,13 +24,13 @@ namespace NF.Tool.PatchNoteMaker.Common
             return new ScopedFileDeleter(new List<string>(20));
         }
 
-        public string Register(string path)
+        public readonly string Register(string path)
         {
             _willDeleteFilePaths.Add(path);
             return path;
         }
 
-        public void Dispose()
+        public readonly void Dispose()
         {
             foreach (string path in _willDeleteFilePaths)
             {

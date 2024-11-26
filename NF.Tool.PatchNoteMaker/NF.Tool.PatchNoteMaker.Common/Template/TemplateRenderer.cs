@@ -40,10 +40,10 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             if (!isSuccess)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("Template Render Error");
+                _ = sb.AppendLine("Template Render Error");
                 foreach (CompilerError err in generator.Errors)
                 {
-                    sb.AppendLine(err.ToString());
+                    _ = sb.AppendLine(err.ToString());
                 }
                 return new PatchNoteMakerException(sb.ToString());
             }
@@ -70,7 +70,7 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
                 List<Category> categories = new List<Category>(config.Types.Count);
                 foreach (IGrouping<string, FragmentContent> grpCategory in grpSection.GroupBy(x => x.FragmentBasename.Category).OrderBy(grp => config.Types.FindIndex(x => x.Category == grp.Key)))
                 {
-                    List<Content> contents = new List<Content>();
+                    List<Content> contents = [];
                     foreach (IGrouping<string, FragmentContent> grpData in grpCategory.OrderBy(x => IssueParts.IssueKey(x.FragmentBasename.Issue)).GroupBy(x => x.Data))
                     {
                         List<string> issues = grpData.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
@@ -112,11 +112,11 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             {
                 if (isWrap)
                 {
-                    sb.AppendLine(TextWrap(line, 79, GetIndent(line, isAllBullets)));
+                    _ = sb.AppendLine(TextWrap(line, 79, GetIndent(line, isAllBullets)));
                 }
                 else
                 {
-                    sb.AppendLine(line);
+                    _ = sb.AppendLine(line);
                 }
             }
 
@@ -124,7 +124,9 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             return (null, result);
         }
 
-        private static int bulletKey(string text)
+#pragma warning disable IDE0051 // Remove unused private members
+        private static int BulletKey(string text)
+#pragma warning restore IDE0051 // Remove unused private members
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -174,11 +176,11 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             {
                 if (currentLineLength + word.Length + 1 > width)
                 {
-                    line.AppendLine();
-                    line.Append(subsequentIndent);
+                    _ = line.AppendLine();
+                    _ = line.Append(subsequentIndent);
                     currentLineLength = 0;
                 }
-                line.Append(word + " ");
+                _ = line.Append(word + " ");
                 currentLineLength += word.Length + 1;
             }
 

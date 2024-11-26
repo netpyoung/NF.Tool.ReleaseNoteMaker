@@ -9,7 +9,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public static void StageNewsfile(string fpath)
         {
-            Call("git", $@"add ""{fpath}""");
+            _ = Call("git", $@"add ""{fpath}""");
         }
 
         public static void RemoveFiles(string[] fragmentFpaths)
@@ -20,8 +20,8 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             }
 
             string[] gitFragmentFpaths = Call("git", $"ls-files {string.Join(' ', fragmentFpaths)}").Split("\n");
-            gitFragmentFpaths = gitFragmentFpaths.Where(x => File.Exists(x)).Select(x => Path.GetFullPath(x)).ToArray();
-            Call("git", $"rm --quiet --force {string.Join(' ', gitFragmentFpaths)}");
+            gitFragmentFpaths = gitFragmentFpaths.Where(File.Exists).Select(Path.GetFullPath).ToArray();
+            _ = Call("git", $"rm --quiet --force {string.Join(' ', gitFragmentFpaths)}");
 
             string[] unknownFragmentFpaths = fragmentFpaths.Except(gitFragmentFpaths).ToArray();
             foreach (string x in unknownFragmentFpaths)
@@ -32,6 +32,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         public static string Call(string fileName, string arguments)
         {
+#pragma warning disable CA1031 // Do not catch general exception types
             try
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -48,7 +49,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 {
                     process.StartInfo = processStartInfo;
 
-                    process.Start();
+                    _ = process.Start();
                     string output = process.StandardOutput.ReadToEnd();
                     string outputErr = process.StandardError.ReadToEnd();
                     process.WaitForExit();
@@ -59,6 +60,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             {
                 return string.Empty;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

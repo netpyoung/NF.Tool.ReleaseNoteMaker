@@ -18,7 +18,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
     [Description($"Generate a patch note.")]
     internal sealed class Command_Build : AsyncCommand<Command_Build.Settings>
     {
-        public sealed class Settings : CommandSettings
+        internal sealed class Settings : CommandSettings
         {
             [Description("[yellow][[Required]][/] Render the news fragments using given version.")]
             [CommandOption("--version")]
@@ -171,7 +171,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 AnsiConsole.Write($"{nameof(newsfileFpath)}: ");
                 AnsiConsole.Write(txtPath);
                 AnsiConsole.WriteLine();
-                _ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
+                ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
                 if (!string.IsNullOrEmpty(topLine)
                     && baseContent.Contains(topLine))
                 {
@@ -180,14 +180,14 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                 }
 
                 StringBuilder sb = new StringBuilder();
-                sb.Append(baseHeader);
+                _ = sb.Append(baseHeader);
                 if (!string.IsNullOrEmpty(baseContent))
                 {
-                    sb.AppendLine(baseContent);
+                    _ = sb.AppendLine(baseContent);
                 }
                 else
                 {
-                    sb.AppendLine(content.TrimEnd());
+                    _ = sb.AppendLine(content.TrimEnd());
                 }
                 string newContent = sb.ToString();
                 await File.WriteAllTextAsync(newsfileFpath, newContent);
@@ -239,7 +239,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
             return 0;
         }
 
-        private static void _ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
+        private static void ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
         {
             if (!File.Exists(path))
             {

@@ -26,12 +26,12 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
 
             if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
             {
-                ignoredFileNameSet.Add(Path.GetFileName(config.Maker.TemplateFilePath).ToLower());
+                _ = ignoredFileNameSet.Add(Path.GetFileName(config.Maker.TemplateFilePath).ToLower());
             }
 
             foreach (string filename in config.Maker.Ignores)
             {
-                ignoredFileNameSet.Add(filename.ToLower());
+                _ = ignoredFileNameSet.Add(filename.ToLower());
             }
 
             FragmentPath getSectionPath = FragmentPath.Get(baseDirectory, config);
@@ -230,9 +230,9 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
             {
                 if (!string.IsNullOrWhiteSpace(line))
                 {
-                    result.Append(prefix);
+                    _ = result.Append(prefix);
                 }
-                result.Append(line);
+                _ = result.Append(line);
             }
 
             return result.ToString();

@@ -7,26 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
-    public class IssuesByCategory
-    {
-        private Dictionary<(string sectionDisplayName, string category), IssuesByCategoryItem> _dic = new Dictionary<(string sectionDisplayName, string category), IssuesByCategoryItem>();
-
-        internal void Add(string sectionDisplayName, string category, string issue)
-        {
-            (string sectionDisplayName, string category) key = (sectionDisplayName, category);
-            if (_dic.TryGetValue(key, out IssuesByCategoryItem? item))
-            {
-                item.renderedIssues.Add(issue);
-            }
-            else
-            {
-                _dic.Add(key, new IssuesByCategoryItem(sectionDisplayName, category, new List<string> { issue }));
-            }
-        }
-    }
-
-    public sealed record class IssuesByCategoryItem(string sectionDisplayName, string Category, List<string> renderedIssues);
-    public sealed record class SplitFragment(string sectionDisplayName, string Category, string trimedData, List<string> renderedIssues);
+    public sealed record class SplitFragment(string SectionDisplayName, string Category, string TrimedData, List<string> RenderedIssues);
 
     public sealed record class IssueParts(bool IsDigit, bool HasDigit, string NonDigitPart, int Number) : IComparable<IssueParts>
     {
@@ -131,18 +112,18 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
 
     public sealed class Fragment : IEnumerable<SplitFragment>
     {
-        private Dictionary<(string sectionDisplayName, string category, string content), SplitFragment> _dic2 = new Dictionary<(string sectionDisplayName, string category, string content), SplitFragment>();
+        private readonly Dictionary<(string sectionDisplayName, string category, string content), SplitFragment> _dic2 = [];
 
         internal void Add(string sectionDisplayName, string category, string content, string issue)
         {
             (string sectionDisplayName, string category, string content) key = (sectionDisplayName, category, content);
             if (_dic2.TryGetValue(key, out SplitFragment? sf))
             {
-                sf.renderedIssues.Add(issue);
+                sf.RenderedIssues.Add(issue);
             }
             else
             {
-                _dic2.Add(key, new SplitFragment(sectionDisplayName, category, content, new List<string> { issue }));
+                _dic2.Add(key, new SplitFragment(sectionDisplayName, category, content, [issue]));
             }
         }
 

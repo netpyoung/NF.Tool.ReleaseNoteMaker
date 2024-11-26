@@ -16,8 +16,8 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
         {
             return new FragmentResult
             {
-                FragmentContents = new List<FragmentContent>(),
-                FragmentFiles = new List<FragmentFile>()
+                FragmentContents = [],
+                FragmentFiles = []
             };
         }
 

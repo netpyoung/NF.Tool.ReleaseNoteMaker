@@ -89,18 +89,20 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
         private static (Exception? exOrNull, PatchNoteConfig config) LoadConfigFromFile(string configFpath)
         {
             string configText = File.ReadAllText(configFpath);
-            TomlModelOptions option = new TomlModelOptions();
-            option.ConvertFieldName = StringIdentity;
-            option.ConvertPropertyName = StringIdentity;
+            TomlModelOptions option = new TomlModelOptions
+            {
+                ConvertFieldName = StringIdentity,
+                ConvertPropertyName = StringIdentity
+            };
 
             bool isSuccess = Toml.TryToModel(configText, out TomlModel? modelOrNull, out DiagnosticsBag? diagostics, options: option);
             if (!isSuccess)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine($"TOML Parsing Error: configFpath={configFpath}");
+                _ = sb.AppendLine($"TOML Parsing Error: configFpath={configFpath}");
                 foreach (DiagnosticMessage x in diagostics!)
                 {
-                    sb.AppendLine(x.ToString());
+                    _ = sb.AppendLine(x.ToString());
                 }
                 return (new PatchNoteMakerException(sb.ToString()), new PatchNoteConfig());
             }

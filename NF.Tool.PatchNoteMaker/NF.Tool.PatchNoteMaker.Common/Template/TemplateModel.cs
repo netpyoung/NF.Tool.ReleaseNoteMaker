@@ -6,7 +6,10 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
     public sealed record class Category(string DisplayName, List<Content> Contents, List<string> CategoryIssues)
     {
 #pragma warning disable CA1024
-        public List<string> GetAllIssues() => CategoryIssues;
+        public List<string> GetAllIssues()
+        {
+            return CategoryIssues;
+        }
 #pragma warning restore CA1024
     }
     public sealed record class Content(string Text, List<string> Issues)

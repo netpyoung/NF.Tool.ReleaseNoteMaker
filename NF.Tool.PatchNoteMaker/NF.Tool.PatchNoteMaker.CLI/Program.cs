@@ -9,7 +9,8 @@ namespace NF.Tool.PatchNoteMaker.CLI
 {
     internal sealed class Program
     {
-        static async Task<int> Main(string[] args)
+#pragma warning disable IDE0210 // Convert to top-level statements
+        private static async Task<int> Main(string[] args)
         {
             //args = "create".Split(" ");
             //args = "create --config hello.toml".Split(" ");
@@ -20,19 +21,20 @@ namespace NF.Tool.PatchNoteMaker.CLI
 
             app.Configure(config =>
             {
-                config.PropagateExceptions();
+                _ = config.PropagateExceptions();
 
-                config.AddCommand<Command_Init>("init")
+                _ = config.AddCommand<Command_Init>("init")
                     .WithExample("init")
                     .WithExample("init", "--file", Const.DEFAULT_CONFIG_FILENAME);
-                config.AddCommand<Command_Create>("create")
+                _ = config.AddCommand<Command_Create>("create")
                     .WithExample("create", "--edit")
                     .WithExample("create", "--content", @"""Hello World""", "1.added.md");
-                config.AddCommand<Command_Build>("build")
+                _ = config.AddCommand<Command_Build>("build")
                    .WithExample("build --version 1.0.0")
                    .WithExample("build --version 1.0.0 --draft");
             });
 
+#pragma warning disable CA1031 // Do not catch general exception types
             try
             {
                 return await app.RunAsync(args);
@@ -42,6 +44,8 @@ namespace NF.Tool.PatchNoteMaker.CLI
                 AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
                 return 1;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
+#pragma warning restore IDE0210 // Convert to top-level statements
     }
 }

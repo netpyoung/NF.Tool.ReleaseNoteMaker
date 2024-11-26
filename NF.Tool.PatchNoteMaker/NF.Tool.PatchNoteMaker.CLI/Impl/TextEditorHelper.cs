@@ -18,6 +18,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             DateTime lastWriteTime = File.GetLastWriteTime(tempFilePath);
 
             string editor = GetEditorName();
+#pragma warning disable CA1031 // Do not catch general exception types
             try
             {
                 ProcessStartInfo processStartInfo = new ProcessStartInfo
@@ -30,7 +31,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                 using (Process process = new Process())
                 {
                     process.StartInfo = processStartInfo;
-                    process.Start();
+                    _ = process.Start();
                     await process.WaitForExitAsync();
 
                     if (process.ExitCode != 0)
@@ -43,6 +44,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             {
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             if (File.GetLastWriteTime(tempFilePath) == lastWriteTime)
             {
@@ -97,6 +99,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
 
         private static bool IsCommandAvailable(string command)
         {
+#pragma warning disable CA1031 // Do not catch general exception types
             try
             {
                 using Process process = new Process
@@ -111,7 +114,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
                         CreateNoWindow = true
                     }
                 };
-                process.Start();
+                _ = process.Start();
                 process.WaitForExit();
                 return process.ExitCode == 0;
             }
@@ -119,6 +122,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Impl
             {
                 return false;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

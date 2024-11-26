@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
+		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<WarningLevel>4</WarningLevel>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<AnalysisMode>All</AnalysisMode>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311</NoWarn>
+		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311,IDE0045,IDE0046,IDE0090,IDE0057,IDE0305,IDE0005</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

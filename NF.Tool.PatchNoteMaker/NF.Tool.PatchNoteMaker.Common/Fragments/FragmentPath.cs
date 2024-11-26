@@ -6,7 +6,7 @@ using System.IO;
 
 namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
-    public record struct FragmentPath
+    public readonly record struct FragmentPath
     {
         private readonly string _baseDirectory;
         private readonly string _appendDirectory;

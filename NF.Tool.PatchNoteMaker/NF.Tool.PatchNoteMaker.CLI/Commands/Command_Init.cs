@@ -10,7 +10,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
     [Description($"Create a new config file.")]
     internal sealed class Command_Init : AsyncCommand<Command_Init.Settings>
     {
-        public sealed class Settings : CommandSettings
+        internal sealed class Settings : CommandSettings
         {
             [Description("Config file name.")]
             [CommandOption("--file")]

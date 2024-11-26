@@ -6,7 +6,9 @@
         public string Version { get; set; } = string.Empty;
         public string Date { get; set; } = string.Empty;
 
+#pragma warning disable IDE0290 // Use primary constructor
         public VersionData(string name, string version, string date)
+#pragma warning restore IDE0290 // Use primary constructor
         {
             Name = name;
             Version = version;

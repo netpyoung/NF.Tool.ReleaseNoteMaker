@@ -15,7 +15,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
     [Description("Create a new fragment.")]
     internal sealed class Command_Create : AsyncCommand<Command_Create.Settings>
     {
-        public sealed class Settings : CommandSettings
+        internal sealed class Settings : CommandSettings
         {
             [Description("Create fragment in directory. Default to current directory.")]
             [CommandOption("--dir")]
@@ -143,7 +143,7 @@ namespace NF.Tool.PatchNoteMaker.CLI.Commands
                     }
                 }
 
-                if (!_IsValidFileName(config, fileName))
+                if (!IsValidFileName(config, fileName))
                 {
                     AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{issueName}}.{{typeCategory}}', 
 where '{{issueName}}' is an arbitrary slug
@@ -179,13 +179,13 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
                 content = editorContentOrNull;
             }
 
-            Directory.CreateDirectory(fragmentDirectory);
+            _ = Directory.CreateDirectory(fragmentDirectory);
             await File.WriteAllTextAsync(segmentFilePath, content);
             AnsiConsole.MarkupLine($"Created news fragment at {segmentFilePath}");
             return 0;
         }
 
-        private static bool _IsValidFileName(PatchNoteConfig config, string fileName)
+        private static bool IsValidFileName(PatchNoteConfig config, string fileName)
         {
             string[] split = fileName.Split(".");
             if (split.Length < 2)
