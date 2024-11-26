@@ -89,7 +89,7 @@
 
 
   <h1 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel" class="text-break">
-Class TemplateModel  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L11"><i class="bi bi-code-slash"></i></a>
+Class TemplateModel  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -101,7 +101,7 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class TemplateModel</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record TemplateModel</code></pre>
   </div>
 
 
@@ -123,31 +123,31 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
 
 
-  <h2 class="section" id="properties">Properties
+  <h2 class="section" id="constructors">Constructors
 </h2>
 
 
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_DefinitionDic_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.DefinitionDic*"></a>
+  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel__ctor_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.#ctor*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_DefinitionDic" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.DefinitionDic">
-  DefinitionDic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel__ctor_System_Boolean_NF_Tool_PatchNoteMaker_Common_Template_VersionData_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_Template_Section__" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.PatchNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Section})">
+  TemplateModel(bool, VersionData, List&lt;Section&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, PatchNoteType&gt; DefinitionDic { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TemplateModel(bool IsRenderTitle, VersionData VersionData, List&lt;Section&gt; Sections)</code></pre>
   </div>
 
-
-
-
-
-  <h4 class="section">Property Value</h4>
+  <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <a class="xref" href="NF.Tool.PatchNoteMaker.Common.Config.PatchNoteType.html">PatchNoteType</a>&gt;</dt>
+    <dt><code>IsRenderTitle</code> <span class="xref">bool</span></dt>
+    <dd></dd>
+    <dt><code>VersionData</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.VersionData.html">VersionData</a></dt>
+    <dd></dd>
+    <dt><code>Sections</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Section.html">Section</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -158,18 +158,26 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
 
 
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_IsRenderTitle_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.IsRenderTitle*"></a>
 
   <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_IsRenderTitle" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.IsRenderTitle">
   IsRenderTitle
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsRenderTitle { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsRenderTitle { get; init; }</code></pre>
   </div>
 
 
@@ -189,18 +197,18 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
 
 
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_IssuesByCategory_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.IssuesByCategory*"></a>
+  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_Sections_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.Sections*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_IssuesByCategory" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.IssuesByCategory">
-  IssuesByCategory
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_Sections" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.Sections">
+  Sections
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, Dictionary&lt;string, List&lt;string&gt;&gt;&gt; IssuesByCategory { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;Section&gt; Sections { get; init; }</code></pre>
   </div>
 
 
@@ -209,38 +217,7 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">List</span>&lt;<span class="xref">string</span>&gt;&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_SectionDic_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.SectionDic*"></a>
-
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_SectionDic" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.SectionDic">
-  SectionDic
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L20"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Fragment SectionDic { get; set; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Fragment.html">Fragment</a></dt>
+    <dt><span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Section.html">Section</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -255,14 +232,14 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
   <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_VersionData" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.VersionData">
   VersionData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionData VersionData { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public VersionData VersionData { get; init; }</code></pre>
   </div>
 
 
@@ -282,57 +259,11 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
 
 
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_Create_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.Create*"></a>
-
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_TemplateModel_Create_NF_Tool_PatchNoteMaker_Common_Template_VersionData_System_Boolean_NF_Tool_PatchNoteMaker_Common_Template_Fragment_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_Config_PatchNoteType__" data-uid="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.Create(NF.Tool.PatchNoteMaker.Common.Template.VersionData,System.Boolean,NF.Tool.PatchNoteMaker.Common.Template.Fragment,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Config.PatchNoteType})">
-  Create(VersionData, bool, Fragment, List&lt;PatchNoteType&gt;)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L37"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static TemplateModel Create(VersionData versionData, bool isRenderTitle, Fragment fragment, List&lt;PatchNoteType&gt; types)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>versionData</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.VersionData.html">VersionData</a></dt>
-    <dd></dd>
-    <dt><code>isRenderTitle</code> <span class="xref">bool</span></dt>
-    <dd></dd>
-    <dt><code>fragment</code> <a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Fragment.html">Fragment</a></dt>
-    <dd></dd>
-    <dt><code>types</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.Config.PatchNoteType.html">PatchNoteType</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-  <h4 class="section">Returns</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.html">TemplateModel</a></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L11" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L24" class="edit-link">Edit this page</a>
         </div>
 
 

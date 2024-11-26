@@ -89,7 +89,7 @@
 
 
   <h1 id="NF_Tool_PatchNoteMaker_Common_Template_Section" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section" class="text-break">
-Class Section  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L92"><i class="bi bi-code-slash"></i></a>
+Class Section  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h1>
 
   <div class="facts text-secondary">
@@ -101,7 +101,7 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
   <div class="markdown conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class Section</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed record Section</code></pre>
   </div>
 
 
@@ -129,21 +129,23 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
 
   <a id="NF_Tool_PatchNoteMaker_Common_Template_Section__ctor_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.#ctor*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section__ctor_System_String_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.#ctor(System.String)">
-  Section(string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L100"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section__ctor_System_String_System_Collections_Generic_List_NF_Tool_PatchNoteMaker_Common_Template_Category__" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.#ctor(System.String,System.Collections.Generic.List{NF.Tool.PatchNoteMaker.Common.Template.Category})">
+  Section(string, List&lt;Category&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Section(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public Section(string DisplayName, List&lt;Category&gt; Categories)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
-    <dt><code>name</code> <span class="xref">string</span></dt>
+    <dt><code>DisplayName</code> <span class="xref">string</span></dt>
+    <dd></dd>
+    <dt><code>Categories</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Category.html">Category</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -162,18 +164,18 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
 </h2>
 
 
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_Count_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Count*"></a>
+  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_Categories_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Categories*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_Count" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Count">
-  Count
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_Categories" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Categories">
+  Categories
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;Category&gt; Categories { get; init; }</code></pre>
   </div>
 
 
@@ -182,7 +184,7 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
 
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
-    <dt><span class="xref">int</span></dt>
+    <dt><span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.PatchNoteMaker.Common.Template.Category.html">Category</a>&gt;</dt>
     <dd></dd>
   </dl>
 
@@ -193,85 +195,18 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
 
 
 
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_Item_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Item*"></a>
+  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_DisplayName_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.DisplayName*"></a>
 
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_Item_System_String_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Item(System.String)">
-  this[string]
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_DisplayName" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.DisplayName">
+  DisplayName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h3>
 
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, List&lt;string&gt;&gt; this[string category] { get; }</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>category</code> <span class="xref">string</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">List</span>&lt;<span class="xref">string</span>&gt;&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_Keys_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Keys*"></a>
-
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_Keys" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Keys">
-  Keys
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L105"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Dictionary&lt;string, Dictionary&lt;string, List&lt;string&gt;&gt;&gt;.KeyCollection Keys { get; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">Dictionary</span>&lt;<span class="xref">string</span>, <span class="xref">List</span>&lt;<span class="xref">string</span>&gt;&gt;&gt;.<span class="xref">KeyCollection</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_Name_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Name*"></a>
-
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_Name" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.Name">
-  Name
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L94"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string DisplayName { get; init; }</code></pre>
   </div>
 
 
@@ -291,50 +226,11 @@ Class Section  <a class="header-action link-secondary" title="View source" href=
 
 
 
-  <h2 class="section" id="methods">Methods
-</h2>
-
-
-  <a id="NF_Tool_PatchNoteMaker_Common_Template_Section_AddIssue_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.AddIssue*"></a>
-
-  <h3 id="NF_Tool_PatchNoteMaker_Common_Template_Section_AddIssue_System_String_System_String_System_String_" data-uid="NF.Tool.PatchNoteMaker.Common.Template.Section.AddIssue(System.String,System.String,System.String)">
-  AddIssue(string, string, string)
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L112"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void AddIssue(string category, string content, string issue)</code></pre>
-  </div>
-
-  <h4 class="section">Parameters</h4>
-  <dl class="parameters">
-    <dt><code>category</code> <span class="xref">string</span></dt>
-    <dd></dd>
-    <dt><code>content</code> <span class="xref">string</span></dt>
-    <dd></dd>
-    <dt><code>issue</code> <span class="xref">string</span></dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L92" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.PatchNoteMaker/blob/main/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker.Common/Template/TemplateModel.cs/#L6" class="edit-link">Edit this page</a>
         </div>
 
 
