@@ -1,5 +1,6 @@
 ﻿using NF.Tool.PatchNoteMaker.Common.Config;
 using NF.Tool.PatchNoteMaker.Common.Fragments;
+using NF.Tool.PatchNoteMaker.Common.Template;
 
 namespace NF.Tool.PatchNoteMaker.Tests
 {
@@ -42,6 +43,80 @@ namespace NF.Tool.PatchNoteMaker.Tests
             config.Types.AddRange(definitions);
             List<FragmentContent> y = FragmentFinder.SplitFragments(a, config);
             CollectionAssert.AreEqual(b, y);
+        }
+
+        [TestMethod]
+        [DataRow(new string[] { "2", "#11", "#3", "gh-10", "gh-4", "omega", "alpha" }, new string[] { "alpha", "omega", "#3", "#11", "gh-4", "gh-10", "2" })]
+        [DataRow(new string[] { "2", "72", "9" }, new string[] { "2", "9", "72" })]
+        public void TestIssueKey(string[] arr, string[] expected)
+        {
+            string[] actual = arr.OrderBy(IssueParts.IssueKey).ToArray();
+            CollectionAssert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public async Task TestBasic()
+        {
+            List<FragmentContent> a = new List<FragmentContent>
+            {
+                new FragmentContent("", new FragmentBasename("142", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("1", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("9", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("bar", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("4", "feature", 0), "Stuff!"),
+                new FragmentContent("", new FragmentBasename("2", "feature", 0), "Foo added."),
+                new FragmentContent("", new FragmentBasename("72", "feature", 0), "Foo added."),
+                new FragmentContent("", new FragmentBasename("9", "feature", 0), "Foo added."),
+                new FragmentContent("", new FragmentBasename("3", "feature", 0), "Multi-line\nhere"),
+                new FragmentContent("", new FragmentBasename("baz", "feature", 0), "Fun!"),
+                new FragmentContent("Web", new FragmentBasename("3", "bugfix", 0), "Web fixed."),
+                new FragmentContent("Web", new FragmentBasename("2", "bugfix", 0), "Multi-line bulleted\n- fix\n- here"),
+            };
+
+            List<PatchNoteType> definitions = new List<PatchNoteType>
+            {
+                new PatchNoteType{ DisplayName= "Features", Category= "feature", IsShowContent=true},
+                new PatchNoteType{ DisplayName= "Bugfixes", Category = "bugfix", IsShowContent=true},
+                new PatchNoteType{ DisplayName= "Misc", Category= "misc", IsShowContent=false},
+            };
+            PatchNoteConfig config = new PatchNoteConfig();
+            config.Maker.IsAllBullets = true;
+            config.Maker.IsWrap = true;
+            config.Types.AddRange(definitions);
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(a, config);
+            string templatePath = "Template.tt";
+            VersionData versionData = new VersionData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+            string expected = @"# MyProject 1.0 (never)
+
+### Features
+
+- Fun! (baz)
+- Foo added. (#2, #9, #72)
+- Multi-line
+  here (#3)
+- Stuff! (#4)
+
+### Misc
+
+- bar, #1, #9, #142
+
+
+## Web
+
+### Bugfixes
+
+- Multi-line bulleted
+  - fix
+  - here
+
+  (#2)
+- Web fixed. (#3)
+
+
+";
+            Assert.AreEqual(expected, text);
         }
     }
 }
