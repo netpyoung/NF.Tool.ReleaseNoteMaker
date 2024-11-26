@@ -1,0 +1,28 @@
+name: .NET Test Workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'NF.Tool.PatchNoteMaker/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'NF.Tool.PatchNoteMaker/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Run tests
+        working-directory: NF.Tool.PatchNoteMaker
+        run: dotnet test --configuration Release --verbosity normal
