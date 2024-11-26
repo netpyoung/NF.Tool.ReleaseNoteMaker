@@ -34,12 +34,12 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
         {
             if (string.IsNullOrEmpty(issue))
             {
-                return new IssueParts(false, false, issue, -1);
+                return new IssueParts(false, false, string.Empty, -1);
             }
 
             if (issue.All(char.IsDigit))
             {
-                return new IssueParts(true, true, issue, int.Parse(issue));
+                return new IssueParts(true, true, string.Empty, int.Parse(issue));
             }
 
             Match match = Regex.Match(issue, @"\d+");
@@ -61,13 +61,12 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
 
             if (IsDigit != other.IsDigit)
             {
-
-                return IsDigit ? 1 : -1;
+                return IsDigit.CompareTo(other.IsDigit);
             }
 
             if (HasDigit != other.HasDigit)
             {
-                return HasDigit ? 1 : -1;
+                return HasDigit.CompareTo(other.HasDigit);
             }
 
             int nonDigitComparison = string.Compare(NonDigitPart, other.NonDigitPart, StringComparison.Ordinal);
