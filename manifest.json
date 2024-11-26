@@ -1,5 +1,5 @@
 {
-  "source_base_path": "/home/runner/work/NF.Tool.PatchNoteMaker/NF.Tool.PatchNoteMaker/docfx",
+  "source_base_path": "/home/runner/work/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker/docfx",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,280 +12,260 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfig.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfig.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfigMaker.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteConfigMaker.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteSection.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteSection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteSection.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteSection.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteType.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteType.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.PatchNoteType.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteType.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.TomlModel.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.TomlModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.TomlModel.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.TomlModel.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Config.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.Fragment.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.Fragment.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentBasename.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentBasename.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentContent.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentFile.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentContent.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentFile.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentFile.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentFinder.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentFile.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentFinder.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentFinder.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentPath.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentFinder.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentPath.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentPath.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentPath.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentResult.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentResult.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.FragmentResult.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.Issue.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.Issue.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.IssueParts.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.IssueParts.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.ReleaseNoteMakerException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.SplitFragment.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.ReleaseNoteMakerException.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.ScopedFileDeleter.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Fragments.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.ScopedFileDeleter.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Category.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.PatchNoteMakerException.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Category.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Content.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.ScopedFileDeleter.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Content.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Category.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.ExEngineHost.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Category.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.ExEngineHost.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Content.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Section.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Content.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.Section.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.ExEngineHost.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.ExEngineHost.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Section.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.Section.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.TemplateModel.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.TemplateRenderer.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.TemplateRenderer.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Template.html"
         }
       },
       "version": ""
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.VersionData.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.VersionData.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.Template.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.PatchNoteMaker.Common.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/NF.Tool.PatchNoteMaker.Common.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.html"
         }
       },
       "version": ""
