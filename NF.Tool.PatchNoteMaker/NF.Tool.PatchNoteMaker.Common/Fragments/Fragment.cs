@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace NF.Tool.PatchNoteMaker.Common.Fragments
 {
-    public sealed record class SplitFragment(string SectionDisplayName, string Category, string TrimedData, List<string> RenderedIssues);
-
     public sealed record class IssueParts(bool IsDigit, bool HasDigit, string NonDigitPart, int Number) : IComparable<IssueParts>
     {
         public static IssueParts IssueKey(string issue)
@@ -107,34 +103,6 @@ namespace NF.Tool.PatchNoteMaker.Common.Fragments
             }
 
             return text;
-        }
-    }
-
-    public sealed class Fragment : IEnumerable<SplitFragment>
-    {
-        private readonly Dictionary<(string sectionDisplayName, string category, string content), SplitFragment> _dic2 = [];
-
-        internal void Add(string sectionDisplayName, string category, string content, string issue)
-        {
-            (string sectionDisplayName, string category, string content) key = (sectionDisplayName, category, content);
-            if (_dic2.TryGetValue(key, out SplitFragment? sf))
-            {
-                sf.RenderedIssues.Add(issue);
-            }
-            else
-            {
-                _dic2.Add(key, new SplitFragment(sectionDisplayName, category, content, [issue]));
-            }
-        }
-
-        public IEnumerator<SplitFragment> GetEnumerator()
-        {
-            return _dic2.Values.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return _dic2.Values.GetEnumerator();
         }
     }
 }
