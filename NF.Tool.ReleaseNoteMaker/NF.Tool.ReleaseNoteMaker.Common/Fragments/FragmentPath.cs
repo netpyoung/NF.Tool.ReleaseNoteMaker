@@ -10,9 +10,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
     {
         private readonly string _baseDirectory;
         private readonly string _appendDirectory;
-        private readonly PatchNoteConfig _config;
+        private readonly ReleaseNoteConfig _config;
 
-        public static FragmentPath Get(string baseDirectory, [NotNull] PatchNoteConfig config)
+        public static FragmentPath Get(string baseDirectory, [NotNull] ReleaseNoteConfig config)
         {
             return new FragmentPath(baseDirectory, config);
         }
@@ -23,7 +23,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             throw new InvalidOperationException();
         }
 
-        private FragmentPath(string baseDirectory, PatchNoteConfig config)
+        private FragmentPath(string baseDirectory, ReleaseNoteConfig config)
         {
             _config = config;
             if (!string.IsNullOrEmpty(config.Maker.Directory))
@@ -45,7 +45,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
 
         public string GetDirectory(string sectionPath)
         {
-            PatchNoteSection? sectionOrNull = _config.Sections.Find(x => x.Path == sectionPath)!;
+            ReleaseNoteSection? sectionOrNull = _config.Sections.Find(x => x.Path == sectionPath)!;
             Debug.Assert(sectionOrNull != null, $"sectionOrNull != null | sectionPath: {sectionPath}");
 
             string dir = Path.Combine(_baseDirectory, sectionOrNull.Path, _appendDirectory);

@@ -13,7 +13,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
     public sealed class TemplateRenderer
     {
-        public static async Task<(Exception? exOrNull, string text)> Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel)
+        public static async Task<(Exception? exOrNull, string text)> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
         {
             string tempFilePath = Path.GetTempFileName();
             Exception? exOrNull = await Render(templatePath, config, templateModel, tempFilePath);
@@ -27,14 +27,14 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return (null, text);
         }
 
-        public static async Task<Exception?> Render(string templatePath, PatchNoteConfig config, TemplateModel templateModel, string outputPath)
+        public static async Task<Exception?> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel, string outputPath)
         {
-            string assemblyLocation = typeof(PatchNoteTemplateGenerator).Assembly.Location;
+            string assemblyLocation = typeof(ReleaseNoteTemplateGenerator).Assembly.Location;
 
-            PatchNoteTemplateGenerator generator = new PatchNoteTemplateGenerator(config, templateModel);
+            ReleaseNoteTemplateGenerator generator = new ReleaseNoteTemplateGenerator(config, templateModel);
             generator.Refs.Add(assemblyLocation);
-            generator.Imports.Add(typeof(PatchNoteTemplateGenerator).Namespace);
-            generator.Imports.Add(typeof(PatchNoteConfig).Namespace);
+            generator.Imports.Add(typeof(ReleaseNoteTemplateGenerator).Namespace);
+            generator.Imports.Add(typeof(ReleaseNoteConfig).Namespace);
 
             bool isSuccess = await generator.ProcessTemplateAsync(templatePath, outputPath);
             if (!isSuccess)
@@ -45,14 +45,14 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 {
                     _ = sb.AppendLine(err.ToString());
                 }
-                return new PatchNoteMakerException(sb.ToString());
+                return new ReleaseNoteMakerException(sb.ToString());
             }
 
             return null;
         }
 
 
-        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] PatchNoteConfig config, VersionData versionData, List<FragmentContent> fragmentContents)
+        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, VersionData versionData, List<FragmentContent> fragmentContents)
         {
             //    top_underline = config.underlines[0],
             //    config.underlines[1:],

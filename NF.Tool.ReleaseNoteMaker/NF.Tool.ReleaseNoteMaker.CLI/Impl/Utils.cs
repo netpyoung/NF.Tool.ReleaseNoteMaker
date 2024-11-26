@@ -27,7 +27,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
             return tempFilePath;
         }
 
-        public static Exception? GetConfig(string directory, string configPath, out string baseDirectory, out PatchNoteConfig config)
+        public static Exception? GetConfig(string directory, string configPath, out string baseDirectory, out ReleaseNoteConfig config)
         {
             if (string.IsNullOrEmpty(configPath))
             {
@@ -46,15 +46,15 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
 
             if (!File.Exists(configFpath))
             {
-                config = new PatchNoteConfig();
-                return new PatchNoteMakerException($"Configuration file '{configFpath}' not found.");
+                config = new ReleaseNoteConfig();
+                return new ReleaseNoteMakerException($"Configuration file '{configFpath}' not found.");
             }
 
             (Exception? exOrNull, config) = LoadConfigFromFile(configFpath);
             return exOrNull;
         }
 
-        private static Exception? TraverseToParentForConfig(string path, out string directoryFpath, out PatchNoteConfig config)
+        private static Exception? TraverseToParentForConfig(string path, out string directoryFpath, out ReleaseNoteConfig config)
         {
             string startDirectoryFpath;
             if (!string.IsNullOrEmpty(path))
@@ -79,14 +79,14 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
                 DirectoryInfo? parentOrNull = Directory.GetParent(directoryFpath);
                 if (parentOrNull == null)
                 {
-                    config = new PatchNoteConfig();
-                    return new PatchNoteMakerException($"No configuration file found. Looked back from: {startDirectoryFpath}");
+                    config = new ReleaseNoteConfig();
+                    return new ReleaseNoteMakerException($"No configuration file found. Looked back from: {startDirectoryFpath}");
                 }
                 directoryFpath = parentOrNull.FullName;
             }
         }
 
-        private static (Exception? exOrNull, PatchNoteConfig config) LoadConfigFromFile(string configFpath)
+        private static (Exception? exOrNull, ReleaseNoteConfig config) LoadConfigFromFile(string configFpath)
         {
             string configText = File.ReadAllText(configFpath);
             TomlModelOptions option = new TomlModelOptions
@@ -104,16 +104,16 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
                 {
                     _ = sb.AppendLine(x.ToString());
                 }
-                return (new PatchNoteMakerException(sb.ToString()), new PatchNoteConfig());
+                return (new ReleaseNoteMakerException(sb.ToString()), new ReleaseNoteConfig());
             }
 
             TomlModel model = modelOrNull!;
-            PatchNoteConfig patchNoteConfig = model.PatchNote;
-            if (patchNoteConfig.Sections.Count == 0)
+            ReleaseNoteConfig releaseNoteConfig = model.ReleaseNote;
+            if (releaseNoteConfig.Sections.Count == 0)
             {
-                patchNoteConfig.Sections.Add(new PatchNoteSection { DisplayName = "", Path = "" });
+                releaseNoteConfig.Sections.Add(new ReleaseNoteSection { DisplayName = "", Path = "" });
             }
-            return (null, patchNoteConfig);
+            return (null, releaseNoteConfig);
         }
 
         private static string StringIdentity(string x)

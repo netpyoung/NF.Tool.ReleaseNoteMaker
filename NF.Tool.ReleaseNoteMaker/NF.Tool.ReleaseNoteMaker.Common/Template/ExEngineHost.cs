@@ -6,15 +6,15 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
     public static class ExEngineHost
     {
-        public static PatchNoteConfig GetConfig([NotNull] this ITextTemplatingEngineHost host)
+        public static ReleaseNoteConfig GetConfig([NotNull] this ITextTemplatingEngineHost host)
         {
-            PatchNoteTemplateGenerator x = (PatchNoteTemplateGenerator)host;
+            ReleaseNoteTemplateGenerator x = (ReleaseNoteTemplateGenerator)host;
             return x.Config;
         }
 
         public static TemplateModel GetTemplateModel([NotNull] this ITextTemplatingEngineHost host)
         {
-            PatchNoteTemplateGenerator x = (PatchNoteTemplateGenerator)host;
+            ReleaseNoteTemplateGenerator x = (ReleaseNoteTemplateGenerator)host;
             return x.TemplateModel;
         }
     }

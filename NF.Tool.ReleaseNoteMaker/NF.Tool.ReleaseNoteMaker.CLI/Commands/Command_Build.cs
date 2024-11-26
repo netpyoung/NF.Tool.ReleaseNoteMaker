@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 {
-    [Description($"Generate a patch note.")]
+    [Description($"Generate a release note.")]
     internal sealed class Command_Build : AsyncCommand<Command_Build.Settings>
     {
         internal sealed class Settings : CommandSettings
@@ -60,7 +60,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             //{
             //    Out = new AnsiConsoleOutput(Console.Error)
             //});
-            Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
+            Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (exOrNull is not null)
             {
                 AnsiConsole.WriteException(exOrNull, ExceptionFormats.ShortenEverything);

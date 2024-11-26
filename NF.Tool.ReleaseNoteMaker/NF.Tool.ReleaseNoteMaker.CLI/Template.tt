@@ -7,7 +7,7 @@
     //System.Diagnostics.Debugger.Break();
 
     TemplateModel model = Host.GetTemplateModel();
-    PatchNoteConfig config = Host.GetConfig();
+    ReleaseNoteConfig config = Host.GetConfig();
 #>
 <#
     if (model.IsRenderTitle)

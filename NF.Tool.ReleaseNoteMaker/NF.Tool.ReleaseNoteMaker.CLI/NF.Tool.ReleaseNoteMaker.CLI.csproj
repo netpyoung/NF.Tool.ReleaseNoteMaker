@@ -27,8 +27,8 @@
 		<EmbeddedResource Include="Template.tt">
 			<LogicalName>Template.tt</LogicalName>
 		</EmbeddedResource>
-		<EmbeddedResource Include="PatchNote.config.toml">
-			<LogicalName>PatchNote.config.toml</LogicalName>
+		<EmbeddedResource Include="ReleaseNote.config.toml">
+			<LogicalName>ReleaseNote.config.toml</LogicalName>
 		</EmbeddedResource>
 		<!--<None Update="Template.tt" CopyToOutputDirectory="PreserveNewest" />-->
 		<None Remove="CHANGELOG.md" />

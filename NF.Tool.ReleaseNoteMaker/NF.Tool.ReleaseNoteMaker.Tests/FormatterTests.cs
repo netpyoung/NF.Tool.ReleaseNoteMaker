@@ -32,13 +32,13 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
                 new FragmentContent("Web", new FragmentBasename("4", "feature", 0), "Foo added."),
             };
 
-            List<PatchNoteType> definitions = new List<PatchNoteType>
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
             {
-                new PatchNoteType{ Category= "feature", IsShowContent=true},
-                new PatchNoteType{ Category= "bugfix", IsShowContent=true},
-                new PatchNoteType{ Category= "misc", IsShowContent=false},
+                new ReleaseNoteType{ Category= "feature", IsShowContent=true},
+                new ReleaseNoteType{ Category= "bugfix", IsShowContent=true},
+                new ReleaseNoteType{ Category= "misc", IsShowContent=false},
             };
-            PatchNoteConfig config = new PatchNoteConfig();
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
             config.Maker.IsAllBullets = true;
             config.Types.AddRange(definitions);
             List<FragmentContent> y = FragmentFinder.SplitFragments(a, config);
@@ -75,13 +75,13 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
                 new FragmentContent("Web", new FragmentBasename("2", "bugfix", 0), "Multi-line bulleted\n- fix\n- here"),
             };
 
-            List<PatchNoteType> definitions = new List<PatchNoteType>
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
             {
-                new PatchNoteType{ DisplayName= "Features", Category= "feature", IsShowContent=true},
-                new PatchNoteType{ DisplayName= "Bugfixes", Category = "bugfix", IsShowContent=true},
-                new PatchNoteType{ DisplayName= "Misc", Category= "misc", IsShowContent=false},
+                new ReleaseNoteType{ DisplayName= "Features", Category= "feature", IsShowContent=true},
+                new ReleaseNoteType{ DisplayName= "Bugfixes", Category = "bugfix", IsShowContent=true},
+                new ReleaseNoteType{ DisplayName= "Misc", Category= "misc", IsShowContent=false},
             };
-            PatchNoteConfig config = new PatchNoteConfig();
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
             config.Maker.IsAllBullets = true;
             config.Maker.IsWrap = true;
             config.Types.AddRange(definitions);

@@ -2,21 +2,21 @@
 
 namespace NF.Tool.ReleaseNoteMaker.Common
 {
-    public sealed class PatchNoteMakerException : Exception
+    public sealed class ReleaseNoteMakerException : Exception
     {
         public override string StackTrace { get; }
 
-        public PatchNoteMakerException(string message) : base(message)
+        public ReleaseNoteMakerException(string message) : base(message)
         {
             StackTrace = Environment.StackTrace;
         }
 
-        public PatchNoteMakerException() : base()
+        public ReleaseNoteMakerException() : base()
         {
             StackTrace = Environment.StackTrace;
         }
 
-        public PatchNoteMakerException(string message, Exception innerException) : base(message, innerException)
+        public ReleaseNoteMakerException(string message, Exception innerException) : base(message, innerException)
         {
             StackTrace = Environment.StackTrace;
         }

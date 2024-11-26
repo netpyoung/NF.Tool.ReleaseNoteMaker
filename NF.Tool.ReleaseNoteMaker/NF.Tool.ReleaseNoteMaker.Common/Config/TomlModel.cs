@@ -2,6 +2,6 @@
 {
     public sealed class TomlModel
     {
-        public PatchNoteConfig PatchNote { get; set; } = new PatchNoteConfig();
+        public ReleaseNoteConfig ReleaseNote { get; set; } = new ReleaseNoteConfig();
     }
 }

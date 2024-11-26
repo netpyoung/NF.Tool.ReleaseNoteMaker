@@ -3,16 +3,16 @@ using System.Runtime.Serialization;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Config
 {
-    public sealed class PatchNoteConfig
+    public sealed class ReleaseNoteConfig
     {
-        public PatchNoteConfigMaker Maker { get; private set; } = new PatchNoteConfigMaker();
+        public ReleaseNoteConfigMaker Maker { get; private set; } = new ReleaseNoteConfigMaker();
         [DataMember(Name = "Section")]
-        public List<PatchNoteSection> Sections { get; } = new List<PatchNoteSection>(20);
+        public List<ReleaseNoteSection> Sections { get; } = new List<ReleaseNoteSection>(20);
         [DataMember(Name = "Type")]
-        public List<PatchNoteType> Types { get; } = new List<PatchNoteType>(20);
+        public List<ReleaseNoteType> Types { get; } = new List<ReleaseNoteType>(20);
     }
 
-    public sealed class PatchNoteConfigMaker
+    public sealed class ReleaseNoteConfigMaker
     {
         public string Name { get; set; } = string.Empty;
         public string Directory { get; set; } = string.Empty;
@@ -32,13 +32,13 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         // public string PackageDirectory{ get; set; } = string.Empty;
     }
 
-    public sealed class PatchNoteSection
+    public sealed class ReleaseNoteSection
     {
         public string DisplayName { get; set; } = string.Empty;
         public string Path { get; set; } = string.Empty;
     }
 
-    public sealed class PatchNoteType
+    public sealed class ReleaseNoteType
     {
         public string DisplayName { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;

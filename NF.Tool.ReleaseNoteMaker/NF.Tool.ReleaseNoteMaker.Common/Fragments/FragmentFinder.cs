@@ -20,7 +20,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             "readme.rst"
         ];
 
-        public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, [NotNull] PatchNoteConfig config, bool isStrictMode)
+        public static (Exception? exOrNull, FragmentResult result) FindFragments(string baseDirectory, [NotNull] ReleaseNoteConfig config, bool isStrictMode)
         {
             HashSet<string> ignoredFileNameSet = new HashSet<string>(FRAGMENT_IGNORE_FILELIST, StringComparer.OrdinalIgnoreCase);
 
@@ -39,7 +39,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
 
             List<FragmentContent> fragmentContents = new List<FragmentContent>(config.Sections.Count);
             List<FragmentFile> fragmentFiles = new List<FragmentFile>(30);
-            foreach (PatchNoteSection section in config.Sections)
+            foreach (ReleaseNoteSection section in config.Sections)
             {
                 string sectionDisplayName = section.DisplayName;
                 string sectionDir = getSectionPath.Resolve(section.Path);
@@ -66,7 +66,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     {
                         if (isStrictMode)
                         {
-                            PatchNoteMakerException ex = new PatchNoteMakerException($"Invalid news fragment name: {fileName}\nIf this filename is deliberate, add it to 'ignore' in your configuration.");
+                            ReleaseNoteMakerException ex = new ReleaseNoteMakerException($"Invalid news fragment name: {fileName}\nIf this filename is deliberate, add it to 'ignore' in your configuration.");
                             return (ex, FragmentResult.Default());
                         }
                         continue;
@@ -91,7 +91,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     {
                         if (!Regex.IsMatch(fragmentBaseName.Issue, config.Maker.IssuePattern))
                         {
-                            PatchNoteMakerException ex = new PatchNoteMakerException($"Issue name '{fragmentBaseName.Issue}' does not match the configured pattern, '{config.Maker.IssuePattern}'");
+                            ReleaseNoteMakerException ex = new ReleaseNoteMakerException($"Issue name '{fragmentBaseName.Issue}' does not match the configured pattern, '{config.Maker.IssuePattern}'");
                             return (ex, FragmentResult.Default());
                         }
                     }
@@ -102,7 +102,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     string data = File.ReadAllText(fullFileName);
                     if (fragmentContents.Exists(x => x.FragmentBasename == fragmentBaseName))
                     {
-                        PatchNoteMakerException ex = new PatchNoteMakerException($"Multiple files for {fragmentBaseName.Issue}.{fragmentBaseName.Category} in {sectionDir}");
+                        ReleaseNoteMakerException ex = new ReleaseNoteMakerException($"Multiple files for {fragmentBaseName.Issue}.{fragmentBaseName.Category} in {sectionDir}");
                         return (ex, FragmentResult.Default());
                     }
 
@@ -176,9 +176,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             }
         }
 
-        public static List<FragmentContent> SplitFragments([NotNull] List<FragmentContent> fragmentContents, [NotNull] PatchNoteConfig config)
+        public static List<FragmentContent> SplitFragments([NotNull] List<FragmentContent> fragmentContents, [NotNull] ReleaseNoteConfig config)
         {
-            List<PatchNoteType> definitions = config.Types;
+            List<ReleaseNoteType> definitions = config.Types;
             bool isAllBullets = config.Maker.IsAllBullets;
 
             List<FragmentContent> ret = new List<FragmentContent>(fragmentContents.Count);

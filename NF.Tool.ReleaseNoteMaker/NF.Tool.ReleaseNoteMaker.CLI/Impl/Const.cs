@@ -2,7 +2,7 @@
 {
     internal static class Const
     {
-        public const string DEFAULT_CONFIG_FILENAME = "PatchNote.config.toml";
+        public const string DEFAULT_CONFIG_FILENAME = "ReleaseNote.config.toml";
         public const string DEFAULT_TEMPLATE_FILENAME = "Template.tt";
         public const string DEFAULT_NEWS_CONTENT = @"
 

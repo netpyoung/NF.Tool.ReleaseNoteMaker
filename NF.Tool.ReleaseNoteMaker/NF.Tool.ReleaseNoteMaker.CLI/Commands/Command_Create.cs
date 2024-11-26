@@ -44,7 +44,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
-            Exception? ex = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out PatchNoteConfig config);
+            Exception? ex = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (ex is not null)
             {
                 AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
@@ -61,7 +61,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 }
                 else
                 {
-                    foreach (PatchNoteSection configSection in config.Sections)
+                    foreach (ReleaseNoteSection configSection in config.Sections)
                     {
                         if (string.IsNullOrEmpty(configSection.Path))
                         {
@@ -71,7 +71,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                     }
                 }
 
-                PatchNoteSection? sectionOrNull = config.Sections.Find(x => Utils.IsSameIgnoreCase(x.DisplayName, sectionDisplayName));
+                ReleaseNoteSection? sectionOrNull = config.Sections.Find(x => Utils.IsSameIgnoreCase(x.DisplayName, sectionDisplayName));
                 if (sectionOrNull is null)
                 {
                     AnsiConsole.WriteLine($"Error: Section '{sectionDisplayName}' is invalid. Expected one of: {string.Join(", ", config.Sections.Select(x => x.DisplayName))}");
@@ -93,12 +93,12 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 {
                     if (string.IsNullOrEmpty(setting.Section))
                     {
-                        List<PatchNoteSection> sections = config.Sections;
+                        List<ReleaseNoteSection> sections = config.Sections;
                         if (sections.Count > 1)
                         {
                             int displayNameMax = sections.Max(x => x.DisplayName.Length);
-                            PatchNoteSection patchNoteSection = AnsiConsole.Prompt(
-                                new SelectionPrompt<PatchNoteSection>()
+                            ReleaseNoteSection releaseNoteSection = AnsiConsole.Prompt(
+                                new SelectionPrompt<ReleaseNoteSection>()
                                     .Title("Pick a [green]Section[/]: ")
                                     .AddChoices(sections)
                                     .UseConverter((x) =>
@@ -106,7 +106,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                                         return string.Format($"{{0,-{displayNameMax}}} | Path: {{1}}/{{2}}", x.DisplayName, config.Maker.Directory, x.Path);
                                     })
                             );
-                            sectionPath = patchNoteSection.Path;
+                            sectionPath = releaseNoteSection.Path;
                         }
                     }
                     string issueName = AnsiConsole.Prompt(
@@ -117,8 +117,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                     {
                         int displayNameMax = config.Types.Max(x => x.DisplayName.Length);
 
-                        PatchNoteType patchNoteType = AnsiConsole.Prompt(
-                            new SelectionPrompt<PatchNoteType>()
+                        ReleaseNoteType releaseNoteType = AnsiConsole.Prompt(
+                            new SelectionPrompt<ReleaseNoteType>()
                                 .Title("Pick a Fragment [green]Type[/]: ")
                                 .AddChoices(config.Types)
                                 .UseConverter((x) =>
@@ -133,7 +133,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                                     }
                                 })
                         );
-                        typeCategory = patchNoteType.Category;
+                        typeCategory = releaseNoteType.Category;
                     }
 
                     fileName = $"{issueName}.{typeCategory}.md";
@@ -185,7 +185,7 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
             return 0;
         }
 
-        private static bool IsValidFileName(PatchNoteConfig config, string fileName)
+        private static bool IsValidFileName(ReleaseNoteConfig config, string fileName)
         {
             string[] split = fileName.Split(".");
             if (split.Length < 2)
