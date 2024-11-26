@@ -102,7 +102,8 @@ namespace NF.Tool.PatchNoteMaker.Common.Template
             }
 
             StringBuilder sb = new StringBuilder();
-            foreach (string line in renderedText.Split('\n'))
+            string[] lines = renderedText.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
+            foreach (string line in lines)
             {
                 if (isWrap)
                 {
