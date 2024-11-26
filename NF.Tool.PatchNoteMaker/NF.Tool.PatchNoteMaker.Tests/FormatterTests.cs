@@ -48,6 +48,8 @@ namespace NF.Tool.PatchNoteMaker.Tests
         [TestMethod]
         [DataRow(new string[] { "2", "#11", "#3", "gh-10", "gh-4", "omega", "alpha" }, new string[] { "alpha", "omega", "#3", "#11", "gh-4", "gh-10", "2" })]
         [DataRow(new string[] { "2", "72", "9" }, new string[] { "2", "9", "72" })]
+
+        [DataRow(new string[] { "baz", "2", "9", "72", "3", "4" }, new string[] { "baz", "2", "3", "4", "9", "72" })]
         public void TestIssueKey(string[] arr, string[] expected)
         {
             string[] actual = arr.OrderBy(IssueParts.IssueKey).ToArray();
@@ -113,6 +115,57 @@ namespace NF.Tool.PatchNoteMaker.Tests
 
   (#2)
 - Web fixed. (#3)
+
+
+";
+            Assert.AreEqual(expected, text);
+
+
+            string issueFormat = "[{0}]: https://github.com/twisted/towncrier/issues/{0}";
+            config.Maker.IssueFormat = issueFormat;
+            (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+
+            expected = @"# MyProject 1.0 (never)
+
+### Features
+
+- Fun! ([baz])
+- Foo added. ([2], [9], [72])
+- Multi-line
+  here ([3])
+- Stuff! ([4])
+
+[baz]: https://github.com/twisted/towncrier/issues/baz
+[2]: https://github.com/twisted/towncrier/issues/2
+[3]: https://github.com/twisted/towncrier/issues/3
+[4]: https://github.com/twisted/towncrier/issues/4
+[9]: https://github.com/twisted/towncrier/issues/9
+[72]: https://github.com/twisted/towncrier/issues/72
+
+### Misc
+
+- [bar], [1], [9], [142]
+
+[bar]: https://github.com/twisted/towncrier/issues/bar
+[1]: https://github.com/twisted/towncrier/issues/1
+[9]: https://github.com/twisted/towncrier/issues/9
+[142]: https://github.com/twisted/towncrier/issues/142
+
+
+## Web
+
+### Bugfixes
+
+- Multi-line bulleted
+  - fix
+  - here
+
+  ([2])
+- Web fixed. ([3])
+
+[2]: https://github.com/twisted/towncrier/issues/2
+[3]: https://github.com/twisted/towncrier/issues/3
 
 
 ";
