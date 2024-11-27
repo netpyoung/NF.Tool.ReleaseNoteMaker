@@ -171,5 +171,45 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 ";
             Assert.AreEqual(expected, text);
         }
+
+        [TestMethod]
+        public async Task TestIssueFormat()
+        {
+            List<FragmentContent> fragments = new List<FragmentContent>
+            {
+                new FragmentContent("", new FragmentBasename("142", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("1", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("9", "misc", 0), ""),
+                new FragmentContent("", new FragmentBasename("bar", "misc", 0), ""),
+            };
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
+            {
+                new ReleaseNoteType{ DisplayName= "Misc", Category= "misc", IsShowContent=false},
+            };
+
+
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
+            config.Maker.IsAllBullets = true;
+            config.Maker.IsWrap = true;
+            config.Maker.IssueFormat = "xx{0}";
+            config.Types.AddRange(definitions);
+
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
+
+            string templatePath = "Template.tt";
+            VersionData versionData = new VersionData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+            string expected = @"# MyProject 1.0 (never)
+
+### Misc
+
+- xxbar, xx1, xx9, xx142
+
+
+";
+            Assert.AreEqual(expected, text);
+
+        }
     }
 }
