@@ -166,25 +166,39 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return string.Empty;
         }
 
-        private static string TextWrap(string text, int width, string subsequentIndent)
+        internal static string TextWrap(string text, int width, string subsequentIndent)
         {
             string[] words = text.Split(' ');
             StringBuilder line = new StringBuilder();
             int currentLineLength = 0;
 
-            foreach (string word in words)
+            for (int i = 0; i < words.Length; ++i)
             {
-                if (currentLineLength + word.Length + 1 > width)
+                string word = words[i];
+
+                _ = line.Append(word);
+                currentLineLength += word.Length;
+
+                if (i == words.Length - 1)
+                {
+                    break;
+                }
+
+                if (currentLineLength + words[i + 1].Length >= width)
                 {
                     _ = line.AppendLine();
                     _ = line.Append(subsequentIndent);
-                    currentLineLength = 0;
+                    currentLineLength = subsequentIndent.Length;
                 }
-                _ = line.Append(word + " ");
-                currentLineLength += word.Length + 1;
+                else
+                {
+                    _ = line.Append(' ');
+                    currentLineLength += 1;
+                }
             }
 
-            return line.ToString().TrimEnd();
+            string ret = line.ToString();
+            return ret;
         }
     }
 }
