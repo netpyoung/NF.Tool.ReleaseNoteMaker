@@ -71,6 +71,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
                 new FragmentContent("", new FragmentBasename("9", "feature", 0), "Foo added."),
                 new FragmentContent("", new FragmentBasename("3", "feature", 0), "Multi-line\nhere"),
                 new FragmentContent("", new FragmentBasename("baz", "feature", 0), "Fun!"),
+                new FragmentContent("Names", FragmentBasename.Empty, ""),
                 new FragmentContent("Web", new FragmentBasename("3", "bugfix", 0), "Web fixed."),
                 new FragmentContent("Web", new FragmentBasename("2", "bugfix", 0), "Multi-line bulleted\n- fix\n- here"),
             };
@@ -103,6 +104,11 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 ### Misc
 
 - bar, #1, #9, #142
+
+
+## Names
+
+No significant changes.
 
 
 ## Web
@@ -151,6 +157,11 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 [1]: https://github.com/twisted/towncrier/issues/1
 [9]: https://github.com/twisted/towncrier/issues/9
 [142]: https://github.com/twisted/towncrier/issues/142
+
+
+## Names
+
+No significant changes.
 
 
 ## Web

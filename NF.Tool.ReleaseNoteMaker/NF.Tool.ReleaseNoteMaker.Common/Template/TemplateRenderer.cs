@@ -80,11 +80,15 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                     }
 
                     string category = grpCategory.Key;
-                    string categoryDisplayName = config.Types.Find(x => x.Category == category)!.DisplayName;
+                    ReleaseNoteType? releaseNoteTypeOrNull = config.Types.Find(x => x.Category == category);
+                    if (releaseNoteTypeOrNull != null)
                     {
-                        List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
-                        List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
-                        categories.Add(new Category(categoryDisplayName, contents, formattedIssues));
+                        string categoryDisplayName = releaseNoteTypeOrNull.DisplayName;
+                        {
+                            List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
+                            List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
+                            categories.Add(new Category(categoryDisplayName, contents, formattedIssues));
+                        }
                     }
                 }
 

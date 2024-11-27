@@ -54,7 +54,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     files = [];
                 }
 
-                foreach (string fileName in files.Select(x => Path.GetFileName(x)))
+                string[] fileNames = files.Select(x => Path.GetFileName(x)).ToArray();
+                foreach (string fileName in fileNames)
                 {
                     if (ignoredFileNameSet.Any(pattern => IsMatch(fileName.ToLower(), pattern)))
                     {
@@ -107,6 +108,11 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     }
 
                     fragmentContents.Add(new FragmentContent(sectionDisplayName, fragmentBaseName, data));
+                }
+
+                if (fileNames.Length == 0)
+                {
+                    fragmentContents.Add(new FragmentContent(sectionDisplayName, FragmentBasename.Empty, string.Empty));
                 }
             }
 

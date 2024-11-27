@@ -53,5 +53,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
         // issue: release-2.0.1
         // category: doc
         // retryCount: 10
+
+        public static FragmentBasename Empty => new FragmentBasename(string.Empty, string.Empty, 0);
     }
 }
