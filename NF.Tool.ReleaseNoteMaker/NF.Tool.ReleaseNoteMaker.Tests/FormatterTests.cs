@@ -328,5 +328,64 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             actual = TemplateRenderer.TextWrap(sample, 79, "  ");
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public async Task TestTrailingBlock()
+        {
+            List<FragmentContent> fragments = new List<FragmentContent>
+            {
+                new FragmentContent("", new FragmentBasename("1", "feature", 0),
+                    "this fragment has a trailing code block::\n\n"
+                    + "    def foo(): ...\n\n"
+                    + "   \n"
+                    + "    def bar(): ..."),
+                new FragmentContent("", new FragmentBasename("2", "feature", 0),
+                    "this block is not trailing::\n\n"
+                    + "    def foo(): ...\n"
+                    + "    def bar(): ...\n\n"
+                    + "so we can append the issue number directly after this"),
+            };
+
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
+            {
+                new ReleaseNoteType{ DisplayName= "Features", Category= "feature", IsShowContent=true},
+            };
+
+
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
+            config.Maker.IsAllBullets = true;
+            config.Maker.IsWrap = true;
+            config.Types.AddRange(definitions);
+
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
+
+            string templatePath = "Template.tt";
+            VersionData versionData = new VersionData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string actual) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+
+            string expected = @"# MyProject 1.0 (never)
+
+### Features
+
+- this fragment has a trailing code block::
+
+      def foo(): ...
+
+
+      def bar(): ...
+
+  (#1)
+- this block is not trailing::
+
+      def foo(): ...
+      def bar(): ...
+
+  so we can append the issue number directly after this (#2)
+
+
+";
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -99,7 +99,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             bool isTrailingCodeBlock = Regex.IsMatch(text, regex);
             if (isTrailingCodeBlock)
             {
-                return $"{text}\n\n";
+                return $"{text}\n\n ";
             }
 
             return text;

@@ -197,7 +197,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 }
             }
 
-            string ret = line.ToString();
+            string ret = line.ToString().TrimEnd();
             return ret;
         }
     }
