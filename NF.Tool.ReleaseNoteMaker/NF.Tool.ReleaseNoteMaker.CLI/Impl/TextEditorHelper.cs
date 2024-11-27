@@ -9,9 +9,9 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
 {
     internal sealed class TextEditorHelper
     {
-        public static async Task<string?> OpenAndReadTemporaryFile(string tempFilename, string initialContent)
+        public static async Task<string?> OpenAndReadTemporaryFile(string tempFileName, string initialContent)
         {
-            string tempFilePath = Path.Combine(Path.GetTempPath(), tempFilename);
+            string tempFilePath = Path.Combine(Path.GetTempPath(), tempFileName);
 
             await File.WriteAllTextAsync(tempFilePath, initialContent);
 

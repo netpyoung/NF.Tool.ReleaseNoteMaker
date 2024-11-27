@@ -29,9 +29,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                 _ = ignoredFileNameSet.Add(Path.GetFileName(config.Maker.TemplateFilePath).ToLower());
             }
 
-            foreach (string filename in config.Maker.Ignores)
+            foreach (string fileName in config.Maker.Ignores)
             {
-                _ = ignoredFileNameSet.Add(filename.ToLower());
+                _ = ignoredFileNameSet.Add(fileName.ToLower());
             }
 
             FragmentPath getSectionPath = FragmentPath.Get(baseDirectory, config);
@@ -66,7 +66,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                     {
                         if (isStrictMode)
                         {
-                            ReleaseNoteMakerException ex = new ReleaseNoteMakerException($"Invalid news fragment name: {fileName}\nIf this filename is deliberate, add it to 'ignore' in your configuration.");
+                            ReleaseNoteMakerException ex = new ReleaseNoteMakerException($"Invalid news fragment name: {fileName}\nIf this fileName is deliberate, add it to 'ignore' in your configuration.");
                             return (ex, FragmentResult.Default());
                         }
                         continue;

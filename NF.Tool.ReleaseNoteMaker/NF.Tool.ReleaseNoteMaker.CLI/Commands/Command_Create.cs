@@ -145,7 +145,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
                 if (!IsValidFileName(config, fileName))
                 {
-                    AnsiConsole.MarkupLine($@"Expected filename [green]'{fileName}'[/] to be of format '{{issueName}}.{{typeCategory}}', 
+                    AnsiConsole.MarkupLine($@"Expected fileName [green]'{fileName}'[/] to be of format '{{issueName}}.{{typeCategory}}', 
 where '{{issueName}}' is an arbitrary slug
 and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(x => x.DisplayName))}[/].");
                     return 1;
