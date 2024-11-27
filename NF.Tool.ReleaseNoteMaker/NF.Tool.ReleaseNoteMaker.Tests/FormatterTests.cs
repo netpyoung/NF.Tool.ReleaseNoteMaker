@@ -261,6 +261,50 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             Assert.AreEqual(expected, text);
         }
 
+
+        [TestMethod]
+        public async Task TestLineWrappingDisabled()
+        {
+            List<FragmentContent> fragments = new List<FragmentContent>
+            {
+                new FragmentContent("", new FragmentBasename("1", "feature", 0), @"
+                asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment.
+                "),
+                new FragmentContent("", new FragmentBasename("2", "feature", 0), $"https://google.com/q=?{new string('-', 100)}"),
+                new FragmentContent("", new FragmentBasename("3", "feature", 0), string.Concat(Enumerable.Repeat("a ", 80))),
+            };
+
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
+            {
+                new ReleaseNoteType{ DisplayName= "Features", Category= "feature", IsShowContent=true},
+            };
+
+
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
+            config.Maker.IsAllBullets = true;
+            config.Maker.IsWrap = false;
+            config.Types.AddRange(definitions);
+
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
+
+            string templatePath = "Template.tt";
+            VersionData versionData = new VersionData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+
+            string expected = @"# MyProject 1.0 (never)
+
+### Features
+
+- asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment. (#1)
+- https://google.com/q=?---------------------------------------------------------------------------------------------------- (#2)
+- a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a (#3)
+
+
+";
+            Assert.AreEqual(expected, text);
+        }
+
         [TestMethod]
         public void TestTextWrap()
         {
