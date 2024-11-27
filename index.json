@@ -32,7 +32,7 @@
   "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html": {
     "href": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html",
     "title": "Class FragmentBasename | NF.Tool.ReleaseNoteMaker",
-    "keywords": "Class FragmentBasename Namespace NF.Tool.ReleaseNoteMaker.Common.Fragments Assembly NF.Tool.ReleaseNoteMaker.Common.dll public sealed record FragmentBasename Inheritance object FragmentBasename Constructors FragmentBasename(string, string, int) public FragmentBasename(string Issue, string Category, int RetryCount) Parameters Issue string Category string RetryCount int Properties Category public string Category { get; init; } Property Value string Issue public string Issue { get; init; } Property Value string RetryCount public int RetryCount { get; init; } Property Value int"
+    "keywords": "Class FragmentBasename Namespace NF.Tool.ReleaseNoteMaker.Common.Fragments Assembly NF.Tool.ReleaseNoteMaker.Common.dll public sealed record FragmentBasename Inheritance object FragmentBasename Constructors FragmentBasename(string, string, int) public FragmentBasename(string Issue, string Category, int RetryCount) Parameters Issue string Category string RetryCount int Properties Category public string Category { get; init; } Property Value string Empty public static FragmentBasename Empty { get; } Property Value FragmentBasename Issue public string Issue { get; init; } Property Value string RetryCount public int RetryCount { get; init; } Property Value int"
   },
   "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent.html": {
     "href": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent.html",

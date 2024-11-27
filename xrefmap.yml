@@ -386,6 +386,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Category
   nameWithType: FragmentBasename.Category
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty
+  name: Empty
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentBasename_Empty
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty
+  nameWithType: FragmentBasename.Empty
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty*
+  name: Empty
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentBasename_Empty_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Empty
+  nameWithType: FragmentBasename.Empty
 - uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.Issue
   name: Issue
   href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentBasename.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentBasename_Issue
