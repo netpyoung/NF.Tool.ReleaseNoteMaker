@@ -5,7 +5,7 @@ using NF.Tool.ReleaseNoteMaker.Common.Template;
 namespace NF.Tool.ReleaseNoteMaker.Tests
 {
     [TestClass]
-    public class FormatterTests
+    public class TestFormat
     {
         [TestMethod]
         public void TestSplit()
