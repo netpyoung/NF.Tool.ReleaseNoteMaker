@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.Serialization;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Config
@@ -38,6 +39,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public string Path { get; set; } = string.Empty;
     }
 
+    [DebuggerDisplay("<ReleaseNoteType| category: {Category}>")]
     public sealed class ReleaseNoteType
     {
         public string DisplayName { get; set; } = string.Empty;
