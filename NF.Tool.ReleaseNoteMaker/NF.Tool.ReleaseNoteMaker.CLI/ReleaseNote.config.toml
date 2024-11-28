@@ -44,3 +44,8 @@ IsShowContent = true
 Category = "fixed"
 DisplayName = "Fixed"
 IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "feature"
+DisplayName = "Features"
+IsShowContent = true

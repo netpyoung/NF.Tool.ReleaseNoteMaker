@@ -10,13 +10,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
     internal sealed class Program
     {
 #pragma warning disable IDE0210 // Convert to top-level statements
-        private static async Task<int> Main(string[] args)
+        internal static async Task<int> Main(string[] args)
         {
-            //args = "create".Split(" ");
-            //args = "create --config hello.toml".Split(" ");
-            //args = "--help".Split(" ");
-            args = "build --version 1.0.0".Split(" ");
-
             CommandApp app = new CommandApp();
 
             app.Configure(config =>

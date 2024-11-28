@@ -184,8 +184,12 @@ No significant changes.
         }
 
         [TestMethod]
+        [DeploymentItem("Template.tt")]
         public async Task TestIssueFormat()
         {
+            string file = "Template.tt";
+            Assert.IsTrue(File.Exists(file), "deployment failed: " + file +
+                " did not get deployed");
             List<FragmentContent> fragments = new List<FragmentContent>
             {
                 new FragmentContent("", new FragmentBasename("142", "misc", 0), ""),

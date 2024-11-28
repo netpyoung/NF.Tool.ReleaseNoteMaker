@@ -9,7 +9,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Include="..\NF.Tool.ReleaseNoteMaker.CLI\Template.tt" Link="Template.tt" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\Template.tt" Link="Template.tt" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\ReleaseNote.config.toml" Link="ReleaseNote.config.toml" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 
 	<ItemGroup>
