@@ -175,26 +175,12 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 AnsiConsole.Write($"{nameof(newsfileFpath)}: ");
                 AnsiConsole.Write(txtPath);
                 AnsiConsole.WriteLine();
-                ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
-                if (!string.IsNullOrEmpty(topLine)
-                    && baseContent.Contains(topLine))
+                Exception? appendToNewsFileExOrNull = await AppendToNewsFile(config, topLine, content, newsfileFpath);
+                if (appendToNewsFileExOrNull != null)
                 {
-                    AnsiConsole.MarkupLine("It seems you've already produced newsfiles for this version?");
+                    AnsiConsole.WriteException(appendToNewsFileExOrNull);
                     return 1;
                 }
-
-                StringBuilder sb = new StringBuilder();
-                _ = sb.Append(baseHeader);
-                if (!string.IsNullOrEmpty(baseContent))
-                {
-                    _ = sb.AppendLine(baseContent);
-                }
-                else
-                {
-                    _ = sb.AppendLine(content.TrimEnd());
-                }
-                string newContent = sb.ToString();
-                await File.WriteAllTextAsync(newsfileFpath, newContent);
             }
 
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
@@ -241,6 +227,31 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
             AnsiConsole.MarkupLine("[green]*[/] Done!");
             return 0;
+        }
+
+        internal static async Task<Exception?> AppendToNewsFile(ReleaseNoteConfig config, string topLine, string content, string newsfileFpath)
+        {
+            ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
+            if (!string.IsNullOrEmpty(topLine)
+                && baseContent.Contains(topLine))
+            {
+                return new ReleaseNoteMakerException("It seems you've already produced newsfiles for this version?");
+            }
+
+            StringBuilder sb = new StringBuilder();
+            _ = sb.Append(baseHeader);
+            if (!string.IsNullOrEmpty(baseContent))
+            {
+                _ = sb.Append(content);
+                _ = sb.Append(baseContent);
+            }
+            else
+            {
+                _ = sb.AppendLine(content.TrimEnd());
+            }
+            string newContent = sb.ToString();
+            await File.WriteAllTextAsync(newsfileFpath, newContent);
+            return null;
         }
 
         private static void ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
