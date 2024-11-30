@@ -70,13 +70,20 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 List<Category> categories = new List<Category>(config.Types.Count);
                 foreach (IGrouping<string, FragmentContent> grpCategory in grpSection.GroupBy(x => x.FragmentBasename.Category).OrderBy(grp => config.Types.FindIndex(x => x.Category == grp.Key)))
                 {
-                    List<Content> contents = [];
+                    List<Content> xs = new List<Content>(grpCategory.Count());
                     foreach (IGrouping<string, FragmentContent> grpData in grpCategory.OrderBy(x => IssueParts.IssueKey(x.FragmentBasename.Issue)).GroupBy(x => x.Data))
                     {
-                        List<string> issues = grpData.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
-                        List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
-                        string text = Issue.AppendNewlinesIfTrailingCodeBlock(grpData.Key);
-                        contents.Add(new Content(text, formattedIssues));
+                        List<string> trimedIssues = grpData.Select(x => x.FragmentBasename.Issue).Where(x => !string.IsNullOrEmpty(x)).OrderBy(IssueParts.IssueKey).ToList();
+                        xs.Add(new Content(grpData.Key, trimedIssues));
+                    }
+
+                    List<Content> contents = new List<Content>(xs.Count);
+                    foreach (Content x in xs.OrderBy(EntryKey))
+                    {
+                        List<string> formattedIssues = x.Issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
+                        string text = Issue.AppendNewlinesIfTrailingCodeBlock(x.Text);
+                        Content c = new Content(text, formattedIssues);
+                        contents.Add(c);
                     }
 
                     string category = grpCategory.Key;
@@ -85,7 +92,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                     {
                         string categoryDisplayName = releaseNoteTypeOrNull.DisplayName;
                         {
-                            List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).OrderBy(IssueParts.IssueKey).ToList();
+                            List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).Where(x => !string.IsNullOrEmpty(x)).OrderBy(IssueParts.IssueKey).ToList();
                             List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
                             categories.Add(new Category(categoryDisplayName, contents, formattedIssues));
                         }
@@ -126,6 +133,16 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
             string result = sb.ToString();
             return (null, result);
+        }
+
+        private static (string, IssueParts) EntryKey(Content c)
+        {
+            if (c.Issues.Count == 0)
+            {
+                return (c.Text, IssueParts.IssueKey(string.Empty));
+            }
+
+            return (string.Empty, IssueParts.IssueKey(c.Issues.First()));
         }
 
 #pragma warning disable IDE0051 // Remove unused private members
