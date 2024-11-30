@@ -85,7 +85,11 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 }
 
                 string projectName;
-                if (!string.IsNullOrEmpty(config.Maker.Name))
+                if (!string.IsNullOrEmpty(setting.ProjectName))
+                {
+                    projectName = setting.ProjectName;
+                }
+                else if (!string.IsNullOrEmpty(config.Maker.Name))
                 {
                     projectName = config.Maker.Name;
                 }
