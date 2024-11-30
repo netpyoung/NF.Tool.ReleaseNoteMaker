@@ -17,6 +17,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
             app.Configure(config =>
             {
                 _ = config.PropagateExceptions();
+                _ = config.SetApplicationName("release-note-maker");
 
                 _ = config.AddCommand<Command_Init>("init")
                     .WithExample("init")
