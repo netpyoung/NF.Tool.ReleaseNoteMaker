@@ -32,7 +32,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             [CommandOption("--dir")]
             public string Directory { get; set; } = string.Empty;
 
-            [Description("Render the news fragments to standard output. \nDon't write to files, don't check versions.")]
+            [Description("Render the news fragments to standard output.\nDon't write to files, don't check versions.")]
             [CommandOption("--draft")]
             public bool IsDraft { get; set; }
 
