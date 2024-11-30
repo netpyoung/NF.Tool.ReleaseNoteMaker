@@ -46,6 +46,7 @@
                 Write($"- {text}");
                 if (issues.Count == 0)
                 {
+                    WriteLine("");
                     continue;
                 }
 
