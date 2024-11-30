@@ -14,20 +14,13 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
         {
             [Description("Config file name.")]
             [CommandOption("--file")]
+            [DefaultValue(Const.DEFAULT_CONFIG_FILENAME)]
             public string FileName { get; set; } = string.Empty;
         }
 
         public override Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
-            string newConfigFilePath;
-            if (!string.IsNullOrEmpty(setting.FileName))
-            {
-                newConfigFilePath = setting.FileName;
-            }
-            else
-            {
-                newConfigFilePath = Const.DEFAULT_CONFIG_FILENAME;
-            }
+            string newConfigFilePath = setting.FileName;
 
             if (File.Exists(newConfigFilePath))
             {
