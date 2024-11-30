@@ -272,7 +272,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return;
             }
 
-            baseHeader = $"{txt.Substring(0, index).TrimEnd()}\n\n{startString}\n";
+            // TODO(pyoung): handle \r\n
+            baseHeader = $"{txt.Substring(0, index).TrimEnd()}\r\n\r\n{startString}\r\n";
             baseContent = txt.Substring(index + startString.Length).TrimStart();
         }
     }
