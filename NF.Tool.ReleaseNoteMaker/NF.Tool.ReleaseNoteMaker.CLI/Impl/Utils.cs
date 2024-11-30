@@ -80,7 +80,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
                 if (parentOrNull == null)
                 {
                     config = new ReleaseNoteConfig();
-                    return new ReleaseNoteMakerException($"No configuration file found. Looked back from: {startDirectoryFpath}");
+                    return new ReleaseNoteMakerException($"No configuration file found.\nLooked back from: {startDirectoryFpath}");
                 }
                 directoryFpath = parentOrNull.FullName;
             }
