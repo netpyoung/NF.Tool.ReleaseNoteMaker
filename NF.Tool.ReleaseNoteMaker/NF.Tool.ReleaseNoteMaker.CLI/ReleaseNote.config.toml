@@ -7,13 +7,13 @@ TemplateFilePath = "Template.tt"
 Path = ""
 DisplayName = "Main"
 
-[[ReleaseNote.Section]]
-Path = "A"
-DisplayName = "A Section"
+# [[ReleaseNote.Section]]
+# Path = "A"
+# DisplayName = "A Section"
 
-[[ReleaseNote.Section]]
-Path = "B"
-DisplayName = "B Section"
+# [[ReleaseNote.Section]]
+# Path = "B"
+# DisplayName = "B Section"
 
 [[ReleaseNote.Type]]
 Category = "security"
