@@ -54,6 +54,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
         public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, VersionData versionData, List<FragmentContent> fragmentContents)
         {
+            // TODO(pyoung): handle - underlines, topUnderline
             //    top_underline = config.underlines[0],
             //    config.underlines[1:],
             //string topUnderline = "=";
@@ -86,6 +87,11 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                         contents.Add(c);
                     }
 
+                    if (!isAllBullets)
+                    {
+                        contents = contents.OrderBy(BulletKey).ToList();
+                    }
+
                     string category = grpCategory.Key;
                     ReleaseNoteType? releaseNoteTypeOrNull = config.Types.Find(x => x.Category == category);
                     if (releaseNoteTypeOrNull != null)
@@ -102,14 +108,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 sections.Add(new Section(grpSection.Key, categories));
             }
 
+            // TODO(pyoung): handle - underlines, topUnderline
 
-            //entries = entries
-            //    .OrderBy(entryKey)
-            //    .ThenBy(e => isAllBullets ? 0 : bulletKey(e.text))
-            //    .ToList();
-
-            // underlines,
-            // topUnderline,
             TemplateModel model = new TemplateModel(isRenderTitle, versionData, sections);
             (Exception? exOrNull, string renderedText) = await Render(templateFpath, config, model);
             if (exOrNull != null)
@@ -145,10 +145,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return (string.Empty, IssueParts.IssueKey(c.Issues.First()));
         }
 
-#pragma warning disable IDE0051 // Remove unused private members
-        private static int BulletKey(string text)
-#pragma warning restore IDE0051 // Remove unused private members
+        private static int BulletKey(Content c)
         {
+            string text = c.Text;
             if (string.IsNullOrEmpty(text))
             {
                 return -1;
