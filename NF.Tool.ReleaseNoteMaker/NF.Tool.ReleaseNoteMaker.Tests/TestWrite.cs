@@ -9,6 +9,11 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
     [DoNotParallelize]
     public class TestWrite
     {
+        [TestInitialize()]
+        public void Init()
+        {
+            File.Delete("ChangeLog.md");
+        }
 
         [TestMethod]
         [DeploymentItem("Template.tt")]
@@ -172,6 +177,47 @@ No significant changes.
 
 
 Old text.
+""".Replace("\r\n", "\n");
+
+            string actual = await File.ReadAllTextAsync("ChangeLog.md");
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DeploymentItem("Template.tt")]
+        [DeploymentItem("ReleaseNote.config.toml")]
+        public async Task TestMultipleFileOoStartString()
+        {
+            List<FragmentContent> fragments = new List<FragmentContent>
+            {
+            };
+            List<ReleaseNoteType> definitions = new List<ReleaseNoteType>
+            {
+            };
+
+            string topLine = string.Empty;
+            string startString = string.Empty;
+
+            ReleaseNoteConfig config = new ReleaseNoteConfig();
+            config.Maker.IsAllBullets = true;
+            config.Maker.IsWrap = true;
+            config.Maker.StartString = startString;
+            config.Maker.EndOfLine = ReleaseNoteConfigMaker.E_END_OF_LINE.LF;
+            config.Types.AddRange(definitions);
+
+            List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
+
+            string templatePath = "Template.tt";
+            VersionData versionData = new VersionData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            Assert.IsNull(renderExOrNull);
+
+            Exception? ex = await Command_Build.AppendToNewsFile(config, topLine, text, "ChangeLog.md");
+            Assert.IsNull(ex);
+
+            string expected = """
+# MyProject 1.0 (never)
+
 """.Replace("\r\n", "\n");
 
             string actual = await File.ReadAllTextAsync("ChangeLog.md");
