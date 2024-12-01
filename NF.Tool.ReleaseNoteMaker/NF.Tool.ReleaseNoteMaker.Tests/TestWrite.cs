@@ -12,10 +12,23 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
     [DoNotParallelize]
     public class TestWrite
     {
-        [TestInitialize()]
-        public void Init()
+        public required TestContext TestContext { get; set; }
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            File.Delete("ChangeLog.md");
+            string testName = TestContext.TestName!;
+            string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
+            Directory.CreateDirectory(testDirectory);
+            File.Copy("Template.tt", $"{testDirectory}/Template.tt");
+            File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
+            Directory.SetCurrentDirectory(testDirectory);
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Directory.SetCurrentDirectory(TestContext.DeploymentDirectory!);
         }
 
         [TestMethod]
@@ -230,17 +243,21 @@ Old text.
         [TestMethod]
         [DeploymentItem("Template.tt")]
         [DeploymentItem("ReleaseNote.config.toml")]
-        [DeploymentItem("SampleData/Case001/123.feature", "ChangeLog.d/")]
         public async Task TestWithTitleFormatDuplicateVersionRaise()
         {
-            Assert.IsTrue(File.Exists("ChangeLog.d/123.feature"));
-
+            Directory.CreateDirectory("ChangeLog.d");
+            File.WriteAllText("ChangeLog.d/123.feature", "Adds levitation");
             File.WriteAllText("ReleaseNote.config.toml", """
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
 OutputFileName = "{0}-notes.md"
 TemplateFilePath = "Template.tt"
 TitleFormat = "{0} {1} ({2})"
+
+[[ReleaseNote.Type]]
+Category = "feature"
+DisplayName = "Features"
+IsShowContent = true
 """);
 
             string[] args = [
@@ -254,17 +271,76 @@ TitleFormat = "{0} {1} ({2})"
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
             Console.Write(File.ReadAllText("{0}-notes.md"));
-            Assert.IsTrue(File.Exists("ChangeLog.d/123.feature"));
+            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
 
 
 
             TestConsole c = new TestConsole();
             AnsiConsole.Console = c;
+
+            File.WriteAllText("ChangeLog.d/123.feature", "Adds levitation");
             result = await Program.Main(args);
             Assert.AreEqual(1, result);
 
             string expected = "already produced newsfiles for this version";
             Assert.IsTrue(c.Output.Contains(expected));
+        }
+
+        [TestMethod]
+        [DeploymentItem("Template.tt")]
+        [DeploymentItem("ReleaseNote.config.toml")]
+        public async Task TestSingleFileFalseOverwriteDuplicateVersion()
+        {
+            Directory.CreateDirectory("ChangeLog.d");
+            File.WriteAllText("ChangeLog.d/123.feature", "Adds levitation");
+            File.WriteAllText("ReleaseNote.config.toml", """
+[ReleaseNote.Maker]
+Directory = "ChangeLog.d"
+OutputFileName = "{1}-notes.md"
+TemplateFilePath = "Template.tt"
+TitleFormat = "# {0} {1} ({2})"
+IsSingleFile = false
+
+[[ReleaseNote.Type]]
+Category = "feature"
+DisplayName = "Features"
+IsShowContent = true
+""");
+
+            string[] args = [
+                "build",
+                "--version", "7.8.9",
+                "--name", "foo",
+                "--date", "01-01-2001",
+                "--yes",
+            ];
+
+            int result = await Program.Main(args);
+            Assert.AreEqual(0, result);
+            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
+
+            File.WriteAllText("ChangeLog.d/123.feature", "Adds levitation");
+
+            result = await Program.Main(args);
+            Assert.AreEqual(0, result);
+            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
+
+
+            string[] notes = Directory.GetFiles(".", "*-notes.md", SearchOption.TopDirectoryOnly).Select(x => Path.GetRelativePath(".", x)).ToArray();
+            Assert.AreEqual(1, notes.Length);
+            Assert.AreEqual("7.8.9-notes.md", notes[0]);
+
+            string actual = File.ReadAllText(notes[0]);
+
+            string expected = """
+# foo 7.8.9 (01-01-2001)
+
+### Features
+
+- Adds levitation (#123)
+
+""".Replace("\r\n", "\n");
+            Assert.AreEqual(expected, actual);
         }
     }
 }

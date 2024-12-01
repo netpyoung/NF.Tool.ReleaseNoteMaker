@@ -164,18 +164,28 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return 0;
             }
 
-            string newsfileFpath = Path.Combine(baseDirectory, config.Maker.OutputFileName);
+            string newsFileName;
+            if (config.Maker.IsSingleFile)
+            {
+                newsFileName = config.Maker.OutputFileName;
+            }
+            else
+            {
+                newsFileName = string.Format(config.Maker.OutputFileName, versionData.Name, versionData.Version, versionData.Date);
+            }
+
+            string newsFileFpath = Path.Combine(baseDirectory, newsFileName);
             AnsiConsole.MarkupLine($"[green]*[/] Writing to newsfile...");
             {
-                TextPath txtPath = new TextPath(newsfileFpath)
+                TextPath txtPath = new TextPath(newsFileFpath)
                      .RootColor(Color.Red)
                      .SeparatorColor(Color.Green)
                      .StemColor(Color.Blue)
                      .LeafColor(Color.Yellow);
-                AnsiConsole.Write($"{nameof(newsfileFpath)}: ");
+                AnsiConsole.Write($"{nameof(newsFileFpath)}: ");
                 AnsiConsole.Write(txtPath);
                 AnsiConsole.WriteLine();
-                Exception? appendToNewsFileExOrNull = await AppendToNewsFile(config, topLine, content, newsfileFpath);
+                Exception? appendToNewsFileExOrNull = await AppendToNewsFile(config, topLine, content, newsFileFpath);
                 if (appendToNewsFileExOrNull != null)
                 {
                     AnsiConsole.WriteException(appendToNewsFileExOrNull);
@@ -184,7 +194,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
-            GitHelper.StageNewsfile(newsfileFpath);
+            GitHelper.StageNewsfile(newsFileFpath);
 
             string[] fragmentFpaths = fragmentResult.FragmentFiles.Select(x => x.FileName).ToArray();
             if (fragmentFpaths.Length == 0)
@@ -231,7 +241,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
         internal static async Task<Exception?> AppendToNewsFile(ReleaseNoteConfig config, string topLine, string content, string newsfileFpath)
         {
-            ExtractBaseHeaderAndContent(newsfileFpath, config.Maker.StartString, out string baseHeader, out string baseContent);
+            ExtractBaseHeaderAndContent(newsfileFpath, config, out string baseHeader, out string baseContent);
             if (!string.IsNullOrEmpty(topLine)
                 && baseContent.Contains(topLine))
             {
@@ -272,8 +282,15 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
         }
 
-        private static void ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
+        private static void ExtractBaseHeaderAndContent(string path, ReleaseNoteConfig config, out string baseHeader, out string baseContent)
         {
+            if (!config.Maker.IsSingleFile)
+            {
+                baseHeader = string.Empty;
+                baseContent = string.Empty;
+                return;
+            }
+
             if (!File.Exists(path))
             {
                 baseHeader = string.Empty;
@@ -281,6 +298,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return;
             }
 
+            string startString = config.Maker.StartString;
             string txt = NormalizeEndOfLine(File.ReadAllText(path), ReleaseNoteConfigMaker.E_END_OF_LINE.LF);
             int index = txt.IndexOf(startString);
             if (index == -1)
