@@ -6,7 +6,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
 {
     public sealed class ReleaseNoteConfig
     {
-        public ReleaseNoteConfigMaker Maker { get; private set; } = new ReleaseNoteConfigMaker();
+        public ReleaseNoteConfigMaker Maker { get; } = new ReleaseNoteConfigMaker();
         [DataMember(Name = "Section")]
         public List<ReleaseNoteSection> Sections { get; } = new List<ReleaseNoteSection>(20);
         [DataMember(Name = "Type")]
@@ -23,11 +23,15 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public List<string> Ignores { get; } = [];
         public string OrphanPrefix { get; set; } = "+";
         public string IssuePattern { get; set; } = string.Empty;
+
+        // TODO(pyoung): handle formatstring
         public string IssueFormat { get; set; } = string.Empty;
+
+        // TODO(pyoung): handle formatstring
         public string TitleFormat { get; set; } = string.Empty;
         public string StartString { get; set; } = "<!-- release notes start -->\n";
-        public bool IsWrap { get; set; }
-        public bool IsAllBullets { get; set; }
+        public bool IsWrap { get; set; } = false;
+        public bool IsAllBullets { get; set; } = false;
         public E_END_OF_LINE EndOfLine { get; set; } = E_END_OF_LINE.LF;
 
         // config.package_dir
