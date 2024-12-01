@@ -123,7 +123,7 @@ No significant changes.
 - Web fixed. (#3)
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
 
 
@@ -179,7 +179,7 @@ No significant changes.
 [3]: https://github.com/twisted/towncrier/issues/3
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -222,7 +222,7 @@ No significant changes.
 - xxbar, xx1, xx9, xx142
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -272,7 +272,7 @@ No significant changes.
   a a (#3)
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -316,7 +316,7 @@ No significant changes.
 - a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a (#3)
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -328,7 +328,7 @@ No significant changes.
             string expected = @"
 - asdf asdf asdf asdf
   looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
-  newsfragment. (#1)".TrimStart();
+  newsfragment. (#1)".TrimStart().Replace("\r\n", "\n");
 
             string actual = TemplateRenderer.TextWrap(sample, 79, "  ");
             Assert.AreEqual(expected, actual);
@@ -338,7 +338,7 @@ No significant changes.
             expected = @"
 - a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
   a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
-  a a (#3)".TrimStart();
+  a a (#3)".TrimStart().Replace("\r\n", "\n");
 
             actual = TemplateRenderer.TextWrap(sample, 79, "  ");
             Assert.AreEqual(expected, actual);
@@ -399,7 +399,7 @@ No significant changes.
   so we can append the issue number directly after this (#2)
 
 
-";
+".Replace("\r\n", "\n");
             Assert.AreEqual(expected, actual);
         }
     }

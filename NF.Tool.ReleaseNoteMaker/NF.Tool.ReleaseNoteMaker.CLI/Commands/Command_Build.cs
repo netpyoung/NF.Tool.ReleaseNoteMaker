@@ -247,11 +247,29 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
             else
             {
-                _ = sb.AppendLine(content.TrimEnd());
+                _ = sb.Append(content.TrimEnd());
+                _ = sb.Append('\n');
             }
-            string newContent = sb.ToString();
+            ReleaseNoteConfigMaker.E_END_OF_LINE eofType = config.Maker.EndOfLine;
+            string newContent = NormalizeEndOfLine(sb.ToString(), eofType);
             await File.WriteAllTextAsync(newsfileFpath, newContent);
             return null;
+        }
+
+        private static string NormalizeEndOfLine(string content, ReleaseNoteConfigMaker.E_END_OF_LINE eofType)
+        {
+            string normalized = content.Replace("\r\n", "\n").Replace('\r', '\n');
+            switch (eofType)
+            {
+                case ReleaseNoteConfigMaker.E_END_OF_LINE.CRLF:
+                    return normalized.Replace("\n", "\r\n");
+                case ReleaseNoteConfigMaker.E_END_OF_LINE.LF:
+                    return normalized;
+                case ReleaseNoteConfigMaker.E_END_OF_LINE.ENVIRONMENT:
+                    return normalized.Replace("\n", Environment.NewLine);
+                default:
+                    return string.Empty;
+            }
         }
 
         private static void ExtractBaseHeaderAndContent(string path, string startString, out string baseHeader, out string baseContent)
@@ -272,8 +290,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return;
             }
 
-            // TODO(pyoung): handle \r\n
-            baseHeader = $"{txt.Substring(0, index).TrimEnd()}\r\n\r\n{startString}\r\n";
+            baseHeader = $"{txt.Substring(0, index).TrimEnd()}\n\n{startString}\n";
             baseContent = txt.Substring(index + startString.Length).TrimStart();
         }
     }

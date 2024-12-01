@@ -28,9 +28,17 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public string StartString { get; set; } = "<!-- release notes start -->\n";
         public bool IsWrap { get; set; }
         public bool IsAllBullets { get; set; }
+        public E_END_OF_LINE EndOfLine { get; set; }
 
         // config.package_dir
         // public string PackageDirectory{ get; set; } = string.Empty;
+
+        public enum E_END_OF_LINE
+        {
+            CRLF,
+            LF,
+            ENVIRONMENT
+        }
     }
 
     public sealed class ReleaseNoteSection

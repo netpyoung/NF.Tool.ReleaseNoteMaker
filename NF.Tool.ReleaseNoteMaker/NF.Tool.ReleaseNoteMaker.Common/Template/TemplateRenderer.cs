@@ -123,11 +123,13 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             {
                 if (isWrap)
                 {
-                    _ = sb.AppendLine(TextWrap(line, 79, GetIndent(line, isAllBullets)));
+                    _ = sb.Append(TextWrap(line, 79, GetIndent(line, isAllBullets)));
+                    _ = sb.Append('\n');
                 }
                 else
                 {
-                    _ = sb.AppendLine(line);
+                    _ = sb.Append(line);
+                    _ = sb.Append('\n');
                 }
             }
 
@@ -189,14 +191,14 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
         internal static string TextWrap(string text, int width, string subsequentIndent)
         {
             string[] words = text.Split(' ');
-            StringBuilder line = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             int currentLineLength = 0;
 
             for (int i = 0; i < words.Length; ++i)
             {
                 string word = words[i];
 
-                _ = line.Append(word);
+                _ = sb.Append(word);
                 currentLineLength += word.Length;
 
                 if (i == words.Length - 1)
@@ -206,18 +208,18 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
                 if (currentLineLength + words[i + 1].Length >= width)
                 {
-                    _ = line.AppendLine();
-                    _ = line.Append(subsequentIndent);
+                    _ = sb.Append('\n');
+                    _ = sb.Append(subsequentIndent);
                     currentLineLength = subsequentIndent.Length;
                 }
                 else
                 {
-                    _ = line.Append(' ');
+                    _ = sb.Append(' ');
                     currentLineLength += 1;
                 }
             }
 
-            string ret = line.ToString().TrimEnd();
+            string ret = sb.ToString().TrimEnd();
             return ret;
         }
     }
