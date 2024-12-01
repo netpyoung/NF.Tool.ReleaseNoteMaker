@@ -91,7 +91,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -123,7 +124,8 @@ No significant changes.
 - Web fixed. (#3)
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
 
 
@@ -132,7 +134,8 @@ No significant changes.
             (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
 
-            expected = @"# MyProject 1.0 (never)
+            expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -179,7 +182,8 @@ No significant changes.
 [3]: https://github.com/twisted/towncrier/issues/3
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -215,14 +219,16 @@ No significant changes.
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Misc
 
 - xxbar, xx1, xx9, xx142
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -232,9 +238,9 @@ No significant changes.
         {
             List<FragmentContent> fragments = new List<FragmentContent>
             {
-                new FragmentContent("", new FragmentBasename("1", "feature", 0), @"
-                asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment.
-                "),
+                new FragmentContent("", new FragmentBasename("1", "feature", 0), """
+                    asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment.
+                    """),
                 new FragmentContent("", new FragmentBasename("2", "feature", 0), $"https://google.com/q=?{new string('-', 100)}"),
                 new FragmentContent("", new FragmentBasename("3", "feature", 0), string.Concat(Enumerable.Repeat("a ", 80))),
             };
@@ -257,7 +263,8 @@ No significant changes.
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
 
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -272,7 +279,8 @@ No significant changes.
   a a (#3)
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -282,9 +290,9 @@ No significant changes.
         {
             List<FragmentContent> fragments = new List<FragmentContent>
             {
-                new FragmentContent("", new FragmentBasename("1", "feature", 0), @"
-                asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment.
-                "),
+                new FragmentContent("", new FragmentBasename("1", "feature", 0), """
+                    asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment.
+                    """),
                 new FragmentContent("", new FragmentBasename("2", "feature", 0), $"https://google.com/q=?{new string('-', 100)}"),
                 new FragmentContent("", new FragmentBasename("3", "feature", 0), string.Concat(Enumerable.Repeat("a ", 80))),
             };
@@ -307,7 +315,8 @@ No significant changes.
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
 
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -316,7 +325,8 @@ No significant changes.
 - a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a (#3)
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
         }
 
@@ -325,20 +335,22 @@ No significant changes.
         {
             string sample = "- asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment. (#1)";
 
-            string expected = @"
+            string expected = """
 - asdf asdf asdf asdf
   looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
-  newsfragment. (#1)".TrimStart().Replace("\r\n", "\n");
+  newsfragment. (#1)
+""".Replace("\r\n", "\n");
 
             string actual = TemplateRenderer.TextWrap(sample, 79, "  ");
             Assert.AreEqual(expected, actual);
 
             sample = "- a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a (#3)";
 
-            expected = @"
+            expected = """
 - a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
   a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
-  a a (#3)".TrimStart().Replace("\r\n", "\n");
+  a a (#3)
+""".Replace("\r\n", "\n");
 
             actual = TemplateRenderer.TextWrap(sample, 79, "  ");
             Assert.AreEqual(expected, actual);
@@ -379,7 +391,8 @@ No significant changes.
             (Exception? renderExOrNull, string actual) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
 
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -399,7 +412,8 @@ No significant changes.
   so we can append the issue number directly after this (#2)
 
 
-".Replace("\r\n", "\n");
+
+""".Replace("\r\n", "\n");
             Assert.AreEqual(expected, actual);
         }
     }

@@ -22,7 +22,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
 
-            string expected = @"* Finding news fragments...
+            string expected = """
+* Finding news fragments...
 * Loading template...
 * Rendering news fragments...
 * show draft...
@@ -46,8 +47,9 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 
 
 
-";
-            Assert.AreEqual(expected.Replace(Environment.NewLine, "\n"), c.Output);
+
+""".Replace("\r\n", "\n");
+            Assert.AreEqual(expected, c.Output);
         }
     }
 }

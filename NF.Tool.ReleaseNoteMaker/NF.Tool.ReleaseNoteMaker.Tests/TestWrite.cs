@@ -50,7 +50,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             Exception? ex = await Command_Build.AppendToNewsFile(config, "release notes start", text, "ChangeLog.md");
             Assert.IsNull(ex);
 
-            string expected = @"# MyProject 1.0 (never)
+            string expected = """
+# MyProject 1.0 (never)
 
 ### Features
 
@@ -76,7 +77,8 @@ No significant changes.
 
 
 Old text.
-";
+
+""";
 
             string actual = await File.ReadAllTextAsync("ChangeLog.md");
             Assert.AreEqual(expected, actual);
