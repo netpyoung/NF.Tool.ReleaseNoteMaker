@@ -140,6 +140,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsAllBullets
   nameWithType: ReleaseNoteConfigMaker.IsAllBullets
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile
+  name: IsSingleFile
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_IsSingleFile
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile
+  nameWithType: ReleaseNoteConfigMaker.IsSingleFile
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile*
+  name: IsSingleFile
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_IsSingleFile_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsSingleFile
+  nameWithType: ReleaseNoteConfigMaker.IsSingleFile
 - uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.IsWrap
   name: IsWrap
   href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_IsWrap
