@@ -3,7 +3,7 @@
 namespace NF.Tool.ReleaseNoteMaker.Tests;
 
 [TestClass]
-public sealed class TestParseNewsfragmentBasename
+public sealed class TestBuilder
 {
     [TestMethod]
     [DataRow("123.feature", new string[] { "feature" }, "123", "feature", 0)]
@@ -37,7 +37,4 @@ public sealed class TestParseNewsfragmentBasename
         FragmentBasename? actual = FragmentFinder.ParseNewFragmentBasenameOrNull(baseName, categorySeq);
         Assert.IsNull(actual);
     }
-
-    // TODO(pyoung): class TestNewsFragmentsOrdering(TestCase):
-    // https://github.com/twisted/towncrier/blob/trunk/src/towncrier/test/test_builder.py
 }
