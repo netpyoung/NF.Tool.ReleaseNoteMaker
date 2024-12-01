@@ -1,7 +1,10 @@
-﻿using NF.Tool.ReleaseNoteMaker.CLI.Commands;
+﻿using NF.Tool.ReleaseNoteMaker.CLI;
+using NF.Tool.ReleaseNoteMaker.CLI.Commands;
 using NF.Tool.ReleaseNoteMaker.Common.Config;
 using NF.Tool.ReleaseNoteMaker.Common.Fragments;
 using NF.Tool.ReleaseNoteMaker.Common.Template;
+using Spectre.Console;
+using Spectre.Console.Testing;
 
 namespace NF.Tool.ReleaseNoteMaker.Tests
 {
@@ -186,7 +189,7 @@ Old text.
         [TestMethod]
         [DeploymentItem("Template.tt")]
         [DeploymentItem("ReleaseNote.config.toml")]
-        public async Task TestMultipleFileOoStartString()
+        public async Task TestMultipleFileNoStartString()
         {
             List<FragmentContent> fragments = new List<FragmentContent>
             {
@@ -222,6 +225,46 @@ Old text.
 
             string actual = await File.ReadAllTextAsync("ChangeLog.md");
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        [DeploymentItem("Template.tt")]
+        [DeploymentItem("ReleaseNote.config.toml")]
+        [DeploymentItem("SampleData/Case001/123.feature", "ChangeLog.d/")]
+        public async Task TestWithTitleFormatDuplicateVersionRaise()
+        {
+            Assert.IsTrue(File.Exists("ChangeLog.d/123.feature"));
+
+            File.WriteAllText("ReleaseNote.config.toml", """
+[ReleaseNote.Maker]
+Directory = "ChangeLog.d"
+OutputFileName = "{0}-notes.md"
+TemplateFilePath = "Template.tt"
+TitleFormat = "{0} {1} ({2})"
+""");
+
+            string[] args = [
+                "build",
+                "--version", "7.8.9",
+                "--name", "foo",
+                "--date", "01-01-2001",
+                "--yes",
+            ];
+
+            int result = await Program.Main(args);
+            Assert.AreEqual(0, result);
+            Console.Write(File.ReadAllText("{0}-notes.md"));
+            Assert.IsTrue(File.Exists("ChangeLog.d/123.feature"));
+
+
+
+            TestConsole c = new TestConsole();
+            AnsiConsole.Console = c;
+            result = await Program.Main(args);
+            Assert.AreEqual(1, result);
+
+            string expected = "already produced newsfiles for this version";
+            Assert.IsTrue(c.Output.Contains(expected));
         }
     }
 }
