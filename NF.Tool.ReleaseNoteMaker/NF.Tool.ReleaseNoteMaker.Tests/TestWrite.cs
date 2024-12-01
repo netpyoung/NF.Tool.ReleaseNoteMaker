@@ -36,6 +36,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             ReleaseNoteConfig config = new ReleaseNoteConfig();
             config.Maker.IsAllBullets = true;
             config.Maker.IsWrap = true;
+            config.Maker.EndOfLine = ReleaseNoteConfigMaker.E_END_OF_LINE.LF;
             config.Types.AddRange(definitions);
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
@@ -78,7 +79,7 @@ No significant changes.
 
 Old text.
 
-""";
+""".Replace("\r\n", "\n");
 
             string actual = await File.ReadAllTextAsync("ChangeLog.md");
             Assert.AreEqual(expected, actual);
@@ -114,6 +115,7 @@ Old text.
             config.Maker.IsAllBullets = true;
             config.Maker.IsWrap = true;
             config.Maker.StartString = startString;
+            config.Maker.EndOfLine = ReleaseNoteConfigMaker.E_END_OF_LINE.LF;
             config.Types.AddRange(definitions);
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
@@ -170,7 +172,7 @@ No significant changes.
 
 
 Old text.
-""";
+""".Replace("\r\n", "\n");
 
             string actual = await File.ReadAllTextAsync("ChangeLog.md");
             Assert.AreEqual(expected, actual);
