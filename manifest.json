@@ -22,6 +22,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.yml",
       "output": {
         ".html": {

@@ -77,6 +77,43 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.Directory
   nameWithType: ReleaseNoteConfigMaker.Directory
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE
+  name: ReleaseNoteConfigMaker.E_END_OF_LINE
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.html
+  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE
+  nameWithType: ReleaseNoteConfigMaker.E_END_OF_LINE
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.CRLF
+  name: CRLF
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_CRLF
+  commentId: F:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.CRLF
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.CRLF
+  nameWithType: ReleaseNoteConfigMaker.E_END_OF_LINE.CRLF
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.ENVIRONMENT
+  name: ENVIRONMENT
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_ENVIRONMENT
+  commentId: F:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.ENVIRONMENT
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.ENVIRONMENT
+  nameWithType: ReleaseNoteConfigMaker.E_END_OF_LINE.ENVIRONMENT
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.LF
+  name: LF
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_LF
+  commentId: F:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.LF
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.E_END_OF_LINE.LF
+  nameWithType: ReleaseNoteConfigMaker.E_END_OF_LINE.LF
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine
+  name: EndOfLine
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_EndOfLine
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine
+  nameWithType: ReleaseNoteConfigMaker.EndOfLine
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine*
+  name: EndOfLine
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_EndOfLine_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.EndOfLine
+  nameWithType: ReleaseNoteConfigMaker.EndOfLine
 - uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.Ignores
   name: Ignores
   href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_Ignores
