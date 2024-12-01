@@ -45,7 +45,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
 
-            await File.WriteAllTextAsync("ChangeLog.md", $"Old text.{Environment.NewLine}");
+            await File.WriteAllTextAsync("ChangeLog.md", "Old text.\n");
 
             Exception? ex = await Command_Build.AppendToNewsFile(config, "release notes start", text, "ChangeLog.md");
             Assert.IsNull(ex);
@@ -108,7 +108,7 @@ Old text.
             };
 
             string topLine = string.Empty;
-            string startString = ".. towncrier release notes start\r\n";
+            string startString = ".. towncrier release notes start\n";
 
             ReleaseNoteConfig config = new ReleaseNoteConfig();
             config.Maker.IsAllBullets = true;

@@ -281,7 +281,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return;
             }
 
-            string txt = File.ReadAllText(path);
+            string txt = NormalizeEndOfLine(File.ReadAllText(path), ReleaseNoteConfigMaker.E_END_OF_LINE.LF);
             int index = txt.IndexOf(startString);
             if (index == -1)
             {
