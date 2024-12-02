@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 {
-    [Description($"Generate a release note.")]
+    [Description($"Checks files changed.")]
     internal sealed class Command_Check : AsyncCommand<Command_Check.Settings>
     {
         internal sealed class Settings : CommandSettings
@@ -61,10 +61,10 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return Task.FromResult(0);
             }
 
-            HashSet<string> fullPaths = changedFiles.Select(Path.GetFullPath).ToHashSet();
+            HashSet<string> fullPathSet = changedFiles.Select(Path.GetFullPath).ToHashSet();
             AnsiConsole.MarkupLine("Looking at these files:");
             AnsiConsole.MarkupLine("----");
-            foreach ((int Index, string Item) in fullPaths.OrderBy(x => x).Index())
+            foreach ((int Index, string Item) in fullPathSet.OrderBy(x => x).Index())
             {
                 AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
             }
@@ -78,49 +78,50 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             string newsFileFpath = Path.GetFullPath(Path.Combine(setting.Directory, config.Maker.OutputFileName));
-            if (fullPaths.Contains(newsFileFpath))
+            if (fullPathSet.Contains(newsFileFpath))
             {
                 AnsiConsole.MarkupLine("Checks SKIPPED: news file changes detected.");
                 return Task.FromResult(0);
             }
 
-            HashSet<string> fragments = new HashSet<string>(result.FragmentFiles.Count);
-            HashSet<string> unchecked_fragments = new HashSet<string>(result.FragmentFiles.Count);
+            HashSet<string> fragmentCheckSet = new HashSet<string>(result.FragmentFiles.Count);
+            HashSet<string> fragmentUnCheckSet = new HashSet<string>(result.FragmentFiles.Count);
             foreach (FragmentFile x in result.FragmentFiles)
             {
                 string fileName = x.FileName;
                 string category = x.Category;
 
-                if (config.Types.Find(x => x.Category == category)!.IsCheck)
+                ReleaseNoteType releseNoteType = config.Types.Find(x => x.Category == category)!;
+                if (releseNoteType.IsCheck)
                 {
-                    _ = fragments.Add(fileName);
+                    _ = fragmentCheckSet.Add(fileName);
                 }
                 else
                 {
-                    _ = unchecked_fragments.Add(fileName);
+                    _ = fragmentUnCheckSet.Add(fileName);
                 }
             }
 
-            string[] fragments_in_branch = fullPaths.Intersect(fragments).ToArray();
-            if (fragments_in_branch.Length > 0)
+            string[] inBranchfragments = fullPathSet.Intersect(fragmentCheckSet).ToArray();
+            if (inBranchfragments.Length > 0)
             {
                 AnsiConsole.MarkupLine("Found:");
-                foreach ((int Index, string Item) in fragments_in_branch.OrderBy(x => x).Index())
+                foreach ((int Index, string Item) in inBranchfragments.OrderBy(x => x).Index())
                 {
                     AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
                 }
                 return Task.FromResult(0);
             }
 
-            if (unchecked_fragments.Count == 0)
+            if (fragmentUnCheckSet.Count == 0)
             {
                 AnsiConsole.MarkupLine("No new newsfragments found on this branch.");
                 return Task.FromResult(1);
             }
 
-            string[] unchecked_fragments_in_branch = fullPaths.Intersect(unchecked_fragments).ToArray();
+            string[] inBranchUncheckedFragments = fullPathSet.Intersect(fragmentUnCheckSet).ToArray();
             AnsiConsole.MarkupLine("Found newsfragments of unchecked types in the branch:");
-            foreach ((int Index, string Item) in unchecked_fragments_in_branch.OrderBy(x => x).Index())
+            foreach ((int Index, string Item) in inBranchUncheckedFragments.OrderBy(x => x).Index())
             {
                 AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
             }
