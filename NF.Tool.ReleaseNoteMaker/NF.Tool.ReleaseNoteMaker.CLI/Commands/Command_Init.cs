@@ -28,8 +28,13 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return Task.FromResult(1);
             }
 
-            string path = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_CONFIG_FILENAME);
-            File.Move(path, newConfigFilePath);
+            string configFileTempPath = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_CONFIG_FILENAME);
+            File.Move(configFileTempPath, newConfigFilePath);
+
+            _ = Directory.CreateDirectory("ChangeLog.d");
+
+            string templateFileTempPath = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_TEMPLATE_FILENAME);
+            File.Move(templateFileTempPath, $"ChangeLog.d/{Const.DEFAULT_TEMPLATE_FILENAME}");
 
             return Task.FromResult(0);
         }
