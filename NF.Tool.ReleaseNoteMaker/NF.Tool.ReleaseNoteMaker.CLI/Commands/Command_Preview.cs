@@ -94,16 +94,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 rendered = text;
             }
 
-            string topLine;
-            if (!string.IsNullOrEmpty(config.Maker.TitleFormat))
-            {
-                topLine = string.Format($"{config.Maker.TitleFormat}\n", versionData.Name, versionData.Version, versionData.Date);
-            }
-            else
-            {
-                topLine = string.Empty;
-            }
-
+            string topLine = Utils.GetTopLine(config, versionData);
             string content = $"{topLine}{rendered}";
 
             //AnsiConsole.MarkupLine("[green]*[/] show draft...");

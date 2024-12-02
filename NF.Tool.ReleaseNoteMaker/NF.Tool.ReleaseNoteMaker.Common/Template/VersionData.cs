@@ -6,9 +6,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
     public sealed class VersionData
     {
-        public string Name { get; init; } = string.Empty;
-        public string Version { get; init; } = string.Empty;
-        public string Date { get; init; } = string.Empty;
+        public string ProjectName { get; init; } = string.Empty;
+        public string ProjectVersion { get; init; } = string.Empty;
+        public string ProjectDate { get; init; } = string.Empty;
 
         private VersionData()
         {
@@ -16,18 +16,18 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
         public VersionData(string name, string version, string date)
         {
-            Name = name;
-            Version = version;
-            Date = date;
+            ProjectName = name;
+            ProjectVersion = version;
+            ProjectDate = date;
         }
 
         public override string ToString()
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(ProjectName))
             {
-                return $"{Version} ({Date})";
+                return $"{ProjectVersion} ({ProjectDate})";
             }
-            return $"{Name} {Version} ({Date})";
+            return $"{ProjectName} {ProjectVersion} ({ProjectDate})";
         }
 
         public static (Exception? exOrNull, VersionData versionData) GetVersionData([NotNull] ReleaseNoteConfig config, (string ProjectName, string ProjectVersion, string ProjectDate) setting)

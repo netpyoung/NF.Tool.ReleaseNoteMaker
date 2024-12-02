@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartFormat;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -82,12 +83,14 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
         {
             if (!string.IsNullOrEmpty(issueFormat))
             {
-                return string.Format(issueFormat, issue);
+                string renderedIssue = Smart.Format(issueFormat, new { Issue = issue });
+                return renderedIssue;
             }
 
             if (int.TryParse(issue, out int issueNumber))
             {
-                return $"#{issueNumber}";
+                string renderedIssue = $"#{issueNumber}";
+                return renderedIssue;
             }
             return issue;
         }

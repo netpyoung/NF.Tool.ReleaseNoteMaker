@@ -130,7 +130,7 @@ No significant changes.
             Assert.AreEqual(expected, text);
 
 
-            string issueFormat = "[{0}]: https://github.com/twisted/towncrier/issues/{0}";
+            string issueFormat = "[{Issue}]: https://github.com/twisted/towncrier/issues/{Issue}";
             config.Maker.IssueFormat = issueFormat;
             (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -211,7 +211,7 @@ No significant changes.
             ReleaseNoteConfig config = new ReleaseNoteConfig();
             config.Maker.IsAllBullets = true;
             config.Maker.IsWrap = true;
-            config.Maker.IssueFormat = "xx{0}";
+            config.Maker.IssueFormat = "xx{Issue}";
             config.Types.AddRange(definitions);
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);

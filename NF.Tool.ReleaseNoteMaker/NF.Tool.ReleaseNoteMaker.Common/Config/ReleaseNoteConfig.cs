@@ -24,10 +24,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public string OrphanPrefix { get; set; } = "+";
         public string IssuePattern { get; set; } = string.Empty;
 
-        // TODO(pyoung): handle formatstring
         public string IssueFormat { get; set; } = string.Empty;
 
-        // TODO(pyoung): handle formatstring
         public string TitleFormat { get; set; } = string.Empty;
         public string StartString { get; set; } = "<!-- release notes start -->\n";
         public bool IsWrap { get; set; } = false;

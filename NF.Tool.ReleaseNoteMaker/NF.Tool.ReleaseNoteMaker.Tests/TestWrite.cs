@@ -253,7 +253,7 @@ Old text.
 Directory = "ChangeLog.d"
 OutputFileName = "{0}-notes.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
-TitleFormat = "{0} {1} ({2})"
+TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
 
 [[ReleaseNote.Type]]
 Category = "feature"
@@ -299,7 +299,7 @@ IsShowContent = true
 Directory = "ChangeLog.d"
 OutputFileName = "{1}-notes.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
-TitleFormat = "# {0} {1} ({2})"
+TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
 IsSingleFile = false
 
 [[ReleaseNote.Type]]

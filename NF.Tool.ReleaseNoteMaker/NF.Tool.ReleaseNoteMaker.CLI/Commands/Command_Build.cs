@@ -32,7 +32,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             [CommandOption("--name")]
             public string ProjectName { get; set; } = string.Empty;
 
-            [Description("[yellow][[Required]][/] Render the news fragments using given version.")]
+            [Description("Render the news fragments using given version.")]
             [CommandOption("--version")]
             public string ProjectVersion { get; set; } = string.Empty;
 
@@ -109,16 +109,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 rendered = text;
             }
 
-            string topLine;
-            if (!string.IsNullOrEmpty(config.Maker.TitleFormat))
-            {
-                topLine = string.Format($"{config.Maker.TitleFormat}\n", versionData.Name, versionData.Version, versionData.Date);
-            }
-            else
-            {
-                topLine = string.Empty;
-            }
-
+            string topLine = Utils.GetTopLine(config, versionData);
             string content = $"{topLine}{rendered}";
 
             string newsFileName;
@@ -128,7 +119,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
             else
             {
-                newsFileName = string.Format(config.Maker.OutputFileName, versionData.Name, versionData.Version, versionData.Date);
+                newsFileName = string.Format(config.Maker.OutputFileName, versionData.ProjectName, versionData.ProjectVersion, versionData.ProjectDate);
             }
 
             string newsFileFpath = Path.Combine(baseDirectory, newsFileName);
