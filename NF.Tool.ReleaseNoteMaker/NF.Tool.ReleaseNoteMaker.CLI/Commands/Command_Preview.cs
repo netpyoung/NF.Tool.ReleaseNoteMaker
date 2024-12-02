@@ -59,7 +59,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return 1;
             }
 
-            AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
+            //AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
             if (fragmentResultExOrNull != null)
             {

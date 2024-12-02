@@ -6,6 +6,25 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
     [DoNotParallelize]
     public class TestCreate
     {
+        public required TestContext TestContext { get; set; }
+
+        [TestInitialize]
+        public void TestInitialize()
+        {
+            string testName = TestContext.TestName!;
+            string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
+            Directory.CreateDirectory(testDirectory);
+            File.Copy("Template.tt", $"{testDirectory}/Template.tt");
+            File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
+            Directory.SetCurrentDirectory(testDirectory);
+        }
+
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            Directory.SetCurrentDirectory(TestContext.DeploymentDirectory!);
+        }
+
         [TestMethod]
         [DeploymentItem("Template.tt")]
         [DeploymentItem("ReleaseNote.config.toml")]
