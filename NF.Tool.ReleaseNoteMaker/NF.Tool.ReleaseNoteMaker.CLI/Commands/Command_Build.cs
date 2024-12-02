@@ -40,10 +40,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             [CommandOption("--date")]
             public string ProjectDate { get; set; } = string.Empty;
 
-            [Description("Render the news fragments to standard output.\nDon't write to files, don't check versions.")]
-            [CommandOption("--draft")]
-            public bool IsDraft { get; set; }
-
             [Description("Do not ask for confirmation to remove news fragments")]
             [CommandOption("--yes")]
             public bool IsAnswerYes { get; set; }
@@ -124,12 +120,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             string content = $"{topLine}{rendered}";
-            if (setting.IsDraft)
-            {
-                AnsiConsole.MarkupLine("[green]*[/] show draft...");
-                AnsiConsole.WriteLine(content);
-                return 0;
-            }
 
             string newsFileName;
             if (config.Maker.IsSingleFile)
