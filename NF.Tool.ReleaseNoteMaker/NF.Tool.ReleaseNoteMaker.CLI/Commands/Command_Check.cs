@@ -40,11 +40,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return Task.FromResult(1);
             }
 
-            Console.WriteLine(baseDirectory);
-            Console.WriteLine(config);
-
-
-            (Exception? exOrNull, int exitCode, string stdOut, string stdErr) callResult = Cmd.Call2("git", $"diff --name-only {setting.CompareWith} ...");
+            (Exception? exOrNull, int exitCode, string stdOut, string stdErr) callResult = Cmd.Call2("git", $"diff --name-only {setting.CompareWith}...");
             if (callResult.exOrNull != null)
             {
                 AnsiConsole.WriteException(callResult.exOrNull);

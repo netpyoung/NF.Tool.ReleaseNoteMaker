@@ -97,7 +97,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
                         }
                     }
 
-                    string fullFileName = Path.Combine(sectionDir, fileName);
+                    string fullFileName = Path.GetFullPath(Path.Combine(sectionDir, fileName));
                     fragmentFiles.Add(new FragmentFile(fullFileName, fragmentBaseName.Category));
 
                     string data = File.ReadAllText(fullFileName);
