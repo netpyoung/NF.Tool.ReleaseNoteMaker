@@ -51,6 +51,11 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             [Description("Do not ask for confirmations. But keep news fragments.")]
             [CommandOption("--keep")]
             public bool IsAnswerKeep { get; set; }
+
+            internal (string ProjectName, string ProjectVersion, string ProjectDate) GetProjectInfo()
+            {
+                return (ProjectName, ProjectVersion, ProjectDate);
+            }
         }
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
@@ -67,53 +72,15 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return 1;
             }
 
-            VersionData versionData;
+            (Exception? versionDataResultExOrNull, VersionData versionData) = VersionData.GetVersionData(config, setting.GetProjectInfo());
+            if (versionDataResultExOrNull is not null)
             {
-                string projectVersion;
-                if (!string.IsNullOrEmpty(setting.ProjectVersion))
-                {
-                    projectVersion = setting.ProjectVersion;
-                }
-                else if (!string.IsNullOrEmpty(config.Maker.Version))
-                {
-                    projectVersion = config.Maker.Version;
-                }
-                else
-                {
-                    AnsiConsole.MarkupLine("[green]'--version'[/] is required since the config file does not contain 'version.");
-                    return 1;
-                }
-
-                string projectName;
-                if (!string.IsNullOrEmpty(setting.ProjectName))
-                {
-                    projectName = setting.ProjectName;
-                }
-                else if (!string.IsNullOrEmpty(config.Maker.Name))
-                {
-                    projectName = config.Maker.Name;
-                }
-                else
-                {
-                    projectName = string.Empty;
-                }
-
-                string projectDate;
-                if (!string.IsNullOrEmpty(setting.ProjectDate))
-                {
-                    projectDate = setting.ProjectDate;
-                }
-                else
-                {
-                    projectDate = DateTime.Today.ToString("yyyy-MM-dd");
-                }
-
-                versionData = new VersionData(projectName, projectVersion, projectDate);
+                AnsiConsole.WriteException(versionDataResultExOrNull, ExceptionFormats.ShortenEverything);
+                return 1;
             }
 
             AnsiConsole.MarkupLine("[green]*[/] Finding news fragments...");
             (Exception? fragmentResultExOrNull, FragmentResult fragmentResult) = FragmentFinder.FindFragments(baseDirectory, config, isStrictMode: false);
-
             if (fragmentResultExOrNull != null)
             {
                 AnsiConsole.WriteException(fragmentResultExOrNull, ExceptionFormats.ShortenEverything);
