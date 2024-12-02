@@ -1,5 +1,7 @@
 ﻿using NF.Tool.ReleaseNoteMaker.Common;
 using NF.Tool.ReleaseNoteMaker.Common.Config;
+using NF.Tool.ReleaseNoteMaker.Common.Template;
+using SmartFormat;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -124,6 +126,17 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
         public static bool IsSameIgnoreCase(string x, string y)
         {
             return string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public static string GetTopLine(ReleaseNoteConfig config, in VersionData versionData)
+        {
+            if (string.IsNullOrEmpty(config.Maker.TitleFormat))
+            {
+                return string.Empty;
+            }
+
+            string topLine = Smart.Format($"{config.Maker.TitleFormat}\n", versionData);
+            return topLine;
         }
     }
 }
