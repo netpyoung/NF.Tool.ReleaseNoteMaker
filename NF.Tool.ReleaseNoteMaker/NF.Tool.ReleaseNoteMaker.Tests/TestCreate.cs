@@ -14,7 +14,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string testName = TestContext.TestName!;
             string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
             Directory.CreateDirectory(testDirectory);
-            File.Copy("Template.tt", $"{testDirectory}/Template.tt");
+            Directory.CreateDirectory($"{testDirectory}/ChangeLog.d");
+            File.Copy("ChangeLog.d/Template.tt", $"{testDirectory}/ChangeLog.d/Template.tt");
             File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
             Directory.SetCurrentDirectory(testDirectory);
         }
@@ -26,7 +27,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.tt")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestSplit()
         {

@@ -57,6 +57,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         public async Task TestBasic()
         {
             List<FragmentContent> a = new List<FragmentContent>
@@ -87,7 +88,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             config.Maker.IsWrap = true;
             config.Types.AddRange(definitions);
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(a, config);
-            string templatePath = "Template.tt";
+            string templatePath = "ChangeLog.d/Template.tt";
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -188,10 +189,10 @@ No significant changes.
         }
 
         [TestMethod]
-        [DeploymentItem("Template.tt")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         public async Task TestIssueFormat()
         {
-            string file = "Template.tt";
+            string file = "ChangeLog.d/Template.tt";
             Assert.IsTrue(File.Exists(file), "deployment failed: " + file +
                 " did not get deployed");
             List<FragmentContent> fragments = new List<FragmentContent>
@@ -215,7 +216,7 @@ No significant changes.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "Template.tt";
+            string templatePath = "ChangeLog.d/Template.tt";
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -234,6 +235,7 @@ No significant changes.
 
 
         [TestMethod]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         public async Task TestLineWrapping()
         {
             List<FragmentContent> fragments = new List<FragmentContent>
@@ -258,7 +260,7 @@ No significant changes.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "Template.tt";
+            string templatePath = "ChangeLog.d/Template.tt";
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -286,6 +288,7 @@ No significant changes.
 
 
         [TestMethod]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         public async Task TestLineWrappingDisabled()
         {
             List<FragmentContent> fragments = new List<FragmentContent>
@@ -310,7 +313,7 @@ No significant changes.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "Template.tt";
+            string templatePath = "ChangeLog.d/Template.tt";
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -357,6 +360,7 @@ No significant changes.
         }
 
         [TestMethod]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         public async Task TestTrailingBlock()
         {
             List<FragmentContent> fragments = new List<FragmentContent>
@@ -386,7 +390,7 @@ No significant changes.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "Template.tt";
+            string templatePath = "ChangeLog.d/Template.tt";
             VersionData versionData = new VersionData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string actual) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
             Assert.IsNull(renderExOrNull);

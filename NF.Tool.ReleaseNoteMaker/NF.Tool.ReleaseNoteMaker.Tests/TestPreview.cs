@@ -16,7 +16,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string testName = TestContext.TestName!;
             string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
             Directory.CreateDirectory(testDirectory);
-            File.Copy("Template.tt", $"{testDirectory}/Template.tt");
+            Directory.CreateDirectory($"{testDirectory}/ChangeLog.d");
+            File.Copy("ChangeLog.d/Template.tt", $"{testDirectory}/ChangeLog.d/Template.tt");
             File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
             CopyDirectory("ChangeLog.d", $"{testDirectory}/ChangeLog.d", recursive: true);
             Directory.SetCurrentDirectory(testDirectory);
@@ -39,7 +40,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             foreach (FileInfo file in dir.GetFiles())
             {
                 string targetFilePath = Path.Combine(destinationDir, file.Name);
-                file.CopyTo(targetFilePath);
+                file.CopyTo(targetFilePath, overwrite: true);
             }
 
             if (recursive)
@@ -54,7 +55,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 
         [TestMethod]
         [DeploymentItem("SampleData/Case001", "ChangeLog.d/")]
-        [DeploymentItem("Template.tt")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestCommand()
         {

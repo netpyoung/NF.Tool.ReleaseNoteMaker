@@ -13,8 +13,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\Template.tt" Link="Template.tt" CopyToOutputDirectory="PreserveNewest" />
-		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\ReleaseNote.config.toml" Link="ReleaseNote.config.toml" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\res\Template.tt" Link="Template.tt" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\res\ReleaseNote.config.toml" Link="ReleaseNote.config.toml" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="SampleData/Case001/*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
 

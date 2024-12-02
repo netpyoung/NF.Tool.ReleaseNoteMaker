@@ -11,6 +11,9 @@
 		<AnalysisMode>All</AnalysisMode>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311,IDE0045,IDE0046,IDE0090,IDE0057,IDE0305,IDE0005,IDE0063,IDE0056,IDE0066</NoWarn>
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>release-note-maker</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -24,10 +27,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Template.tt">
+		<EmbeddedResource Include="res\Template.tt">
 			<LogicalName>Template.tt</LogicalName>
 		</EmbeddedResource>
-		<EmbeddedResource Include="ReleaseNote.config.toml">
+		<EmbeddedResource Include="res\ReleaseNote.config.toml">
 			<LogicalName>ReleaseNote.config.toml</LogicalName>
 		</EmbeddedResource>
 		<!--<None Update="Template.tt" CopyToOutputDirectory="PreserveNewest" />-->

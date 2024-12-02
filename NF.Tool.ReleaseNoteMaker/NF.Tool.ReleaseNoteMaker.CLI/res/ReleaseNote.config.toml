@@ -1,7 +1,7 @@
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
 OutputFileName = "CHANGELOG.md"
-TemplateFilePath = "Template.tt"
+TemplateFilePath = "ChangeLog.d/Template.tt"
 EndOfLine = "ENVIRONMENT"
 
 [[ReleaseNote.Section]]
