@@ -1,5 +1,4 @@
 ﻿using NF.Tool.ReleaseNoteMaker.CLI.Commands;
-using NF.Tool.ReleaseNoteMaker.CLI.Impl;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
@@ -20,14 +19,13 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.SetApplicationName("release-note-maker");
 
                 _ = config.AddCommand<Command_Init>("init")
-                    .WithExample("init")
-                    .WithExample("init", "--file", Const.DEFAULT_CONFIG_FILENAME);
+                    .WithExample("init");
                 _ = config.AddCommand<Command_Create>("create")
                     .WithExample("create", "--edit")
-                    .WithExample("create", "--content", @"""Hello World""", "1.added.md");
+                    .WithExample("create", "1.added.md", "--content", @"""Hello World""");
+                _ = config.AddCommand<Command_Preview>("preview");
                 _ = config.AddCommand<Command_Build>("build")
-                   .WithExample("build --version 1.0.0")
-                   .WithExample("build --version 1.0.0 --draft");
+                    .WithExample("build --version 1.0.0");
                 _ = config.AddCommand<Command_Check>("check")
                     .WithExample("check");
             });
