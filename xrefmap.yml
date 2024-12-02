@@ -1530,6 +1530,22 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
   nameWithType: VersionData.Date
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
+  name: GetVersionData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_GetVersionData_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_System_ValueTuple_System_String_System_String_System_String__
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
+  name.vb: GetVersionData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+  nameWithType: VersionData.GetVersionData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  nameWithType.vb: VersionData.GetVersionData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData*
+  name: GetVersionData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_GetVersionData_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData
+  nameWithType: VersionData.GetVersionData
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
   name: Name
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Name
