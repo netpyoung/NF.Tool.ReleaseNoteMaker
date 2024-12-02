@@ -19,11 +19,11 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
         {
             [Description("Create fragment in directory. Default to current directory.")]
             [CommandOption("--dir")]
-            public string Directory { get; set; } = default!;
+            public string Directory { get; set; } = string.Empty;
 
             [Description(Const.DESCRIPTION_CONFIG)]
             [CommandOption("--config")]
-            public string Config { get; set; } = default!;
+            public string Config { get; set; } = string.Empty;
 
             [Description("Sets the content of the new fragment.")]
             [CommandOption("--content")]
@@ -31,7 +31,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
             [Description("The section display name to create the fragment for.")]
             [CommandOption("--section")]
-            public string Section { get; set; } = default!;
+            public string Section { get; set; } = string.Empty;
 
             [Description("Open an editor for writing the newsfragment content.")]
             [CommandOption("--edit")]
