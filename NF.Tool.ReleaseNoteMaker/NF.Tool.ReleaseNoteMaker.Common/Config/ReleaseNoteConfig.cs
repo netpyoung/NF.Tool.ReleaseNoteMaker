@@ -57,7 +57,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
     {
         public string DisplayName { get; set; } = string.Empty;
         public string Category { get; set; } = string.Empty;
-        public bool IsShowContent { get; set; }
-        public bool IsCheck { get; set; }
+        public bool IsShowContent { get; set; } = true;
+        public bool IsCheck { get; set; } = true;
     }
 }
