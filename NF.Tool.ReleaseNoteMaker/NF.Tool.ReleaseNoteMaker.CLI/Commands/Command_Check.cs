@@ -17,18 +17,18 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
     {
         internal sealed class Settings : CommandSettings
         {
-            [Description("Checks files changed running git diff --name-only BRANCH...\nBRANCH is the branch to be compared with.")]
-            [CommandOption("--compare-with")]
-            [DefaultValue("origin/main")]
-            public string CompareWith { get; set; } = string.Empty;
+            [Description("Build fragment in directory. Default to current directory.")]
+            [CommandOption("--dir")]
+            public string Directory { get; set; } = string.Empty;
 
             [Description(Const.DESCRIPTION_CONFIG)]
             [CommandOption("--config")]
             public string Config { get; set; } = string.Empty;
 
-            [Description("Build fragment in directory. Default to current directory.")]
-            [CommandOption("--dir")]
-            public string Directory { get; set; } = string.Empty;
+            [Description("Checks files changed running git diff --name-only BRANCH...\nBRANCH is the branch to be compared with.")]
+            [CommandOption("--compare-with")]
+            [DefaultValue("origin/main")]
+            public string CompareWith { get; set; } = string.Empty;
         }
 
         public override Task<int> ExecuteAsync(CommandContext context, Settings setting)

@@ -20,29 +20,29 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
     {
         internal sealed class Settings : CommandSettings
         {
-            [Description("[yellow][[Required]][/] Render the news fragments using given version.")]
-            [CommandOption("--version")]
-            public string ProjectVersion { get; set; } = string.Empty;
+            [Description("Build fragment in directory. Default to current directory.")]
+            [CommandOption("--dir")]
+            public string Directory { get; set; } = string.Empty;
 
             [Description(Const.DESCRIPTION_CONFIG)]
             [CommandOption("--config")]
             public string Config { get; set; } = string.Empty;
 
-            [Description("Build fragment in directory. Default to current directory.")]
-            [CommandOption("--dir")]
-            public string Directory { get; set; } = string.Empty;
-
-            [Description("Render the news fragments to standard output.\nDon't write to files, don't check versions.")]
-            [CommandOption("--draft")]
-            public bool IsDraft { get; set; }
-
             [Description("Pass a custom project name.")]
             [CommandOption("--name")]
             public string ProjectName { get; set; } = string.Empty;
 
+            [Description("[yellow][[Required]][/] Render the news fragments using given version.")]
+            [CommandOption("--version")]
+            public string ProjectVersion { get; set; } = string.Empty;
+
             [Description("Render the news fragments using the given date.")]
             [CommandOption("--date")]
             public string ProjectDate { get; set; } = string.Empty;
+
+            [Description("Render the news fragments to standard output.\nDon't write to files, don't check versions.")]
+            [CommandOption("--draft")]
+            public bool IsDraft { get; set; }
 
             [Description("Do not ask for confirmation to remove news fragments")]
             [CommandOption("--yes")]
