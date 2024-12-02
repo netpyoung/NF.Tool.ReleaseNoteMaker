@@ -28,6 +28,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.AddCommand<Command_Build>("build")
                    .WithExample("build --version 1.0.0")
                    .WithExample("build --version 1.0.0 --draft");
+                _ = config.AddCommand<Command_Check>("check")
+                    .WithExample("check");
             });
 
 #pragma warning disable CA1031 // Do not catch general exception types
