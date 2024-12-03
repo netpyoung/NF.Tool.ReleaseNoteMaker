@@ -129,8 +129,8 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
   <a id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor*"></a>
 
-  <h3 id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_System_Boolean_NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Template_Section__" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})">
-  TemplateModel(bool, VersionData, List&lt;Section&gt;)
+  <h3 id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_System_Boolean_NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Template_Section__" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})">
+  TemplateModel(bool, ProjectData, List&lt;Section&gt;)
   <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
   </h3>
 
@@ -138,14 +138,14 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TemplateModel(bool IsRenderTitle, VersionData VersionData, List&lt;Section&gt; Sections)</code></pre>
+    <pre><code class="lang-csharp hljs">public TemplateModel(bool IsRenderTitle, ProjectData ProjectData, List&lt;Section&gt; Sections)</code></pre>
   </div>
 
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>IsRenderTitle</code> <span class="xref">bool</span></dt>
     <dd></dd>
-    <dt><code>VersionData</code> <a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html">VersionData</a></dt>
+    <dt><code>ProjectData</code> <a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html">ProjectData</a></dt>
     <dd></dd>
     <dt><code>Sections</code> <span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.Section.html">Section</a>&gt;</dt>
     <dd></dd>
@@ -197,6 +197,37 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
 
 
 
+  <a id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_ProjectData_" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData*"></a>
+
+  <h3 id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_ProjectData" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData">
+  ProjectData
+  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ProjectData ProjectData { get; init; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html">ProjectData</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_Sections_" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.Sections*"></a>
 
   <h3 id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_Sections" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.Sections">
@@ -218,37 +249,6 @@ Class TemplateModel  <a class="header-action link-secondary" title="View source"
   <h4 class="section">Property Value</h4>
   <dl class="parameters">
     <dt><span class="xref">List</span>&lt;<a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.Section.html">Section</a>&gt;</dt>
-    <dd></dd>
-  </dl>
-
-
-
-
-
-
-
-
-  <a id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_VersionData_" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData*"></a>
-
-  <h3 id="NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_VersionData" data-uid="NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData">
-  VersionData
-  <a class="header-action link-secondary" title="View source" href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Template/TemplateModel.cs/#L6"><i class="bi bi-code-slash"></i></a>
-  </h3>
-
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionData VersionData { get; init; }</code></pre>
-  </div>
-
-
-
-
-
-  <h4 class="section">Property Value</h4>
-  <dl class="parameters">
-    <dt><a class="xref" href="NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html">VersionData</a></dt>
     <dd></dd>
   </dl>
 

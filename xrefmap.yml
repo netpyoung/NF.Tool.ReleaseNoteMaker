@@ -1330,6 +1330,99 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ExEngineHost.GetTemplateModel
   nameWithType: ExEngineHost.GetTemplateModel
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData
+  name: ProjectData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html
+  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData
+  nameWithType: ProjectData
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.#ctor(System.String,System.String,System.String)
+  name: ProjectData(string, string, string)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData__ctor_System_String_System_String_System_String_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.#ctor(System.String,System.String,System.String)
+  name.vb: New(String, String, String)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectData(string, string, string)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.New(String, String, String)
+  nameWithType: ProjectData.ProjectData(string, string, string)
+  nameWithType.vb: ProjectData.New(String, String, String)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.#ctor*
+  name: ProjectData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData__ctor_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectData
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.New
+  nameWithType: ProjectData.ProjectData
+  nameWithType.vb: ProjectData.New
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
+  name: GetProjectData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_GetProjectData_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_System_ValueTuple_System_String_System_String_System_String__
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
+  name.vb: GetProjectData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+  nameWithType: ProjectData.GetProjectData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
+  nameWithType.vb: ProjectData.GetProjectData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData*
+  name: GetProjectData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_GetProjectData_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.GetProjectData
+  nameWithType: ProjectData.GetProjectData
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate
+  name: ProjectDate
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectDate
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate
+  nameWithType: ProjectData.ProjectDate
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate*
+  name: ProjectDate
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectDate_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectDate
+  nameWithType: ProjectData.ProjectDate
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName
+  name: ProjectName
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectName
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName
+  nameWithType: ProjectData.ProjectName
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName*
+  name: ProjectName
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectName_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectName
+  nameWithType: ProjectData.ProjectName
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion
+  name: ProjectVersion
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectVersion
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion
+  nameWithType: ProjectData.ProjectVersion
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion*
+  name: ProjectVersion
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ProjectVersion_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ProjectVersion
+  nameWithType: ProjectData.ProjectVersion
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString
+  name: ToString()
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ToString
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString()
+  nameWithType: ProjectData.ToString()
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString*
+  name: ToString
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.html#NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_ToString_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData.ToString
+  nameWithType: ProjectData.ToString
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.Section
   name: Section
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.Section.html
@@ -1387,15 +1480,15 @@ references:
   commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel
   nameWithType: TemplateModel
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})
-  name: TemplateModel(bool, VersionData, List<Section>)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_System_Boolean_NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Template_Section__
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})
-  name.vb: New(Boolean, VersionData, List(Of Section))
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.TemplateModel(bool, NF.Tool.ReleaseNoteMaker.Common.Template.VersionData, System.Collections.Generic.List<NF.Tool.ReleaseNoteMaker.Common.Template.Section>)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.New(Boolean, NF.Tool.ReleaseNoteMaker.Common.Template.VersionData, System.Collections.Generic.List(Of NF.Tool.ReleaseNoteMaker.Common.Template.Section))
-  nameWithType: TemplateModel.TemplateModel(bool, VersionData, List<Section>)
-  nameWithType.vb: TemplateModel.New(Boolean, VersionData, List(Of Section))
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})
+  name: TemplateModel(bool, ProjectData, List<Section>)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_System_Boolean_NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Template_Section__
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor(System.Boolean,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Template.Section})
+  name.vb: New(Boolean, ProjectData, List(Of Section))
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.TemplateModel(bool, NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData, System.Collections.Generic.List<NF.Tool.ReleaseNoteMaker.Common.Template.Section>)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.New(Boolean, NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData, System.Collections.Generic.List(Of NF.Tool.ReleaseNoteMaker.Common.Template.Section))
+  nameWithType: TemplateModel.TemplateModel(bool, ProjectData, List<Section>)
+  nameWithType.vb: TemplateModel.New(Boolean, ProjectData, List(Of Section))
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.#ctor*
   name: TemplateModel
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel__ctor_
@@ -1419,6 +1512,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.IsRenderTitle
   nameWithType: TemplateModel.IsRenderTitle
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData
+  name: ProjectData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_ProjectData
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData
+  nameWithType: TemplateModel.ProjectData
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData*
+  name: ProjectData
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_ProjectData_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.ProjectData
+  nameWithType: TemplateModel.ProjectData
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.Sections
   name: Sections
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_Sections
@@ -1432,19 +1538,6 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.Sections
   nameWithType: TemplateModel.Sections
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData
-  name: VersionData
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_VersionData
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData
-  nameWithType: TemplateModel.VersionData
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData*
-  name: VersionData
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_VersionData_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel.VersionData
-  nameWithType: TemplateModel.VersionData
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   name: TemplateRenderer
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html
@@ -1476,15 +1569,15 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render
   nameWithType: TemplateRenderer.Render
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent})
-  name: RenderFragments(string, ReleaseNoteConfig, VersionData, List<FragmentContent>)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderFragments_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentContent__
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.VersionData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent})
-  name.vb: RenderFragments(String, ReleaseNoteConfig, VersionData, List(Of FragmentContent))
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(string, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.VersionData, System.Collections.Generic.List<NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent>)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(String, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.VersionData, System.Collections.Generic.List(Of NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent))
-  nameWithType: TemplateRenderer.RenderFragments(string, ReleaseNoteConfig, VersionData, List<FragmentContent>)
-  nameWithType.vb: TemplateRenderer.RenderFragments(String, ReleaseNoteConfig, VersionData, List(Of FragmentContent))
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent})
+  name: RenderFragments(string, ReleaseNoteConfig, ProjectData, List<FragmentContent>)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderFragments_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentContent__
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent})
+  name.vb: RenderFragments(String, ReleaseNoteConfig, ProjectData, List(Of FragmentContent))
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(string, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData, System.Collections.Generic.List<NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent>)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(String, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData, System.Collections.Generic.List(Of NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent))
+  nameWithType: TemplateRenderer.RenderFragments(string, ReleaseNoteConfig, ProjectData, List<FragmentContent>)
+  nameWithType.vb: TemplateRenderer.RenderFragments(String, ReleaseNoteConfig, ProjectData, List(Of FragmentContent))
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments*
   name: RenderFragments
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderFragments_
@@ -1492,96 +1585,3 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments
   nameWithType: TemplateRenderer.RenderFragments
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData
-  name: VersionData
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html
-  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData
-  nameWithType: VersionData
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.#ctor(System.String,System.String,System.String)
-  name: VersionData(string, string, string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData__ctor_System_String_System_String_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.#ctor(System.String,System.String,System.String)
-  name.vb: New(String, String, String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.VersionData(string, string, string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.New(String, String, String)
-  nameWithType: VersionData.VersionData(string, string, string)
-  nameWithType.vb: VersionData.New(String, String, String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.#ctor*
-  name: VersionData
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData__ctor_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.#ctor
-  isSpec: "True"
-  name.vb: New
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.VersionData
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.New
-  nameWithType: VersionData.VersionData
-  nameWithType.vb: VersionData.New
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
-  name: Date
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Date
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
-  nameWithType: VersionData.Date
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date*
-  name: Date
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Date_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Date
-  nameWithType: VersionData.Date
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
-  name: GetVersionData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_GetVersionData_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_System_ValueTuple_System_String_System_String_System_String__
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,System.ValueTuple{System.String,System.String,System.String})
-  name.vb: GetVersionData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData(NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
-  nameWithType: VersionData.GetVersionData(ReleaseNoteConfig, (string ProjectName, string ProjectVersion, string ProjectDate))
-  nameWithType.vb: VersionData.GetVersionData(ReleaseNoteConfig, (ProjectName As String, ProjectVersion As String, ProjectDate As String))
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData*
-  name: GetVersionData
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_GetVersionData_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.GetVersionData
-  nameWithType: VersionData.GetVersionData
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
-  name: Name
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Name
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
-  nameWithType: VersionData.Name
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name*
-  name: Name
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Name_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Name
-  nameWithType: VersionData.Name
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString
-  name: ToString()
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_ToString
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString()
-  nameWithType: VersionData.ToString()
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString*
-  name: ToString
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_ToString_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.ToString
-  nameWithType: VersionData.ToString
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version
-  name: Version
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Version
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version
-  nameWithType: VersionData.Version
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version*
-  name: Version
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.html#NF_Tool_ReleaseNoteMaker_Common_Template_VersionData_Version_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.VersionData.Version
-  nameWithType: VersionData.Version
