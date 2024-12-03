@@ -251,7 +251,7 @@ Old text.
             File.WriteAllText("ReleaseNote.config.toml", """
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
-OutputFileName = "{0}-notes.md"
+OutputFileName = "{ProjectVersion}-notes.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
 TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
 
@@ -271,7 +271,7 @@ IsShowContent = true
 
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
-            Console.Write(File.ReadAllText("{0}-notes.md"));
+            Console.Write(File.ReadAllText("{ProjectVersion}-notes.md"));
             Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
 
 
@@ -297,7 +297,7 @@ IsShowContent = true
             File.WriteAllText("ReleaseNote.config.toml", """
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
-OutputFileName = "{1}-notes.md"
+OutputFileName = "{ProjectVersion}-notes.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
 TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
 IsSingleFile = false

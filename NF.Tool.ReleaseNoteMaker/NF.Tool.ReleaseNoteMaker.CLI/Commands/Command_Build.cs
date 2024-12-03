@@ -3,6 +3,7 @@ using NF.Tool.ReleaseNoteMaker.Common;
 using NF.Tool.ReleaseNoteMaker.Common.Config;
 using NF.Tool.ReleaseNoteMaker.Common.Fragments;
 using NF.Tool.ReleaseNoteMaker.Common.Template;
+using SmartFormat;
 using Spectre.Console;
 using Spectre.Console.Cli;
 using System;
@@ -119,7 +120,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
             else
             {
-                newsFileName = string.Format(config.Maker.OutputFileName, projectData.ProjectName, projectData.ProjectVersion, projectData.ProjectDate);
+                newsFileName = Smart.Format(config.Maker.OutputFileName, projectData);
             }
 
             string newsFileFpath = Path.Combine(baseDirectory, newsFileName);

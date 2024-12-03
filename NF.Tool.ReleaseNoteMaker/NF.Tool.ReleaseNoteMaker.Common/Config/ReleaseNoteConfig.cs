@@ -30,7 +30,10 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public string StartString { get; set; } = "<!-- release notes start -->\n";
         public bool IsWrap { get; set; } = false;
         public bool IsAllBullets { get; set; } = false;
+
+        // TODO(pyoung): remove this property
         public bool IsSingleFile { get; set; } = true;
+
         public E_END_OF_LINE EndOfLine { get; set; } = E_END_OF_LINE.LF;
 
         // config.package_dir
