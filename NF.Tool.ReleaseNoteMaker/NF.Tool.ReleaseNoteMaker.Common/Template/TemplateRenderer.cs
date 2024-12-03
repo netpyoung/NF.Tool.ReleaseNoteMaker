@@ -52,7 +52,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
         }
 
 
-        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, VersionData versionData, List<FragmentContent> fragmentContents)
+        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents)
         {
             // TODO(pyoung): handle - underlines, topUnderline
             //    top_underline = config.underlines[0],
@@ -110,7 +110,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
             // TODO(pyoung): handle - underlines, topUnderline
 
-            TemplateModel model = new TemplateModel(isRenderTitle, versionData, sections);
+            TemplateModel model = new TemplateModel(isRenderTitle, projectData, sections);
             (Exception? exOrNull, string renderedText) = await Render(templateFpath, config, model);
             if (exOrNull != null)
             {

@@ -89,8 +89,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             config.Types.AddRange(definitions);
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(a, config);
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
             string expected = """
 # MyProject 1.0 (never)
@@ -132,7 +132,7 @@ No significant changes.
 
             string issueFormat = "[{Issue}]: https://github.com/twisted/towncrier/issues/{Issue}";
             config.Maker.IssueFormat = issueFormat;
-            (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             expected = """
@@ -217,8 +217,8 @@ No significant changes.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
             string expected = """
 # MyProject 1.0 (never)
@@ -261,8 +261,8 @@ No significant changes.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             string expected = """
@@ -314,8 +314,8 @@ No significant changes.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             string expected = """
@@ -391,8 +391,8 @@ No significant changes.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string actual) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string actual) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             string expected = """

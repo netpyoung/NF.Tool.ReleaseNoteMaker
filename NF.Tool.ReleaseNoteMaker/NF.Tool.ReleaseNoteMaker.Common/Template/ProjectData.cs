@@ -4,17 +4,17 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
-    public sealed class VersionData
+    public sealed class ProjectData
     {
         public string ProjectName { get; init; } = string.Empty;
         public string ProjectVersion { get; init; } = string.Empty;
         public string ProjectDate { get; init; } = string.Empty;
 
-        private VersionData()
+        private ProjectData()
         {
         }
 
-        public VersionData(string name, string version, string date)
+        public ProjectData(string name, string version, string date)
         {
             ProjectName = name;
             ProjectVersion = version;
@@ -30,7 +30,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return $"{ProjectName} {ProjectVersion} ({ProjectDate})";
         }
 
-        public static (Exception? exOrNull, VersionData versionData) GetVersionData([NotNull] ReleaseNoteConfig config, (string ProjectName, string ProjectVersion, string ProjectDate) setting)
+        public static (Exception? exOrNull, ProjectData projectData) GetProjectData([NotNull] ReleaseNoteConfig config, (string ProjectName, string ProjectVersion, string ProjectDate) setting)
         {
             string projectVersion;
             if (!string.IsNullOrEmpty(setting.ProjectVersion))
@@ -44,7 +44,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             else
             {
                 ReleaseNoteMakerException ex = new ReleaseNoteMakerException("'--version'[/] is required since the config file does not contain 'version.");
-                return (ex, new VersionData(string.Empty, string.Empty, string.Empty));
+                return (ex, new ProjectData(string.Empty, string.Empty, string.Empty));
             }
 
             string projectName;
@@ -71,8 +71,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 projectDate = DateTime.Today.ToString("yyyy-MM-dd");
             }
 
-            VersionData versionData = new VersionData(projectName, projectVersion, projectDate);
-            return (null, versionData);
+            ProjectData projectData = new ProjectData(projectName, projectVersion, projectDate);
+            return (null, projectData);
         }
     }
 }

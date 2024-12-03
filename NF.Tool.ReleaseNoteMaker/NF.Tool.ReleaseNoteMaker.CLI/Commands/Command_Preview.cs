@@ -53,10 +53,10 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return 1;
             }
 
-            (Exception? versionDataResultExOrNull, VersionData versionData) = VersionData.GetVersionData(config, setting.GetProjectInfo());
-            if (versionDataResultExOrNull is not null)
+            (Exception? projectDataResultExOrNull, ProjectData projectData) = ProjectData.GetProjectData(config, setting.GetProjectInfo());
+            if (projectDataResultExOrNull is not null)
             {
-                AnsiConsole.WriteException(versionDataResultExOrNull, ExceptionFormats.ShortenEverything);
+                AnsiConsole.WriteException(projectDataResultExOrNull, ExceptionFormats.ShortenEverything);
                 return 1;
             }
 
@@ -85,7 +85,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 }
 
                 // AnsiConsole.MarkupLine("[green]*[/] Rendering news fragments...");
-                (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+                (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
                 if (renderExOrNull != null)
                 {
                     AnsiConsole.WriteException(renderExOrNull);
@@ -94,7 +94,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 rendered = text;
             }
 
-            string topLine = Utils.GetTopLine(config, versionData);
+            string topLine = Utils.GetTopLine(config, projectData);
             string content = $"{topLine}{rendered}";
 
             //AnsiConsole.MarkupLine("[green]*[/] show draft...");

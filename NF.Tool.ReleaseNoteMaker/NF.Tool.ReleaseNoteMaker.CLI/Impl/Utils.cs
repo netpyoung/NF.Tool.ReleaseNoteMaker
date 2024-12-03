@@ -128,14 +128,14 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Impl
             return string.Equals(x, y, StringComparison.OrdinalIgnoreCase);
         }
 
-        public static string GetTopLine(ReleaseNoteConfig config, in VersionData versionData)
+        public static string GetTopLine(ReleaseNoteConfig config, in ProjectData projectData)
         {
             if (string.IsNullOrEmpty(config.Maker.TitleFormat))
             {
                 return string.Empty;
             }
 
-            string topLine = Smart.Format($"{config.Maker.TitleFormat}\n", versionData);
+            string topLine = Smart.Format($"{config.Maker.TitleFormat}\n", projectData);
             return topLine;
         }
     }

@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
-    public sealed record class TemplateModel(bool IsRenderTitle, VersionData VersionData, List<Section> Sections);
+    public sealed record class TemplateModel(bool IsRenderTitle, ProjectData ProjectData, List<Section> Sections);
 
     [DebuggerDisplay("Section: {DisplayName}")]
     public sealed record class Section(string DisplayName, List<Category> Categories);

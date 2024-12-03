@@ -64,8 +64,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             await File.WriteAllTextAsync("ChangeLog.md", "Old text.\n");
@@ -143,8 +143,8 @@ Old text.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             await File.WriteAllTextAsync("ChangeLog.md", """
@@ -225,8 +225,8 @@ Old text.
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
             string templatePath = "ChangeLog.d/Template.tt";
-            VersionData versionData = new VersionData("MyProject", "1.0", "never");
-            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, versionData, splitted);
+            ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
+            (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
 
             Exception? ex = await Command_Build.AppendToNewsFile(config, topLine, text, "ChangeLog.md");
