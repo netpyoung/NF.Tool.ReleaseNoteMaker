@@ -16,7 +16,9 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
             app.Configure(config =>
             {
                 _ = config.PropagateExceptions();
-                _ = config.SetApplicationName("release-note-maker");
+                _ = config.UseStrictParsing();
+                _ = config.SetExceptionHandler(OnException);
+                _ = config.SetApplicationName("dotnet release-note-maker");
 
                 _ = config.AddCommand<Command_Init>("init")
                     .WithExample("init");
@@ -30,18 +32,36 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                     .WithExample("check");
             });
 
-#pragma warning disable CA1031 // Do not catch general exception types
-            try
-            {
-                return await app.RunAsync(args);
-            }
-            catch (Exception ex)
-            {
-                AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
-                return 1;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
+            return await app.RunAsync(args);
         }
 #pragma warning restore IDE0210 // Convert to top-level statements
+
+        private static void OnException(Exception e, ITypeResolver? resolver)
+        {
+            if (e is CommandAppException cae)
+            {
+                if (cae.Pretty is { } pretty)
+                {
+                    AnsiConsole.Write(pretty);
+                }
+                else
+                {
+                    AnsiConsole.MarkupInterpolated($"[red]Error:[/] {e.Message}");
+                }
+            }
+            else
+            {
+                AnsiConsole.WriteException(e, new ExceptionSettings()
+                {
+                    Format = ExceptionFormats.ShortenEverything,
+                    Style = new()
+                    {
+                        ParameterName = Color.Grey,
+                        ParameterType = Color.Grey78,
+                        LineNumber = Color.Grey78,
+                    },
+                });
+            }
+        }
     }
 }
