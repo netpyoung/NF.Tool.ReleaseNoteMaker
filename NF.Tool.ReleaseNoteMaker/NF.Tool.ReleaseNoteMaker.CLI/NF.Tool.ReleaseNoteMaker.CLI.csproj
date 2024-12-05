@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
+		<AssemblyName>dotnet-release-note-maker</AssemblyName>
 		<TargetFramework>net9.0</TargetFramework>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
@@ -11,9 +12,7 @@
 		<AnalysisMode>All</AnalysisMode>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311,IDE0045,IDE0046,IDE0090,IDE0057,IDE0305,IDE0005,IDE0063,IDE0056,IDE0066</NoWarn>
-		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>release-note-maker</ToolCommandName>
-		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -37,4 +36,18 @@
 		<None Remove="CHANGELOG.md" />
 		<None Remove="ChangeLog.d/**/*" />
 	</ItemGroup>
+	
+	<PropertyGroup>
+		<PackAsTool>true</PackAsTool>
+		<PackageId>dotnet-release-note-maker</PackageId>
+		<ToolCommandName>dotnet-release-note-maker</ToolCommandName>
+		<PackageOutputPath>./nupkg</PackageOutputPath>
+		<PackageTags>dotnet dotnet-tool</PackageTags>
+	</PropertyGroup>
+	
+	<Target Name="InstallTool" AfterTargets="Pack">
+		<Exec Command="dotnet tool list --global" ContinueOnError="true" />
+		<Exec Command="dotnet tool uninstall -g $(PackageId) || echo 'Tool not installed, skipping uninstall.'" ContinueOnError="true" />
+		<Exec Command="dotnet tool install -g --add-source $(PackageOutputPath) $(PackageId)" />
+	</Target>
 </Project>
