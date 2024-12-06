@@ -50,6 +50,9 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             if (callResult.exitCode != 0)
             {
                 AnsiConsole.MarkupLine("git produced output while failing:");
+                AnsiConsole.Write(new Rule("Command") { Justification = Justify.Left });
+                AnsiConsole.MarkupLine($"git diff --name-only {setting.CompareWith}...");
+                AnsiConsole.Write(new Rule("Error") { Justification = Justify.Left });
                 AnsiConsole.WriteLine(callResult.stdErr);
                 return Task.FromResult(1);
             }
@@ -62,13 +65,12 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             HashSet<string> fullPathSet = changedFiles.Select(Path.GetFullPath).ToHashSet();
-            AnsiConsole.MarkupLine("Looking at these files:");
-            AnsiConsole.MarkupLine("----");
+            AnsiConsole.Write(new Rule("Looking at these files:") { Justification = Justify.Left });
             foreach ((int Index, string Item) in fullPathSet.OrderBy(x => x).Index())
             {
-                AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
+                AnsiConsole.MarkupLine($"    {Index + 1}. {Item}");
             }
-            AnsiConsole.MarkupLine("----");
+            AnsiConsole.Write(new Rule());
 
             (Exception? fragmentResultExOrNull, FragmentResult result) = FragmentFinder.FindFragments(setting.Directory, config, isStrictMode: true);
             if (fragmentResultExOrNull != null)
@@ -108,7 +110,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("Found:");
                 foreach ((int Index, string Item) in inBranchfragments.OrderBy(x => x).Index())
                 {
-                    AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
+                    AnsiConsole.MarkupLine($"    {Index + 1}. {Item}");
                 }
                 return Task.FromResult(0);
             }
@@ -123,7 +125,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             AnsiConsole.MarkupLine("Found newsfragments of unchecked types in the branch:");
             foreach ((int Index, string Item) in inBranchUncheckedFragments.OrderBy(x => x).Index())
             {
-                AnsiConsole.MarkupLine($"{Index + 1}. {Item}");
+                AnsiConsole.MarkupLine($"    {Index + 1}. {Item}");
             }
             return Task.FromResult(1);
         }

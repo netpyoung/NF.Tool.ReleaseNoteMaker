@@ -131,7 +131,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                      .SeparatorColor(Color.Green)
                      .StemColor(Color.Blue)
                      .LeafColor(Color.Yellow);
-                AnsiConsole.Write($"{nameof(newsFileFpath)}: ");
+                AnsiConsole.Write("    ❗ ");
                 AnsiConsole.Write(txtPath);
                 AnsiConsole.WriteLine();
                 Exception? appendToNewsFileExOrNull = await AppendToNewsFile(config, topLine, content, newsFileFpath);
@@ -143,6 +143,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             AnsiConsole.MarkupLine("[green]*[/] Staging newsfile...");
+            AnsiConsole.MarkupLine($"    ➕ {newsFileFpath}");
             GitHelper.StageNewsfile(newsFileFpath);
 
             string[] fragmentFpaths = fragmentResult.FragmentFiles.Select(x => x.FileName).ToArray();
@@ -155,7 +156,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("Keeping the following files:");
                 foreach (string x in fragmentFpaths)
                 {
-                    AnsiConsole.WriteLine(x);
+                    AnsiConsole.MarkupLine($"    {x}");
                 }
             }
             else if (setting.IsAnswerYes)
@@ -163,7 +164,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("Removing the following files:");
                 foreach (string x in fragmentFpaths)
                 {
-                    AnsiConsole.WriteLine(x);
+                    AnsiConsole.MarkupLine($"    ❌ {x}");
                 }
 
                 AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
@@ -174,7 +175,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 AnsiConsole.MarkupLine("I want to remove the following files:");
                 foreach (string x in fragmentFpaths)
                 {
-                    AnsiConsole.WriteLine(x);
+                    AnsiConsole.MarkupLine($"    ❌ {x}");
                 }
 
                 if (AnsiConsole.Confirm("Is it okay if I remove those files?"))
