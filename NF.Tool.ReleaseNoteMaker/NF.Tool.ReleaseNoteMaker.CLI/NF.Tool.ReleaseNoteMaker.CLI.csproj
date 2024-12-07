@@ -44,10 +44,24 @@
 		<Version>0.0.1</Version>
 		<Authors>netpyoung</Authors>
 		<Company>netpyoung</Company>
+		<Copyright>netpyoung</Copyright>
 		<ToolCommandName>dotnet-release-note</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
-		<PackageTags>dotnet dotnet-tool</PackageTags>
+		<PackageTags>dotnet;dotnet-tool;release-note</PackageTags>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageProjectUrl>https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker</PackageProjectUrl>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<Description>Release Note Maker</Description>
 	</PropertyGroup>
+	
+	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)../../README.md" Pack="true" PackagePath="/" />
+	</ItemGroup>
+	
+	<ItemGroup>
+	  <Folder Include="nupkg\" />
+	</ItemGroup>
 	
 	<Target Name="InstallTool" AfterTargets="Pack">
 		<Exec Command="dotnet tool list --global" ContinueOnError="true" />
