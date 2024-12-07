@@ -1,15 +1,22 @@
 # NF.Tool.ReleaseNoteMaker
 
+[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=white)](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker)
 [![.NET Test Workflow](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/actions/workflows/dotnet-test.yml/badge.svg)](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/actions/workflows/dotnet-test.yml)
 [![Document](https://img.shields.io/badge/document-docfx-blue)](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/)
 [![License](https://img.shields.io/badge/license-MIT-C06524)](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/LICENSE.md)
-
+[![NuGet](https://img.shields.io/badge/NuGet-004880?logo=nuget&logoColor=fff)](https://www.nuget.org/packages/dotnet-release-note/)
 
 wip
 
 based on python [TownCrier](https://github.com/twisted/towncrier)
 
 - [doc](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/)
+
+## Install
+
+``` bash
+dotnet tool install --global dotnet-release-note
+```
 
 ## used
 
