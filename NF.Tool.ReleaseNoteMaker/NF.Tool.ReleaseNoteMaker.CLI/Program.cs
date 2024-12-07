@@ -18,7 +18,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.PropagateExceptions();
                 _ = config.UseStrictParsing();
                 _ = config.SetExceptionHandler(OnException);
-                _ = config.SetApplicationName("dotnet release-note-maker");
+                _ = config.SetApplicationName("dotnet release-note");
 
                 _ = config.AddCommand<Command_Init>("init")
                     .WithExample("init");
