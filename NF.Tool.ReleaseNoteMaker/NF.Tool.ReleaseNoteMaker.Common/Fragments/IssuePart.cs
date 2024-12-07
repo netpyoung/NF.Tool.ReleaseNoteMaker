@@ -6,31 +6,31 @@ using System.Text.RegularExpressions;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
 {
-    public sealed record class IssueParts(bool IsDigit, bool HasDigit, string NonDigitPart, int Number) : IComparable<IssueParts>
+    public sealed record class IssuePart(bool IsDigit, bool HasDigit, string NonDigitPart, int Number) : IComparable<IssuePart>
     {
-        public static IssueParts IssueKey(string issue)
+        public static IssuePart IssueKey(string issue)
         {
             if (string.IsNullOrEmpty(issue))
             {
-                return new IssueParts(false, false, string.Empty, -1);
+                return new IssuePart(false, false, string.Empty, -1);
             }
 
             if (issue.All(char.IsDigit))
             {
-                return new IssueParts(true, true, string.Empty, int.Parse(issue));
+                return new IssuePart(true, true, string.Empty, int.Parse(issue));
             }
 
             Match match = Regex.Match(issue, @"\d+");
             if (!match.Success)
             {
-                return new IssueParts(false, false, issue, -1);
+                return new IssuePart(false, false, issue, -1);
             }
 
             string nonDigitPart = string.Concat(issue.AsSpan(0, match.Index), issue.AsSpan(match.Index + match.Length));
-            return new IssueParts(false, true, nonDigitPart, int.Parse(match.Value));
+            return new IssuePart(false, true, nonDigitPart, int.Parse(match.Value));
         }
 
-        public int CompareTo(IssueParts? other)
+        public int CompareTo(IssuePart? other)
         {
             if (other is null)
             {
@@ -56,22 +56,22 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             return Number.CompareTo(other.Number);
         }
 
-        public static bool operator <([NotNull] IssueParts a, IssueParts b)
+        public static bool operator <([NotNull] IssuePart a, IssuePart b)
         {
             return a.CompareTo(b) < 0;
         }
 
-        public static bool operator >([NotNull] IssueParts a, IssueParts b)
+        public static bool operator >([NotNull] IssuePart a, IssuePart b)
         {
             return a.CompareTo(b) > 0;
         }
 
-        public static bool operator <=([NotNull] IssueParts a, IssueParts b)
+        public static bool operator <=([NotNull] IssuePart a, IssuePart b)
         {
             return a.CompareTo(b) <= 0;
         }
 
-        public static bool operator >=([NotNull] IssueParts a, IssueParts b)
+        public static bool operator >=([NotNull] IssuePart a, IssuePart b)
         {
             return a.CompareTo(b) >= 0;
         }

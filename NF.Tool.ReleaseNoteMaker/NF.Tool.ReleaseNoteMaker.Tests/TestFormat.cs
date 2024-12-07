@@ -52,7 +52,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         [DataRow(new string[] { "baz", "2", "9", "72", "3", "4" }, new string[] { "baz", "2", "3", "4", "9", "72" })]
         public void TestIssueKey(string[] arr, string[] expected)
         {
-            string[] actual = arr.OrderBy(IssueParts.IssueKey).ToArray();
+            string[] actual = arr.OrderBy(IssuePart.IssueKey).ToArray();
             CollectionAssert.AreEqual(expected, actual);
         }
 
