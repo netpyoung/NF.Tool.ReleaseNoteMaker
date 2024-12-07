@@ -38,12 +38,12 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
             }
         }
 
-        public string Resolve(string section)
+        public readonly string Resolve(string section)
         {
             return Path.Combine(_baseDirectory, section);
         }
 
-        public string GetDirectory(string sectionPath)
+        public readonly string GetDirectory(string sectionPath)
         {
             ReleaseNoteSection? sectionOrNull = _config.Sections.Find(x => x.Path == sectionPath)!;
             Debug.Assert(sectionOrNull != null, $"sectionOrNull != null | sectionPath: {sectionPath}");
