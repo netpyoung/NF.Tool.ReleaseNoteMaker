@@ -1,5 +1,4 @@
-﻿using SmartFormat;
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -74,38 +73,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Fragments
         public static bool operator >=([NotNull] IssuePart a, IssuePart b)
         {
             return a.CompareTo(b) >= 0;
-        }
-    }
-
-    public sealed class Issue
-    {
-        public static string RenderIssue(string issueFormat, string issue)
-        {
-            if (!string.IsNullOrEmpty(issueFormat))
-            {
-                string renderedIssue = Smart.Format(issueFormat, new { Issue = issue });
-                return renderedIssue;
-            }
-
-            if (int.TryParse(issue, out int issueNumber))
-            {
-                string renderedIssue = $"#{issueNumber}";
-                return renderedIssue;
-            }
-            return issue;
-        }
-        public static string AppendNewlinesIfTrailingCodeBlock(string text)
-        {
-            string indentedText = @"  [ \t]+[^\n]*";
-            string emptyOrIndentedTextLines = $"(({indentedText})?\n)*";
-            string regex = @"::\n\n" + emptyOrIndentedTextLines + indentedText + "$";
-            bool isTrailingCodeBlock = Regex.IsMatch(text, regex);
-            if (isTrailingCodeBlock)
-            {
-                return $"{text}\n\n ";
-            }
-
-            return text;
         }
     }
 }

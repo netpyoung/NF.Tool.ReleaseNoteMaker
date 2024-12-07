@@ -1,5 +1,6 @@
 ﻿using NF.Tool.ReleaseNoteMaker.Common.Config;
 using NF.Tool.ReleaseNoteMaker.Common.Fragments;
+using SmartFormat;
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Template
@@ -81,8 +83,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                     List<Content> contents = new List<Content>(xs.Count);
                     foreach (Content x in xs.OrderBy(EntryKey))
                     {
-                        List<string> formattedIssues = x.Issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
-                        string text = Issue.AppendNewlinesIfTrailingCodeBlock(x.Text);
+                        List<string> formattedIssues = x.Issues.Select(x => RenderIssue(issueFormat, x)).ToList();
+                        string text = AppendNewlinesIfTrailingCodeBlock(x.Text);
                         Content c = new Content(text, formattedIssues);
                         contents.Add(c);
                     }
@@ -99,7 +101,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                         string categoryDisplayName = releaseNoteTypeOrNull.DisplayName;
                         {
                             List<string> issues = grpCategory.Select(x => x.FragmentBasename.Issue).Where(x => !string.IsNullOrEmpty(x)).OrderBy(IssuePart.IssueKey).ToList();
-                            List<string> formattedIssues = issues.Select(x => Issue.RenderIssue(issueFormat, x)).ToList();
+                            List<string> formattedIssues = issues.Select(x => RenderIssue(issueFormat, x)).ToList();
                             categories.Add(new Category(categoryDisplayName, contents, formattedIssues));
                         }
                     }
@@ -221,6 +223,35 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
             string ret = sb.ToString().TrimEnd();
             return ret;
+        }
+
+        public static string RenderIssue(string issueFormat, string issue)
+        {
+            if (!string.IsNullOrEmpty(issueFormat))
+            {
+                string renderedIssue = Smart.Format(issueFormat, new { Issue = issue });
+                return renderedIssue;
+            }
+
+            if (int.TryParse(issue, out int issueNumber))
+            {
+                string renderedIssue = $"#{issueNumber}";
+                return renderedIssue;
+            }
+            return issue;
+        }
+        public static string AppendNewlinesIfTrailingCodeBlock(string text)
+        {
+            string indentedText = @"  [ \t]+[^\n]*";
+            string emptyOrIndentedTextLines = $"(({indentedText})?\n)*";
+            string regex = @"::\n\n" + emptyOrIndentedTextLines + indentedText + "$";
+            bool isTrailingCodeBlock = Regex.IsMatch(text, regex);
+            if (isTrailingCodeBlock)
+            {
+                return $"{text}\n\n ";
+            }
+
+            return text;
         }
     }
 }
