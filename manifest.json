@@ -142,20 +142,10 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.yml",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.yml",
       "output": {
         ".html": {
-          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html"
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html"
         }
       },
       "version": ""

@@ -793,229 +793,191 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentResult.FragmentFiles
   nameWithType: FragmentResult.FragmentFiles
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue
-  name: Issue
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html
-  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue
-  nameWithType: Issue
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock(System.String)
-  name: AppendNewlinesIfTrailingCodeBlock(string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_Issue_AppendNewlinesIfTrailingCodeBlock_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock(System.String)
-  name.vb: AppendNewlinesIfTrailingCodeBlock(String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock(string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock(String)
-  nameWithType: Issue.AppendNewlinesIfTrailingCodeBlock(string)
-  nameWithType.vb: Issue.AppendNewlinesIfTrailingCodeBlock(String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock*
-  name: AppendNewlinesIfTrailingCodeBlock
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_Issue_AppendNewlinesIfTrailingCodeBlock_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.AppendNewlinesIfTrailingCodeBlock
-  nameWithType: Issue.AppendNewlinesIfTrailingCodeBlock
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue(System.String,System.String)
-  name: RenderIssue(string, string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_Issue_RenderIssue_System_String_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue(System.String,System.String)
-  name.vb: RenderIssue(String, String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue(string, string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue(String, String)
-  nameWithType: Issue.RenderIssue(string, string)
-  nameWithType.vb: Issue.RenderIssue(String, String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue*
-  name: RenderIssue
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_Issue_RenderIssue_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.Issue.RenderIssue
-  nameWithType: Issue.RenderIssue
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts
-  name: IssueParts
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html
-  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts
-  nameWithType: IssueParts
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.#ctor(System.Boolean,System.Boolean,System.String,System.Int32)
-  name: IssueParts(bool, bool, string, int)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts__ctor_System_Boolean_System_Boolean_System_String_System_Int32_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.#ctor(System.Boolean,System.Boolean,System.String,System.Int32)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart
+  name: IssuePart
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html
+  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart
+  nameWithType: IssuePart
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.#ctor(System.Boolean,System.Boolean,System.String,System.Int32)
+  name: IssuePart(bool, bool, string, int)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart__ctor_System_Boolean_System_Boolean_System_String_System_Int32_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.#ctor(System.Boolean,System.Boolean,System.String,System.Int32)
   name.vb: New(Boolean, Boolean, String, Integer)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueParts(bool, bool, string, int)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.New(Boolean, Boolean, String, Integer)
-  nameWithType: IssueParts.IssueParts(bool, bool, string, int)
-  nameWithType.vb: IssueParts.New(Boolean, Boolean, String, Integer)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.#ctor*
-  name: IssueParts
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts__ctor_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.#ctor
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssuePart(bool, bool, string, int)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.New(Boolean, Boolean, String, Integer)
+  nameWithType: IssuePart.IssuePart(bool, bool, string, int)
+  nameWithType.vb: IssuePart.New(Boolean, Boolean, String, Integer)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.#ctor*
+  name: IssuePart
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart__ctor_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.#ctor
   isSpec: "True"
   name.vb: New
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueParts
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.New
-  nameWithType: IssueParts.IssueParts
-  nameWithType.vb: IssueParts.New
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name: CompareTo(IssueParts?)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_CompareTo_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name.vb: CompareTo(IssueParts)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts?)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  nameWithType: IssueParts.CompareTo(IssueParts?)
-  nameWithType.vb: IssueParts.CompareTo(IssueParts)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssuePart
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.New
+  nameWithType: IssuePart.IssuePart
+  nameWithType.vb: IssuePart.New
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name: CompareTo(IssuePart?)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_CompareTo_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name.vb: CompareTo(IssuePart)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart?)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  nameWithType: IssuePart.CompareTo(IssuePart?)
+  nameWithType.vb: IssuePart.CompareTo(IssuePart)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo*
   name: CompareTo
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_CompareTo_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_CompareTo_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.CompareTo
-  nameWithType: IssueParts.CompareTo
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.CompareTo
+  nameWithType: IssuePart.CompareTo
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit
   name: HasDigit
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_HasDigit
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit
-  nameWithType: IssueParts.HasDigit
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit*
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_HasDigit
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit
+  nameWithType: IssuePart.HasDigit
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit*
   name: HasDigit
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_HasDigit_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_HasDigit_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.HasDigit
-  nameWithType: IssueParts.HasDigit
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.HasDigit
+  nameWithType: IssuePart.HasDigit
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit
   name: IsDigit
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_IsDigit
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit
-  nameWithType: IssueParts.IsDigit
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit*
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_IsDigit
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit
+  nameWithType: IssuePart.IsDigit
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit*
   name: IsDigit
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_IsDigit_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_IsDigit_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IsDigit
-  nameWithType: IssueParts.IsDigit
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey(System.String)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IsDigit
+  nameWithType: IssuePart.IsDigit
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey(System.String)
   name: IssueKey(string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_IssueKey_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey(System.String)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_IssueKey_System_String_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey(System.String)
   name.vb: IssueKey(String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey(string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey(String)
-  nameWithType: IssueParts.IssueKey(string)
-  nameWithType.vb: IssueParts.IssueKey(String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey(string)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey(String)
+  nameWithType: IssuePart.IssueKey(string)
+  nameWithType.vb: IssuePart.IssueKey(String)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey*
   name: IssueKey
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_IssueKey_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_IssueKey_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.IssueKey
-  nameWithType: IssueParts.IssueKey
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.IssueKey
+  nameWithType: IssuePart.IssueKey
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart
   name: NonDigitPart
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NonDigitPart
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart
-  nameWithType: IssueParts.NonDigitPart
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart*
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NonDigitPart
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart
+  nameWithType: IssuePart.NonDigitPart
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart*
   name: NonDigitPart
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NonDigitPart_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NonDigitPart_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.NonDigitPart
-  nameWithType: IssueParts.NonDigitPart
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.NonDigitPart
+  nameWithType: IssuePart.NonDigitPart
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number
   name: Number
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_Number
-  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number
-  nameWithType: IssueParts.Number
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number*
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_Number
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number
+  nameWithType: IssuePart.Number
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number*
   name: Number
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_Number_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_Number_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number
   isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.Number
-  nameWithType: IssueParts.Number
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name: operator >(IssueParts, IssueParts)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_GreaterThan_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name.vb: '>(IssueParts, IssueParts)'
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator >(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.>(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  nameWithType: IssueParts.operator >(IssueParts, IssueParts)
-  nameWithType.vb: IssueParts.>(IssueParts, IssueParts)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThan*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.Number
+  nameWithType: IssuePart.Number
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name: operator >(IssuePart, IssuePart)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_GreaterThan_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name.vb: '>(IssuePart, IssuePart)'
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator >(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.>(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  nameWithType: IssuePart.operator >(IssuePart, IssuePart)
+  nameWithType.vb: IssuePart.>(IssuePart, IssuePart)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThan*
   name: operator >
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_GreaterThan_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThan
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_GreaterThan_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThan
   isSpec: "True"
   name.vb: '>'
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator >
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.>
-  nameWithType: IssueParts.operator >
-  nameWithType.vb: IssueParts.>
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name: operator >=(IssueParts, IssueParts)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_GreaterThanOrEqual_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name.vb: '>=(IssueParts, IssueParts)'
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator >=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.>=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  nameWithType: IssueParts.operator >=(IssueParts, IssueParts)
-  nameWithType.vb: IssueParts.>=(IssueParts, IssueParts)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThanOrEqual*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator >
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.>
+  nameWithType: IssuePart.operator >
+  nameWithType.vb: IssuePart.>
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name: operator >=(IssuePart, IssuePart)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_GreaterThanOrEqual_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name.vb: '>=(IssuePart, IssuePart)'
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator >=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.>=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  nameWithType: IssuePart.operator >=(IssuePart, IssuePart)
+  nameWithType.vb: IssuePart.>=(IssuePart, IssuePart)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThanOrEqual*
   name: operator >=
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_GreaterThanOrEqual_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_GreaterThanOrEqual
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_GreaterThanOrEqual_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_GreaterThanOrEqual
   isSpec: "True"
   name.vb: '>='
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator >=
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.>=
-  nameWithType: IssueParts.operator >=
-  nameWithType.vb: IssueParts.>=
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name: operator <(IssueParts, IssueParts)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_LessThan_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name.vb: <(IssueParts, IssueParts)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator <(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.<(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  nameWithType: IssueParts.operator <(IssueParts, IssueParts)
-  nameWithType.vb: IssueParts.<(IssueParts, IssueParts)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThan*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator >=
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.>=
+  nameWithType: IssuePart.operator >=
+  nameWithType.vb: IssuePart.>=
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name: operator <(IssuePart, IssuePart)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_LessThan_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThan(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name.vb: <(IssuePart, IssuePart)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator <(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.<(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  nameWithType: IssuePart.operator <(IssuePart, IssuePart)
+  nameWithType.vb: IssuePart.<(IssuePart, IssuePart)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThan*
   name: operator <
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_LessThan_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThan
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_LessThan_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThan
   isSpec: "True"
   name.vb: <
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator <
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.<
-  nameWithType: IssueParts.operator <
-  nameWithType.vb: IssueParts.<
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name: operator <=(IssueParts, IssueParts)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_LessThanOrEqual_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  name.vb: <=(IssueParts, IssueParts)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator <=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.<=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts)
-  nameWithType: IssueParts.operator <=(IssueParts, IssueParts)
-  nameWithType.vb: IssueParts.<=(IssueParts, IssueParts)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThanOrEqual*
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator <
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.<
+  nameWithType: IssuePart.operator <
+  nameWithType.vb: IssuePart.<
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name: operator <=(IssuePart, IssuePart)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_LessThanOrEqual_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThanOrEqual(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart,NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  name.vb: <=(IssuePart, IssuePart)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator <=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.<=(NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart, NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart)
+  nameWithType: IssuePart.operator <=(IssuePart, IssuePart)
+  nameWithType.vb: IssuePart.<=(IssuePart, IssuePart)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThanOrEqual*
   name: operator <=
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssueParts_op_LessThanOrEqual_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.op_LessThanOrEqual
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.html#NF_Tool_ReleaseNoteMaker_Common_Fragments_IssuePart_op_LessThanOrEqual_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.op_LessThanOrEqual
   isSpec: "True"
   name.vb: <=
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.operator <=
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssueParts.<=
-  nameWithType: IssueParts.operator <=
-  nameWithType.vb: IssueParts.<=
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.operator <=
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Fragments.IssuePart.<=
+  nameWithType: IssuePart.operator <=
+  nameWithType.vb: IssuePart.<=
 - uid: NF.Tool.ReleaseNoteMaker.Common.ReleaseNoteMakerException
   name: ReleaseNoteMakerException
   href: api/NF.Tool.ReleaseNoteMaker.Common.ReleaseNoteMakerException.html
@@ -1544,6 +1506,22 @@ references:
   commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   nameWithType: TemplateRenderer
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(System.String)
+  name: AppendNewlinesIfTrailingCodeBlock(string)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_AppendNewlinesIfTrailingCodeBlock_System_String_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(System.String)
+  name.vb: AppendNewlinesIfTrailingCodeBlock(String)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(string)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(String)
+  nameWithType: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(string)
+  nameWithType.vb: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(String)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock*
+  name: AppendNewlinesIfTrailingCodeBlock
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_AppendNewlinesIfTrailingCodeBlock_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
+  nameWithType: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
   name: Render(string, ReleaseNoteConfig, TemplateModel)
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_
@@ -1585,3 +1563,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments
   nameWithType: TemplateRenderer.RenderFragments
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(System.String,System.String)
+  name: RenderIssue(string, string)
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderIssue_System_String_System_String_
+  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(System.String,System.String)
+  name.vb: RenderIssue(String, String)
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(string, string)
+  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(String, String)
+  nameWithType: TemplateRenderer.RenderIssue(string, string)
+  nameWithType.vb: TemplateRenderer.RenderIssue(String, String)
+- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue*
+  name: RenderIssue
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderIssue_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue
+  nameWithType: TemplateRenderer.RenderIssue
