@@ -2,8 +2,9 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<AssemblyName>dotnet-release-note-maker</AssemblyName>
+		<AssemblyName>dotnet-release-note</AssemblyName>
 		<TargetFramework>net9.0</TargetFramework>
+		<LangVersion>preview</LangVersion>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<WarningLevel>4</WarningLevel>
@@ -39,8 +40,11 @@
 	
 	<PropertyGroup>
 		<PackAsTool>true</PackAsTool>
-		<PackageId>dotnet-release-note-maker</PackageId>
-		<ToolCommandName>dotnet-release-note-maker</ToolCommandName>
+		<PackageId>dotnet-release-note</PackageId>
+		<Version>0.0.1</Version>
+		<Authors>netpyoung</Authors>
+		<Company>netpyoung</Company>
+		<ToolCommandName>dotnet-release-note</ToolCommandName>
 		<PackageOutputPath>./nupkg</PackageOutputPath>
 		<PackageTags>dotnet dotnet-tool</PackageTags>
 	</PropertyGroup>
