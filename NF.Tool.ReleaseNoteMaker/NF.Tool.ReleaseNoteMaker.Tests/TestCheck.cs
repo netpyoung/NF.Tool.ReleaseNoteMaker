@@ -112,7 +112,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string[] args = ["check", "--compare-with", "main"];
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
-            Assert.IsTrue(c.Output.EndsWith($"Found:\n1. {fpath}\n"));
+            Assert.IsTrue(c.Output.EndsWith($"Found:\n    1. {fpath}\n"));
         }
 
         // TODO(pyoung): from test_fragment_exists_but_not_in_check
