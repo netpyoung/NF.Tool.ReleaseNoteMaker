@@ -11,7 +11,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<AnalysisMode>All</AnalysisMode>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311,IDE0045,IDE0046,IDE0090,IDE0057,IDE0305,IDE0005,IDE0063,IDE0056,IDE0066</NoWarn>
+		<NoWarn>CA2007,CA1305,CA1310,CA1002,CA1707,CA1307,CA1304,CA1311,CA1031,IDE0045,IDE0046,IDE0090,IDE0057,IDE0305,IDE0005,IDE0063,IDE0056,IDE0066</NoWarn>
 		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 	</PropertyGroup>
 

@@ -30,7 +30,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.AddCommand<Command_Check>("check")
                     .WithExample("check");
             });
-#pragma warning disable CA1031 // Do not catch general exception types
+
             try
             {
                 return await app.RunAsync(args);
@@ -61,8 +61,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 });
                 return 1;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
-
         }
 #pragma warning restore IDE0210 // Convert to top-level statements
     }
