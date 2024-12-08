@@ -17,7 +17,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
             {
                 _ = config.PropagateExceptions();
                 _ = config.UseStrictParsing();
-                _ = config.SetExceptionHandler(OnException);
                 _ = config.SetApplicationName("dotnet release-note");
 
                 _ = config.AddCommand<Command_Init>("init")
@@ -31,27 +30,26 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.AddCommand<Command_Check>("check")
                     .WithExample("check");
             });
-
-            return await app.RunAsync(args);
-        }
-#pragma warning restore IDE0210 // Convert to top-level statements
-
-        private static void OnException(Exception e, ITypeResolver? resolver)
-        {
-            if (e is CommandAppException cae)
+#pragma warning disable CA1031 // Do not catch general exception types
+            try
             {
-                if (cae.Pretty is { } pretty)
+                return await app.RunAsync(args);
+            }
+            catch (CommandAppException ex)
+            {
+                if (ex.Pretty is { } pretty)
                 {
                     AnsiConsole.Write(pretty);
                 }
                 else
                 {
-                    AnsiConsole.MarkupInterpolated($"[red]Error:[/] {e.Message}");
+                    AnsiConsole.MarkupInterpolated($"[red]Error:[/] {ex.Message}");
                 }
+                return 1;
             }
-            else
+            catch (Exception ex)
             {
-                AnsiConsole.WriteException(e, new ExceptionSettings()
+                AnsiConsole.WriteException(ex, new ExceptionSettings()
                 {
                     Format = ExceptionFormats.ShortenEverything,
                     Style = new()
@@ -61,7 +59,11 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                         LineNumber = Color.Grey78,
                     },
                 });
+                return 1;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
+
         }
+#pragma warning restore IDE0210 // Convert to top-level statements
     }
 }
