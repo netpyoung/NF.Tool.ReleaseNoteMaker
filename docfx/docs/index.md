@@ -2,26 +2,30 @@
 
 - [repo](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/)
 
+- [towncrier](https://towncrier.readthedocs.io/)
+
+news fragments/newsfiles/topfiles
+
 ## Example
 
 ``` txt
 USAGE:
-    release-note-maker [OPTIONS] <COMMAND>
+    dotnet release-note [OPTIONS] <COMMAND>
 
 EXAMPLES:
-    release-note-maker init
-    release-note-maker create --edit
-    release-note-maker create 1.added.md --content "Hello World"
-    release-note-maker build --version 1.0.0
-    release-note-maker check
+    dotnet release-note init
+    dotnet release-note create --edit
+    dotnet release-note create 1.added.md --content "Hello World"
+    dotnet release-note build --version 1.0.0
+    dotnet release-note check
 
 OPTIONS:
     -h, --help    Prints help information
 
 COMMANDS:
-    init       Create a new config file
+    init       Init release-note setup
     create     Create a new fragment
     preview    Preview a release note
-    build      Generate a release note
+    build      Build a release note
     check      Checks files changed
 ```
