@@ -4,7 +4,8 @@
     {
         public const string DEFAULT_CONFIG_FILENAME = "ReleaseNote.config.toml";
         public const string DEFAULT_TEMPLATE_FILENAME = "Template.tt";
-        public const string DEFAULT_NEWS_CONTENT = @"
+        public const string DEFAULT_NEWS_CONTENT = "Add your info here";
+        public const string DEFAULT_EDIT_NEWS_CONTENT = @"
 
 # Please write your news content. Lines starting with '#' will be ignored, and
 # an empty message aborts.

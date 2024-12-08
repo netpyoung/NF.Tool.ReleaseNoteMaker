@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -27,7 +28,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
             [Description("Sets the content of the new fragment.")]
             [CommandOption("--content")]
-            public string? ContentOrNull { get; set; }
+            [DefaultValue(Const.DEFAULT_NEWS_CONTENT)]
+            public string Content { get; set; } = string.Empty;
 
             [Description("The section display name to create the fragment for.")]
             [CommandOption("--section")]
@@ -137,7 +139,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                     }
 
                     fileName = $"{issueName}.{typeCategory}.md";
-                    if (setting.ContentOrNull is null)
+                    if (setting.Content is null)
                     {
                         isEdit = true;
                     }
@@ -152,31 +154,38 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
                 }
             }
 
-            string content;
-            {
-                // handle: setting.ContentOrNull 
-                if (setting.ContentOrNull != null)
-                {
-                    content = setting.ContentOrNull;
-                }
-                else
-                {
-                    content = Const.DEFAULT_NEWS_CONTENT;
-                }
-            }
-
             FragmentPath fragmentPath = FragmentPath.Get(baseDirectory, config);
             string fragmentDirectory = fragmentPath.GetDirectory(sectionPath);
             string segmentFilePath = GetSegmentFilePath(fragmentDirectory, fileName);
-            if (isEdit)
+            string content;
             {
-                string? editorContentOrNull = await TextEditorHelper.OpenAndReadTemporaryFile($"TEMP_{Path.GetFileName(segmentFilePath)}", content);
-                if (editorContentOrNull is null)
+                content = setting.Content!;
+
+                if (isEdit)
                 {
-                    AnsiConsole.MarkupLine($"Abort writing conrent to [red]{segmentFilePath}[/]");
-                    return 1;
+                    string initialContent = $"{content}\n{Const.DEFAULT_EDIT_NEWS_CONTENT}";
+                    string? editorContentOrNull = await TextEditorHelper.OpenAndReadTemporaryFile($"TEMP_{Path.GetFileName(segmentFilePath)}", initialContent);
+                    if (editorContentOrNull is null)
+                    {
+                        AnsiConsole.MarkupLine($"Abort writing conrent to [red]{segmentFilePath}[/]");
+                        return 1;
+                    }
+
+                    string[] allLines = editorContentOrNull.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
+                    StringBuilder sb = new StringBuilder(editorContentOrNull.Length);
+                    foreach (string line in allLines)
+                    {
+                        if (line.StartsWith('#'))
+                        {
+                            continue;
+                        }
+
+                        string x = line.TrimEnd();
+                        _ = sb.AppendLine(x);
+                    }
+
+                    content = sb.ToString().Trim();
                 }
-                content = editorContentOrNull;
             }
 
             _ = Directory.CreateDirectory(fragmentDirectory);
