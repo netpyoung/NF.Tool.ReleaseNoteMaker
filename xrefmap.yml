@@ -1506,22 +1506,6 @@ references:
   commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   nameWithType: TemplateRenderer
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(System.String)
-  name: AppendNewlinesIfTrailingCodeBlock(string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_AppendNewlinesIfTrailingCodeBlock_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(System.String)
-  name.vb: AppendNewlinesIfTrailingCodeBlock(String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(String)
-  nameWithType: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(string)
-  nameWithType.vb: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock(String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock*
-  name: AppendNewlinesIfTrailingCodeBlock
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_AppendNewlinesIfTrailingCodeBlock_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
-  nameWithType: TemplateRenderer.AppendNewlinesIfTrailingCodeBlock
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
   name: Render(string, ReleaseNoteConfig, TemplateModel)
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_
@@ -1531,15 +1515,6 @@ references:
   fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(String, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
   nameWithType: TemplateRenderer.Render(string, ReleaseNoteConfig, TemplateModel)
   nameWithType.vb: TemplateRenderer.Render(String, ReleaseNoteConfig, TemplateModel)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel,System.String)
-  name: Render(string, ReleaseNoteConfig, TemplateModel, string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel,System.String)
-  name.vb: Render(String, ReleaseNoteConfig, TemplateModel, String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(string, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel, string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(String, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel, String)
-  nameWithType: TemplateRenderer.Render(string, ReleaseNoteConfig, TemplateModel, string)
-  nameWithType.vb: TemplateRenderer.Render(String, ReleaseNoteConfig, TemplateModel, String)
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render*
   name: Render
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_
@@ -1563,19 +1538,3 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments
   nameWithType: TemplateRenderer.RenderFragments
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(System.String,System.String)
-  name: RenderIssue(string, string)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderIssue_System_String_System_String_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(System.String,System.String)
-  name.vb: RenderIssue(String, String)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(string, string)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue(String, String)
-  nameWithType: TemplateRenderer.RenderIssue(string, string)
-  nameWithType.vb: TemplateRenderer.RenderIssue(String, String)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue*
-  name: RenderIssue
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderIssue_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderIssue
-  nameWithType: TemplateRenderer.RenderIssue

@@ -117,7 +117,7 @@
   "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html": {
     "href": "api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html",
     "title": "Class TemplateRenderer | NF.Tool.ReleaseNoteMaker",
-    "keywords": "Class TemplateRenderer Namespace NF.Tool.ReleaseNoteMaker.Common.Template Assembly NF.Tool.ReleaseNoteMaker.Common.dll public sealed class TemplateRenderer Inheritance object TemplateRenderer Methods AppendNewlinesIfTrailingCodeBlock(string) public static string AppendNewlinesIfTrailingCodeBlock(string text) Parameters text string Returns string Render(string, ReleaseNoteConfig, TemplateModel) public static Task<(Exception? exOrNull, string text)> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel) Parameters templatePath string config ReleaseNoteConfig templateModel TemplateModel Returns Task<(Exception exOrNull, string text)> Render(string, ReleaseNoteConfig, TemplateModel, string) public static Task<Exception?> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel, string outputPath) Parameters templatePath string config ReleaseNoteConfig templateModel TemplateModel outputPath string Returns Task<Exception> RenderFragments(string, ReleaseNoteConfig, ProjectData, List<FragmentContent>) public static Task<(Exception?, string)> RenderFragments(string templateFpath, ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents) Parameters templateFpath string config ReleaseNoteConfig projectData ProjectData fragmentContents List<FragmentContent> Returns Task<(Exception exOrNull, string text)> RenderIssue(string, string) public static string RenderIssue(string issueFormat, string issue) Parameters issueFormat string issue string Returns string"
+    "keywords": "Class TemplateRenderer Namespace NF.Tool.ReleaseNoteMaker.Common.Template Assembly NF.Tool.ReleaseNoteMaker.Common.dll public sealed class TemplateRenderer Inheritance object TemplateRenderer Methods Render(string, ReleaseNoteConfig, TemplateModel) public static Task<(Exception? exOrNull, string text)> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel) Parameters templatePath string config ReleaseNoteConfig templateModel TemplateModel Returns Task<(Exception exOrNull, string text)> RenderFragments(string, ReleaseNoteConfig, ProjectData, List<FragmentContent>) public static Task<(Exception?, string)> RenderFragments(string templateFpath, ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents) Parameters templateFpath string config ReleaseNoteConfig projectData ProjectData fragmentContents List<FragmentContent> Returns Task<(Exception exOrNull, string text)>"
   },
   "api/NF.Tool.ReleaseNoteMaker.Common.Template.html": {
     "href": "api/NF.Tool.ReleaseNoteMaker.Common.Template.html",
@@ -129,10 +129,45 @@
     "title": "Namespace NF.Tool.ReleaseNoteMaker.Common | NF.Tool.ReleaseNoteMaker",
     "keywords": "Namespace NF.Tool.ReleaseNoteMaker.Common Classes ReleaseNoteMakerException Structs ScopedFileDeleter"
   },
+  "docs/ReleaseNote.config.toml.html": {
+    "href": "docs/ReleaseNote.config.toml.html",
+    "title": "ReleaseNote.config.toml | NF.Tool.ReleaseNoteMaker",
+    "keywords": "ReleaseNote.config.toml TODO(pyoung) sample [ReleaseNote.Maker] Directory = \"ChangeLog.d\" OutputFileName = \"CHANGELOG.md\" TemplateFilePath = \"ChangeLog.d/Template.tt\" EndOfLine = \"ENVIRONMENT\" [[ReleaseNote.Section]] Path = \"\" DisplayName = \"Main\" [[ReleaseNote.Type]] Category = \"added\" DisplayName = \"Added\" IsShowContent = true source [ReleaseNote.Maker] Directory = \"ChangeLog.d\" OutputFileName = \"CHANGELOG.md\" TemplateFilePath = \"ChangeLog.d/Template.tt\" EndOfLine = \"ENVIRONMENT\" [[ReleaseNote.Section]] Path = \"\" DisplayName = \"Main\" [[ReleaseNote.Type]] Category = \"feature\" DisplayName = \"Features\" IsShowContent = true"
+  },
+  "docs/command/command_build.html": {
+    "href": "docs/command/command_build.html",
+    "title": "Build | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Build Build a release note"
+  },
+  "docs/command/command_check.html": {
+    "href": "docs/command/command_check.html",
+    "title": "Check | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Check Check files changed $ dotnet release-note check --help DESCRIPTION: Checks files changed. USAGE: dotnet release-note check [OPTIONS] EXAMPLES: dotnet release-note check OPTIONS: DEFAULT -h, --help Prints help information --dir Build fragment in directory. Default to current directory --config Pass a custom config file at FILE_PATH. Default: ReleaseNote.config.toml --compare-with origin/main Checks files changed running git diff --name-only BRANCH... BRANCH is the branch to be compared with"
+  },
+  "docs/command/command_create.html": {
+    "href": "docs/command/command_create.html",
+    "title": "Create | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Create Create a new fragment {IssueName}.{TypeCategory}({RetryCount}.).md TypeCategory ReleaseNote.config.toml"
+  },
+  "docs/command/command_init.html": {
+    "href": "docs/command/command_init.html",
+    "title": "Init | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Init Init release-note setup Example $ dotnet release-note init Initialized ./ ├── ReleaseNote.config.toml └── ChangeLog.d/ └── Template.tt"
+  },
+  "docs/command/command_preview.html": {
+    "href": "docs/command/command_preview.html",
+    "title": "Preview | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Preview Preview a release note $ dotnet release-note preview --help DESCRIPTION: Preview a release note. USAGE: dotnet release-note preview [OPTIONS] OPTIONS: DEFAULT -h, --help Prints help information --dir Build fragment in directory. Default to current directory --config Pass a custom config file at FILE_PATH. Default: ReleaseNote.config.toml --name Pass a custom project name --version x.x.x Render the news fragments using given version --date Render the news fragments using the given date"
+  },
   "docs/index.html": {
     "href": "docs/index.html",
     "title": "Introduction | NF.Tool.ReleaseNoteMaker",
-    "keywords": "Introduction repo Example USAGE: release-note-maker [OPTIONS] <COMMAND> EXAMPLES: release-note-maker init release-note-maker create --edit release-note-maker create 1.added.md --content \"Hello World\" release-note-maker build --version 1.0.0 release-note-maker check OPTIONS: -h, --help Prints help information COMMANDS: init Create a new config file create Create a new fragment preview Preview a release note build Generate a release note check Checks files changed"
+    "keywords": "Introduction repo towncrier news fragments/newsfiles/topfiles Example USAGE: dotnet release-note [OPTIONS] <COMMAND> EXAMPLES: dotnet release-note init dotnet release-note create --edit dotnet release-note create 1.added.md --content \"Hello World\" dotnet release-note build --version 1.0.0 dotnet release-note check OPTIONS: -h, --help Prints help information COMMANDS: init Init release-note setup create Create a new fragment preview Preview a release note build Build a release note check Checks files changed"
+  },
+  "docs/tutorial.html": {
+    "href": "docs/tutorial.html",
+    "title": "Tutorial | NF.Tool.ReleaseNoteMaker",
+    "keywords": "Tutorial $ dotnet release-note init Initialized ./ ├── ReleaseNote.config.toml └── ChangeLog.d/ └── Template.tt $ dotnet release-note preview # x.x.x (2024-12-09) $ dotnet release-note create 123.feature.md Created news fragment at 123.feature.md $ dotnet release-note preview # x.x.x (2024-12-09) ## Main ### Features - Add your info here (#123) $ dotnet release-note create Issue Name : ex) + / +hello / 123 / baz.1.2 Default: (+): 456 Created news fragment at C:\\Users\\pyoung\\temp2\\ChangeLog.d\\456.changed.md $ dotnet release-note preview # x.x.x (2024-12-09) ## Main ### Changed - Add your info here (#456) ### Features - Add your info here (#123) $ dotnet release-note build --version 1.0.0 * Finding news fragments... * Loading template... * Rendering news fragments... * Writing to newsfile... ❗ C:/Users/pyoung/temp2/CHANGELOG.md * Staging newsfile... ➕ C:\\Users\\pyoung\\temp2\\CHANGELOG.md I want to remove the following files: ❌ C:\\Users\\pyoung\\temp2\\ChangeLog.d\\123.feature.md ❌ C:\\Users\\pyoung\\temp2\\ChangeLog.d\\456.changed.md Is it okay if I remove those files? [y/n] (y): y * Removing news fragments... * Done! $ $ cat .\\CHANGELOG.md # 1.0.0 (2024-12-09) ## Main ### Changed - Add your info here (#456) ### Features - Add your info here (#123)"
   },
   "index.html": {
     "href": "index.html",

@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Introduction | NF.Tool.ReleaseNoteMaker </title>
+      <title>Tutorial | NF.Tool.ReleaseNoteMaker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Introduction | NF.Tool.ReleaseNoteMaker ">
+      <meta name="title" content="Tutorial | NF.Tool.ReleaseNoteMaker ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/tutorial.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,41 +85,90 @@
         </div>
 
         <article data-uid="">
-<h1 id="introduction">Introduction</h1>
+<h1 id="tutorial">Tutorial</h1>
 
-<ul>
-<li><p><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/">repo</a></p>
-</li>
-<li><p><a href="https://towncrier.readthedocs.io/">towncrier</a></p>
-</li>
-</ul>
-<p>news fragments/newsfiles/topfiles</p>
-<h2 id="example">Example</h2>
-<pre><code class="lang-txt">USAGE:
-    dotnet release-note [OPTIONS] &lt;COMMAND&gt;
+<pre><code class="lang-sh">$ dotnet release-note init
+Initialized
+./
+├── ReleaseNote.config.toml
+└── ChangeLog.d/
+    └── Template.tt
+$ dotnet release-note preview
+# x.x.x (2024-12-09)
 
-EXAMPLES:
-    dotnet release-note init
-    dotnet release-note create --edit
-    dotnet release-note create 1.added.md --content &quot;Hello World&quot;
-    dotnet release-note build --version 1.0.0
-    dotnet release-note check
 
-OPTIONS:
-    -h, --help    Prints help information
 
-COMMANDS:
-    init       Init release-note setup
-    create     Create a new fragment
-    preview    Preview a release note
-    build      Build a release note
-    check      Checks files changed
+$ dotnet release-note create 123.feature.md
+Created news fragment at 123.feature.md
+
+$ dotnet release-note preview
+# x.x.x (2024-12-09)
+
+
+## Main
+
+### Features
+
+- Add your info here (#123)
+
+
+
+$ dotnet release-note create
+Issue Name :
+ex) + / +hello / 123 / baz.1.2
+Default: (+): 456
+Created news fragment at C:\Users\pyoung\temp2\ChangeLog.d\456.changed.md
+
+$ dotnet release-note preview
+# x.x.x (2024-12-09)
+
+
+## Main
+
+### Changed
+
+- Add your info here (#456)
+
+### Features
+
+- Add your info here (#123)
+
+
+
+$ dotnet release-note build --version 1.0.0
+* Finding news fragments...
+* Loading template...
+* Rendering news fragments...
+* Writing to newsfile...
+    ❗ C:/Users/pyoung/temp2/CHANGELOG.md
+* Staging newsfile...
+    ➕ C:\Users\pyoung\temp2\CHANGELOG.md
+I want to remove the following files:
+    ❌ C:\Users\pyoung\temp2\ChangeLog.d\123.feature.md
+    ❌ C:\Users\pyoung\temp2\ChangeLog.d\456.changed.md
+Is it okay if I remove those files? [y/n] (y): y
+* Removing news fragments...
+* Done!
+$
+$ cat .\CHANGELOG.md
+# 1.0.0 (2024-12-09)
+
+
+## Main
+
+### Changed
+
+- Add your info here (#456)
+
+### Features
+
+- Add your info here (#123)
 </code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/tutorial.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

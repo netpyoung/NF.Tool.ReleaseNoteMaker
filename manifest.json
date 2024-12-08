@@ -285,6 +285,66 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/ReleaseNote.config.toml.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/ReleaseNote.config.toml.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_build.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_build.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_check.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_check.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_create.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_create.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_init.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_init.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_preview.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_preview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/index.md",
       "output": {
         ".html": {
@@ -302,6 +362,16 @@
         },
         ".html": {
           "relative_path": "docs/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/tutorial.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/tutorial.html"
         }
       },
       "version": ""

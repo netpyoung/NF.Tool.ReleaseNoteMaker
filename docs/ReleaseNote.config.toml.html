@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Introduction | NF.Tool.ReleaseNoteMaker </title>
+      <title>ReleaseNote.config.toml | NF.Tool.ReleaseNoteMaker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Introduction | NF.Tool.ReleaseNoteMaker ">
+      <meta name="title" content="ReleaseNote.config.toml | NF.Tool.ReleaseNoteMaker ">
       
       
       <link rel="icon" href="../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/ReleaseNote.config.toml.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,41 +85,46 @@
         </div>
 
         <article data-uid="">
-<h1 id="introduction">Introduction</h1>
+<h1 id="releasenoteconfigtoml">ReleaseNote.config.toml</h1>
 
-<ul>
-<li><p><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/">repo</a></p>
-</li>
-<li><p><a href="https://towncrier.readthedocs.io/">towncrier</a></p>
-</li>
-</ul>
-<p>news fragments/newsfiles/topfiles</p>
-<h2 id="example">Example</h2>
-<pre><code class="lang-txt">USAGE:
-    dotnet release-note [OPTIONS] &lt;COMMAND&gt;
+<p>TODO(pyoung)</p>
+<h2 id="sample">sample</h2>
+<pre><code class="lang-toml">[ReleaseNote.Maker]
+Directory = &quot;ChangeLog.d&quot;
+OutputFileName = &quot;CHANGELOG.md&quot;
+TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
+EndOfLine = &quot;ENVIRONMENT&quot;
 
-EXAMPLES:
-    dotnet release-note init
-    dotnet release-note create --edit
-    dotnet release-note create 1.added.md --content &quot;Hello World&quot;
-    dotnet release-note build --version 1.0.0
-    dotnet release-note check
+[[ReleaseNote.Section]]
+Path = &quot;&quot;
+DisplayName = &quot;Main&quot;
 
-OPTIONS:
-    -h, --help    Prints help information
-
-COMMANDS:
-    init       Init release-note setup
-    create     Create a new fragment
-    preview    Preview a release note
-    build      Build a release note
-    check      Checks files changed
+[[ReleaseNote.Type]]
+Category = &quot;added&quot;
+DisplayName = &quot;Added&quot;
+IsShowContent = true
 </code></pre>
+<ul>
+<li><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Config/ReleaseNoteConfig.cs">source</a></li>
+</ul>
+<h2 id="section"></h2>
+<h3 id="releasenotemaker">[ReleaseNote.Maker]</h3>
+<p>Directory = &quot;ChangeLog.d&quot;
+OutputFileName = &quot;CHANGELOG.md&quot;
+TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
+EndOfLine = &quot;ENVIRONMENT&quot;</p>
+<h3 id="releasenotesection">[[ReleaseNote.Section]]</h3>
+<p>Path = &quot;&quot;
+DisplayName = &quot;Main&quot;</p>
+<h3 id="releasenotetype">[[ReleaseNote.Type]]</h3>
+<p>Category = &quot;feature&quot;
+DisplayName = &quot;Features&quot;
+IsShowContent = true</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/ReleaseNote.config.toml.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
