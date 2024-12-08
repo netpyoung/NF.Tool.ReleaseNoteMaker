@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 {
-    [Description($"Generate a release note.")]
+    [Description($"Build a release note.")]
     internal sealed class Command_Build : AsyncCommand<Command_Build.Settings>
     {
         internal sealed class Settings : CommandSettings
