@@ -18,19 +18,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
         public static async Task<(Exception? exOrNull, string text)> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
         {
             string tempFilePath = Path.GetTempFileName();
-            Exception? exOrNull = await Render(templatePath, config, templateModel, tempFilePath);
-            if (exOrNull != null)
-            {
-                return (exOrNull, string.Empty);
-            }
-
-            string text = await File.ReadAllTextAsync(tempFilePath);
-            File.Delete(tempFilePath);
-            return (null, text);
-        }
-
-        public static async Task<Exception?> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel, string outputPath)
-        {
             string assemblyLocation = typeof(ReleaseNoteTemplateGenerator).Assembly.Location;
 
             ReleaseNoteTemplateGenerator generator = new ReleaseNoteTemplateGenerator(config, templateModel);
@@ -38,7 +25,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             generator.Imports.Add(typeof(ReleaseNoteTemplateGenerator).Namespace);
             generator.Imports.Add(typeof(ReleaseNoteConfig).Namespace);
 
-            bool isSuccess = await generator.ProcessTemplateAsync(templatePath, outputPath);
+            bool isSuccess = await generator.ProcessTemplateAsync(templatePath, tempFilePath);
             if (!isSuccess)
             {
                 StringBuilder sb = new StringBuilder();
@@ -47,12 +34,14 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
                 {
                     _ = sb.AppendLine(err.ToString());
                 }
-                return new ReleaseNoteMakerException(sb.ToString());
+                ReleaseNoteMakerException ex = new ReleaseNoteMakerException(sb.ToString());
+                return (ex, string.Empty);
             }
 
-            return null;
+            string text = await File.ReadAllTextAsync(tempFilePath);
+            File.Delete(tempFilePath);
+            return (null, text);
         }
-
 
         public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents)
         {
