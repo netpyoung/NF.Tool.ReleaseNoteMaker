@@ -214,7 +214,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return ret;
         }
 
-        public static string RenderIssue(string issueFormat, string issue)
+        private static string RenderIssue(string issueFormat, string issue)
         {
             if (!string.IsNullOrEmpty(issueFormat))
             {
@@ -229,7 +229,8 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             }
             return issue;
         }
-        public static string AppendNewlinesIfTrailingCodeBlock(string text)
+
+        private static string AppendNewlinesIfTrailingCodeBlock(string text)
         {
             string indentedText = @"  [ \t]+[^\n]*";
             string emptyOrIndentedTextLines = $"(({indentedText})?\n)*";
