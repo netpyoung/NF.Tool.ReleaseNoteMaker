@@ -3,8 +3,10 @@
 - Create a new fragment
 
 ``` txt
-{IssueName}.{TypeCategory}({RetryCount}.).md
+{IssueName}.{TypeCategory}(.{RetryCount}).md
 ```
 
+- IssueName
 - TypeCategory
-  - [ReleaseNote.config.toml](../ReleaseNote.config.toml.md#releasenotetype)
+  - [ReleaseNote.config.toml](../setup/config.md#releasenotetype)
+- RetryCount

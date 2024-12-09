@@ -78,3 +78,12 @@ $ cat .\CHANGELOG.md
 
 - Add your info here (#123)
 ```
+
+dotnet release-note create --content "Added a cool feature!"          1.added.md
+dotnet release-note create --content "Changed a behavior!"            2.changed.md
+dotnet release-note create --content "Deprecated a module!"           3.deprecated.md
+dotnet release-note create --content "Removed a square feature!"      4.removed.md
+dotnet release-note create --content "Fixed a bug!"                   5.fixed.md
+dotnet release-note create --content "Fixed a security issue!"        6.security.md
+dotnet release-note create --content "Fixed a security issue!"        7.security.md
+dotnet release-note create --content "A fix without an issue number!" +something-unique.fixed.md

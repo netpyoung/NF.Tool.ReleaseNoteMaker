@@ -1,5 +1,6 @@
-- name: NF.Tool.ReleaseNoteMaker
-  href: index.md
+- href: index.md
+- href: concept.md
+- href: tutorial.md
 - name: Command
   items:
     - href: command/command_init.md
@@ -7,9 +8,9 @@
     - href: command/command_preview.md
     - href: command/command_build.md
     - href: command/command_check.md
-- name: Tutorial
-  href: tutorial.md
-- name: ReleaseNote.config.toml
-  href: ReleaseNote.config.toml.md
+- name: Setup
+  items:
+    - href: setup/config.md
+    - href: setup/template.md
 - name: 📦 Github
   href: https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker
