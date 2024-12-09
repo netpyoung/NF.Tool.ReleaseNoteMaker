@@ -274,21 +274,11 @@
       "type": "Toc",
       "source_relative_path": "api/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "api/toc.json"
-        },
         ".html": {
           "relative_path": "api/toc.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "docs/ReleaseNote.config.toml.md",
-      "output": {
-        ".html": {
-          "relative_path": "docs/ReleaseNote.config.toml.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
       "version": ""
@@ -345,6 +335,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/concept.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/concept.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/index.md",
       "output": {
         ".html": {
@@ -354,14 +354,34 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "docs/setup/config.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/setup/config.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/setup/template.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/setup/template.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "docs/toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "docs/toc.json"
-        },
         ".html": {
           "relative_path": "docs/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/toc.json"
         }
       },
       "version": ""
@@ -390,11 +410,11 @@
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        },
         ".html": {
           "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
       "version": ""

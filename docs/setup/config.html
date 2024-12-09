@@ -2,21 +2,21 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>NF.Tool.ReleaseNoteMaker | NF.Tool.ReleaseNoteMaker </title>
+      <title>ReleaseNote.config.toml | NF.Tool.ReleaseNoteMaker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="NF.Tool.ReleaseNoteMaker | NF.Tool.ReleaseNoteMaker ">
+      <meta name="title" content="ReleaseNote.config.toml | NF.Tool.ReleaseNoteMaker ">
       
       
-      <link rel="icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../public/docfx.min.css">
-      <link rel="stylesheet" href="../public/main.css">
-      <meta name="docfx:navrel" content="../toc.html">
-      <meta name="docfx:tocrel" content="toc.html">
+      <link rel="icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
       
-      <meta name="docfx:rel" content="../">
+      <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/setup/config.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -30,7 +30,7 @@
       <meta name="loc:copy" content="Copy">
       <meta name="loc:downloadPdf" content="Download PDF">
 
-      <script type="module" src="./../public/docfx.min.js"></script>
+      <script type="module" src="./../../public/docfx.min.js"></script>
 
       <script>
         const theme = localStorage.getItem('theme') || 'auto'
@@ -43,8 +43,8 @@
     <header class="bg-body border-bottom">
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
-          <a class="navbar-brand" href="../index.html">
-            <img id="logo" class="svg" src="../logo.svg" alt="NF.Tool.ReleaseNoteMaker">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../logo.svg" alt="NF.Tool.ReleaseNoteMaker">
             NF.Tool.ReleaseNoteMaker
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,42 +85,83 @@
         </div>
 
         <article data-uid="">
-<h1 id="nftoolreleasenotemaker">NF.Tool.ReleaseNoteMaker</h1>
+<h1 id="releasenoteconfigtoml">ReleaseNote.config.toml</h1>
 
-<p><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker"><img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&amp;logoColor=white" alt="GitHub"></a>
-<a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/actions/workflows/dotnet-test.yml"><img src="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/actions/workflows/dotnet-test.yml/badge.svg" alt=".NET Test Workflow"></a>
-<a href="https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/"><img src="https://img.shields.io/badge/document-docfx-blue" alt="Document"></a>
-<a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/LICENSE.md"><img src="https://img.shields.io/badge/license-MIT-C06524" alt="License"></a>
-<a href="https://www.nuget.org/packages/dotnet-release-note/"><img src="https://img.shields.io/nuget/v/dotnet-release-note.svg?style=flat&amp;label=NuGet%3A%20dotnet-release-note" alt="NuGet"></a></p>
-<p>WIP</p>
 <ul>
-<li>Reinvent the wheel</li>
+<li><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Config/ReleaseNoteConfig.cs">source</a></li>
 </ul>
-<h2 id="overview">Overview</h2>
-<p><code>NF.Tool.ReleaseNoteMaker (akka. dotnet-release-note)</code> simplifies changelog creation in .NET projects by mimicking the functionality of Python's <a href="https://github.com/twisted/towncrier">twisted/towncrier</a>.
-It enables developers to manage changelog entries incrementally and consolidate them during release.</p>
-<h2 id="install">Install</h2>
-<pre><code class="lang-bash">dotnet tool install --global dotnet-release-note
-</code></pre>
-<h2 id="document">Document</h2>
-<ul>
-<li><a href="https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/concept.html">Documentation</a></li>
-</ul>
-<h2 id="dependencies">Dependencies</h2>
-<ul>
-<li>use <a href="https://toml.io/en/">Toml format</a> and <a href="https://github.com/xoofx/Tomlyn">xoofx/Tomlyn library</a> for Config file.</li>
-<li>use <a href="https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates">T4 template</a> and <a href="https://github.com/mono/t4">mono/t4 library</a>.</li>
-<li>use <a href="https://spectreconsole.net/">Spectre.Console</a> for console output.</li>
-<li>use <a href="https://spectreconsole.net/cli/">Spectre.Console.Cli</a> for parse args.</li>
-<li>use <a href="https://github.com/axuno/SmartFormat">SmartFormat</a> for format string.</li>
-</ul>
-<h2 id="license">License</h2>
-<p>This project is licensed under the MIT License. See the <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/LICENSE.md">LICENSE</a> file for details.</p>
+<p>TODO(pyoung)</p>
+<h2 id="releasenoteconfigtomldefault">ReleaseNote.config.toml(default)</h2>
+<pre><code class="lang-toml" name="Default">[ReleaseNote.Maker]
+Directory = &quot;ChangeLog.d&quot;
+OutputFileName = &quot;CHANGELOG.md&quot;
+TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
+EndOfLine = &quot;ENVIRONMENT&quot;
+
+[[ReleaseNote.Section]]
+Path = &quot;&quot;
+DisplayName = &quot;Main&quot;
+
+# [[ReleaseNote.Section]]
+# Path = &quot;A&quot;
+# DisplayName = &quot;A Section&quot;
+
+# [[ReleaseNote.Section]]
+# Path = &quot;B&quot;
+# DisplayName = &quot;B Section&quot;
+
+[[ReleaseNote.Type]]
+Category = &quot;security&quot;
+DisplayName = &quot;Security&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;removed&quot;
+DisplayName = &quot;Removed&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;deprecated&quot;
+DisplayName = &quot;Deprecated&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;added&quot;
+DisplayName = &quot;Added&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;changed&quot;
+DisplayName = &quot;Changed&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;fixed&quot;
+DisplayName = &quot;Fixed&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;feature&quot;
+DisplayName = &quot;Features&quot;
+IsShowContent = true
+</code></pre><h2 id="detail">detail</h2>
+<h3 id="releasenotemaker">[ReleaseNote.Maker]</h3>
+<p>Directory = &quot;ChangeLog.d&quot;
+OutputFileName = &quot;CHANGELOG.md&quot;
+TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
+EndOfLine = &quot;ENVIRONMENT&quot;</p>
+<h3 id="releasenotesection">[[ReleaseNote.Section]]</h3>
+<p>Path = &quot;&quot;
+DisplayName = &quot;Main&quot;</p>
+<h3 id="releasenotetype">[[ReleaseNote.Type]]</h3>
+<p>Category = &quot;feature&quot;
+DisplayName = &quot;Features&quot;
+IsShowContent = true</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/index.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/setup/config.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>

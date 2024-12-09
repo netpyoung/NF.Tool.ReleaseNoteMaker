@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Create | NF.Tool.ReleaseNoteMaker </title>
+      <title>Template | NF.Tool.ReleaseNoteMaker </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Create | NF.Tool.ReleaseNoteMaker ">
+      <meta name="title" content="Template | NF.Tool.ReleaseNoteMaker ">
       
       
       <link rel="icon" href="../../favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="../../">
       
       
-      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/command/command_create.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/setup/template.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -85,27 +85,134 @@
         </div>
 
         <article data-uid="">
-<h1 id="create">Create</h1>
+<h1 id="template">Template</h1>
 
-<ul>
-<li>Create a new fragment</li>
-</ul>
-<pre><code class="lang-txt">{IssueName}.{TypeCategory}(.{RetryCount}).md
+<pre><code class="lang-mermaid">flowchart LR
+
+A[Hard] --&gt;|Text| B(Round)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result 1]
+C --&gt;|Two| E[Result 2]
 </code></pre>
-<ul>
-<li>IssueName</li>
-<li>TypeCategory
-<ul>
-<li><a href="../setup/config.html#releasenotetype">ReleaseNote.config.toml</a></li>
-</ul>
+<div class="tabGroup" id="tabgroup_1">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_1_t4" role="tab" aria-controls="tabpanel_1_t4" data-tab="t4" tabindex="0" aria-selected="true">Template.tt</a>
 </li>
-<li>RetryCount</li>
+<li role="presentation">
+<a href="#tabpanel_1_liquid" role="tab" aria-controls="tabpanel_1_liquid" data-tab="liquid" tabindex="-1">Template.liquid</a>
+</li>
 </ul>
+<section id="tabpanel_1_t4" role="tabpanel" data-tab="t4">
+<pre><code class="lang-csharp" name="Default">&lt;#@ template debug=&quot;true&quot; hostspecific=&quot;true&quot; language=&quot;C#&quot; #&gt;
+&lt;#@ import namespace=&quot;System&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
+&lt;#
+    //System.Diagnostics.Debugger.Launch();
+    //System.Diagnostics.Debugger.Break();
+
+    TemplateModel model = Host.GetTemplateModel();
+    ReleaseNoteConfig config = Host.GetConfig();
+#&gt;
+&lt;#
+    if (model.IsRenderTitle)
+    {
+        WriteLine($&quot;# {model.ProjectData}&quot;);
+    }
+#&gt;
+
+&lt;#
+    foreach (Section section in model.Sections)
+    {
+        if (!string.IsNullOrEmpty(section.DisplayName))
+        {
+            WriteLine($&quot;\n## {section.DisplayName}\n&quot;);
+        }
+
+        if (section.Categories.Count == 0)
+        {
+            WriteLine(&quot;No significant changes.\n&quot;);
+            continue;
+        }
+
+        foreach (Category category in section.Categories)
+        {
+            WriteLine($&quot;### {category.DisplayName}\n&quot;);
+
+            if (category.Contents.Count == 0)
+            {
+                WriteLine(&quot;No significant changes.\n&quot;);
+                continue;
+            }
+
+            foreach (Content content in category.Contents)
+            {
+                (string text, List&lt;string&gt; issues) = content;
+                Write($&quot;- {text}&quot;);
+                if (issues.Count == 0)
+                {
+                    WriteLine(&quot;&quot;);
+                    continue;
+                }
+
+                if (text.Contains(&quot;\n  - &quot;) || text.Contains(&quot;\n  * &quot;))
+                {
+                    Write(&quot;\n\n  (&quot;);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        Write(&quot; (&quot;);
+                    }
+                }
+                        
+                for (int i = 0; i &lt; issues.Count; i++)
+                {
+                    string issue = issues[i];
+                    Write(issue.Split(&quot;: &quot;, 2)[0]);
+                    if (i &lt; issues.Count - 1)
+                    {
+                        Write(&quot;, &quot;);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    Write(&quot;)&quot;);
+                }
+                WriteLine(&quot;&quot;);
+            }
+        
+
+            List&lt;string&gt; categoryIssues = category.GetAllIssues();
+            if (categoryIssues.Count &gt; 0 &amp;&amp; categoryIssues.First().Contains(&quot;]: &quot;))
+            {
+                WriteLine(&quot;&quot;);
+                foreach (string issue in categoryIssues)
+                {
+                    WriteLine(issue);
+                }
+            }
+            WriteLine(&quot;&quot;);
+
+        }
+    }
+#&gt;
+</code></pre></section>
+<section id="tabpanel_1_liquid" role="tabpanel" data-tab="liquid" aria-hidden="true" hidden="hidden">
+
+<p>Content for Windows...</p>
+</section>
+</div>
+
+<p>Hello WOrld</p>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/command/command_create.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/docfx/docs/setup/template.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
