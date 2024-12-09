@@ -23,7 +23,7 @@ dotnet tool install --global dotnet-release-note
 
 ## Document
 
-- [Documentation](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/concept.html)
+- [Documentation](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/docs/concept.html)
 
 ## Dependencies
 
