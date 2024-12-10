@@ -29,6 +29,9 @@
 		<EmbeddedResource Include="res\Template.tt">
 			<LogicalName>Template.tt</LogicalName>
 		</EmbeddedResource>
+		<EmbeddedResource Include="res\Template.liquid">
+			<LogicalName>Template.liquid</LogicalName>
+		</EmbeddedResource>
 		<EmbeddedResource Include="res\ReleaseNote.config.toml">
 			<LogicalName>ReleaseNote.config.toml</LogicalName>
 		</EmbeddedResource>

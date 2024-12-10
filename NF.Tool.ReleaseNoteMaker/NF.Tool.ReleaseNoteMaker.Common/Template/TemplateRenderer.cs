@@ -1,4 +1,5 @@
-﻿using NF.Tool.ReleaseNoteMaker.Common.Config;
+﻿using Fluid;
+using NF.Tool.ReleaseNoteMaker.Common.Config;
 using NF.Tool.ReleaseNoteMaker.Common.Fragments;
 using SmartFormat;
 using System;
@@ -15,7 +16,33 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
     public sealed class TemplateRenderer
     {
-        public static async Task<(Exception? exOrNull, string text)> Render(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
+        private static async Task<(Exception? exOrNull, string text)> RenderViaLiquid(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
+        {
+            string source = await File.ReadAllTextAsync(templatePath);
+
+            FluidParser parser = new FluidParser(new FluidParserOptions { AllowFunctions = true });
+
+            if (!parser.TryParse(source, out IFluidTemplate? template, out string? errorOrNull))
+            {
+                StringBuilder sb = new StringBuilder();
+                _ = sb.AppendLine("Template Render Error");
+                _ = sb.AppendLine(errorOrNull);
+                ReleaseNoteMakerException ex = new ReleaseNoteMakerException(sb.ToString());
+                return (ex, string.Empty);
+            }
+
+            var model = new { config, model = templateModel };
+            TemplateOptions opt = new TemplateOptions
+            {
+                MemberAccessStrategy = UnsafeMemberAccessStrategy.Instance
+            };
+
+            TemplateContext context = new TemplateContext(model, opt);
+            string rendered = await template.RenderAsync(context);
+            return (null, rendered);
+        }
+
+        private static async Task<(Exception? exOrNull, string text)> RenderViaT4(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
         {
             string tempFilePath = Path.GetTempFileName();
             string assemblyLocation = typeof(ReleaseNoteTemplateGenerator).Assembly.Location;
@@ -43,7 +70,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             return (null, text);
         }
 
-        public static async Task<(Exception?, string)> RenderFragments(string templateFpath, [NotNull] ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents)
+        public static async Task<(Exception?, string)> RenderFragments([NotNull] string templateFpath, [NotNull] ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents)
         {
             // TODO(pyoung): handle - underlines, topUnderline
             //    top_underline = config.underlines[0],
@@ -102,14 +129,27 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             // TODO(pyoung): handle - underlines, topUnderline
 
             TemplateModel model = new TemplateModel(isRenderTitle, projectData, sections);
-            (Exception? exOrNull, string renderedText) = await Render(templateFpath, config, model);
-            if (exOrNull != null)
+            (Exception? exOrNull, string renderedText) renderResult;
+            if (templateFpath.EndsWith(".tt"))
             {
-                return (exOrNull, string.Empty);
+                renderResult = await RenderViaT4(templateFpath, config, model);
+            }
+            else if (templateFpath.EndsWith(".liquid"))
+            {
+                renderResult = await RenderViaLiquid(templateFpath, config, model);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+            if (renderResult.exOrNull != null)
+            {
+                return (renderResult.exOrNull, string.Empty);
             }
 
             StringBuilder sb = new StringBuilder();
-            string[] lines = renderedText.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
+            string[] lines = renderResult.renderedText.Split(["\r\n", "\r", "\n"], StringSplitOptions.None);
             foreach (string line in lines)
             {
                 if (isWrap)
