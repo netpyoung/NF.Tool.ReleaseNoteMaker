@@ -132,7 +132,7 @@
   "docs/changelog.html": {
     "href": "docs/changelog.html",
     "title": "ChangeLog | NF.Tool.ReleaseNoteMaker",
-    "keywords": "ChangeLog"
+    "keywords": "ChangeLog HelloWorld 0.0.2 (2024-12-11) Main Changed setup ReleaseNote.config.toml"
   },
   "docs/command/command_build.html": {
     "href": "docs/command/command_build.html",
