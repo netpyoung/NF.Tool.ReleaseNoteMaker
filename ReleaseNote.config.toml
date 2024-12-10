@@ -1,0 +1,52 @@
+[ReleaseNote.Maker]
+Directory = "ChangeLog.d"
+OutputFileName = "CHANGELOG.md"
+TemplateFilePath = "ChangeLog.d/Template.tt"
+EndOfLine = "ENVIRONMENT"
+
+[[ReleaseNote.Section]]
+Path = ""
+DisplayName = "Main"
+
+# [[ReleaseNote.Section]]
+# Path = "A"
+# DisplayName = "A Section"
+
+# [[ReleaseNote.Section]]
+# Path = "B"
+# DisplayName = "B Section"
+
+[[ReleaseNote.Type]]
+Category = "security"
+DisplayName = "Security"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "removed"
+DisplayName = "Removed"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "deprecated"
+DisplayName = "Deprecated"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "added"
+DisplayName = "Added"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "changed"
+DisplayName = "Changed"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "fixed"
+DisplayName = "Fixed"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "feature"
+DisplayName = "Features"
+IsShowContent = true
