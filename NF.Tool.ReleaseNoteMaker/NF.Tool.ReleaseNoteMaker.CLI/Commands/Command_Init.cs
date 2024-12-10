@@ -11,15 +11,26 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
     [Description($"Init release-note setup.")]
     internal sealed class Command_Init : AsyncCommand<Command_Init.Settings>
     {
+        internal enum E_TEMPLATE_ENGINE
+        {
+            T4,
+            LIQUID,
+        }
+
         internal sealed class Settings : CommandSettings
         {
             [Description("Specify config file name.")]
             [CommandOption("--file")]
             [DefaultValue(Const.DEFAULT_CONFIG_FILENAME)]
             public string FileName { get; set; } = string.Empty;
+
+            [Description("template engine (t4 | liquid)")]
+            [CommandOption("--template")]
+            [DefaultValue(E_TEMPLATE_ENGINE.T4)]
+            public E_TEMPLATE_ENGINE Template { get; set; } = E_TEMPLATE_ENGINE.T4;
         }
 
-        public override Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
             StringBuilder errSb = new StringBuilder();
             string newConfigFilePath = setting.FileName;
@@ -29,7 +40,13 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 _ = errSb.AppendLine($"FileName [yellow]{newConfigFilePath}[/] already exists.");
             }
 
-            string templatePath = $"ChangeLog.d/{Const.DEFAULT_TEMPLATE_FILENAME}";
+            string templateFileName = Const.DEFAULT_TEMPLATE_T4_FILENAME;
+            if (setting.Template == E_TEMPLATE_ENGINE.LIQUID)
+            {
+                templateFileName = Const.DEFAULT_TEMPLATE_LIQUID_FILENAME;
+            }
+
+            string templatePath = $"ChangeLog.d/{templateFileName}";
             if (File.Exists(templatePath))
             {
                 _ = errSb.AppendLine($"FileName [yellow]{templatePath}[/] already exists.");
@@ -39,15 +56,21 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             if (!string.IsNullOrEmpty(errStr))
             {
                 AnsiConsole.Markup(errStr);
-                return Task.FromResult(1);
+                return 1;
             }
 
             string configFileTempPath = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_CONFIG_FILENAME);
             File.Move(configFileTempPath, newConfigFilePath);
+            if (setting.Template == E_TEMPLATE_ENGINE.LIQUID)
+            {
+                string s = await File.ReadAllTextAsync(newConfigFilePath);
+                s = s.Replace(Const.DEFAULT_TEMPLATE_T4_FILENAME, Const.DEFAULT_TEMPLATE_LIQUID_FILENAME);
+                await File.WriteAllTextAsync(newConfigFilePath, s);
+            }
 
             _ = Directory.CreateDirectory("ChangeLog.d");
 
-            string templateFileTempPath = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_TEMPLATE_FILENAME);
+            string templateFileTempPath = Utils.ExtractResourceToTempFilePath(templateFileName);
             File.Move(templateFileTempPath, templatePath);
 
             {
@@ -57,11 +80,11 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 Tree root = new Tree("./");
                 _ = root.AddNode($"{Const.DEFAULT_CONFIG_FILENAME}");
                 TreeNode changelogD = root.AddNode("[blue]ChangeLog.d/[/]");
-                _ = changelogD.AddNode($"{Const.DEFAULT_TEMPLATE_FILENAME}");
+                _ = changelogD.AddNode($"{templateFileName}");
                 AnsiConsole.Write(root);
             }
 
-            return Task.FromResult(0);
+            return 0;
         }
     }
 }

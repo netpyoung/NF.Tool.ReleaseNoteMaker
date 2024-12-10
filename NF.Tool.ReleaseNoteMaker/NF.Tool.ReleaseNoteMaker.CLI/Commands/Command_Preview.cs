@@ -80,7 +80,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 }
                 else
                 {
-                    string tempFilePath = deleter.Register(Utils.ExtractResourceToTempFilePath(Const.DEFAULT_TEMPLATE_FILENAME));
+                    string tempFilePath = deleter.Register(Utils.ExtractResourceToTempFilePath(Const.DEFAULT_TEMPLATE_T4_FILENAME));
                     templatePath = tempFilePath;
                 }
 
