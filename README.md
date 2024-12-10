@@ -6,8 +6,6 @@
 [![License](https://img.shields.io/badge/license-MIT-C06524)](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/v/dotnet-release-note.svg?style=flat&label=NuGet%3A%20dotnet-release-note)](https://www.nuget.org/packages/dotnet-release-note/)
 
-WIP
-
 - Reinvent the wheel
 
 ## Overview
