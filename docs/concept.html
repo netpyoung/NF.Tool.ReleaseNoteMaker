@@ -87,27 +87,31 @@
         <article data-uid="">
 <h1 id="concept">Concept</h1>
 
-<p>news fragments/newsfiles/topfiles</p>
-<h2 id="example">Example</h2>
-<pre><code class="lang-txt">USAGE:
-    dotnet release-note [OPTIONS] &lt;COMMAND&gt;
+<h2 id="flow">Flow</h2>
+<pre><code class="lang-mermaid">flowchart LR
 
-EXAMPLES:
-    dotnet release-note init
-    dotnet release-note create --edit
-    dotnet release-note create 1.added.md --content &quot;Hello World&quot;
-    dotnet release-note build --version 1.0.0
-    dotnet release-note check
 
-OPTIONS:
-    -h, --help    Prints help information
+Files[&quot;`
+    1.added.md
+    2.fixed.md
+    3.security.md
+    ...
+`&quot;]
 
-COMMANDS:
-    init       Init release-note setup
-    create     Create a new fragment
-    preview    Preview a release note
-    build      Build a release note
-    check      Checks files changed
+Renderer{Renderer}
+Output[ChangeLog.md]
+
+Files --&gt; Fragments
+
+subgraph ReleaseNoteMaker
+    Fragments --&gt;|Arragne| Model(Model)
+    Model --&gt; Renderer
+end
+
+Renderer --&gt;|t4    | Output
+Renderer --&gt;|liquid| Output
+
+style Files text-align:left
 </code></pre>
 
 </article>

@@ -87,13 +87,14 @@
         <article data-uid="">
 <h1 id="template">Template</h1>
 
-<pre><code class="lang-mermaid">flowchart LR
-
-A[Hard] --&gt;|Text| B(Round)
-B --&gt; C{Decision}
-C --&gt;|One| D[Result 1]
-C --&gt;|Two| E[Result 2]
-</code></pre>
+<ul>
+<li>support
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates">T4 template</a></li>
+<li><a href="https://shopify.github.io/liquid/">liquid</a></li>
+</ul>
+</li>
+</ul>
 <div class="tabGroup" id="tabgroup_1">
 <ul role="tablist">
 <li role="presentation">
@@ -202,9 +203,10 @@ C --&gt;|Two| E[Result 2]
 #&gt;
 </code></pre></section>
 <section id="tabpanel_1_liquid" role="tabpanel" data-tab="liquid" aria-hidden="true" hidden="hidden">
-
-<p>Content for Windows...</p>
-</section>
+<pre><code class="lang-liquid" name="Default">{%- if model.IsRenderTitle -%}
+# {{ model.ProjectData }}
+{%- endif -%}
+</code></pre></section>
 </div>
 
 <p>Hello WOrld</p>

@@ -285,6 +285,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/changelog.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/changelog.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/command/command_build.md",
       "output": {
         ".html": {

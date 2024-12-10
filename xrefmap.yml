@@ -1506,22 +1506,6 @@ references:
   commentId: T:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer
   nameWithType: TemplateRenderer
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
-  name: Render(string, ReleaseNoteConfig, TemplateModel)
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_TemplateModel_
-  commentId: M:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
-  name.vb: Render(String, ReleaseNoteConfig, TemplateModel)
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(string, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
-  fullName.vb: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render(String, NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig, NF.Tool.ReleaseNoteMaker.Common.Template.TemplateModel)
-  nameWithType: TemplateRenderer.Render(string, ReleaseNoteConfig, TemplateModel)
-  nameWithType.vb: TemplateRenderer.Render(String, ReleaseNoteConfig, TemplateModel)
-- uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render*
-  name: Render
-  href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_Render_
-  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render
-  isSpec: "True"
-  fullName: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.Render
-  nameWithType: TemplateRenderer.Render
 - uid: NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.RenderFragments(System.String,NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig,NF.Tool.ReleaseNoteMaker.Common.Template.ProjectData,System.Collections.Generic.List{NF.Tool.ReleaseNoteMaker.Common.Fragments.FragmentContent})
   name: RenderFragments(string, ReleaseNoteConfig, ProjectData, List<FragmentContent>)
   href: api/NF.Tool.ReleaseNoteMaker.Common.Template.TemplateRenderer.html#NF_Tool_ReleaseNoteMaker_Common_Template_TemplateRenderer_RenderFragments_System_String_NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_NF_Tool_ReleaseNoteMaker_Common_Template_ProjectData_System_Collections_Generic_List_NF_Tool_ReleaseNoteMaker_Common_Fragments_FragmentContent__
