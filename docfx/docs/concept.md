@@ -1,27 +1,30 @@
 # Concept
 
-news fragments/newsfiles/topfiles
+## Flow
 
-## Example
+``` mermaid
+flowchart LR
 
-``` txt
-USAGE:
-    dotnet release-note [OPTIONS] <COMMAND>
 
-EXAMPLES:
-    dotnet release-note init
-    dotnet release-note create --edit
-    dotnet release-note create 1.added.md --content "Hello World"
-    dotnet release-note build --version 1.0.0
-    dotnet release-note check
+Files["`
+    1.added.md
+    2.fixed.md
+    3.security.md
+    ...
+`"]
 
-OPTIONS:
-    -h, --help    Prints help information
+Renderer{Renderer}
+Output[ChangeLog.md]
 
-COMMANDS:
-    init       Init release-note setup
-    create     Create a new fragment
-    preview    Preview a release note
-    build      Build a release note
-    check      Checks files changed
+Files --> Fragments
+
+subgraph ReleaseNoteMaker
+    Fragments -->|Arragne| Model(Model)
+    Model --> Renderer
+end
+
+Renderer -->|t4    | Output
+Renderer -->|liquid| Output
+
+style Files text-align:left
 ```

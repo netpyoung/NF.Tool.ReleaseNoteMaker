@@ -12,5 +12,6 @@
   items:
     - href: setup/config.md
     - href: setup/template.md
+- href: changelog.md
 - name: 📦 Github
   href: https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker

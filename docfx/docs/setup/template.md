@@ -1,22 +1,18 @@
 # Template
 
-``` mermaid
-flowchart LR
-
-A[Hard] -->|Text| B(Round)
-B --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
+- support
+  - [T4 template](https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates)
+  - [liquid](https://shopify.github.io/liquid/)
 
 
-# [Template.tt](#tab/t4)
+
+## [Template.tt](#tab/t4)
 
 [!code-csharp[Default](~/../NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/res/Template.tt)]
 
-# [Template.liquid](#tab/liquid)
+## [Template.liquid](#tab/liquid)
 
-Content for Windows...
+[!code-liquid[Default](~/../NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/res/Template.liquid)]
 
 ---
 
