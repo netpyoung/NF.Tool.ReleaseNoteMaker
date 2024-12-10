@@ -58,6 +58,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 
         [TestMethod]
         [DeploymentItem("Template.tt", "ChangeLog.d/")]
+        [DeploymentItem("Template.liquid", "ChangeLog.d/")]
         public async Task TestBasic()
         {
             List<FragmentContent> a = new List<FragmentContent>
@@ -89,6 +90,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             config.Types.AddRange(definitions);
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(a, config);
             string templatePath = "ChangeLog.d/Template.tt";
+            string templatePath2 = "ChangeLog.d/Template.liquid";
             ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -128,7 +130,9 @@ No significant changes.
 
 """.Replace("\r\n", "\n");
             Assert.AreEqual(expected, text);
-
+            (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath2, config, projectData, splitted);
+            Assert.IsNull(renderExOrNull, renderExOrNull?.ToString());
+            Assert.AreEqual(expected, text);
 
             string issueFormat = "[{Issue}]: https://github.com/twisted/towncrier/issues/{Issue}";
             config.Maker.IssueFormat = issueFormat;
@@ -185,6 +189,9 @@ No significant changes.
 
 
 """.Replace("\r\n", "\n");
+            Assert.AreEqual(expected, text);
+            (renderExOrNull, text) = await TemplateRenderer.RenderFragments(templatePath2, config, projectData, splitted);
+            Assert.IsNull(renderExOrNull);
             Assert.AreEqual(expected, text);
         }
 
