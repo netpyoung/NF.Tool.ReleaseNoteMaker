@@ -2,7 +2,8 @@
 Directory = "ChangeLog.d"
 OutputFileName = "CHANGELOG.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
-EndOfLine = "ENVIRONMENT"
+EndOfLine = "LF"
+StartString = "<!-- release notes start -->\n"
 
 [[ReleaseNote.Section]]
 Path = ""
