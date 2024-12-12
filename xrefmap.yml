@@ -64,6 +64,19 @@ references:
   commentId: T:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker
   fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker
   nameWithType: ReleaseNoteConfigMaker
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath
+  name: CsprojPath
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_CsprojPath
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath
+  nameWithType: ReleaseNoteConfigMaker.CsprojPath
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath*
+  name: CsprojPath
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_CsprojPath_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.CsprojPath
+  nameWithType: ReleaseNoteConfigMaker.CsprojPath
 - uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.Directory
   name: Directory
   href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_Directory
