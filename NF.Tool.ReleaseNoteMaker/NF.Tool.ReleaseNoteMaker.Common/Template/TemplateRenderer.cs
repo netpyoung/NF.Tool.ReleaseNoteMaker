@@ -72,12 +72,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
         public static async Task<(Exception?, string)> RenderFragments([NotNull] string templateFpath, [NotNull] ReleaseNoteConfig config, ProjectData projectData, List<FragmentContent> fragmentContents)
         {
-            // TODO(pyoung): handle - underlines, topUnderline
-            //    top_underline = config.underlines[0],
-            //    config.underlines[1:],
-            //string topUnderline = "=";
-            //List<string> underlines = new List<string> { "", "" };
-
             string issueFormat = config.Maker.IssueFormat;
             bool isWrap = config.Maker.IsWrap;
             bool isAllBullets = config.Maker.IsAllBullets;
@@ -125,8 +119,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
                 sections.Add(new Section(grpSection.Key, categories));
             }
-
-            // TODO(pyoung): handle - underlines, topUnderline
 
             TemplateModel model = new TemplateModel(isRenderTitle, projectData, sections);
             (Exception? exOrNull, string renderedText) renderResult;
