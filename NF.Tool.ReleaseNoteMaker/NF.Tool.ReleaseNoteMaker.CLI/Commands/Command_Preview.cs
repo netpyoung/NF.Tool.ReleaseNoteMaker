@@ -31,7 +31,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
             [Description("Render the news fragments using given version.")]
             [CommandOption("--version")]
-            [DefaultValue("x.x.x")]
             public string ProjectVersion { get; set; } = string.Empty;
 
             [Description("Render the news fragments using the given date.")]

@@ -1,6 +1,9 @@
 ﻿using NF.Tool.ReleaseNoteMaker.Common.Config;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
 
 namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
@@ -32,7 +35,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
         public static (Exception? exOrNull, ProjectData projectData) GetProjectData([NotNull] ReleaseNoteConfig config, (string ProjectName, string ProjectVersion, string ProjectDate) setting)
         {
-            string projectVersion;
+            string projectVersion = string.Empty;
             if (!string.IsNullOrEmpty(setting.ProjectVersion))
             {
                 projectVersion = setting.ProjectVersion;
@@ -41,7 +44,12 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             {
                 projectVersion = config.Maker.Version;
             }
-            else
+            else if (!string.IsNullOrEmpty(config.Maker.CsprojPath))
+            {
+                projectVersion = GetVersionFromCsproj(config.Maker.CsprojPath);
+            }
+
+            if (string.IsNullOrEmpty(projectVersion))
             {
                 ReleaseNoteMakerException ex = new ReleaseNoteMakerException("'--version'[/] is required since the config file does not contain 'version.");
                 return (ex, new ProjectData(string.Empty, string.Empty, string.Empty));
@@ -73,6 +81,31 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 
             ProjectData projectData = new ProjectData(projectName, projectVersion, projectDate);
             return (null, projectData);
+        }
+
+        private static string GetVersionFromCsproj(string csprojPath)
+        {
+            if (string.IsNullOrEmpty(csprojPath))
+            {
+                return string.Empty;
+            }
+
+            if (!File.Exists(csprojPath))
+            {
+                return string.Empty;
+            }
+
+            XDocument document = XDocument.Load(csprojPath);
+            XElement? versionElement = document
+                .Descendants("PropertyGroup")
+                .Elements("Version")
+                .FirstOrDefault();
+            if (versionElement == null)
+            {
+                return string.Empty;
+            }
+
+            return versionElement.Value.Trim();
         }
     }
 }

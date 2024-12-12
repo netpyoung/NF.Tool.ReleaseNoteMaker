@@ -20,6 +20,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public string OutputFileName { get; set; } = string.Empty;
         public string Version { get; set; } = string.Empty;
         public string TemplateFilePath { get; set; } = string.Empty;
+        public string CsprojPath { get; set; } = string.Empty;
         public List<string> Ignores { get; } = [];
         public string OrphanPrefix { get; set; } = "+";
         public string IssuePattern { get; set; } = string.Empty;
