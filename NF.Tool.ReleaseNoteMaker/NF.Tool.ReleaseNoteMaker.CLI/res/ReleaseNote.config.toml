@@ -1,34 +1,32 @@
 [ReleaseNote.Maker]
-Directory = "ChangeLog.d"
-OutputFileName = "CHANGELOG.md"
-TemplateFilePath = "ChangeLog.d/Template.tt"
-EndOfLine = "ENVIRONMENT"
+# Directory        = "ChangeLog.d"
+# OutputFileName   = "CHANGELOG.md"
+# TemplateFilePath = "ChangeLog.d/Template.tt"
+# Name             = ""
+# Version          = ""
+# CsprojPath       = ""
+# Ignores          = []
+# OrphanPrefix     = "+"
+# IssuePattern     = ""
+# IssueFormat      = ""
+# TitleFormat      = ""
+# StartString      = "<!-- release notes start -->\n";
+# IsWrap           = false
+# IsAllBullets     = false
+# IsSingleFile     = true
+# EndOfLine        = "LF"
 
 [[ReleaseNote.Section]]
 Path = ""
 DisplayName = "Main"
 
 # [[ReleaseNote.Section]]
-# Path = "A"
-# DisplayName = "A Section"
-
-# [[ReleaseNote.Section]]
-# Path = "B"
-# DisplayName = "B Section"
+# Path = "SectionA"
+# DisplayName = "Section A"
 
 [[ReleaseNote.Type]]
-Category = "security"
-DisplayName = "Security"
-IsShowContent = true
-
-[[ReleaseNote.Type]]
-Category = "removed"
-DisplayName = "Removed"
-IsShowContent = true
-
-[[ReleaseNote.Type]]
-Category = "deprecated"
-DisplayName = "Deprecated"
+Category = "feature"
+DisplayName = "Features"
 IsShowContent = true
 
 [[ReleaseNote.Type]]
@@ -37,8 +35,18 @@ DisplayName = "Added"
 IsShowContent = true
 
 [[ReleaseNote.Type]]
+Category = "removed"
+DisplayName = "Removed"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
 Category = "changed"
 DisplayName = "Changed"
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = "deprecated"
+DisplayName = "Deprecated"
 IsShowContent = true
 
 [[ReleaseNote.Type]]
@@ -47,6 +55,6 @@ DisplayName = "Fixed"
 IsShowContent = true
 
 [[ReleaseNote.Type]]
-Category = "feature"
-DisplayName = "Features"
+Category = "security"
+DisplayName = "Security"
 IsShowContent = true
