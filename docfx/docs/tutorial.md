@@ -166,16 +166,5 @@ cat CHANGELOG.md
 - A fix without an issue number!
 
 
-# 1.0.0 (2024-12-09)
 
-
-## Main
-
-### Changed
-
-- Add your info here (#456)
-
-### Features
-
-- Add your info here (#123)
 ```
