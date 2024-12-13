@@ -93,36 +93,34 @@
 <p>TODO(pyoung)</p>
 <h2 id="releasenoteconfigtomldefault">ReleaseNote.config.toml(default)</h2>
 <pre><code class="lang-toml" name="Default">[ReleaseNote.Maker]
-Directory = &quot;ChangeLog.d&quot;
-OutputFileName = &quot;CHANGELOG.md&quot;
-TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
-EndOfLine = &quot;ENVIRONMENT&quot;
+# Directory        = &quot;ChangeLog.d&quot;
+# OutputFileName   = &quot;CHANGELOG.md&quot;
+# TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
+# Name             = &quot;&quot;
+# Version          = &quot;&quot;
+# CsprojPath       = &quot;&quot;
+# Ignores          = []
+# OrphanPrefix     = &quot;+&quot;
+# IssuePattern     = &quot;&quot;
+# IssueFormat      = &quot;&quot;
+# TitleFormat      = &quot;&quot;
+# StartString      = &quot;&lt;!-- release notes start --&gt;\n&quot;;
+# IsWrap           = false
+# IsAllBullets     = false
+# IsSingleFile     = true
+# EndOfLine        = &quot;LF&quot;
 
 [[ReleaseNote.Section]]
 Path = &quot;&quot;
 DisplayName = &quot;Main&quot;
 
 # [[ReleaseNote.Section]]
-# Path = &quot;A&quot;
-# DisplayName = &quot;A Section&quot;
-
-# [[ReleaseNote.Section]]
-# Path = &quot;B&quot;
-# DisplayName = &quot;B Section&quot;
+# Path = &quot;SectionA&quot;
+# DisplayName = &quot;Section A&quot;
 
 [[ReleaseNote.Type]]
-Category = &quot;security&quot;
-DisplayName = &quot;Security&quot;
-IsShowContent = true
-
-[[ReleaseNote.Type]]
-Category = &quot;removed&quot;
-DisplayName = &quot;Removed&quot;
-IsShowContent = true
-
-[[ReleaseNote.Type]]
-Category = &quot;deprecated&quot;
-DisplayName = &quot;Deprecated&quot;
+Category = &quot;feature&quot;
+DisplayName = &quot;Features&quot;
 IsShowContent = true
 
 [[ReleaseNote.Type]]
@@ -131,8 +129,18 @@ DisplayName = &quot;Added&quot;
 IsShowContent = true
 
 [[ReleaseNote.Type]]
+Category = &quot;removed&quot;
+DisplayName = &quot;Removed&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
 Category = &quot;changed&quot;
 DisplayName = &quot;Changed&quot;
+IsShowContent = true
+
+[[ReleaseNote.Type]]
+Category = &quot;deprecated&quot;
+DisplayName = &quot;Deprecated&quot;
 IsShowContent = true
 
 [[ReleaseNote.Type]]
@@ -141,8 +149,8 @@ DisplayName = &quot;Fixed&quot;
 IsShowContent = true
 
 [[ReleaseNote.Type]]
-Category = &quot;feature&quot;
-DisplayName = &quot;Features&quot;
+Category = &quot;security&quot;
+DisplayName = &quot;Security&quot;
 IsShowContent = true
 </code></pre><h2 id="detail">detail</h2>
 <h3 id="releasenotemaker">[ReleaseNote.Maker]</h3>

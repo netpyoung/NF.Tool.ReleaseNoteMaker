@@ -90,26 +90,27 @@
 <h2 id="flow">Flow</h2>
 <pre><code class="lang-mermaid">flowchart LR
 
-
-Files[&quot;`
-    1.added.md
-    2.fixed.md
-    3.security.md
-    ...
-`&quot;]
-
-Renderer{Renderer}
-Output[ChangeLog.md]
-
-Files --&gt; Fragments
+subgraph &quot;ChangeLog.d/&quot;
+    Files[&quot;`
+        1.added.md
+        2.fixed.md
+        3.security.md
+        ...
+    `&quot;]
+end
 
 subgraph ReleaseNoteMaker
-    Fragments --&gt;|Arragne| Model(Model)
-    Model --&gt; Renderer
+    Files --&gt; Fragments
+    Fragments --&gt;|Arrange| Model(Model)
+    Model --&gt; |Render| Renderer
 end
 
 Renderer --&gt;|t4    | Output
 Renderer --&gt;|liquid| Output
+
+
+Renderer{Renderer}
+Output[CHANGELOG.md]
 
 style Files text-align:left
 </code></pre>
