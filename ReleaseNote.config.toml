@@ -5,18 +5,11 @@ TemplateFilePath = "ChangeLog.d/Template.tt"
 CsprojPath = "NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/NF.Tool.ReleaseNoteMaker.CLI.csproj"
 EndOfLine = "LF"
 StartString = "<!-- release notes start -->\n"
+IssueFormat = "[{Issue}](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/issues/{Issue})"
 
 [[ReleaseNote.Section]]
 Path = ""
 DisplayName = "Main"
-
-# [[ReleaseNote.Section]]
-# Path = "A"
-# DisplayName = "A Section"
-
-# [[ReleaseNote.Section]]
-# Path = "B"
-# DisplayName = "B Section"
 
 [[ReleaseNote.Type]]
 Category = "security"
