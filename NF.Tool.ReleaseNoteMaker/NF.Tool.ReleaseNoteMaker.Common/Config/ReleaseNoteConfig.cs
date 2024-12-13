@@ -32,13 +32,9 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
         public bool IsWrap { get; set; } = false;
         public bool IsAllBullets { get; set; } = false;
 
-        // TODO(pyoung): remove this property
         public bool IsSingleFile { get; set; } = true;
 
         public E_END_OF_LINE EndOfLine { get; set; } = E_END_OF_LINE.LF;
-
-        // config.package_dir
-        // public string PackageDirectory{ get; set; } = string.Empty;
 
         public enum E_END_OF_LINE
         {

@@ -57,11 +57,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
         {
-            // TODO(pyoung): handle stderr
-            //AnsiConsole.Console = AnsiConsole.Create(new AnsiConsoleSettings
-            //{
-            //    Out = new AnsiConsoleOutput(Console.Error)
-            //});
             Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (exOrNull is not null)
             {
