@@ -15,11 +15,11 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
 
     public sealed class ReleaseNoteConfigMaker
     {
+        public string OutputFileName { get; set; } = "CHANGELOG.md";
+        public string Directory { get; set; } = "ChangeLog.d";
+        public string TemplateFilePath { get; set; } = "ChangeLog.d/Template.tt";
         public string Name { get; set; } = string.Empty;
-        public string Directory { get; set; } = string.Empty;
-        public string OutputFileName { get; set; } = string.Empty;
         public string Version { get; set; } = string.Empty;
-        public string TemplateFilePath { get; set; } = string.Empty;
         public string CsprojPath { get; set; } = string.Empty;
         public List<string> Ignores { get; } = [];
         public string OrphanPrefix { get; set; } = "+";
