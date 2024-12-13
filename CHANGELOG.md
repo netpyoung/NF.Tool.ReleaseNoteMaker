@@ -1,14 +1,12 @@
 # ChangeLog
 
-HelloWorld
-
 <!-- release notes start -->
 
-# 0.0.2 (2024-12-11)
+## 0.0.2 (2024-12-11)
 
 
-## Main
+### Main
 
-### Changed
+#### Changed
 
 - setup ReleaseNote.config.toml
