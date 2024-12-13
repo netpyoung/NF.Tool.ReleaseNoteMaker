@@ -74,27 +74,27 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             Assert.IsNull(ex);
 
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - Foo added. (#2, #72)
 - Stuff! (#4)
 - Second Stuff! (#4)
 
-### Misc
+#### Misc
 
 - #1, #142
 
 
-## Names
+### Names
 
 No significant changes.
 
 
-## Web
+### Web
 
-### Bugfixes
+#### Bugfixes
 
 - Web fixed. (#3)
 
@@ -162,9 +162,9 @@ Hello there! Here is some info.
 
 .. towncrier release notes start
 
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - Foo added. (#2, #72)
 - Stuff! (#4)
@@ -176,19 +176,19 @@ Hello there! Here is some info.
   Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo!
   Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! Foo! (#99)
 
-### Misc
+#### Misc
 
 - #1, #142
 
 
-## Names
+### Names
 
 No significant changes.
 
 
-## Web
+### Web
 
-### Bugfixes
+#### Bugfixes
 
 - Web fixed. (#3)
 
@@ -233,7 +233,7 @@ Old text.
             Assert.IsNull(ex);
 
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
 """.Replace("\r\n", "\n");
 
@@ -299,7 +299,7 @@ IsShowContent = true
 Directory = "ChangeLog.d"
 OutputFileName = "{ProjectVersion}-notes.md"
 TemplateFilePath = "ChangeLog.d/Template.tt"
-TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
+TitleFormat = "## {ProjectName} {ProjectVersion} ({ProjectDate})"
 IsSingleFile = false
 
 [[ReleaseNote.Type]]
@@ -334,9 +334,9 @@ IsShowContent = true
             string actual = File.ReadAllText(notes[0]);
 
             string expected = """
-# foo 7.8.9 (01-01-2001)
+## foo 7.8.9 (01-01-2001)
 
-### Features
+#### Features
 
 - Adds levitation (#123)
 

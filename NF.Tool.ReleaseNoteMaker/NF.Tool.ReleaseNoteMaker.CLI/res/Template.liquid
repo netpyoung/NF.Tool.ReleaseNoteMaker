@@ -1,18 +1,18 @@
 {%- if model.IsRenderTitle -%}
-# {{ model.ProjectData }}
+## {{ model.ProjectData }}
 {%- endif -%}
 
 {% for section in model.Sections -%}
     {%- if section.DisplayName != empty %}
 
-## {{ section.DisplayName }}
+### {{ section.DisplayName }}
     {%- endif -%}
     {% if section.Categories == empty %}
 
 No significant changes.
 	{% else %}
 		{% for category in section.Categories %}
-### {{ category.DisplayName }}
+#### {{ category.DisplayName }}
 			{% if category.Contents.Count == 0  %}
 
 No significant changes.

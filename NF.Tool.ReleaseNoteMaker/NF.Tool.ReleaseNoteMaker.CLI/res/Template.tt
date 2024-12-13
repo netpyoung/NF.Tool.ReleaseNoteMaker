@@ -12,7 +12,7 @@
 <#
     if (model.IsRenderTitle)
     {
-        WriteLine($"# {model.ProjectData}");
+        WriteLine($"## {model.ProjectData}");
     }
 #>
 
@@ -21,7 +21,7 @@
     {
         if (!string.IsNullOrEmpty(section.DisplayName))
         {
-            WriteLine($"\n## {section.DisplayName}\n");
+            WriteLine($"\n### {section.DisplayName}\n");
         }
 
         if (section.Categories.Count == 0)
@@ -32,7 +32,7 @@
 
         foreach (Category category in section.Categories)
         {
-            WriteLine($"### {category.DisplayName}\n");
+            WriteLine($"#### {category.DisplayName}\n");
 
             if (category.Contents.Count == 0)
             {

@@ -67,12 +67,12 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             Assert.AreEqual(0, result);
 
             string expected = """
-# HelloWorld 1.0.0 (01-01-2001)
+## HelloWorld 1.0.0 (01-01-2001)
 
 
-## Main
+### Main
 
-### Features
+#### Features
 
 - Baz levitation (baz)
 - Baz fix levitation (fix-1.2)

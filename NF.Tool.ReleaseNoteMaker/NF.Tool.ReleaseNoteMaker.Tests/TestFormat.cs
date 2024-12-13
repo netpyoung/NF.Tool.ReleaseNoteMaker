@@ -95,9 +95,9 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - Fun! (baz)
 - Foo added. (#2, #9, #72)
@@ -105,19 +105,19 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
   here (#3)
 - Stuff! (#4)
 
-### Misc
+#### Misc
 
 - bar, #1, #9, #142
 
 
-## Names
+### Names
 
 No significant changes.
 
 
-## Web
+### Web
 
-### Bugfixes
+#### Bugfixes
 
 - Multi-line bulleted
   - fix
@@ -140,9 +140,9 @@ No significant changes.
             Assert.IsNull(renderExOrNull);
 
             expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - Fun! ([baz])
 - Foo added. ([2], [9], [72])
@@ -157,7 +157,7 @@ No significant changes.
 [9]: https://github.com/twisted/towncrier/issues/9
 [72]: https://github.com/twisted/towncrier/issues/72
 
-### Misc
+#### Misc
 
 - [bar], [1], [9], [142]
 
@@ -167,14 +167,14 @@ No significant changes.
 [142]: https://github.com/twisted/towncrier/issues/142
 
 
-## Names
+### Names
 
 No significant changes.
 
 
-## Web
+### Web
 
-### Bugfixes
+#### Bugfixes
 
 - Multi-line bulleted
   - fix
@@ -228,9 +228,9 @@ No significant changes.
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Misc
+#### Misc
 
 - xxbar, xx1, xx9, xx142
 
@@ -273,9 +273,9 @@ No significant changes.
             Assert.IsNull(renderExOrNull);
 
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - asdf asdf asdf asdf
   looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong
@@ -326,9 +326,9 @@ No significant changes.
             Assert.IsNull(renderExOrNull);
 
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - asdf asdf asdf asdf looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong newsfragment. (#1)
 - https://google.com/q=?---------------------------------------------------------------------------------------------------- (#2)
@@ -403,9 +403,9 @@ No significant changes.
             Assert.IsNull(renderExOrNull);
 
             string expected = """
-# MyProject 1.0 (never)
+## MyProject 1.0 (never)
 
-### Features
+#### Features
 
 - this fragment has a trailing code block::
 
