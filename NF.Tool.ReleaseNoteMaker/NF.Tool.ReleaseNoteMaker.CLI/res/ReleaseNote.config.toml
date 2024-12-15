@@ -1,7 +1,8 @@
-# {Maker.Directory}(/{Section.Path})/{IssueName}.{Type.Category}(.{RetryCount}).md
-# - example
-#   - ChangeLog.d/1.added.md
-#   - ChangeLog.d/SectionA/1.added.md
+# - Document: <https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/>
+# - News Fragment: {Maker.Directory}(/{Section.Path})/{IssueName}.{Type.Category}(.{RetryCount}).md
+#   - example
+#     - ChangeLog.d/1.added.md
+#     - ChangeLog.d/SectionA/1.added.md
 
 [ReleaseNote.Maker]
 # Directory        = "ChangeLog.d"
