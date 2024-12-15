@@ -27,6 +27,8 @@ namespace NF.Tool.ReleaseNoteMaker.CLI
                 _ = config.AddCommand<Command_Preview>("preview");
                 _ = config.AddCommand<Command_Build>("build")
                     .WithExample("build --version 1.0.0");
+                _ = config.AddCommand<Command_Read>("read")
+                    .WithExample("read --version 1.0.0");
                 _ = config.AddCommand<Command_Check>("check")
                     .WithExample("check");
             });

@@ -7,6 +7,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
     public sealed class ReleaseNoteConfig
     {
         public ReleaseNoteConfigMaker Maker { get; } = new ReleaseNoteConfigMaker();
+        public ReleaseNoteConfigReader Reader { get; } = new ReleaseNoteConfigReader();
         [DataMember(Name = "Section")]
         public List<ReleaseNoteSection> Sections { get; } = new List<ReleaseNoteSection>(20);
         [DataMember(Name = "Type")]
@@ -42,6 +43,12 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
             CRLF = 1,
             ENVIRONMENT = 2,
         }
+    }
+
+    public sealed class ReleaseNoteConfigReader
+    {
+        public string VersionPattern { get; set; } = "(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?";
+        public string TitlePattern { get; set; } = "^## \\[\\[(?<version>{VersionPattern})\\]\\(.*?\\)\\]";
     }
 
     public sealed class ReleaseNoteSection
