@@ -3,10 +3,10 @@
 - Create a new fragment
 
 ``` txt
-{IssueName}.{TypeCategory}(.{RetryCount}).md
+{Maker.Directory}(/{Section.Path})/{IssueName}.{Type.Category}(.{RetryCount}).md
+- example
+  - ChangeLog.d/1.added.md
+  - ChangeLog.d/SectionA/1.added.md
 ```
 
-- IssueName
-- TypeCategory
-  - [ReleaseNote.config.toml](../setup/config.md#releasenotetype)
-- RetryCount
+- ref: [ReleaseNote.config.toml](../setup/config.md)
