@@ -6,6 +6,7 @@
     - href: command/command_init.md
     - href: command/command_create.md
     - href: command/command_preview.md
+    - href: command/command_read.md
     - href: command/command_build.md
     - href: command/command_check.md
 - name: Setup

@@ -1,31 +1,51 @@
 # ReleaseNote.config.toml
 
-- [source](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Config/ReleaseNoteConfig.cs)
-
-TODO(pyoung)
-
 ## ReleaseNote.config.toml(default)
 
 [!code-toml[Default](~/../NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/res/ReleaseNote.config.toml)]
 
-## detail
+## Detail
 
 ### \[ReleaseNote.Maker]
 
-Directory = "ChangeLog.d"
-OutputFileName = "CHANGELOG.md"
-TemplateFilePath = "ChangeLog.d/Template.tt"
-EndOfLine = "ENVIRONMENT"
+| Key              | Default                           |
+| ---------------- | --------------------------------- |
+| Directory        | "ChangeLog.d"                     |
+| OutputFileName   | "CHANGELOG.md"                    |
+| TemplateFilePath | "ChangeLog.d/Template.tt"         |
+| Name             | ""                                |
+| Version          | ""                                |
+| CsprojPath       | ""                                |
+| Ignores          | []                                |
+| OrphanPrefix     | "+"                               |
+| IssuePattern     | ""                                |
+| IssueFormat      | ""                                |
+| TitleFormat      | ""                                |
+| StartString      | "<!-- release notes start -->\n"; |
+| IsWrap           | false                             |
+| IsAllBullets     | false                             |
+| IsSingleFile     | true                              |
+| EndOfLine        | "LF"                              |
 
+### \[ReleaseNote.Reader]
+
+| Key            | Default |
+| -------------- | ------- |
+| VersionPattern |         |
+| TitlePattern   |         |
 
 ### \[[ReleaseNote.Section]]
 
-Path = ""
-DisplayName = "Main"
+| Key         | Default |
+| ----------- | ------- |
+| Path        | ""      |
+| DisplayName | "Main"  |
 
 
 ### \[[ReleaseNote.Type]]
 
-Category = "feature"
-DisplayName = "Features"
-IsShowContent = true
+| Key           | Default    |
+| ------------- | ---------- |
+| Category      | "feature"  |
+| DisplayName   | "Features" |
+| IsShowContent | true       |

@@ -13,7 +13,3 @@
 ## [Template.liquid](#tab/liquid)
 
 [!code-liquid[Default](~/../NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/res/Template.liquid)]
-
----
-
-Hello WOrld
