@@ -42,6 +42,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteSection.yml",
       "output": {
         ".html": {
@@ -339,6 +349,16 @@
       "output": {
         ".html": {
           "relative_path": "docs/command/command_preview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "docs/command/command_read.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/command/command_read.html"
         }
       },
       "version": ""

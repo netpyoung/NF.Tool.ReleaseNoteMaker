@@ -119,7 +119,7 @@
 &lt;#
     if (model.IsRenderTitle)
     {
-        WriteLine($&quot;# {model.ProjectData}&quot;);
+        WriteLine($&quot;## {model.ProjectData}&quot;);
     }
 #&gt;
 
@@ -128,7 +128,7 @@
     {
         if (!string.IsNullOrEmpty(section.DisplayName))
         {
-            WriteLine($&quot;\n## {section.DisplayName}\n&quot;);
+            WriteLine($&quot;\n### {section.DisplayName}\n&quot;);
         }
 
         if (section.Categories.Count == 0)
@@ -139,7 +139,7 @@
 
         foreach (Category category in section.Categories)
         {
-            WriteLine($&quot;### {category.DisplayName}\n&quot;);
+            WriteLine($&quot;#### {category.DisplayName}\n&quot;);
 
             if (category.Contents.Count == 0)
             {
@@ -204,20 +204,20 @@
 </code></pre></section>
 <section id="tabpanel_1_liquid" role="tabpanel" data-tab="liquid" aria-hidden="true" hidden="hidden">
 <pre><code class="lang-liquid" name="Default">{%- if model.IsRenderTitle -%}
-# {{ model.ProjectData }}
+## {{ model.ProjectData }}
 {%- endif -%}
 
 {% for section in model.Sections -%}
     {%- if section.DisplayName != empty %}
 
-## {{ section.DisplayName }}
+### {{ section.DisplayName }}
     {%- endif -%}
     {% if section.Categories == empty %}
 
 No significant changes.
     {% else %}
         {% for category in section.Categories %}
-### {{ category.DisplayName }}
+#### {{ category.DisplayName }}
             {% if category.Contents.Count == 0  %}
 
 No significant changes.
@@ -252,8 +252,6 @@ No significant changes.
 {% endfor %}
 </code></pre></section>
 </div>
-
-<p>Hello WOrld</p>
 
 </article>
 

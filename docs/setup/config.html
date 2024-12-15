@@ -87,10 +87,6 @@
         <article data-uid="">
 <h1 id="releasenoteconfigtoml">ReleaseNote.config.toml</h1>
 
-<ul>
-<li><a href="https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/blob/main/NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.Common/Config/ReleaseNoteConfig.cs">source</a></li>
-</ul>
-<p>TODO(pyoung)</p>
 <h2 id="releasenoteconfigtomldefault">ReleaseNote.config.toml(default)</h2>
 <pre><code class="lang-toml" name="Default">[ReleaseNote.Maker]
 # Directory        = &quot;ChangeLog.d&quot;
@@ -108,7 +104,11 @@
 # IsWrap           = false
 # IsAllBullets     = false
 # IsSingleFile     = true
-# EndOfLine        = &quot;LF&quot;
+# EndOfLine        = &quot;LF&quot; # LF | CRLF | ENVIRONMENT
+
+[ReleaseNote.Reader]
+# VersionPattern = &quot;(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?&quot;
+# TitlePattern = &quot;^## \\[\\[(?&lt;version&gt;{VersionPattern})\\]\\(.*?\\)\\]&quot;
 
 [[ReleaseNote.Section]]
 Path = &quot;&quot;
@@ -152,19 +152,143 @@ IsShowContent = true
 Category = &quot;security&quot;
 DisplayName = &quot;Security&quot;
 IsShowContent = true
-</code></pre><h2 id="detail">detail</h2>
+</code></pre><h2 id="detail">Detail</h2>
 <h3 id="releasenotemaker">[ReleaseNote.Maker]</h3>
-<p>Directory = &quot;ChangeLog.d&quot;
-OutputFileName = &quot;CHANGELOG.md&quot;
-TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
-EndOfLine = &quot;ENVIRONMENT&quot;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Directory</td>
+<td>&quot;ChangeLog.d&quot;</td>
+</tr>
+<tr>
+<td>OutputFileName</td>
+<td>&quot;CHANGELOG.md&quot;</td>
+</tr>
+<tr>
+<td>TemplateFilePath</td>
+<td>&quot;ChangeLog.d/Template.tt&quot;</td>
+</tr>
+<tr>
+<td>Name</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>Version</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>CsprojPath</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>Ignores</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>OrphanPrefix</td>
+<td>&quot;+&quot;</td>
+</tr>
+<tr>
+<td>IssuePattern</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>IssueFormat</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>TitleFormat</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>StartString</td>
+<td>&quot;<!-- release notes start -->\n&quot;;</td>
+</tr>
+<tr>
+<td>IsWrap</td>
+<td>false</td>
+</tr>
+<tr>
+<td>IsAllBullets</td>
+<td>false</td>
+</tr>
+<tr>
+<td>IsSingleFile</td>
+<td>true</td>
+</tr>
+<tr>
+<td>EndOfLine</td>
+<td>&quot;LF&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="releasenotereader">[ReleaseNote.Reader]</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VersionPattern</td>
+<td></td>
+</tr>
+<tr>
+<td>TitlePattern</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="releasenotesection">[[ReleaseNote.Section]]</h3>
-<p>Path = &quot;&quot;
-DisplayName = &quot;Main&quot;</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Path</td>
+<td>&quot;&quot;</td>
+</tr>
+<tr>
+<td>DisplayName</td>
+<td>&quot;Main&quot;</td>
+</tr>
+</tbody>
+</table>
 <h3 id="releasenotetype">[[ReleaseNote.Type]]</h3>
-<p>Category = &quot;feature&quot;
-DisplayName = &quot;Features&quot;
-IsShowContent = true</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Category</td>
+<td>&quot;feature&quot;</td>
+</tr>
+<tr>
+<td>DisplayName</td>
+<td>&quot;Features&quot;</td>
+</tr>
+<tr>
+<td>IsShowContent</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
 
 </article>
 

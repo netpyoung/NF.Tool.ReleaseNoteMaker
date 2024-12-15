@@ -32,6 +32,19 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Maker
   nameWithType: ReleaseNoteConfig.Maker
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader
+  name: Reader
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_Reader
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader
+  nameWithType: ReleaseNoteConfig.Reader
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader*
+  name: Reader
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_Reader_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Reader
+  nameWithType: ReleaseNoteConfig.Reader
 - uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.Sections
   name: Sections
   href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfig.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfig_Sections
@@ -296,6 +309,38 @@ references:
   isSpec: "True"
   fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigMaker.Version
   nameWithType: ReleaseNoteConfigMaker.Version
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader
+  name: ReleaseNoteConfigReader
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html
+  commentId: T:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader
+  nameWithType: ReleaseNoteConfigReader
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern
+  name: TitlePattern
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigReader_TitlePattern
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern
+  nameWithType: ReleaseNoteConfigReader.TitlePattern
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern*
+  name: TitlePattern
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigReader_TitlePattern_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.TitlePattern
+  nameWithType: ReleaseNoteConfigReader.TitlePattern
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern
+  name: VersionPattern
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigReader_VersionPattern
+  commentId: P:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern
+  nameWithType: ReleaseNoteConfigReader.VersionPattern
+- uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern*
+  name: VersionPattern
+  href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.html#NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigReader_VersionPattern_
+  commentId: Overload:NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern
+  isSpec: "True"
+  fullName: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteConfigReader.VersionPattern
+  nameWithType: ReleaseNoteConfigReader.VersionPattern
 - uid: NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteSection
   name: ReleaseNoteSection
   href: api/NF.Tool.ReleaseNoteMaker.Common.Config.ReleaseNoteSection.html
