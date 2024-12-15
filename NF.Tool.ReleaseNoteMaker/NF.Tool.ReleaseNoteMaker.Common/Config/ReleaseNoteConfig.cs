@@ -47,8 +47,11 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
 
     public sealed class ReleaseNoteConfigReader
     {
+        // ref:
+        // - https://semver.org/
+        // - https://regex101.com/r/vkijKf/1/
         public string VersionPattern { get; set; } = "(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?";
-        public string TitlePattern { get; set; } = "^## \\[\\[(?<version>{VersionPattern})\\]\\(.*?\\)\\]";
+        public string TitlePattern { get; set; } = "^## .*(?<version>{VersionPattern})";
     }
 
     public sealed class ReleaseNoteSection
