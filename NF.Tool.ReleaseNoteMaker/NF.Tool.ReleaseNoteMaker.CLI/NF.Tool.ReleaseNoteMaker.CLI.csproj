@@ -43,7 +43,7 @@
 	<PropertyGroup>
 		<PackAsTool>true</PackAsTool>
 		<PackageId>dotnet-release-note</PackageId>
-		<Version>0.0.2</Version>
+		<Version>0.0.3</Version>
 		<Authors>netpyoung</Authors>
 		<Company>netpyoung</Company>
 		<Copyright>netpyoung</Copyright>
