@@ -88,7 +88,13 @@
 <h1 id="releasenoteconfigtoml">ReleaseNote.config.toml</h1>
 
 <h2 id="releasenoteconfigtomldefault">ReleaseNote.config.toml(default)</h2>
-<pre><code class="lang-toml" name="Default">[ReleaseNote.Maker]
+<pre><code class="lang-toml" name="Default"># - Document: &lt;https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/&gt;
+# - News Fragment: {Maker.Directory}(/{Section.Path})/{IssueName}.{Type.Category}(.{RetryCount}).md
+#   - example
+#     - ChangeLog.d/1.added.md
+#     - ChangeLog.d/SectionA/1.added.md
+
+[ReleaseNote.Maker]
 # Directory        = &quot;ChangeLog.d&quot;
 # OutputFileName   = &quot;CHANGELOG.md&quot;
 # TemplateFilePath = &quot;ChangeLog.d/Template.tt&quot;
@@ -108,7 +114,7 @@
 
 [ReleaseNote.Reader]
 # VersionPattern = &quot;(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?&quot;
-# TitlePattern = &quot;^## \\[\\[(?&lt;version&gt;{VersionPattern})\\]\\(.*?\\)\\]&quot;
+# TitlePattern = &quot;^## .*(?&lt;version&gt;{VersionPattern})&quot;
 
 [[ReleaseNote.Section]]
 Path = &quot;&quot;
