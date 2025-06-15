@@ -40,6 +40,7 @@
     "globalMetadata": {
       "_appName": "NF.Tool.ReleaseNoteMaker",
       "_appTitle": "NF.Tool.ReleaseNoteMaker",
+	  "_googleAnalyticsTagId": "G-855BJNV9VD",
       "_enableSearch": true,
       "pdf": false
     }
