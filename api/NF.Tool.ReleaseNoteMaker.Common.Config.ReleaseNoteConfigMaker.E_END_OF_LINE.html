@@ -37,6 +37,13 @@
         document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
       </script>
 
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5N6XJHEX5"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Q5N6XJHEX5');
+      </script>
   </head>
 
   <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
@@ -117,11 +124,14 @@ Enum ReleaseNoteConfigMaker.E_END_OF_LINE  <a class="header-action link-secondar
 </h2>
   <dl class="parameters">
     <dt id="NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_CRLF"><code>CRLF = 1</code></dt>
-    <dd></dd>
+  
+  <dd></dd>
     <dt id="NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_ENVIRONMENT"><code>ENVIRONMENT = 2</code></dt>
-    <dd></dd>
+  
+  <dd></dd>
     <dt id="NF_Tool_ReleaseNoteMaker_Common_Config_ReleaseNoteConfigMaker_E_END_OF_LINE_LF"><code>LF = 0</code></dt>
-    <dd></dd>
+  
+  <dd></dd>
   </dl>
 
 
