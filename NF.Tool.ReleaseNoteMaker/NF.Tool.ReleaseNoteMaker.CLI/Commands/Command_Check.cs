@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -31,7 +32,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             public string CompareWith { get; set; } = string.Empty;
         }
 
-        public override Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
         {
             Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (exOrNull is not null)

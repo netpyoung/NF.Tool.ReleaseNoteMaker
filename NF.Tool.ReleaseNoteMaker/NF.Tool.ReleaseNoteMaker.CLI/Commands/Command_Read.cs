@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -37,7 +38,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             public string ProjectVersion { get; set; } = string.Empty;
         }
 
-        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
         {
             Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (exOrNull is not null)
@@ -59,7 +60,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 return 1;
             }
 
-            string rawStr = await File.ReadAllTextAsync(path);
+            string rawStr = await File.ReadAllTextAsync(path, cancellationToken);
             rawStr = rawStr.Replace("\r\n", "\n").Replace('\r', '\n').Trim();
 
             string versionPattern = config.Reader.VersionPattern;
@@ -110,7 +111,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             Console.WriteLine(findOrNull.Content);
             return 0;
         }
-
         private sealed record class ReleaseInfo(string Title, string Version, string Content);
     }
 }

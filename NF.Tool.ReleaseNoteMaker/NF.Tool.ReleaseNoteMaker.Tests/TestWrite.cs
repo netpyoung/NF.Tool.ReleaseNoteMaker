@@ -272,8 +272,7 @@ IsShowContent = true
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
             Console.Write(File.ReadAllText("{ProjectVersion}-notes.md"));
-            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
-
+            Assert.IsFalse(File.Exists("ChangeLog.d/123.feature"));
 
 
             TestConsole c = new TestConsole();
@@ -284,7 +283,7 @@ IsShowContent = true
             Assert.AreEqual(1, result);
 
             string expected = "already produced newsfiles for this version";
-            Assert.IsTrue(c.Output.Contains(expected));
+            Assert.Contains(expected, c.Output);
         }
 
         [TestMethod]
@@ -318,17 +317,17 @@ IsShowContent = true
 
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
-            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
+            Assert.IsFalse(File.Exists("ChangeLog.d/123.feature"));
 
             File.WriteAllText("ChangeLog.d/123.feature", "Adds levitation");
 
             result = await Program.Main(args);
             Assert.AreEqual(0, result);
-            Assert.IsTrue(!File.Exists("ChangeLog.d/123.feature"));
+            Assert.IsFalse(File.Exists("ChangeLog.d/123.feature"));
 
 
             string[] notes = Directory.GetFiles(".", "*-notes.md", SearchOption.TopDirectoryOnly).Select(x => Path.GetRelativePath(".", x)).ToArray();
-            Assert.AreEqual(1, notes.Length);
+            Assert.HasCount(1, notes);
             Assert.AreEqual("7.8.9-notes.md", notes[0]);
 
             string actual = File.ReadAllText(notes[0]);

@@ -4,6 +4,7 @@ using Spectre.Console.Cli;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -30,7 +31,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             public E_TEMPLATE_ENGINE Template { get; set; } = E_TEMPLATE_ENGINE.T4;
         }
 
-        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
         {
             StringBuilder errSb = new StringBuilder();
             string newConfigFilePath = setting.FileName;
@@ -63,9 +64,9 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             File.Move(configFileTempPath, newConfigFilePath);
             if (setting.Template == E_TEMPLATE_ENGINE.LIQUID)
             {
-                string s = await File.ReadAllTextAsync(newConfigFilePath);
+                string s = await File.ReadAllTextAsync(newConfigFilePath, cancellationToken);
                 s = s.Replace(Const.DEFAULT_TEMPLATE_T4_FILENAME, Const.DEFAULT_TEMPLATE_LIQUID_FILENAME);
-                await File.WriteAllTextAsync(newConfigFilePath, s);
+                await File.WriteAllTextAsync(newConfigFilePath, s, cancellationToken);
             }
 
             _ = Directory.CreateDirectory("ChangeLog.d");

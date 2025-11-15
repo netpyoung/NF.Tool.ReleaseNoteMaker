@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -55,7 +56,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
         }
 
-        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
         {
             Exception? exOrNull = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (exOrNull is not null)
@@ -180,7 +181,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                     AnsiConsole.MarkupLine($"    ❌ {x}");
                 }
 
-                if (AnsiConsole.Confirm("Is it okay if I remove those files?"))
+                if (await AnsiConsole.ConfirmAsync("Is it okay if I remove those files?", false, cancellationToken))
                 {
                     AnsiConsole.MarkupLine("[green]*[/] Removing news fragments...");
                     GitHelper.RemoveFiles(fragmentFpaths);

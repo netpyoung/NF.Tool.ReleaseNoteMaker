@@ -18,9 +18,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Tomlyn" Version="0.17.0" />
-		<PackageReference Include="Spectre.Console" Version="0.49.1" />
-		<PackageReference Include="Spectre.Console.Cli" Version="0.49.1" />
+		<PackageReference Include="Tomlyn" Version="0.19.0" />
+		<PackageReference Include="Spectre.Console" Version="0.54.0" />
+		<PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -45,7 +45,7 @@
 	<PropertyGroup>
 		<PackAsTool>true</PackAsTool>
 		<PackageId>dotnet-release-note</PackageId>
-		<Version>0.0.3</Version>
+		<Version>0.0.4</Version>
 		<Authors>netpyoung</Authors>
 		<Company>netpyoung</Company>
 		<Copyright>netpyoung</Copyright>
@@ -74,6 +74,6 @@
 	</Target>
 
 	<Target Name="CleanOutputDir" AfterTargets="Clean">
-		<RemoveDir Directories="$(OUTDIR)"/>
+		<RemoveDir Directories="$(OUTDIR)" />
 	</Target>
 </Project>

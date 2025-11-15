@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -48,7 +49,7 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             public bool IsShowAvailableType { get; set; }
         }
 
-        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
+        public override async Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
         {
             Exception? ex = Utils.GetConfig(setting.Directory, setting.Config, out string baseDirectory, out ReleaseNoteConfig config);
             if (ex is not null)
@@ -202,7 +203,7 @@ and '{{typeCategory}}' is one of: [green]{string.Join(", ", config.Types.Select(
             }
 
             _ = Directory.CreateDirectory(fragmentDirectory);
-            await File.WriteAllTextAsync(segmentFilePath, content);
+            await File.WriteAllTextAsync(segmentFilePath, content, cancellationToken);
             AnsiConsole.MarkupLine($"Created news fragment at {segmentFilePath}");
             return 0;
         }
