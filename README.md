@@ -19,6 +19,10 @@ It enables developers to manage changelog entries incrementally and consolidate 
 dotnet tool install --global dotnet-release-note
 ```
 
+## VSCode Extension
+
+- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=netpyoung.nf-tools-release-note-maker-vscode)
+
 ## Document
 
 - [Documentation](https://netpyoung.github.io/NF.Tool.ReleaseNoteMaker/docs/concept.html)
