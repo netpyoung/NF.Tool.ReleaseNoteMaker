@@ -19,9 +19,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
+      # https://github.com/actions/cache
       - name: Cache NuGet packages
         uses: actions/cache@v4
         with:
@@ -29,11 +31,12 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-
+      
+      # https://github.com/actions/setup-dotnet
       - name: Dotnet Setup
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
 
       - name: Install DocFX
         run: |
@@ -43,6 +46,7 @@ jobs:
           docfx docfx/docfx.json
           touch ./docfx/_site/.nojekyll
 
+      # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' }}
