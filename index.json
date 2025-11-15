@@ -42,7 +42,7 @@
   "docs/index.html": {
     "href": "docs/index.html",
     "title": "NF.Tool.ReleaseNoteMaker | NF.Tool.ReleaseNoteMaker",
-    "summary": "NF.Tool.ReleaseNoteMaker Reinvent the wheel Overview NF.Tool.ReleaseNoteMaker (akka. dotnet-release-note) simplifies changelog creation in .NET projects by mimicking the functionality of Python's twisted/towncrier. It enables developers to manage changelog entries incrementally and consolidate them during release. Install dotnet tool install --global dotnet-release-note Document Documentation Dependencies use Toml format and xoofx/Tomlyn library for Config file. use T4 template and mono/t4 library. use Spectre.Console for console output. use Spectre.Console.Cli for parse args. use SmartFormat for format string. use sebastienros/fluid for liquid License This project is licensed under the MIT License. See the LICENSE file for details."
+    "summary": "NF.Tool.ReleaseNoteMaker Reinvent the wheel Overview NF.Tool.ReleaseNoteMaker (akka. dotnet-release-note) simplifies changelog creation in .NET projects by mimicking the functionality of Python's twisted/towncrier. It enables developers to manage changelog entries incrementally and consolidate them during release. Install dotnet tool install --global dotnet-release-note VSCode Extension VSCode Extension Document Documentation Dependencies use Toml format and xoofx/Tomlyn library for Config file. use T4 template and mono/t4 library. use Spectre.Console for console output. use Spectre.Console.Cli for parse args. use SmartFormat for format string. use sebastienros/fluid for liquid License This project is licensed under the MIT License. See the LICENSE file for details."
   },
   "docs/setup/config.html": {
     "href": "docs/setup/config.html",
