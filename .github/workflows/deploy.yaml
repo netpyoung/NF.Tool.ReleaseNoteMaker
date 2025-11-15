@@ -43,8 +43,9 @@ jobs:
           dotnet tool update -g docfx
       - name: Build DocFX
         run: |
-          docfx docfx/docfx.json
-          touch ./docfx/_site/.nojekyll
+          cd docfx
+          docfx docfx.json
+          touch _site/.nojekyll
 
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
