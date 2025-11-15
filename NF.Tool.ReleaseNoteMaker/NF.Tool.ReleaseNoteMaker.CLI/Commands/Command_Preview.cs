@@ -8,6 +8,7 @@ using Spectre.Console.Cli;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
@@ -75,7 +76,14 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 string templatePath;
                 if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
                 {
-                    templatePath = config.Maker.TemplateFilePath;
+                    if (Path.IsPathRooted(config.Maker.TemplateFilePath))
+                    {
+                        templatePath = config.Maker.TemplateFilePath;
+                    }
+                    else
+                    {
+                        templatePath = Path.Combine(baseDirectory, config.Maker.TemplateFilePath);
+                    }
                 }
                 else
                 {
