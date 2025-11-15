@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="NF.Tool.ReleaseNoteMaker.CLI/NF.Tool.ReleaseNoteMaker.CLI.csproj" />
+  <Project Path="NF.Tool.ReleaseNoteMaker.Common/NF.Tool.ReleaseNoteMaker.Common.csproj" />
+  <Project Path="NF.Tool.ReleaseNoteMaker.Tests/NF.Tool.ReleaseNoteMaker.Tests.csproj" />
+</Solution>
