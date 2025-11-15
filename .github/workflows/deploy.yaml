@@ -41,11 +41,14 @@ jobs:
       - name: Install DocFX
         run: |
           dotnet tool update -g docfx
+
+      # TODO(pyoung):
+      # [Bug] Solutions with code generator projects fail to build
+      # https://github.com/dotnet/docfx/issues/9775
       - name: Build DocFX
         run: |
-          cd docfx
-          docfx docfx.json
-          touch _site/.nojekyll
+          docfx docfx/docfx.json
+          touch ./docfx/_site/.nojekyll
 
       # https://github.com/peaceiris/actions-gh-pages
       - name: Deploy
