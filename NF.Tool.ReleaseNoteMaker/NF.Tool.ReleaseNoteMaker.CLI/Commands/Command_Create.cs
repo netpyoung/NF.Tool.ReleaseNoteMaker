@@ -42,6 +42,10 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             [Description("Fragment FileName")]
             [CommandArgument(0, "[FileName]")]
             public string FileName { get; set; } = string.Empty;
+
+            [Description("Show Available Fragment Type.")]
+            [CommandOption("--show-available-type")]
+            public bool IsShowAvailableType { get; set; }
         }
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting)
@@ -51,6 +55,15 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             {
                 AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
                 return 1;
+            }
+
+            if (setting.IsShowAvailableType)
+            {
+                foreach (ReleaseNoteType x in config.Types)
+                {
+                    AnsiConsole.WriteLine(x.Category);
+                }
+                return 0;
             }
 
             string sectionDisplayName = string.Empty;
