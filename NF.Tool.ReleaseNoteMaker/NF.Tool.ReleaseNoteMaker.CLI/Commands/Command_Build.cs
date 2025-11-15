@@ -87,7 +87,14 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
                 string templatePath;
                 if (!string.IsNullOrEmpty(config.Maker.TemplateFilePath))
                 {
-                    templatePath = config.Maker.TemplateFilePath;
+                    if (Path.IsPathRooted(config.Maker.TemplateFilePath))
+                    {
+                        templatePath = config.Maker.TemplateFilePath;
+                    }
+                    else
+                    {
+                        templatePath = Path.Combine(baseDirectory, config.Maker.TemplateFilePath);
+                    }
                 }
                 else
                 {
