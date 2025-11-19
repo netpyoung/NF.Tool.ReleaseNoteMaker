@@ -21,7 +21,7 @@ dotnet tool install --global dotnet-release-note
 
 ## VSCode Extension
 
-- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=netpyoung.nf-tools-release-note-maker-vscode)
+- [VSCode Extension](https://marketplace.visualstudio.com/items?itemName=netpyoung.nf-tool-release-note-maker-vscode)
 
 ## Document
 
