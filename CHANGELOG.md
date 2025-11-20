@@ -2,6 +2,21 @@
 
 <!-- release notes start -->
 
+## 0.0.5 (2025-11-20)
+
+
+### Main
+
+#### Deprecated
+
+- Drop the use of liquid ([1](https://github.com/netpyoung/NF.Tool.ReleaseNoteMaker/issues/1))
+
+#### Changed
+
+- `dotnet release-note init` command will create CHANGELOG.md
+- default Template.tt => Template.t4
+
+
 ## 0.0.4 (2025-11-15)
 
 
