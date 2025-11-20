@@ -31,9 +31,6 @@
 		<EmbeddedResource Include="res\Template.t4">
 			<LogicalName>Template.t4</LogicalName>
 		</EmbeddedResource>
-		<EmbeddedResource Include="res\Template.liquid">
-			<LogicalName>Template.liquid</LogicalName>
-		</EmbeddedResource>
 		<EmbeddedResource Include="res\ReleaseNote.config.toml">
 			<LogicalName>ReleaseNote.config.toml</LogicalName>
 		</EmbeddedResource>

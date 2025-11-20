@@ -17,7 +17,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
         internal enum E_TEMPLATE_ENGINE
         {
             T4,
-            LIQUID,
         }
 
         internal sealed class Settings : CommandSettings
@@ -44,11 +43,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
             }
 
             string templateFileName = Const.DEFAULT_TEMPLATE_T4_FILENAME;
-            if (setting.Template == E_TEMPLATE_ENGINE.LIQUID)
-            {
-                templateFileName = Const.DEFAULT_TEMPLATE_LIQUID_FILENAME;
-            }
-
             string templatePath = $"ChangeLog.d/{templateFileName}";
             if (File.Exists(templatePath))
             {
@@ -64,13 +58,6 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
 
             string configFileTempPath = Utils.ExtractResourceToTempFilePath(Const.DEFAULT_CONFIG_FILENAME);
             File.Move(configFileTempPath, newConfigFilePath);
-            if (setting.Template == E_TEMPLATE_ENGINE.LIQUID)
-            {
-                string s = await File.ReadAllTextAsync(newConfigFilePath, cancellationToken);
-                s = s.Replace(Const.DEFAULT_TEMPLATE_T4_FILENAME, Const.DEFAULT_TEMPLATE_LIQUID_FILENAME);
-                await File.WriteAllTextAsync(newConfigFilePath, s, cancellationToken);
-            }
-
             _ = Directory.CreateDirectory("ChangeLog.d");
 
             string templateFileTempPath = Utils.ExtractResourceToTempFilePath(templateFileName);

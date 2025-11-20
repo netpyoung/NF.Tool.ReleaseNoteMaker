@@ -17,7 +17,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="Mono.TextTemplating" Version="3.0.0" />
-		<PackageReference Include="Fluid.Core" Version="2.31.0" />
 		<PackageReference Include="SmartFormat" Version="3.6.1" />
 	</ItemGroup>
 </Project>

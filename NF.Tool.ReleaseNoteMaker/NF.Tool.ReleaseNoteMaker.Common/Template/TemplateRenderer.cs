@@ -1,5 +1,4 @@
-﻿using Fluid;
-using NF.Tool.ReleaseNoteMaker.Common.Config;
+﻿using NF.Tool.ReleaseNoteMaker.Common.Config;
 using NF.Tool.ReleaseNoteMaker.Common.Fragments;
 using SmartFormat;
 using System;
@@ -16,32 +15,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
 {
     public sealed class TemplateRenderer
     {
-        private static async Task<(Exception? exOrNull, string text)> RenderViaLiquid(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
-        {
-            string source = await File.ReadAllTextAsync(templatePath);
-
-            FluidParser parser = new FluidParser(new FluidParserOptions { AllowFunctions = true });
-
-            if (!parser.TryParse(source, out IFluidTemplate? template, out string? errorOrNull))
-            {
-                StringBuilder sb = new StringBuilder();
-                _ = sb.AppendLine("Template Render Error");
-                _ = sb.AppendLine(errorOrNull);
-                ReleaseNoteMakerException ex = new ReleaseNoteMakerException(sb.ToString());
-                return (ex, string.Empty);
-            }
-
-            var model = new { config, model = templateModel };
-            TemplateOptions opt = new TemplateOptions
-            {
-                MemberAccessStrategy = UnsafeMemberAccessStrategy.Instance
-            };
-
-            TemplateContext context = new TemplateContext(model, opt);
-            string rendered = await template.RenderAsync(context);
-            return (null, rendered);
-        }
-
         private static async Task<(Exception? exOrNull, string text)> RenderViaT4(string templatePath, ReleaseNoteConfig config, TemplateModel templateModel)
         {
             string tempFilePath = Path.GetTempFileName();
@@ -129,10 +102,6 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             else if (templateFpath.EndsWith(".t4"))
             {
                 renderResult = await RenderViaT4(templateFpath, config, model);
-            }
-            else if (templateFpath.EndsWith(".liquid"))
-            {
-                renderResult = await RenderViaLiquid(templateFpath, config, model);
             }
             else
             {

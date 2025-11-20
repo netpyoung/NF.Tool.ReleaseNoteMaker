@@ -14,7 +14,6 @@
 
 	<ItemGroup>
 		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\res\Template.t4" Link="Template.t4" CopyToOutputDirectory="PreserveNewest" />
-		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\res\Template.liquid" Link="Template.liquid" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="..\NF.Tool.ReleaseNoteMaker.CLI\res\ReleaseNote.config.toml" Link="ReleaseNote.config.toml" CopyToOutputDirectory="PreserveNewest" />
 		<None Include="SampleData/Case001/*" CopyToOutputDirectory="Always" />
 	</ItemGroup>
