@@ -56,8 +56,8 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string[] args = ["check", "--compare-with", "hblaugh"];
             int result = await Program.Main(args);
             Assert.AreEqual(1, result);
-            Assert.IsTrue(c.Output.Contains("git produced output while failing"));
-            Assert.IsTrue(c.Output.Contains("hblaugh"));
+            Assert.Contains("git produced output while failing", c.Output);
+            Assert.Contains("hblaugh", c.Output);
         }
 
         [TestMethod]
@@ -112,7 +112,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string[] args = ["check", "--compare-with", "main"];
             int result = await Program.Main(args);
             Assert.AreEqual(0, result);
-            Assert.IsTrue(c.Output.EndsWith($"Found:\n    1. {fpath}\n"));
+            Assert.EndsWith($"Found:\n    1. {fpath}\n", c.Output);
         }
     }
 }
