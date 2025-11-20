@@ -18,7 +18,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Config
     {
         public string OutputFileName { get; set; } = "CHANGELOG.md";
         public string Directory { get; set; } = "ChangeLog.d";
-        public string TemplateFilePath { get; set; } = "ChangeLog.d/Template.tt";
+        public string TemplateFilePath { get; set; } = "ChangeLog.d/Template.t4";
         public string Name { get; set; } = string.Empty;
         public string Version { get; set; } = string.Empty;
         public string CsprojPath { get; set; } = string.Empty;

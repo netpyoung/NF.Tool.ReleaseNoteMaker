@@ -7,7 +7,7 @@
 [ReleaseNote.Maker]
 # Directory        = "ChangeLog.d"
 # OutputFileName   = "CHANGELOG.md"
-# TemplateFilePath = "ChangeLog.d/Template.tt"
+# TemplateFilePath = "ChangeLog.d/Template.t4"
 # Name             = ""
 # Version          = ""
 # CsprojPath       = ""

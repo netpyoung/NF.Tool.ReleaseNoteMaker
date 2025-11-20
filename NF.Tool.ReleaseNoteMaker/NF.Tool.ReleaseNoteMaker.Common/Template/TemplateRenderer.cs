@@ -126,6 +126,10 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             {
                 renderResult = await RenderViaT4(templateFpath, config, model);
             }
+            else if (templateFpath.EndsWith(".t4"))
+            {
+                renderResult = await RenderViaT4(templateFpath, config, model);
+            }
             else if (templateFpath.EndsWith(".liquid"))
             {
                 renderResult = await RenderViaLiquid(templateFpath, config, model);
