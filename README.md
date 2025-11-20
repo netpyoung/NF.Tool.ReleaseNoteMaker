@@ -34,7 +34,6 @@ dotnet tool install --global dotnet-release-note
 - use [Spectre.Console](https://spectreconsole.net/) for console output.
 - use [Spectre.Console.Cli](https://spectreconsole.net/cli/) for parse args.
 - use [SmartFormat](https://github.com/axuno/SmartFormat) for format string.
-- use [sebastienros/fluid](https://github.com/sebastienros/fluid) for [liquid](https://shopify.github.io/liquid/)
 
 ## License
 
