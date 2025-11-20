@@ -9,6 +9,7 @@ $ dotnet release-note init
 Initialized
 ./
 ├── ReleaseNote.config.toml
+├── CHANGELOG.md
 └── ChangeLog.d/
-    └── Template.tt
+    └── Template.t4
 ```

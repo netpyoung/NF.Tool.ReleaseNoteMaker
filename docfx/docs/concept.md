@@ -21,8 +21,6 @@ subgraph ReleaseNoteMaker
 end
 
 Renderer -->|t4    | Output
-Renderer -->|liquid| Output
-
 
 Renderer{Renderer}
 Output[CHANGELOG.md]
