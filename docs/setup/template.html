@@ -98,7 +98,6 @@
 <li>support
 <ul>
 <li><a href="https://learn.microsoft.com/en-us/visualstudio/modeling/code-generation-and-t4-text-templates">T4 template</a></li>
-<li><a href="https://shopify.github.io/liquid/">liquid</a></li>
 </ul>
 </li>
 </ul>
@@ -107,63 +106,104 @@
 <li role="presentation">
 <a href="#tabpanel_1_t4" role="tab" aria-controls="tabpanel_1_t4" data-tab="t4" tabindex="0" aria-selected="true">Template.tt</a>
 </li>
-<li role="presentation">
-<a href="#tabpanel_1_liquid" role="tab" aria-controls="tabpanel_1_liquid" data-tab="liquid" tabindex="-1">Template.liquid</a>
-</li>
 </ul>
 <section id="tabpanel_1_t4" role="tabpanel" data-tab="t4">
-<div class="WARNING">
-Warning
-<p>It looks like the sample you are looking for does not exist.</p>
-</div></section>
-<section id="tabpanel_1_liquid" role="tabpanel" data-tab="liquid" aria-hidden="true" hidden="hidden">
-<pre><code class="lang-liquid" name="Default">{%- if model.IsRenderTitle -%}
-## {{ model.ProjectData }}
-{%- endif -%}
+<pre><code class="lang-csharp" name="Default">&lt;#@ template debug=&quot;true&quot; hostspecific=&quot;true&quot; language=&quot;C#&quot; #&gt;
+&lt;#@ import namespace=&quot;System&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Linq&quot; #&gt;
+&lt;#@ import namespace=&quot;System.Collections.Generic&quot; #&gt;
+&lt;#
+    //System.Diagnostics.Debugger.Launch();
+    //System.Diagnostics.Debugger.Break();
 
-{% for section in model.Sections -%}
-    {%- if section.DisplayName != empty %}
+    TemplateModel model = Host.GetTemplateModel();
+    ReleaseNoteConfig config = Host.GetConfig();
+#&gt;
+&lt;#
+    if (model.IsRenderTitle)
+    {
+        WriteLine($&quot;## {model.ProjectData}&quot;);
+    }
+#&gt;
 
-### {{ section.DisplayName }}
-    {%- endif -%}
-    {% if section.Categories == empty %}
+&lt;#
+    foreach (Section section in model.Sections)
+    {
+        if (!string.IsNullOrEmpty(section.DisplayName))
+        {
+            WriteLine($&quot;\n### {section.DisplayName}\n&quot;);
+        }
 
-No significant changes.
-    {% else %}
-        {% for category in section.Categories %}
-#### {{ category.DisplayName }}
-            {% if category.Contents.Count == 0  %}
+        if (section.Categories.Count == 0)
+        {
+            WriteLine(&quot;No significant changes.\n&quot;);
+            continue;
+        }
 
-No significant changes.
-            {% else %}
-                {%- for content in category.Contents -%}
-                    {%- assign text = content.Text %}
-                    {%- assign issues = content.Issues %}
-- {{ text }}
-                    {%- if issues != empty -%}
-                        {%- if text contains '\n  - ' or text contains '\n  * ' %}
+        foreach (Category category in section.Categories)
+        {
+            WriteLine($&quot;#### {category.DisplayName}\n&quot;);
 
-  (
-                        {%- else -%}
-                            {%- if text != '' %} ({%- endif -%}
-                        {%- endif -%}
-                            
-                        {%- for issue in issues -%}
-                            {{ issue | split: ': ' | first }}{% if forloop.last == false %}, {% endif %}
-                        {%- endfor %}
-                        {%- if text != empty %}){%- endif -%}
-                    {% endif %}
-                {%- endfor %}
-                {%- assign categoryIssues = category.CategoryIssues -%}
-                {%- if categoryIssues.Count != 0 and categoryIssues[0] contains ']: ' %}
-                    {% for issue in categoryIssues %}
-{{ issue -}}
-                    {% endfor %}
-                {%- endif %}
-            {% endif %}
-        {%- endfor -%}
-    {%- endif -%}
-{% endfor %}
+            if (category.Contents.Count == 0)
+            {
+                WriteLine(&quot;No significant changes.\n&quot;);
+                continue;
+            }
+
+            foreach (Content content in category.Contents)
+            {
+                (string text, List&lt;string&gt; issues) = content;
+                Write($&quot;- {text}&quot;);
+                if (issues.Count == 0)
+                {
+                    WriteLine(&quot;&quot;);
+                    continue;
+                }
+
+                if (text.Contains(&quot;\n  - &quot;) || text.Contains(&quot;\n  * &quot;))
+                {
+                    Write(&quot;\n\n  (&quot;);
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(text))
+                    {
+                        Write(&quot; (&quot;);
+                    }
+                }
+                        
+                for (int i = 0; i &lt; issues.Count; i++)
+                {
+                    string issue = issues[i];
+                    Write(issue.Split(&quot;: &quot;, 2)[0]);
+                    if (i &lt; issues.Count - 1)
+                    {
+                        Write(&quot;, &quot;);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    Write(&quot;)&quot;);
+                }
+                WriteLine(&quot;&quot;);
+            }
+        
+
+            List&lt;string&gt; categoryIssues = category.GetAllIssues();
+            if (categoryIssues.Count &gt; 0 &amp;&amp; categoryIssues.First().Contains(&quot;]: &quot;))
+            {
+                WriteLine(&quot;&quot;);
+                foreach (string issue in categoryIssues)
+                {
+                    WriteLine(issue);
+                }
+            }
+            WriteLine(&quot;&quot;);
+
+        }
+    }
+#&gt;
 </code></pre></section>
 </div>
 

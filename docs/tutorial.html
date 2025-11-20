@@ -127,6 +127,7 @@ COMMANDS:
 Initialized
 ./
 ├── ReleaseNote.config.toml
+├── CHANGELOG.md
 └── ChangeLog.d/
     └── Template.tt
 </code></pre>
@@ -158,36 +159,35 @@ dotnet release-note create --content &quot;A fix without an issue number!&quot; 
 <li>Preview changelog</li>
 </ol>
 <pre><code class="lang-sh">$ dotnet release-note preview
-dotnet release-note preview
-# x.x.x (2024-12-10)
+## PREVIEW (2025-11-20)
 
 
-## Main
+### Main
 
-### Security
-
-- Fixed a security issue! (#6, #7)
-
-### Removed
-
-- Removed a square feature! (#4)
-
-### Deprecated
-
-- Deprecated a module! (#3)
-
-### Added
+#### Added
 
 - Added a cool feature! (#1)
 
-### Changed
+#### Removed
+
+- Removed a square feature! (#4)
+
+#### Changed
 
 - Changed a behavior! (#2)
 
-### Fixed
+#### Deprecated
+
+- Deprecated a module! (#3)
+
+#### Fixed
 
 - Fixed a bug! (#5)
 - A fix without an issue number!
+
+#### Security
+
+- Fixed a security issue! (#6, #7)
 
 
 
@@ -217,39 +217,39 @@ Is it okay if I remove those files? [y/n] (y): y
 * Done!
 </code></pre>
 <pre><code>$ cat .\CHANGELOG.md
-cat CHANGELOG.md
-# 1.0.0 (2024-12-10)
+# Change Log
+
+&lt;!-- release notes start --&gt;
+
+## 1.0.0 (2025-11-20)
 
 
-## Main
+### Main
 
-### Security
-
-- Fixed a security issue! (#6, #7)
-
-### Removed
-
-- Removed a square feature! (#4)
-
-### Deprecated
-
-- Deprecated a module! (#3)
-
-### Added
+#### Added
 
 - Added a cool feature! (#1)
 
-### Changed
+#### Removed
+
+- Removed a square feature! (#4)
+
+#### Changed
 
 - Changed a behavior! (#2)
 
-### Fixed
+#### Deprecated
+
+- Deprecated a module! (#3)
+
+#### Fixed
 
 - Fixed a bug! (#5)
 - A fix without an issue number!
 
+#### Security
 
-
+- Fixed a security issue! (#6, #7)
 </code></pre>
 
 </article>
