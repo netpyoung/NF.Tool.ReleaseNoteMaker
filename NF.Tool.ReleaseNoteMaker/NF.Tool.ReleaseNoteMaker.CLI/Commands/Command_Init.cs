@@ -14,22 +14,12 @@ namespace NF.Tool.ReleaseNoteMaker.CLI.Commands
     [Description($"Init release-note setup.")]
     internal sealed class Command_Init : AsyncCommand<Command_Init.Settings>
     {
-        internal enum E_TEMPLATE_ENGINE
-        {
-            T4,
-        }
-
         internal sealed class Settings : CommandSettings
         {
             [Description("Specify config file name.")]
             [CommandOption("--file")]
             [DefaultValue(Const.DEFAULT_CONFIG_FILENAME)]
             public string FileName { get; set; } = string.Empty;
-
-            [Description("template engine (t4 | liquid)")]
-            [CommandOption("--template")]
-            [DefaultValue(E_TEMPLATE_ENGINE.T4)]
-            public E_TEMPLATE_ENGINE Template { get; set; } = E_TEMPLATE_ENGINE.T4;
         }
 
         public override async Task<int> ExecuteAsync(CommandContext context, Settings setting, CancellationToken cancellationToken)
