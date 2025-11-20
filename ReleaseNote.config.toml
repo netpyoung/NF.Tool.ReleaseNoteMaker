@@ -1,7 +1,7 @@
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
 OutputFileName = "CHANGELOG.md"
-TemplateFilePath = "ChangeLog.d/Template.tt"
+TemplateFilePath = "ChangeLog.d/Template.t4"
 CsprojPath = "NF.Tool.ReleaseNoteMaker/NF.Tool.ReleaseNoteMaker.CLI/NF.Tool.ReleaseNoteMaker.CLI.csproj"
 EndOfLine = "LF"
 StartString = "<!-- release notes start -->\n"
