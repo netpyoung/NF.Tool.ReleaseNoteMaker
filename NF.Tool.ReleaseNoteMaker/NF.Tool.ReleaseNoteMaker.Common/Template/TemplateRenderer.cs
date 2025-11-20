@@ -94,20 +94,7 @@ namespace NF.Tool.ReleaseNoteMaker.Common.Template
             }
 
             TemplateModel model = new TemplateModel(isRenderTitle, projectData, sections);
-            (Exception? exOrNull, string renderedText) renderResult;
-            if (templateFpath.EndsWith(".tt"))
-            {
-                renderResult = await RenderViaT4(templateFpath, config, model);
-            }
-            else if (templateFpath.EndsWith(".t4"))
-            {
-                renderResult = await RenderViaT4(templateFpath, config, model);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
-
+            (Exception? exOrNull, string renderedText) renderResult = await RenderViaT4(templateFpath, config, model);
             if (renderResult.exOrNull != null)
             {
                 return (renderResult.exOrNull, string.Empty);
