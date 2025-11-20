@@ -39,7 +39,7 @@ Initialized
 ├── ReleaseNote.config.toml
 ├── CHANGELOG.md
 └── ChangeLog.d/
-    └── Template.t4
+    └── Template.tt
 ```
 
 3. Create a changelog entry:

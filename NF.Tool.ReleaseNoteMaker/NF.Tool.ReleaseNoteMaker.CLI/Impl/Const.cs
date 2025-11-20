@@ -3,7 +3,7 @@
     internal static class Const
     {
         public const string DEFAULT_CONFIG_FILENAME = "ReleaseNote.config.toml";
-        public const string DEFAULT_TEMPLATE_T4_FILENAME = "Template.t4";
+        public const string DEFAULT_TEMPLATE_T4_FILENAME = "Template.tt";
         public const string DEFAULT_NEWS_CONTENT = "Add your info here";
         public const string DEFAULT_EDIT_NEWS_CONTENT = @"
 

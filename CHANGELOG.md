@@ -14,7 +14,6 @@
 #### Changed
 
 - `dotnet release-note init` command will create CHANGELOG.md
-- default Template.tt => Template.t4
 
 
 ## 0.0.4 (2025-11-15)

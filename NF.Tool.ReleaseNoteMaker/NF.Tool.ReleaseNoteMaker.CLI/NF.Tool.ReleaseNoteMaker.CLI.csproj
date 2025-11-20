@@ -28,8 +28,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="res\Template.t4">
-			<LogicalName>Template.t4</LogicalName>
+		<EmbeddedResource Include="res\Template.tt">
+			<LogicalName>Template.tt</LogicalName>
 		</EmbeddedResource>
 		<EmbeddedResource Include="res\ReleaseNote.config.toml">
 			<LogicalName>ReleaseNote.config.toml</LogicalName>
@@ -38,7 +38,7 @@
 			<LogicalName>CHANGELOG.md</LogicalName>
 		</EmbeddedResource>
 		
-		<!--<None Update="Template.t4" CopyToOutputDirectory="PreserveNewest" />-->
+		<!--<None Update="Template.tt" CopyToOutputDirectory="PreserveNewest" />-->
 		<None Remove="CHANGELOG.md" />
 		<None Remove="ChangeLog.d/**/*" />
 	</ItemGroup>

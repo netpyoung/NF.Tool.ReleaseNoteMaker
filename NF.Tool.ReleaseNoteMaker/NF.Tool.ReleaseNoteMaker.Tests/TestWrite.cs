@@ -21,7 +21,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
             Directory.CreateDirectory(testDirectory);
             Directory.CreateDirectory($"{testDirectory}/ChangeLog.d");
-            File.Copy("ChangeLog.d/Template.t4", $"{testDirectory}/ChangeLog.d/Template.t4");
+            File.Copy("ChangeLog.d/Template.tt", $"{testDirectory}/ChangeLog.d/Template.tt");
             File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
             Directory.SetCurrentDirectory(testDirectory);
         }
@@ -33,7 +33,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestAppendAtTop()
         {
@@ -63,7 +63,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "ChangeLog.d/Template.t4";
+            string templatePath = "ChangeLog.d/Template.tt";
             ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -108,7 +108,7 @@ Old text.
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestAppendAtTopWithHint()
         {
@@ -142,7 +142,7 @@ Old text.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "ChangeLog.d/Template.t4";
+            string templatePath = "ChangeLog.d/Template.tt";
             ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -201,7 +201,7 @@ Old text.
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestMultipleFileNoStartString()
         {
@@ -224,7 +224,7 @@ Old text.
 
             List<FragmentContent> splitted = FragmentFinder.SplitFragments(fragments, config);
 
-            string templatePath = "ChangeLog.d/Template.t4";
+            string templatePath = "ChangeLog.d/Template.tt";
             ProjectData projectData = new ProjectData("MyProject", "1.0", "never");
             (Exception? renderExOrNull, string text) = await TemplateRenderer.RenderFragments(templatePath, config, projectData, splitted);
             Assert.IsNull(renderExOrNull);
@@ -242,7 +242,7 @@ Old text.
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestWithTitleFormatDuplicateVersionRaise()
         {
@@ -252,7 +252,7 @@ Old text.
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
 OutputFileName = "{ProjectVersion}-notes.md"
-TemplateFilePath = "ChangeLog.d/Template.t4"
+TemplateFilePath = "ChangeLog.d/Template.tt"
 TitleFormat = "# {ProjectName} {ProjectVersion} ({ProjectDate})"
 
 [[ReleaseNote.Type]]
@@ -287,7 +287,7 @@ IsShowContent = true
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestSingleFileFalseOverwriteDuplicateVersion()
         {
@@ -297,7 +297,7 @@ IsShowContent = true
 [ReleaseNote.Maker]
 Directory = "ChangeLog.d"
 OutputFileName = "{ProjectVersion}-notes.md"
-TemplateFilePath = "ChangeLog.d/Template.t4"
+TemplateFilePath = "ChangeLog.d/Template.tt"
 TitleFormat = "## {ProjectName} {ProjectVersion} ({ProjectDate})"
 IsSingleFile = false
 

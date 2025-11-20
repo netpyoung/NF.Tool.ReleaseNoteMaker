@@ -11,5 +11,5 @@ Initialized
 ├── ReleaseNote.config.toml
 ├── CHANGELOG.md
 └── ChangeLog.d/
-    └── Template.t4
+    └── Template.tt
 ```

@@ -18,7 +18,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
             string testDirectory = Path.Combine(TestContext.DeploymentDirectory!, testName);
             Directory.CreateDirectory(testDirectory);
             Directory.CreateDirectory($"{testDirectory}/ChangeLog.d");
-            File.Copy("ChangeLog.d/Template.t4", $"{testDirectory}/ChangeLog.d/Template.t4");
+            File.Copy("ChangeLog.d/Template.tt", $"{testDirectory}/ChangeLog.d/Template.tt");
             File.Copy("ReleaseNote.config.toml", $"{testDirectory}/ReleaseNote.config.toml");
             Directory.SetCurrentDirectory(testDirectory);
         }
@@ -45,7 +45,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestGitFails()
         {
@@ -61,7 +61,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestNoChangesMade()
         {
@@ -76,7 +76,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestNoChangesMadeConfigPath()
         {
@@ -92,7 +92,7 @@ namespace NF.Tool.ReleaseNoteMaker.Tests
         }
 
         [TestMethod]
-        [DeploymentItem("Template.t4", "ChangeLog.d/")]
+        [DeploymentItem("Template.tt", "ChangeLog.d/")]
         [DeploymentItem("ReleaseNote.config.toml")]
         public async Task TestFragmentExists()
         {
